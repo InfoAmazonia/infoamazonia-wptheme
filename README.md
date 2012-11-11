@@ -1,4 +1,4 @@
-infoamazonia-wptheme
-====================
+Infoamazonia WordPress Theme
+============================
 
-WordPress theme with MapBox maps fully integrated for Infoamazonia project
+MapBox maps fully integrated with WodPress with gelocated news and collaboration system made for Infoamazonia project
