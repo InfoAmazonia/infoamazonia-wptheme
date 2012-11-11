@@ -1,31 +1,33 @@
 <?php
 
-add_action('admin_footer', 'mapbox_init');
+add_action('admin_footer', 'mapbox_metabox_init');
 add_action('add_meta_boxes', 'mapbox_add_meta_box');
 add_action('save_post', 'mapbox_save_postdata');
 
-function mapbox_init() {
-	wp_enqueue_script('geocoding-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery'));
+function mapbox_metabox_init() {
+	// javascript stuff for the metabox
+	wp_enqueue_script('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery')); // layers looping system there
 }
 
 function mapbox_add_meta_box() {
+	// register the metabox
 	add_meta_box(
-		'mapbox',
-		'Mapas do MapBox',
-		'mapbox_inner_custom_box',
-		'map',
-		'advanced',
-		'high'
+		'mapbox', // metabox id
+		'Mapas do MapBox', // metabox title
+		'mapbox_inner_custom_box', // metabox inner code
+		'map', // post type
+		'advanced', // metabox position (advanced to show on main area)
+		'high' // metabox priority (kind of an ordering)
 	);
 }
 
 function mapbox_inner_custom_box($post) {
+	// get previous data if any
 	$server = get_post_meta($post->ID, 'map_server', true);
 	if(!$server)
 		$server = 'http://a.tiles.mapbox.com/v3/'; // default map service
 
 	$layers = get_post_meta($post->ID, 'map_layers', true);
-
 	?>
 	<div id="mapbox-metabox">
 		<h4>Configure seu mapa</h4>
@@ -48,6 +50,7 @@ function mapbox_inner_custom_box($post) {
 }
 
 function mapbox_save_postdata($post_id) {
+	// prevent data loss on autosave or any other ajaxed post update
 	if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
 		return;
 
@@ -57,6 +60,7 @@ function mapbox_save_postdata($post_id) {
 	if (false !== wp_is_post_revision($post_id))
 		return;
 
+	// save data
 	update_post_meta($post_id, 'map_server', $_POST['map_server']);
 	update_post_meta($post_id, 'map_layers', $_POST['map_layers']);
 }

@@ -1,6 +1,6 @@
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta charset="<?php bloginfo('charset'); ?>" />
 <title><?php
 	global $page, $paged;
 
@@ -8,7 +8,7 @@
 
 	bloginfo( 'name' );
 
-	$site_description = get_bloginfo( 'description', 'display' );
+	$site_description = get_bloginfo('description', 'display');
 	if ( $site_description && ( is_home() || is_front_page() ) )
 		echo " | $site_description";
 
@@ -17,7 +17,8 @@
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>" />
+<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
