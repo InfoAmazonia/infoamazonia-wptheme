@@ -12,7 +12,7 @@ function geocoding_init() {
 function geocoding_add_meta_box() {
 	add_meta_box(
 		'geocoding-address',
-		'Endereço e geolocalização',
+		__('Address and geolocation', 'infoamazonia'),
 		'geocoding_inner_custom_box',
 		'post',
 		'advanced',
@@ -27,18 +27,18 @@ function geocoding_inner_custom_box($post) {
 	$viewport = get_post_meta($post->ID, 'geocode_viewport', true);
 	$instructions = get_post_meta($post->ID, 'geo_instructions', true);
 	echo '<div id="geolocate">';
-	echo '<h4>Escreva um endereço</h4>';
+	echo '<h4>' . __('Write an address', 'infoamazonia') . '</h4>';
 	echo '<p>';
 	    echo '<input type="text" size="80" id="geocode_address" name="geocode_address" value="'.$address.'" />';
-	    echo '<input type="button" onclick="codeAddress();" value="Geolocalizar" />';
+	    echo '<input type="button" onclick="codeAddress();" value="' . __('Geolocate', 'infoamazonia') . '" />';
 	echo '</p>';
 	echo '<div class="results"></div>';
-	echo '<p>Arraste o marcador para obter um resultado mais preciso</p>';
+	echo '<p>' . __('Drag the marker for a more precise result', 'infoamazonia') . '</p>';
 	echo '<div id="geolocate_canvas" style="width:500px;height:300px"></div>';
-	echo '<h4>Resultado:</h4>';
+	echo '<h4>' . __('Result', 'infoamazonia') . ':</h4>';
 	echo '<p>';
-	    echo 'Latitude: <input type="text" id="geocode_lat" name="geocode_lat" value="'.$lat.'" /><br/>';
-	    echo 'Longitude: <input type="text" id="geocode_long" name="geocode_long" value="'.$long.'" />';
+	    echo __('Latitude', 'infoamazonia') . ': <input type="text" id="geocode_lat" name="geocode_lat" value="'.$lat.'" /><br/>';
+	    echo __('Longitude', 'infoamazonia') . ': <input type="text" id="geocode_long" name="geocode_long" value="'.$long.'" />';
 	echo '</p>';
 	echo '<input type="hidden" id="geocode_viewport" name="geocode_viewport" value="'.$viewport.'" />';
 	echo '</div>';

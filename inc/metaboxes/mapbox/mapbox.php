@@ -30,20 +30,20 @@ function mapbox_inner_custom_box($post) {
 	$layers = get_post_meta($post->ID, 'map_layers', true);
 	?>
 	<div id="mapbox-metabox">
-		<h4>Configure seu mapa</h4>
-		<p>Servidor de mapa: <input type="text" value="<?php echo $server; ?>" name="map_server" size="50" /></p>
-		<h4>Preencha os IDs dos mapas para preenchimento das layers do seu mapa, na ordem de aparição</h4>
+		<h4><?php _e('Setup your map', 'infoamazonia'); ?></h4>
+		<p><?php _e('Map server:'); ?>: <input type="text" value="<?php echo $server; ?>" name="map_server" size="50" /></p>
+		<h4><?php _e('Fill the IDs of the maps to overlay layers of your map, in order of appearance', 'infoamazonia'); ?></h4>
 		<div class="layers-container">
 			<ol class="layers-list">
 			<?php if(!$layers) { ?>
 				<li><input type="text" name="map_layers[]" /></li>
 			<?php } else {
 				foreach($layers as $layer) { ?>
-					<li><input type="text" name="map_layers[]" value="<?php echo $layer; ?>" /> <a href="#" class="remove-layer" title="Remover layer">X</a></li>
+					<li><input type="text" name="map_layers[]" value="<?php echo $layer; ?>" /> <a href="#" class="remove-layer" title="<?php _e('Remove layer', 'infoamazonia'); ?>">X</a></li>
 				<?php }
 			} ?>
 			</ol>
-			<p><a class="button add-layer" href="#">Adicionar nova layer</a></p>
+			<p><a class="button add-layer" href="#"><?php _e('Add new layer', 'infoamazonia'); ?></a></p>
 		</div>
 	</div>
 	<?php
