@@ -5,27 +5,26 @@ var maps = {};
 (function($) {
 
 	buildMap = function(containerID, layers, extent, center, zoom) {
+
 		$('#' + containerID).empty();
+
 		mapbox.load(layers, function(data) {
+
 			var map = mapbox.map(containerID);
 
-			map.ui.zoomer.add();
-
 			$.each(data, function(i, layer) {
+				layer.layer._mapboxhosting = true;
 				map.addLayer(layer.layer);
 			});
-			map.zoom(2).center(data[0].center);
 			map.interaction.auto();
+			map.ui.zoomer.add();
+			map.center(data[0].center).zoom(2);
 
 			if(center)
 				map.center(center);
-			else
-				map.center(data[0].center);
 
 			if(zoom)
 				map.zoom(zoom);
-			else
-				map.zoom(2);
 
 			if(extent)
 				map.setExtent(extent);
@@ -35,6 +34,7 @@ var maps = {};
 
 			if(typeof mapCallbacks === 'function')
 				mapCallbacks();
+
 		});
 	}
 
