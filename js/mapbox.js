@@ -10,8 +10,6 @@ var maps = {};
 
 		var layers = mapConf.layers;
 		if(mapConf.server) {
-			mapbox.MAPBOX_URL = mapConf.server;
-
 			layers = [];
 			$.each(mapConf.layers, function(i, layer) {
 				layers.push(mapbox.MAPBOX_URL + layer + '.json');

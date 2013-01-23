@@ -42,7 +42,7 @@ function mapbox_inner_custom_box($post) {
 	<div id="mapbox-metabox">
 		<h4><?php _e('First, define your map server. Most likely you will be using the MapBox default servers. If not and you know what you are doing, feel free to type your own TileStream server url below.', 'infoamazonia'); ?></h4>
 		<p>
-			<input id="input_server_mapbox" type="radio" name="map_server" value="mapbox" <?php if($server == 'mapbox') echo 'checked'; ?> /> <label for="input_server_mapbox"><strong><?php _e('Use MapBox servers', 'infoamazonia'); ?></strong> <?php _e('(default)', 'infoamazonia'); ?></label><br/>
+			<input id="input_server_mapbox" type="radio" name="map_server" value="mapbox" <?php if($server == 'mapbox') echo 'checked'; ?> /> <label for="input_server_mapbox"><strong><?php _e('Use MapBox servers', 'infoamazonia'); ?></strong> <i><?php _e('(default)', 'infoamazonia'); ?></i></label><br/>
 			<input id="input_server_custom" type="radio" name="map_server" value="custom" <?php if($server == 'custom') echo 'checked'; ?> /> <label for="input_server_custom"><?php _e('Use custom TileStream server', 'infoamazonia'); ?>: <input type="text" name="map_server_custom" value="<?php echo $server_custom; ?>" size="70" placeholder="http://maps.example.com/v2/" /></label>
 		</p>
 		<h4><?php _e('Edit the default layer and fill the IDs of the maps to overlay layers of your map, in order of appearance', 'infoamazonia'); ?></h4>
