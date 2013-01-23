@@ -8,12 +8,23 @@ var maps = {};
 
 		$('#' + mapConf.containerID).empty();
 
-		mapbox.load(mapConf.layers, function(data) {
+		var layers = mapConf.layers;
+		if(mapConf.server) {
+			mapbox.MAPBOX_URL = mapConf.server;
+
+			layers = [];
+			$.each(mapConf.layers, function(i, layer) {
+				layers.push(mapbox.MAPBOX_URL + layer + '.json');
+			});
+		}
+
+		mapbox.load(layers, function(data) {
 
 			var map = mapbox.map(mapConf.containerID);
 
 			$.each(data, function(i, layer) {
-				layer.layer._mapboxhosting = true;
+				if(!mapConf.server)
+					layer.layer._mapboxhosting = true;
 				map.addLayer(layer.layer);
 			});
 			map.interaction.auto();

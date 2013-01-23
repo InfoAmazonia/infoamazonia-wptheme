@@ -2,7 +2,86 @@
 
 	var mapConf = {};
 
+	var updateMapConf = function() {
+
+		// layers and container id
+		mapConf.layers = getLayers();
+		mapConf.containerID = 'map_preview';
+
+		// server
+		if($('input[name="map_server"]:checked').val() === 'custom') {
+			mapConf.server = $('input[name="map_server_custom"]').val();
+		}
+
+		// center
+		if($('.centerzoom.map-setting input.center-lat').val()) {
+			var $centerInputs = $('.centerzoom.map-setting');
+			mapConf.center = {
+				lat: $centerInputs.find('input.center-lat').val(),
+				lon: $centerInputs.find('input.center-lon').val()
+			}
+		}
+
+		// zoom
+		if($('.centerzoom.map-setting input.zoom').val()) {
+			mapConf.zoom = $('.centerzoom.map-setting input.zoom').val();
+		}
+
+		return mapConf;
+	}
+
+	function updateMap() {
+		updateMapConf();
+
+		if(typeof maps.map_preview === 'object')
+			mapConf.extent = maps.map_preview.getExtent();
+
+		buildMap(mapConf);
+	}
+
+	function updateMapData() {
+		var extent = maps.map_preview.getExtent();
+		var center = maps.map_preview.center();
+		var zoom = maps.map_preview.zoom();
+		$('.current.map-setting .east').text(extent.east);
+		$('.current.map-setting .north').text(extent.north);
+		$('.current.map-setting .south').text(extent.south);
+		$('.current.map-setting .west').text(extent.west);
+		$('.current.map-setting .center').text(center);
+		$('.current.map-setting .zoom').text(zoom);
+	}
+
+	mapCallbacks = function() {
+
+		maps.map_preview.addCallback('drawn', function() {
+			updateMapData();
+		});
+		maps.map_preview.addCallback('zoomed', function() {
+			updateMapData();
+		});
+		maps.map_preview.addCallback('panned', function() {
+			updateMapData();
+		});
+
+	}
+
 	$(document).ready(function() {
+
+		buildMap(updateMapConf());
+
+		var toggleCustomServer = function() {
+			var $mapServerInput = $('input[name="map_server"]:checked');
+			var $mapCustomServerInput = $('input[name="map_server_custom"]');
+			if($mapServerInput.val() === 'mapbox')
+				$mapCustomServerInput.attr('disabled', 'disabled');
+			else
+				$mapCustomServerInput.attr('disabled', false);
+		}
+
+		$('input[name="map_server"]').change(function() {
+			toggleCustomServer();
+		});
+		toggleCustomServer();
 
 		$('#mapbox-metabox .add-layer').click(function() {
 			addLayer();
@@ -14,23 +93,6 @@
 			return false;
 		});
 
-		if($('.centerzoom.map-setting input.center-lat').val()) {
-			var $centerInputs = $('.centerzoom.map-setting');
-			mapConf.center = {
-				lat: $centerInputs.find('input.center-lat').val(),
-				lon: $centerInputs.find('input.center-lon').val()
-			}
-		}
-
-		if($('.centerzoom.map-setting input.zoom').val()) {
-			mapConf.zoom = $('.centerzoom.map-setting input.zoom').val();
-		}
-
-		mapConf.layers = getLayers();
-		mapConf.containerID = 'map_preview';
-
-		buildMap(mapConf);
-		
 		$('#mapbox-metabox .preview-map').click(function() {
 			updateMap();
 			return false;
@@ -45,32 +107,6 @@
 			updatePanLimits();
 			return false;
 		});
-
-		mapCallbacks = function() {
-
-			maps.map_preview.addCallback('drawn', function() {
-				updateMapData();
-			});
-			maps.map_preview.addCallback('zoomed', function() {
-				updateMapData();
-			});
-			maps.map_preview.addCallback('panned', function() {
-				updateMapData();
-			});
-
-		}
-
-		function updateMapData() {
-			var extent = maps.map_preview.getExtent();
-			var center = maps.map_preview.center();
-			var zoom = maps.map_preview.zoom();
-			$('.current.map-setting .east').text(extent.east);
-			$('.current.map-setting .north').text(extent.north);
-			$('.current.map-setting .south').text(extent.south);
-			$('.current.map-setting .west').text(extent.west);
-			$('.current.map-setting .center').text(center);
-			$('.current.map-setting .zoom').text(zoom);
-		}
 
 		function updateCenterZoom() {
 			var center = maps.map_preview.center();
@@ -99,16 +135,6 @@
 		}
 
 	});
-
-	function updateMap() {
-		var mapConf = {};
-		if(typeof maps.map_preview === 'object')
-			mapConf.extent = maps.map_preview.getExtent();
-
-		mapConf.layers = getLayers();
-		mapConf.containerID = 'map_preview';
-		buildMap(mapConf);
-	}
 
 	function addLayer() {
 		$('#mapbox-metabox .layers-list').append($('<li><input type="text" name="map_layers[]" size="50" /> <a class="remove-layer button" href="#">' + mapbox_metabox_localization.remove_layer + '</a></li>'));
