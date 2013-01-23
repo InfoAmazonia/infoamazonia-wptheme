@@ -4,13 +4,13 @@ var maps = {};
 
 (function($) {
 
-	buildMap = function(containerID, layers, extent, center, zoom) {
+	buildMap = function(mapConf) {
 
-		$('#' + containerID).empty();
+		$('#' + mapConf.containerID).empty();
 
-		mapbox.load(layers, function(data) {
+		mapbox.load(mapConf.layers, function(data) {
 
-			var map = mapbox.map(containerID);
+			var map = mapbox.map(mapConf.containerID);
 
 			$.each(data, function(i, layer) {
 				layer.layer._mapboxhosting = true;
@@ -18,19 +18,21 @@ var maps = {};
 			});
 			map.interaction.auto();
 			map.ui.zoomer.add();
+			map.ui.legend.add();
+			map.ui.fullscreen.add();
 			map.center(data[0].center).zoom(2);
 
-			if(center)
-				map.center(center);
+			if(mapConf.center)
+				map.center(mapConf.center);
 
-			if(zoom)
-				map.zoom(zoom);
+			if(mapConf.zoom)
+				map.zoom(mapConf.zoom);
 
-			if(extent)
-				map.setExtent(extent);
+			if(mapConf.extent)
+				map.setExtent(mapConf.extent);
 
 			// store map
-			maps[containerID] = map;
+			maps[mapConf.containerID] = map;
 
 			if(typeof mapCallbacks === 'function')
 				mapCallbacks();

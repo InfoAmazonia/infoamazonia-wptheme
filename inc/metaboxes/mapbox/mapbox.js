@@ -1,5 +1,7 @@
 (function($) {
 
+	var mapConf = {};
+
 	$(document).ready(function() {
 
 		$('#mapbox-metabox .add-layer').click(function() {
@@ -12,21 +14,23 @@
 			return false;
 		});
 
-		var center = false;
 		if($('.centerzoom.map-setting input.center-lat').val()) {
 			var $centerInputs = $('.centerzoom.map-setting');
-			center = {
+			mapConf.center = {
 				lat: $centerInputs.find('input.center-lat').val(),
 				lon: $centerInputs.find('input.center-lon').val()
 			}
 		}
 
-		var zoom = false;
 		if($('.centerzoom.map-setting input.zoom').val()) {
-			zoom = $('.centerzoom.map-setting input.zoom').val();
+			mapConf.zoom = $('.centerzoom.map-setting input.zoom').val();
 		}
 
-		buildMap('map_preview', getLayers(), false, center, zoom);
+		mapConf.layers = getLayers();
+		mapConf.containerID = 'map_preview';
+
+		buildMap(mapConf);
+		
 		$('#mapbox-metabox .preview-map').click(function() {
 			updateMap();
 			return false;
@@ -97,13 +101,13 @@
 	});
 
 	function updateMap() {
-		var extent;
+		var mapConf = {};
 		if(typeof maps.map_preview === 'object')
-			extent = maps.map_preview.getExtent();
-		else
-			extent = false;
-		buildMap('map_preview', getLayers(), extent);
-		console.log(extent);
+			mapConf.extent = maps.map_preview.getExtent();
+
+		mapConf.layers = getLayers();
+		mapConf.containerID = 'map_preview';
+		buildMap(mapConf);
 	}
 
 	function addLayer() {
