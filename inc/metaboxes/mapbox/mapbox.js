@@ -43,13 +43,11 @@
 			)
 		}
 
-		mapConf.preview = true;
-
 		return mapConf;
 	}
 
 	function updateMap() {
-
+		updateMapConf();
 		if(typeof maps.map_preview === 'object')
 			mapConf.extent = maps.map_preview.getExtent();
 
@@ -118,7 +116,6 @@
 		 * Map preview button
 		 */
 		$('#mapbox-metabox .preview-map').click(function() {
-			updateMapConf();
 			updateMap();
 			return false;
 		});
@@ -148,10 +145,12 @@
 		 */
 		 $('#mapbox-metabox .toggle-preview-mode').change(function() {
 		 	if($(this).is(':checked'))
-		 		togglePreview(true);
+		 		mapConf.preview = true;
 		 	else
-		 		togglePreview(false);
-		 });
+		 		mapConf.preview = false;
+
+		 	updateMap();
+		 }).change();
 
 		function updateCenterZoom() {
 			var center = maps.map_preview.center();
@@ -189,12 +188,6 @@
 			$('#min-zoom-input').val(zoom);
 		}
 
-		function togglePreview(preview) {
-			updateMapConf();
-			mapConf.preview = preview;
-			updateMap();
-		}
-
 	});
 
 	function addLayer() {
@@ -203,7 +196,6 @@
 
 	function removeLayer(layer) {
 		layer.remove();
-		updateMapConf();
 		updateMap();
 	}
 
