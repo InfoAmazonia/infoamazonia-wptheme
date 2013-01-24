@@ -15,7 +15,7 @@
             map = new google.maps.Map(mapCanvas[0], myOptions);
             geocoder = new google.maps.Geocoder();
 
-            codeLatLong();
+            codeLatLon();
 
             if(!markerSet) {
                 marker = new google.maps.Marker({
@@ -28,8 +28,7 @@
 
             google.maps.event.addListener(marker, 'position_changed', function() {
                 jQuery('#geocode_lat').val(marker.position.lat());
-                jQuery('#geocode_long').val(marker.position.lng());
-                //console.log(marker.position);
+                jQuery('#geocode_lon').val(marker.position.lng());
             });
 
             google.maps.event.addListener(map, 'bounds_changed', function() {
@@ -46,9 +45,9 @@ var maps;
 var marker;
 var markerSet = false;
 
-function codeLatLong() {
-    var latitude = jQuery('#geocode_lat').val();
-    var longitude = jQuery('#geocode_long').val();
+function codeLatLon() {
+    var latitude = parseFloat(jQuery('#geocode_lat').val());
+    var longitude = parseFloat(jQuery('#geocode_lon').val());
     var viewport = jQuery('#geocode_viewport').val();
 
     if(viewport) {
@@ -134,7 +133,7 @@ function codeAddress() {
                 });
 
                 jQuery('#geocode_lat').val(results[0].geometry.location.lat());
-                jQuery('#geocode_long').val(results[0].geometry.location.lng());
+                jQuery('#geocode_lon').val(results[0].geometry.location.lng());
 
                 markerSet = true;
             } else {

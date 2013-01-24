@@ -9,8 +9,8 @@
 		mapConf.containerID = 'map_preview';
 
 		// server
-		if($('input[name="map_server"]:checked').val() === 'custom') {
-			mapConf.server = $('input[name="map_server_custom"]').val();
+		if($('input[name="map_data[server]"]:checked').val() === 'custom') {
+			mapConf.server = $('input[name="map_data[custom_server]"]').val();
 		}
 
 		// center
@@ -23,15 +23,32 @@
 		}
 
 		// zoom
-		if($('.centerzoom.map-setting input.zoom').val()) {
+		if($('.centerzoom.map-setting input.zoom').val())
 			mapConf.zoom = $('.centerzoom.map-setting input.zoom').val();
+		// min zoom
+		if($('#min-zoom-input').val())
+			mapConf.minZoom = parseInt($('#min-zoom-input').val());
+		// max zoom
+		if($('#max-zoom-input').val())
+			mapConf.maxZoom = parseInt($('#max-zoom-input').val());
+
+
+		// pan limits
+		if($('.pan-limits.map-setting input.east').val()) {
+			mapConf.panLimits = new MM.Extent(
+				parseFloat($('.pan-limits.map-setting input.north').val()),
+				parseFloat($('.pan-limits.map-setting input.west').val()),
+				parseFloat($('.pan-limits.map-setting input.south').val()),
+				parseFloat($('.pan-limits.map-setting input.east').val())
+			)
 		}
+
+		mapConf.preview = true;
 
 		return mapConf;
 	}
 
 	function updateMap() {
-		updateMapConf();
 
 		if(typeof maps.map_preview === 'object')
 			mapConf.extent = maps.map_preview.getExtent();
@@ -69,44 +86,72 @@
 
 		buildMap(updateMapConf());
 
+		/*
+		 * Custom server setup
+		 */
 		var toggleCustomServer = function() {
-			var $mapServerInput = $('input[name="map_server"]:checked');
-			var $mapCustomServerInput = $('input[name="map_server_custom"]');
+			var $mapServerInput = $('input[name="map_data[server]"]:checked');
+			var $mapCustomServerInput = $('input[name="map_data[custom_server]"]');
 			if($mapServerInput.val() === 'mapbox')
 				$mapCustomServerInput.attr('disabled', 'disabled');
 			else
 				$mapCustomServerInput.attr('disabled', false);
 		}
-
-		$('input[name="map_server"]').change(function() {
+		$('input[name="map_data[server]"]').change(function() {
 			toggleCustomServer();
 		});
 		toggleCustomServer();
 
+		/*
+		 * Layer management
+		 */
 		$('#mapbox-metabox .add-layer').click(function() {
 			addLayer();
 			return false;
 		});
-
 		$('#mapbox-metabox .remove-layer').live('click', function() {
 			removeLayer($(this).parents('li'));
 			return false;
 		});
 
+		/*
+		 * Map preview button
+		 */
 		$('#mapbox-metabox .preview-map').click(function() {
+			updateMapConf();
 			updateMap();
 			return false;
 		});
 
+		/*
+		 * Manage map confs
+		 */
 		$('#mapbox-metabox .set-map-centerzoom').click(function() {
 			updateCenterZoom();
 			return false;
 		});
-
 		$('#mapbox-metabox .set-map-pan').click(function() {
 			updatePanLimits();
 			return false;
 		});
+		$('#mapbox-metabox .set-max-zoom').click(function() {
+			updateMaxZoom();
+			return false;
+		});
+		$('#mapbox-metabox .set-min-zoom').click(function() {
+			updateMinZoom();
+			return false;
+		});
+
+		/*
+		 * Toggle preview mode
+		 */
+		 $('#mapbox-metabox .toggle-preview-mode').change(function() {
+		 	if($(this).is(':checked'))
+		 		togglePreview(true);
+		 	else
+		 		togglePreview(false);
+		 });
 
 		function updateCenterZoom() {
 			var center = maps.map_preview.center();
@@ -134,14 +179,31 @@
 			$('.pan-limits.map-setting input.west').val(extent.west);
 		}
 
+		function updateMaxZoom() {
+			var zoom = maps.map_preview.zoom();
+			$('#max-zoom-input').val(zoom);
+		}
+
+		function updateMinZoom() {
+			var zoom = maps.map_preview.zoom();
+			$('#min-zoom-input').val(zoom);
+		}
+
+		function togglePreview(preview) {
+			updateMapConf();
+			mapConf.preview = preview;
+			updateMap();
+		}
+
 	});
 
 	function addLayer() {
-		$('#mapbox-metabox .layers-list').append($('<li><input type="text" name="map_layers[]" size="50" /> <a class="remove-layer button" href="#">' + mapbox_metabox_localization.remove_layer + '</a></li>'));
+		$('#mapbox-metabox .layers-list').append($('<li><input type="text" name="map_data[layers][]" size="50" /> <a class="remove-layer button" href="#">' + mapbox_metabox_localization.remove_layer + '</a></li>'));
 	}
 
 	function removeLayer(layer) {
 		layer.remove();
+		updateMapConf();
 		updateMap();
 	}
 

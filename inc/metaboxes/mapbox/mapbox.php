@@ -6,7 +6,7 @@ add_action('save_post', 'mapbox_save_postdata');
 
 function mapbox_metabox_init() {
 	// javascript stuff for the metabox
-	wp_enqueue_script('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery', 'mapbox'));
+	wp_enqueue_script('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery', 'mapbox'), '0.0.1');
 	wp_enqueue_style('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.css');
 
 	wp_localize_script('mapbox-metabox', 'mapbox_metabox_localization', array(
@@ -29,30 +29,25 @@ function mapbox_add_meta_box() {
 
 function mapbox_inner_custom_box($post) {
 	// get previous data if any
-	$server = get_post_meta($post->ID, 'map_server', true);
-	if(!$server)
-		$server = 'mapbox'; // default map service
+	$map_data = get_post_meta($post->ID, 'map_data', true);
+	if(!$map_data['server'])
+		$map_data['server'] = 'mapbox'; // default map service
 
-	$server_custom = get_post_meta($post->ID, 'map_server_custom', true);
-
-	$layers = get_post_meta($post->ID, 'map_layers', true);
-	$centerzoom = get_post_meta($post->ID, 'map_centerzoom', true);
-	$pan_limits = get_post_meta($post->ID, 'map_pan_limits', true);
 	?>
 	<div id="mapbox-metabox">
 		<h4><?php _e('First, define your map server. Most likely you will be using the MapBox default servers. If not and you know what you are doing, feel free to type your own TileStream server url below.', 'infoamazonia'); ?></h4>
 		<p>
-			<input id="input_server_mapbox" type="radio" name="map_server" value="mapbox" <?php if($server == 'mapbox') echo 'checked'; ?> /> <label for="input_server_mapbox"><strong><?php _e('Use MapBox servers', 'infoamazonia'); ?></strong> <i><?php _e('(default)', 'infoamazonia'); ?></i></label><br/>
-			<input id="input_server_custom" type="radio" name="map_server" value="custom" <?php if($server == 'custom') echo 'checked'; ?> /> <label for="input_server_custom"><?php _e('Use custom TileStream server', 'infoamazonia'); ?>: <input type="text" name="map_server_custom" value="<?php echo $server_custom; ?>" size="70" placeholder="http://maps.example.com/v2/" /></label>
+			<input id="input_server_mapbox" type="radio" name="map_data[server]" value="mapbox" <?php if($map_data['server'] == 'mapbox') echo 'checked'; ?> /> <label for="input_server_mapbox"><strong><?php _e('Use MapBox servers', 'infoamazonia'); ?></strong> <i><?php _e('(default)', 'infoamazonia'); ?></i></label><br/>
+			<input id="input_server_custom" type="radio" name="map_data[server]" value="custom" <?php if($map_data['server'] == 'custom') echo 'checked'; ?> /> <label for="input_server_custom"><?php _e('Use custom TileStream server', 'infoamazonia'); ?>: <input type="text" name="map_data[custom_server]" value="<?php if(isset($map_data['custom_server'])) echo $map_data['custom_server']; ?>" size="70" placeholder="http://maps.example.com/v2/" /></label>
 		</p>
 		<h4><?php _e('Edit the default layer and fill the IDs of the maps to overlay layers of your map, in order of appearance', 'infoamazonia'); ?></h4>
 		<div class="layers-container">
 			<ol class="layers-list">
-			<?php if(!$layers) { ?>
-				<li><input type="text" name="map_layers[]" value="examples.map-vyofok3q" size="50" /></li>
+			<?php if(!$map_data['layers']) { ?>
+				<li><input type="text" name="map_data[layers][]" value="examples.map-vyofok3q" size="50" /></li>
 			<?php } else {
-				foreach($layers as $layer) { ?>
-					<li><input type="text" name="map_layers[]" value="<?php echo $layer; ?>" size="50" /> <a href="#" class="button remove-layer"><?php _e('Remove layer', 'infoamazonia'); ?></a></li>
+				foreach($map_data['layers'] as $layer) { ?>
+					<li><input type="text" name="map_data[layers][]" value="<?php echo $layer; ?>" size="50" /> <a href="#" class="button remove-layer"><?php _e('Remove layer', 'infoamazonia'); ?></a></li>
 				<?php }
 			} ?>
 			</ol>
@@ -100,16 +95,30 @@ function mapbox_inner_custom_box($post) {
 				<table>
 					<tr>
 						<td><?php _e('Center', 'infoamazonia'); ?></td>
-						<td><span class="center">(<?php echo $centerzoom['center']['lat']; ?>, <?php echo $centerzoom['center']['lon']; ?>)</span></td>
+						<td><span class="center">(<?php echo $map_data['center']['lat']; ?>, <?php echo $map_data['center']['lon']; ?>)</span></td>
 					</tr>
 					<tr>
 						<td><?php _e('Zoom', 'infoamazonia'); ?></td>
-						<td><span class="zoom"><?php echo $centerzoom['zoom']; ?></span></td>
+						<td><span class="zoom"><?php echo $map_data['zoom']; ?></span></td>
+					</tr>
+					<tr>
+						<td><label for="min-zoom-input"><?php _e('Min zoom', 'infoamazonia'); ?></label></td>
+						<td>
+							<input type="text" size="2" id="min-zoom-input" value="<?php echo $map_data['min_zoom']; ?>" name="map_data[min_zoom]" />
+							<a class="button set-min-zoom" href="#"><?php _e('Current', 'infoamazonia'); ?></a>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="max-zoom-input"><?php _e('Max zoom', 'infoamazonia'); ?></label></td>
+						<td>
+							<input type="text" size="2" id="max-zoom-input" value="<?php echo $map_data['max_zoom']; ?>" name="map_data[max_zoom]" />
+							<a class="button set-max-zoom" href="#"><?php _e('Current', 'infoamazonia'); ?></a>
+						</td>
 					</tr>
 				</table>
-				<input type="hidden" class="center-lat" name="map_centerzoom[center][lat]" value="<?php echo $centerzoom['center']['lat']; ?>" />
-				<input type="hidden" class="center-lon" name="map_centerzoom[center][lon]" value="<?php echo $centerzoom['center']['lon']; ?>" />
-				<input type="hidden" class="zoom" name="map_centerzoom[zoom]" value="<?php echo $centerzoom['zoom']; ?>" />
+				<input type="hidden" class="center-lat" name="map_data[center][lat]" value="<?php echo $map_data['center']['lat']; ?>" />
+				<input type="hidden" class="center-lon" name="map_data[center][lon]" value="<?php echo $map_data['center']['lon']; ?>" />
+				<input type="hidden" class="zoom" name="map_data[zoom]" value="<?php echo $map_data['zoom']; ?>" />
 			</div>
 			<div class="pan-limits map-setting">
 				<h4><?php _e('Pan limits', 'infoamazonia'); ?></h4>
@@ -117,27 +126,32 @@ function mapbox_inner_custom_box($post) {
 				<table>
 					<tr>
 						<td><?php _e('East', 'infoamazonia'); ?></td>
-						<td><span class="east"><?php echo $pan_limits['east']; ?></span></td>
+						<td><span class="east"><?php echo $map_data['pan_limits']['east']; ?></span></td>
 					</tr>
 					<tr>
 						<td><?php _e('North', 'infoamazonia'); ?></td>
-						<td><span class="north"><?php echo $pan_limits['north']; ?></span></td>
+						<td><span class="north"><?php echo $map_data['pan_limits']['north']; ?></span></td>
 					</tr>
 					<tr>
 						<td><?php _e('South', 'infoamazonia'); ?></td>
-						<td><span class="south"><?php echo $pan_limits['south']; ?></span></td>
+						<td><span class="south"><?php echo $map_data['pan_limits']['south']; ?></span></td>
 					</tr>
 					<tr>
 						<td><?php _e('West', 'infoamazonia'); ?></td>
-						<td><span class="west"><?php echo $pan_limits['west']; ?></span></td>
+						<td><span class="west"><?php echo $map_data['pan_limits']['west']; ?></span></td>
 					</tr>
 				</table>
-				<input type="hidden" class="east" name="map_pan_limits[east]" value="<?php echo $pan_limits['east']; ?>" />
-				<input type="hidden" class="north" name="map_pan_limits[north]" value="<?php echo $pan_limits['north']; ?>" />
-				<input type="hidden" class="south" name="map_pan_limits[south]" value="<?php echo $pan_limits['south']; ?>" />
-				<input type="hidden" class="west" name="map_pan_limits[west]" value="<?php echo $pan_limits['west']; ?>" />
+				<input type="hidden" class="east" name="map_data[pan_limits][east]" value="<?php echo $map_data['pan_limits']['east']; ?>" />
+				<input type="hidden" class="north" name="map_data[pan_limits][north]" value="<?php echo $map_data['pan_limits']['north']; ?>" />
+				<input type="hidden" class="south" name="map_data[pan_limits][south]" value="<?php echo $map_data['pan_limits']['south']; ?>" />
+				<input type="hidden" class="west" name="map_data[pan_limits][west]" value="<?php echo $map_data['pan_limits']['west']; ?>" />
 			</div>
 		</div>
+		<p>
+			<a class="button-primary preview-map" href="#"><?php _e('Update preview', 'infoamazonia'); ?></a>
+			<input type="checkbox" class="toggle-preview-mode" id="toggle_preview_mode" checked /> <label for="toggle_preview_mode"><strong><?php _e('Preview mode', 'infoamazonia'); ?></strong></label>
+			<i><?php _e("(preview mode doesn't apply zoom range nor pan limits setup)", 'infoamazonia'); ?></i>
+		</p>
 	</div>
 	<?php
 }
@@ -154,9 +168,6 @@ function mapbox_save_postdata($post_id) {
 		return;
 
 	// save data
-	update_post_meta($post_id, 'map_server', $_POST['map_server']);
-	update_post_meta($post_id, 'map_server_custom', $_POST['map_server_custom']);
-	update_post_meta($post_id, 'map_layers', $_POST['map_layers']);
-	update_post_meta($post_id, 'map_centerzoom', $_POST['map_centerzoom']);
-	update_post_meta($post_id, 'map_pan_limits', $_POST['map_pan_limits']);
+	if(isset($_POST['map_data']))
+		update_post_meta($post_id, 'map_data', $_POST['map_data']);
 }

@@ -12,7 +12,7 @@ var maps = {};
 		if(mapConf.server) {
 			layers = [];
 			$.each(mapConf.layers, function(i, layer) {
-				layers.push(mapbox.MAPBOX_URL + layer + '.json');
+				layers.push(mapConf.server + layer + '.json');
 			});
 		}
 
@@ -24,6 +24,8 @@ var maps = {};
 				if(!mapConf.server)
 					layer.layer._mapboxhosting = true;
 				map.addLayer(layer.layer);
+				if(layer.markers)
+					map.addLayer(layer.markers);
 			});
 			map.interaction.auto();
 			map.ui.zoomer.add();
@@ -39,6 +41,12 @@ var maps = {};
 
 			if(mapConf.extent)
 				map.setExtent(mapConf.extent);
+
+			if(mapConf.panLimits && !mapConf.preview)
+				map.setPanLimits(mapConf.panLimits);
+
+			if((mapConf.minZoom || mapConf.maxZoom) && !mapConf.preview)
+				map.setZoomRange(mapConf.minZoom, mapConf.maxZoom);
 
 			// store map
 			maps[mapConf.containerID] = map;

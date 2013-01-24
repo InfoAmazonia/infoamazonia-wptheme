@@ -9,7 +9,7 @@ add_action( 'init', 'register_cpt_map' );
 function register_cpt_map() {
     $labels = array( 
         'name' => __('Maps', 'infoamazonia'),
-        'singular_name' => _('Map', 'infoamazonia'),
+        'singular_name' => __('Map', 'infoamazonia'),
         'add_new' => __('Add new map', 'infoamazonia'),
         'add_new_item' => __('Add new map', 'infoamazonia'),
         'edit_item' => __('Edit map', 'infoamazonia'),

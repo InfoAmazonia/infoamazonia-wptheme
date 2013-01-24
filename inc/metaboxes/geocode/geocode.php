@@ -21,28 +21,27 @@ function geocoding_add_meta_box() {
 }
 
 function geocoding_inner_custom_box($post) {
-	$lat = get_post_meta($post->ID, 'geocode_latitude', true);
-	$long = get_post_meta($post->ID, 'geocode_longitude', true);
-	$address = get_post_meta($post->ID, 'geocode_address', true);
-	$viewport = get_post_meta($post->ID, 'geocode_viewport', true);
-	$instructions = get_post_meta($post->ID, 'geo_instructions', true);
-	echo '<div id="geolocate">';
-	echo '<h4>' . __('Write an address', 'infoamazonia') . '</h4>';
-	echo '<p>';
-	    echo '<input type="text" size="80" id="geocode_address" name="geocode_address" value="'.$address.'" />';
-	    echo '<input type="button" onclick="codeAddress();" value="' . __('Geolocate', 'infoamazonia') . '" />';
-	echo '</p>';
-	echo '<div class="results"></div>';
-	echo '<p>' . __('Drag the marker for a more precise result', 'infoamazonia') . '</p>';
-	echo '<div id="geolocate_canvas" style="width:500px;height:300px"></div>';
-	echo '<h4>' . __('Result', 'infoamazonia') . ':</h4>';
-	echo '<p>';
-	    echo __('Latitude', 'infoamazonia') . ': <input type="text" id="geocode_lat" name="geocode_lat" value="'.$lat.'" /><br/>';
-	    echo __('Longitude', 'infoamazonia') . ': <input type="text" id="geocode_long" name="geocode_long" value="'.$long.'" />';
-	echo '</p>';
-	echo '<input type="hidden" id="geocode_viewport" name="geocode_viewport" value="'.$viewport.'" />';
-	echo '</div>';
-	echo '
+	$geocode = get_post_meta($post->ID, 'geocode', true);
+	?>
+	<div id="geolocate">
+	<h4><?php _e('Write an address', 'infoamazonia'); ?></h4>
+	<p>
+		<input type="text" size="80" id="geocode_address" name="geocode[address]" value="<?php if(isset($geocode['address'])) echo $geocode['address']; ?>" />
+	    <a class="button" href="#" onclick="codeAddress();return false;"><?php _e('Geolocate', 'infoamazonia'); ?></a>
+	</p>
+	<div class="results"></div>
+	<p><?php _e('Drag the marker for a more precise result', 'infoamazonia'); ?></p>
+	<div id="geolocate_canvas" style="width:500px;height:300px"></div>
+	<h4><?php _e('Result', 'infoamazonia'); ?>:</h4>
+	<p>
+	    <?php _e('Latitude', 'infoamazonia'); ?>:
+	    <input type="text" id="geocode_lat" name="geocode[lat]" value="<?php if(isset($geocode['lat'])) echo $geocode['lat']; ?>" /><br/>
+
+	    <?php _e('Longitude', 'infoamazonia'); ?>:
+	    <input type="text" id="geocode_lon" name="geocode[lon]" value="<?php if(isset($geocode['lon'])) echo $geocode['lon']; ?>" />
+	</p>
+	<input type="hidden" id="geocode_viewport" name="geocode[viewport]" value="<?php if(isset($geocode['viewport'])) echo $geocode['viewport']; ?>" />
+	</div>
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$("#geolocate_canvas").geolocate();
@@ -58,7 +57,7 @@ function geocoding_inner_custom_box($post) {
 	        text-decoration: none;
 	    }
 	</style>
-	';
+	<?php
 }
 
 function geocoding_save_postdata($post_id) {
@@ -71,10 +70,9 @@ function geocoding_save_postdata($post_id) {
 	if (false !== wp_is_post_revision($post_id))
 		return;
 
-	update_post_meta($post_id, 'geocode_latitude', $_POST['geocode_lat']);
-	update_post_meta($post_id, 'geocode_longitude', $_POST['geocode_long']);
-	update_post_meta($post_id, 'geocode_viewport', $_POST['geocode_viewport']);
-	update_post_meta($post_id, 'geocode_address', $_POST['geocode_address']);
+	if(isset($_POST['geocode']))
+		update_post_meta($post_id, 'geocode', $_POST['geocode']);
+
 }
 
 ?>
