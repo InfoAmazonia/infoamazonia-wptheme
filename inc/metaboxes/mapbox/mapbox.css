@@ -14,13 +14,16 @@
 	zoom: 1;
 }
 
+.map-container {
+	position: relative;	
+}
+
 #map_preview {
 	width: 100%;
 	height: 500px;
 }
 
 .map-visual-settings {
-
 	clear: both;
 }
 
@@ -39,4 +42,48 @@
 .map-setting table tr td:first-child {
 	font-weight: bold;
 	padding-right: 15px;
+}
+
+/*
+ * D3 Vectors
+ */
+.d3-vec {
+	position:absolute;
+}
+.d3-vec path {
+	fill: #000;
+	fill-opacity: .3;
+	stroke: #fff;
+	stroke-width: 1.5px;
+	
+}
+.d3-vec path:hover {
+	fill-opacity: .7;
+}
+
+/*
+ * Search form
+ */
+
+ .map-search {
+	position: absolute;
+	z-index: 100;
+	top: 10px;
+	right: 10px;
+	padding: 0;
+	border: 1px solid #BBB;
+	background: white;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.map-search input {
+	border: 0;
+	background: transparent;
+	width: 150px;
+	padding: 5px;
+	display: block;
 }

@@ -43,21 +43,32 @@
 			)
 		}
 
+		// geocode
+	 	if($('#mapbox-metabox .enable-geocode').is(':checked'))
+	 		mapConf.geocode = true;
+	 	else
+	 		mapConf.geocode = false;
+
+	 	if($('#mapbox-metabox .toggle-preview-mode').is(':checked'))
+	 		mapConf.preview = true;
+	 	else
+	 		mapConf.preview = false;
+
 		return mapConf;
 	}
 
 	function updateMap() {
 		updateMapConf();
-		if(typeof maps.map_preview === 'object')
-			mapConf.extent = maps.map_preview.getExtent();
+		if(typeof mappress.maps.map_preview === 'object')
+			mapConf.extent = mappress.maps.map_preview.getExtent();
 
-		buildMap(mapConf);
+		mappress.build(mapConf);
 	}
 
 	function updateMapData() {
-		var extent = maps.map_preview.getExtent();
-		var center = maps.map_preview.center();
-		var zoom = maps.map_preview.zoom();
+		var extent = mappress.maps.map_preview.getExtent();
+		var center = mappress.maps.map_preview.center();
+		var zoom = mappress.maps.map_preview.zoom();
 		$('.current.map-setting .east').text(extent.east);
 		$('.current.map-setting .north').text(extent.north);
 		$('.current.map-setting .south').text(extent.south);
@@ -66,15 +77,15 @@
 		$('.current.map-setting .zoom').text(zoom);
 	}
 
-	mapCallbacks = function() {
+	mapConf.callbacks = function() {
 
-		maps.map_preview.addCallback('drawn', function() {
+		mappress.maps.map_preview.addCallback('drawn', function() {
 			updateMapData();
 		});
-		maps.map_preview.addCallback('zoomed', function() {
+		mappress.maps.map_preview.addCallback('zoomed', function() {
 			updateMapData();
 		});
-		maps.map_preview.addCallback('panned', function() {
+		mappress.maps.map_preview.addCallback('panned', function() {
 			updateMapData();
 		});
 
@@ -82,7 +93,7 @@
 
 	$(document).ready(function() {
 
-		buildMap(updateMapConf());
+		mappress.build(updateMapConf());
 
 		/*
 		 * Custom server setup
@@ -150,11 +161,20 @@
 		 		mapConf.preview = false;
 
 		 	updateMap();
-		 }).change();
+		 });
+
+		 $('#mapbox-metabox .enable-geocode').change(function() {
+		 	if($(this).is(':checked'))
+		 		mapConf.geocode = true;
+		 	else
+		 		mapConf.geocode = false;
+
+		 	updateMap();
+		 });
 
 		function updateCenterZoom() {
-			var center = maps.map_preview.center();
-			var zoom = maps.map_preview.zoom();
+			var center = mappress.maps.map_preview.center();
+			var zoom = mappress.maps.map_preview.zoom();
 			$('.centerzoom.map-setting span.center').text(center);
 			$('.centerzoom.map-setting span.zoom').text(zoom);
 
@@ -165,7 +185,7 @@
 		}
 
 		function updatePanLimits() {
-			var extent = maps.map_preview.getExtent();
+			var extent = mappress.maps.map_preview.getExtent();
 			$('.pan-limits.map-setting span.east').text(extent.east);
 			$('.pan-limits.map-setting span.north').text(extent.north);
 			$('.pan-limits.map-setting span.south').text(extent.south);
@@ -179,12 +199,12 @@
 		}
 
 		function updateMaxZoom() {
-			var zoom = maps.map_preview.zoom();
+			var zoom = mappress.maps.map_preview.zoom();
 			$('#max-zoom-input').val(zoom);
 		}
 
 		function updateMinZoom() {
-			var zoom = maps.map_preview.zoom();
+			var zoom = mappress.maps.map_preview.zoom();
 			$('#min-zoom-input').val(zoom);
 		}
 
