@@ -35,14 +35,12 @@ mappress.geocode = {};
 			var map = mappress.maps[map_id];
 
 			// set query viewbox from map
-			if(map.panLimits.length) {
+			if(map.panLimits) {
 				var viewbox = map.panLimits.west + ',' + map.panLimits.north + ',' + map.panLimits.east + ',' + map.panLimits.south;
 				query.viewbox = viewbox;
 				query.bounded = 1;
 			}
 		}
-
-		console.log(query);
 
 		$.getJSON('http://nominatim.openstreetmap.org/search.php?json_callback=?', query, function(data) {
 				if(data.length && typeof map_id != 'undefined')
@@ -89,8 +87,6 @@ mappress.geocode = {};
 				var list = resultsContainer.find('ul');
 				var item;
 
-				console.log(map);
-
 				resultsContainer.find('.clear-search').click(function() {
 					widget.find('input').val('');
 					mappress.geocode.clear(map.id);
@@ -128,7 +124,6 @@ mappress.geocode = {};
 				}
 
 				list.find('li').click(function() {
-					console.log($(this).data());
 					var extent = $(this).data('extent');
 					var loc = $(this).data('loc');
 
