@@ -22,6 +22,8 @@ mappress.maps = {};
 
 			var map = mapbox.map(conf.containerID);
 
+			map.id = conf.containerID;
+
 			$.each(data, function(i, layer) {
 				if(!conf.server)
 					layer.layer._mapboxhosting = true;
@@ -64,9 +66,28 @@ mappress.maps = {};
 
 		});
 
-		mappress.addWidget = function(map_id, content) {
+		/*
+		 * Map Widgets
+		 */
+
+		mappress.widget = {};
+		mappress.widgets = {};
+
+		mappress.widget.add = function(map_id, widget_id, content) {
+			if(typeof mappress.widgets[map_id] != 'object')
+				mappress.widgets[map_id] = {};
+			
+			mappress.widgets[map_id][widget_id] = $(content);
+
 			var $map = $('#' + map_id);
-			$map.parent().find('.map-widgets').append(content);
+			$map.parent().find('.map-widgets').append(mappress.widgets[map_id][widget_id]);
+
+			return mappress.widgets[map_id][widget_id];
+		}
+
+		mappress.widget.remove = function(map_id, widget_id) {
+			mappress.widgets[map_id][widget_id].remove();
+			delete mappress.widgets[map_id][widget_id];
 		}
 	}
 

@@ -7,7 +7,7 @@ add_action('save_post', 'mapbox_save_postdata');
 function mapbox_metabox_init() {
 	// javascript stuff for the metabox
 	wp_enqueue_script('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery', 'mappress'), '0.0.6');
-	wp_enqueue_style('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.css', array(), '0.0.6');
+	wp_enqueue_style('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.css', array(), '0.0.7');
 
 	wp_localize_script('mapbox-metabox', 'mapbox_metabox_localization', array(
 		'remove_layer' => __('Remove layer', 'infoamazonia')

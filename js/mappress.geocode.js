@@ -4,26 +4,19 @@ mappress.geocode = {};
 
 	mappress.geocode.activate = function(map_id) {
 		var $form = $('<form id="' + map_id + '_search" class="map-search"><input type="text" placeholder="' + mappress_labels.search_placeholder + '" /></form>');
-		mappress.addWidget(map_id, $form);
+		mappress.widget.add(map_id, 'geocode', $form);
+		mappress.widgets[map_id].geocode.append('<div class="geocode-results"></div>');
 
 		// bind submit event
 		$form.submit(function() {
-			mappress.geocode.get(map_id, $form.find('input').val());
+			mappress.geocode.get($form.find('input').val(), map_id);
 			return false;
 		});
 	}
 
-	mappress.geocode.get = function(map_id, search) {
+	mappress.geocode.get = function(search, map_id) {
 
-		if(!map_id)
-			return;
-
-		var map = mappress.maps[map_id];
-
-		// clear previous search
-		mappress.geocode.clear(map_id);
-
-		if(!search)
+		if(typeof search == 'undefined')
 			return;
 
 		// nominatim query
@@ -34,20 +27,39 @@ mappress.geocode = {};
 			format: 'json'
 		}
 
-		// set query viewbox
-		if(map.panLimits) {
-			var viewbox = map.panLimits.west + ',' + map.panLimits.north + ',' + map.panLimits.east + ',' + map.panLimits.south;
-			query.viewbox = viewbox;
-			query.bounded = 1;
+		// map setup
+		if(typeof map_id != 'undefined') {
+			// clear previous search on map
+			mappress.geocode.clear(map_id);
+
+			var map = mappress.maps[map_id];
+
+			// set query viewbox from map
+			if(map.panLimits.length) {
+				var viewbox = map.panLimits.west + ',' + map.panLimits.north + ',' + map.panLimits.east + ',' + map.panLimits.south;
+				query.viewbox = viewbox;
+				query.bounded = 1;
+			}
 		}
 
+		console.log(query);
+
 		$.getJSON('http://nominatim.openstreetmap.org/search.php?json_callback=?', query, function(data) {
-				mappress.geocode.draw(map, data);
+				if(data.length && typeof map_id != 'undefined')
+					mappress.geocode.draw(map, data, mappress.widgets[map_id].geocode);
+
+				return data;
 			}
 		);
 	}
 
 	mappress.geocode.clear = function(map_id) {
+		if(typeof map_id == 'undefined')
+			return;
+
+		// clear results list
+		mappress.widgets[map_id].geocode.find('.geocode-results').empty();
+
 		// clear markers
 		var markerLayer = mappress.maps[map_id].removeLayer('search-layer');
 		// clear d3
@@ -56,14 +68,83 @@ mappress.geocode = {};
 			$searchLayer.remove();
 	}
 
-	mappress.geocode.draw = function(map, data) {
+	mappress.geocode.draw = function(map, data, widget) {
 
 		/*
-		 * Draw markers layer (points and linestrings)
+		 * Extract and isolate results
 		 */
+		// points and linestrings
 		var markers = _.filter(data, function(d) { if(d.geojson.type == 'Point' || d.geojson.type == 'LineString') return d; });
+		// polygons and multipolygons
+		var polygons = _.filter(data, function(d) { if(d.geojson.type == 'Polygon' || d.geojson.type == 'MultiPolygon') return d; });
+
+		/*
+		 * Results list on map
+		*/
+		if(typeof widget != 'undefined') {
+			var resultsContainer = widget.find('.geocode-results');
+			if(resultsContainer.length) {
+				resultsContainer.empty();
+				resultsContainer.append('<a href="#"" class="clear-search">' + mappress_labels.clear_search + '</a><span class="widget-title">' + mappress_labels.results_title + '</span><ul />');
+				var list = resultsContainer.find('ul');
+				var item;
+
+				console.log(map);
+
+				resultsContainer.find('.clear-search').click(function() {
+					widget.find('input').val('');
+					mappress.geocode.clear(map.id);
+					return false;
+				});
+
+				// list polygons
+				if(polygons.length) {
+					_.each(polygons, function(polygon) {
+						item = $('<li>' + polygon.display_name + '</li>')
+						list.append(item);
+						item.data({
+							extent: {
+								north: polygon.boundingbox[0],
+								west: polygon.boundingbox[2],
+								south: polygon.boundingbox[1],
+								east: polygon.boundingbox[3]
+							}
+						}); 
+					});
+				}
+
+				// list markers
+				if(markers.length) {
+					_.each(markers, function(marker) {
+						item = $('<li>' + marker.display_name + '</li>');
+						list.append(item);
+						item.data({
+							loc: {
+								lon: parseFloat(marker.lon),
+								lat: parseFloat(marker.lat)
+							}
+						}); 
+					});
+				}
+
+				list.find('li').click(function() {
+					console.log($(this).data());
+					var extent = $(this).data('extent');
+					var loc = $(this).data('loc');
+
+					if(extent) {
+						map.setExtent(new MM.Extent(extent.north, extent.west, extent.south, extent.east));
+					} else if(loc) {
+						map.ease.location(loc).zoom(map.zoom()).run(700).optimal();
+					}
+				});
+			}
+		}
+
+		/*
+		 * Draw markers layer
+		 */
 		if(markers.length) {
-			console.log(markers);
 			var markerLayer = mapbox.markers.layer();
 			markerLayer.named('search-layer');
 			mapbox.markers.interaction(markerLayer);
@@ -84,9 +165,8 @@ mappress.geocode = {};
 		}
 
 		/*
-		 * Draw polygons and multipolygons with d3js
+		 * Draw polygons with d3js
 		 */
-		var polygons = _.filter(data, function(d) { if(d.geojson.type == 'Polygon' || d.geojson.type == 'MultiPolygon') return d; });
 		if(polygons.length) {
 			var data = {
 				"type": "FeatureCollection",
@@ -103,7 +183,6 @@ mappress.geocode = {};
 				}
 				data.features.push(polygonData);
 			});
-			console.log(data);
 			var polygonLayer = d3layer().data(data);
 			map.addLayer(polygonLayer);
 		}

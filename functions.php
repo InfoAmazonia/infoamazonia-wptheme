@@ -11,12 +11,13 @@ function mapbox_scripts() {
 
 	wp_register_script('d3js', get_template_directory_uri() . '/lib/d3.v2.min.js', array('jquery'), '3.0.5');
 
-	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'jquery'), '0.0.1.2');
-	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('d3js', 'underscore'), '0.0.1.1');
-
+	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'jquery'), '0.0.1.4');
+	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('d3js', 'underscore'), '0.0.1.6');
 
 	wp_localize_script('mappress.geocode', 'mappress_labels', array(
-		'search_placeholder' => __('Search and hit enter', 'infoamazonia')
+		'search_placeholder' => __('Find a location', 'infoamazonia'),
+		'results_title' => __('Results', 'infoamazonia'),
+		'clear_search' => __('Clear search', 'infoamazonia')
 		)
 	);
 }
