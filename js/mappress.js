@@ -19,6 +19,8 @@ var mappress;
 
 	mappress = function(conf) {
 
+		var map_id = conf.containerID;
+
 		var layers = conf.layers;
 		if(conf.server) {
 			layers = [];
@@ -29,13 +31,13 @@ var mappress;
 
 		mapbox.load(layers, function(data) {
 		
-			var $map = $('#' + conf.containerID);
+			var $map = $('#' + map_id);
 			$map.empty().parent().find('.map-widgets').remove();
 			$map.parent().prepend('<div class="map-widgets"></div>');
 
-			var map = mapbox.map(conf.containerID);
+			var map = mapbox.map(map_id);
 
-			map.id = conf.containerID;
+			map.id = map_id;
 
 			$.each(data, function(i, layer) {
 				if(!conf.server)
@@ -82,11 +84,17 @@ var mappress;
 			if((conf.minZoom || conf.maxZoom) && !conf.preview)
 				map.setZoomRange(conf.minZoom, conf.maxZoom);
 
-			if(conf.geocode)
-				mappress.geocode(conf.containerID);
-
 			// store map
-			mappress.maps[conf.containerID] = map;
+			mappress.maps[map_id] = map;
+
+			/*
+			 * Widgets
+			 */
+			if(conf.geocode)
+				mappress.geocode(map_id);
+
+			if(conf.switchableLayers.length)
+				mappress.switchableLayers(map_id, conf.switchableLayers, conf.hiddenLayers);
 
 			if(typeof conf.callbacks == 'function')
 				conf.callbacks();
@@ -101,7 +109,7 @@ var mappress;
 	 */
 
 	mappress.widget = function(map_id, content) {
-		var widget = $(content);
+		var widget = $('<div class="map-widget"></div>').append($(content));
 		$('#' + map_id).parent().find('.map-widgets').append(widget);
 		return widget;
 	};

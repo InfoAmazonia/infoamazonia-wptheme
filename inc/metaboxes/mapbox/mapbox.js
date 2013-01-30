@@ -15,6 +15,24 @@
 		// layers and container id
 		mapConf.layers = getLayers();
 
+		// switchable layers
+		mapConf.switchableLayers = [];
+		$('#mapbox-metabox input.switch_layer:checked').each(function() {
+			// switchable data
+			var switchable = {
+				layer: $(this).val(),
+				title: $(this).parents('li').find('input.layer_title').val()
+			}
+			mapConf.switchableLayers.push(switchable);
+		});
+
+		// hidden layers
+		mapConf.hiddenLayers = [];
+		$('#mapbox-metabox input.hidden_layer:checked').each(function() {
+			var hidden = $(this).val();
+			mapConf.hiddenLayers.push(hidden);
+		}).change();
+
 		// server
 		if($('input[name="map_data[server]"]:checked').val() === 'custom') {
 			mapConf.server = $('input[name="map_data[custom_server]"]').val();
@@ -135,6 +153,15 @@
 			removeLayer($(this).parents('li'));
 			return false;
 		});
+
+		// switchable layer
+		$('#mapbox-metabox input.switch_layer').change(function() {
+			if($(this).is(':checked')) {
+				$(this).parents('li').find('.switchable-opts').show();
+			} else {
+				$(this).parents('li').find('.switchable-opts').hide();
+			}
+		}).change();
 
 		/*
 		 * Map preview button

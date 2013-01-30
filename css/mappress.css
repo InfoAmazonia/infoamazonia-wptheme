@@ -45,7 +45,20 @@
 	z-index: 100;
 }
 
-.map-container .map-widgets .widget-title {
+.map-container .map-widgets .map-widget {
+ 	width: 100%;
+	padding: 0;
+	border: 1px solid #BBB;
+	background: white;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	margin: 0 0 10px;
+}
+
+.map-container .map-widgets .map-widget .widget-title {
 	padding: 5px;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -57,16 +70,10 @@
  * Search form
  */
 
- .map-container .map-widgets .map-search {
- 	width: 100%;
+.map-container .map-widgets .map-search {
+	margin: 0;
 	padding: 0;
-	border: 1px solid #BBB;
-	background: white;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-khtml-border-radius: 3px;
-	-o-border-radius: 3px;
-	border-radius: 3px;
+	display: block;
 }
 
 .map-container .map-widgets .map-search input {
@@ -76,31 +83,63 @@
 	box-sizing: border-box;
 	padding: 5px;
 	display: block;
+	outline: none;
 }
 
-.map-container .map-widgets .map-search .widget-title {
+.map-container .map-widgets .geocode-results .widget-title {
 	border-top: 1px solid #f0f0f0;
 }
 
-.map-container .map-widgets .map-search ul {
+.map-container .map-widgets .geocode-results ul {
 	padding: 0;
 	margin: 0;
 	list-style: none;
 }
 
-.map-container .map-widgets .map-search ul li {
+.map-container .map-widgets .geocode-results ul li {
 	padding: 3px 5px;
 	margin: 0;
 	border-bottom: 1px solid #f3f3f3;
 	cursor: pointer;
 }
 
-.map-container .map-widgets .map-search ul li:hover {
+.map-container .map-widgets .geocode-results ul li:hover {
 	background-color: #f3f3f3;
 }
 
-.map-container .map-widgets .map-search .clear-search {
+.map-container .map-widgets .geocode-results .clear-search {
 	float: right;
 	font-size: 80%;
 	padding: 5px;
+}
+
+/*
+ * Switch layers
+ */
+
+.map-container .map-widgets .switch-layers {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.map-container .map-widgets .switch-layers li {
+	margin: 0;
+	padding: 5px;
+	cursor: pointer;
+	border-bottom: 1px solid #f3f3f3;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	opacity: .5;
+}
+
+.map-container .map-widgets .switch-layers li.active {
+	opacity: 1;
+}
+
+.map-container .map-widgets .switch-layers li:hover {
+	opacity: .7;
 }
