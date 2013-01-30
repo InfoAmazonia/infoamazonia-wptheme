@@ -7,8 +7,8 @@ function get_map($post_id) {
 	if(!$post_id)
 		return;
 
-	echo '<div class="map-container"><div id="map_' . $post_id . '" class="map" style="width:500px;height:500px;"></div></div>';
-	echo '<script type="text/javascript">jQuery(document).ready(function() { mappress.build(' . get_post_meta($post_id, 'map_conf', true) . ') });</script>';
+	echo '<div class="map-container" style="width:700px;height:500px;"><div id="map_' . $post_id . '" class="map"></div></div>';
+	echo '<script type="text/javascript">mappress(' . get_post_meta($post_id, 'map_conf', true) . ');</script>';
 }
 
 ?>

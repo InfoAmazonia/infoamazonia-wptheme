@@ -14,10 +14,6 @@
 	zoom: 1;
 }
 
-.map-container {
-	position: relative;	
-}
-
 .map-container div.map {
 	width: 100%;
 	height: 500px;
@@ -42,99 +38,4 @@
 .map-setting table tr td:first-child {
 	font-weight: bold;
 	padding-right: 15px;
-}
-
-/*
- * D3 Vectors
- */
-.d3-vec {
-	position:absolute;
-}
-.d3-vec path {
-	fill: #000;
-	fill-opacity: .3;
-	stroke: #fff;
-	stroke-width: 1.5px;
-	
-}
-.d3-vec path:hover {
-	fill-opacity: .7;
-}
-
-.map-container {
-	overflow: hidden;
-}
-
-/*
- * Map widgets
- */
-
-
-
-.map-container .map-widgets {
-	width: 200px;
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	z-index: 100;
-}
-
-.map-container .map-widgets .widget-title {
-	padding: 5px;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 80%;
-	display: block;
-}
-
-/*
- * Search form
- */
-
- .map-container .map-widgets .map-search {
- 	width: 100%;
-	padding: 0;
-	border: 1px solid #BBB;
-	background: white;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-khtml-border-radius: 3px;
-	-o-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.map-container .map-widgets .map-search input {
-	border: 0;
-	background: transparent;
-	width: 100%;
-	box-sizing: border-box;
-	padding: 5px;
-	display: block;
-}
-
-.map-container .map-widgets .map-search .widget-title {
-	border-top: 1px solid #f0f0f0;
-}
-
-.map-container .map-widgets .map-search ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-
-.map-container .map-widgets .map-search ul li {
-	padding: 3px 5px;
-	margin: 0;
-	border-bottom: 1px solid #f3f3f3;
-	cursor: pointer;
-}
-
-.map-container .map-widgets .map-search ul li:hover {
-	background-color: #f3f3f3;
-}
-
-.map-container .map-widgets .map-search .clear-search {
-	float: right;
-	font-size: 80%;
-	padding: 5px;
 }

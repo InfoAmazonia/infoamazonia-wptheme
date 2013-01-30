@@ -6,7 +6,7 @@
 	$(document).ready(function() {
 		var post_id = $('input[name=post_ID]').val();
 
-		$('.map-container > div').attr('id', 'map_' + post_id);
+		$('.map-container > .map').attr('id', 'map_' + post_id);
 		mapConf.containerID = map_id = 'map_' + post_id;
 	});
 
@@ -41,14 +41,11 @@
 
 
 		// pan limits
-		/* CHANGE THIS TO GET MM.Extent ON BUILD */
 		if($('.pan-limits.map-setting input.east').val()) {
-			mapConf.panLimits = new MM.Extent(
-				parseFloat($('.pan-limits.map-setting input.north').val()),
-				parseFloat($('.pan-limits.map-setting input.west').val()),
-				parseFloat($('.pan-limits.map-setting input.south').val()),
-				parseFloat($('.pan-limits.map-setting input.east').val())
-			)
+			mapConf.panLimits =	$('.pan-limits.map-setting input.north').val() + ',' +
+								$('.pan-limits.map-setting input.west').val() + ',' +
+								$('.pan-limits.map-setting input.south').val() + ',' +
+								$('.pan-limits.map-setting input.east').val();
 		}
 
 		// geocode
@@ -62,7 +59,17 @@
 	 	else
 	 		mapConf.preview = false;
 
+		// save mapConf
+		storeConf(mapConf);
+
 		return mapConf;
+	}
+
+	function storeConf(conf) {
+		var storable = $.extend({}, conf);
+		delete storable.callbacks;
+		delete storable.preview;
+		$('input[name=map_conf]').val(JSON.stringify(storable));
 	}
 
 	function updateMap() {
@@ -70,7 +77,7 @@
 		if(typeof mappress.maps[map_id] === 'object')
 			mapConf.extent = mappress.maps[map_id].getExtent();
 
-		mappress.build(mapConf);
+		mappress(mapConf);
 	}
 
 	function updateMapData() {
@@ -86,7 +93,6 @@
 	}
 
 	mapConf.callbacks = function() {
-
 		mappress.maps[map_id].addCallback('drawn', function() {
 			updateMapData();
 		});
@@ -96,17 +102,11 @@
 		mappress.maps[map_id].addCallback('panned', function() {
 			updateMapData();
 		});
-
-		// save mapConf
-		var storableConf = mapConf;
-		delete storableConf.callbacks
-		storableConf.preview = false;
-		$('input[name=map_conf]').val(JSON.stringify(storableConf));
 	}
 
 	$(document).ready(function() {
 
-		mappress.build(updateMapConf());
+		mappress(updateMapConf());
 
 		/*
 		 * Custom server setup

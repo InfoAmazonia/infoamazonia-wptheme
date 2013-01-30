@@ -1,20 +1,20 @@
 (function($) {
 
-	mappress.geocode = {};
-
 	mappress.geocode = function(map_id) {
-		var $form = $('<form id="' + map_id + '_search" class="map-search"><input type="text" placeholder="' + mappress_labels.search_placeholder + '" /></form>');
-		mappress.widget.add(map_id, 'geocode', $form);
-		mappress.widgets[map_id].geocode.append('<div class="geocode-results"></div>');
+
+		var form = '<form id="' + map_id + '_search" class="map-search"><input type="text" placeholder="' + mappress_labels.search_placeholder + '" /></form>';
+
+		var widget = mappress.widget(map_id, form);
+		widget.append('<div class="geocode-results"></div>');
 
 		// bind submit event
-		$form.submit(function() {
-			mappress.geocode.get($form.find('input').val(), map_id);
+		widget.submit(function() {
+			mappress.geocode.get(widget.find('input').val(), map_id, widget);
 			return false;
 		});
 	}
 
-	mappress.geocode.get = function(search, map_id) {
+	mappress.geocode.get = function(search, map_id, widget) {
 
 		if(typeof search == 'undefined')
 			return;
@@ -30,7 +30,7 @@
 		// map setup
 		if(typeof map_id != 'undefined') {
 			// clear previous search on map
-			mappress.geocode.clear(map_id);
+			mappress.geocode.clear(map_id, widget);
 
 			var map = mappress.maps[map_id];
 
@@ -44,19 +44,19 @@
 
 		$.getJSON('http://nominatim.openstreetmap.org/search.php?json_callback=?', query, function(data) {
 				if(data.length && typeof map_id != 'undefined')
-					mappress.geocode.draw(map, data, mappress.widgets[map_id].geocode);
+					mappress.geocode.draw(map, data, widget);
 
 				return data;
 			}
 		);
 	}
 
-	mappress.geocode.clear = function(map_id) {
+	mappress.geocode.clear = function(map_id, widget) {
 		if(typeof map_id == 'undefined')
 			return;
 
 		// clear results list
-		mappress.widgets[map_id].geocode.find('.geocode-results').empty();
+		widget.find('.geocode-results').empty();
 
 		// clear markers
 		var markerLayer = mappress.maps[map_id].removeLayer('search-layer');
@@ -67,6 +67,9 @@
 	}
 
 	mappress.geocode.draw = function(map, data, widget) {
+
+		if(typeof map == 'undefined')
+			return;
 
 		/*
 		 * Extract and isolate results
@@ -89,7 +92,7 @@
 
 				resultsContainer.find('.clear-search').click(function() {
 					widget.find('input').val('');
-					mappress.geocode.clear(map.id);
+					mappress.geocode.clear(map.id, widget);
 					return false;
 				});
 
