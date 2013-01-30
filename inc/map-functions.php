@@ -1,6 +1,6 @@
 <?php
 
-function get_map($post_id) {
+function get_map($post_id = false) {
 	global $post;
 	$post_id = $post_id ? $post_id : $post->ID;
 
