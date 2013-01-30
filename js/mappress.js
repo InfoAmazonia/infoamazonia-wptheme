@@ -3,6 +3,21 @@ mappress.maps = {};
 
 (function($) {
 
+	/*
+	 * MAP BUILD
+	 * conf:
+	 * - containerID
+	 * - server
+	 * - layers
+	 * - center
+	 * - zoom
+	 * - extent (MM.Extent)
+	 * - panLimits (MM.Extent)
+	 * - minZoom
+	 * - maxZoom
+	 * - geocode (bool)
+	 */
+
 	mappress.build = function(conf) {
 		
 		var $map = $('#' + conf.containerID);
@@ -56,7 +71,7 @@ mappress.maps = {};
 				map.setZoomRange(conf.minZoom, conf.maxZoom);
 
 			if(conf.geocode)
-				mappress.geocode.activate(conf.containerID);
+				mappress.geocode(conf.containerID);
 
 			// store map
 			mappress.maps[conf.containerID] = map;

@@ -6,8 +6,8 @@ add_action('save_post', 'mapbox_save_postdata');
 
 function mapbox_metabox_init() {
 	// javascript stuff for the metabox
-	wp_enqueue_script('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery', 'mappress'), '0.0.6');
-	wp_enqueue_style('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.css', array(), '0.0.7');
+	wp_enqueue_script('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery', 'mappress'), '0.0.8');
+	wp_enqueue_style('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.css', array(), '0.0.8');
 
 	wp_localize_script('mapbox-metabox', 'mapbox_metabox_localization', array(
 		'remove_layer' => __('Remove layer', 'infoamazonia')
@@ -33,6 +33,8 @@ function mapbox_inner_custom_box($post) {
 	if(!isset($map_data['server']) || !$map_data['server'])
 		$map_data['server'] = 'mapbox'; // default map service
 
+	$map_conf = get_post_meta($post->ID, 'map_conf', true);
+
 	?>
 	<div id="mapbox-metabox">
 		<h4><?php _e('First, define your map server. Most likely you will be using the MapBox default servers. If not and you know what you are doing, feel free to type your own TileStream server url below.', 'infoamazonia'); ?></h4>
@@ -56,7 +58,7 @@ function mapbox_inner_custom_box($post) {
 		</div>
 		<h3><?php _e('Preview map', 'infoamazonia'); ?></h3>
 		<div class="map-container">
-			<div id="map_preview"></div>
+			<div id="map_<?php echo $post->ID; ?>" class="map"></div>
 		</div>
 		<div class="map-settings clearfix">
 			<h3><?php _e('Map settings', 'infoamazonia'); ?></h3>
@@ -159,6 +161,7 @@ function mapbox_inner_custom_box($post) {
 			<input type="checkbox" class="toggle-preview-mode" id="toggle_preview_mode" checked /> <label for="toggle_preview_mode"><strong><?php _e('Preview mode', 'infoamazonia'); ?></strong></label>
 			<i><?php _e("(preview mode doesn't apply zoom range nor pan limits setup)", 'infoamazonia'); ?></i>
 		</p>
+		<input type="hidden" id="mapConf" name="map_conf" value="" />
 	</div>
 	<?php
 }
@@ -177,4 +180,6 @@ function mapbox_save_postdata($post_id) {
 	// save data
 	if(isset($_POST['map_data']))
 		update_post_meta($post_id, 'map_data', $_POST['map_data']);
+	if(isset($_POST['map_conf']))
+		update_post_meta($post_id, 'map_conf', $_POST['map_conf']);
 }

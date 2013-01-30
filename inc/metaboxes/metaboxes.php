@@ -1,7 +1,7 @@
 <?php
 
 // enqueue mapbox scripts and styles
-add_action('admin_footer', 'mapbox_scripts');
+add_action('admin_footer', 'mappress_scripts');
 
 /* gather metaboxes */
 

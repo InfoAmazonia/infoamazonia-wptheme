@@ -1,8 +1,8 @@
-mappress.geocode = {};
-
 (function($) {
 
-	mappress.geocode.activate = function(map_id) {
+	mappress.geocode = {};
+
+	mappress.geocode = function(map_id) {
 		var $form = $('<form id="' + map_id + '_search" class="map-search"><input type="text" placeholder="' + mappress_labels.search_placeholder + '" /></form>');
 		mappress.widget.add(map_id, 'geocode', $form);
 		mappress.widgets[map_id].geocode.append('<div class="geocode-results"></div>');
@@ -77,7 +77,7 @@ mappress.geocode = {};
 		var polygons = _.filter(data, function(d) { if(d.geojson.type == 'Polygon' || d.geojson.type == 'MultiPolygon') return d; });
 
 		/*
-		 * Results list on map
+		 * Results list
 		*/
 		if(typeof widget != 'undefined') {
 			var resultsContainer = widget.find('.geocode-results');

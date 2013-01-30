@@ -1,12 +1,19 @@
 (function($) {
 
 	var mapConf = {};
+	var map_id;
+
+	$(document).ready(function() {
+		var post_id = $('input[name=post_ID]').val();
+
+		$('.map-container > div').attr('id', 'map_' + post_id);
+		mapConf.containerID = map_id = 'map_' + post_id;
+	});
 
 	var updateMapConf = function() {
 
 		// layers and container id
 		mapConf.layers = getLayers();
-		mapConf.containerID = 'map_preview';
 
 		// server
 		if($('input[name="map_data[server]"]:checked').val() === 'custom') {
@@ -34,6 +41,7 @@
 
 
 		// pan limits
+		/* CHANGE THIS TO GET MM.Extent ON BUILD */
 		if($('.pan-limits.map-setting input.east').val()) {
 			mapConf.panLimits = new MM.Extent(
 				parseFloat($('.pan-limits.map-setting input.north').val()),
@@ -59,16 +67,16 @@
 
 	function updateMap() {
 		updateMapConf();
-		if(typeof mappress.maps.map_preview === 'object')
-			mapConf.extent = mappress.maps.map_preview.getExtent();
+		if(typeof mappress.maps[map_id] === 'object')
+			mapConf.extent = mappress.maps[map_id].getExtent();
 
 		mappress.build(mapConf);
 	}
 
 	function updateMapData() {
-		var extent = mappress.maps.map_preview.getExtent();
-		var center = mappress.maps.map_preview.center();
-		var zoom = mappress.maps.map_preview.zoom();
+		var extent = mappress.maps[map_id].getExtent();
+		var center = mappress.maps[map_id].center();
+		var zoom = mappress.maps[map_id].zoom();
 		$('.current.map-setting .east').text(extent.east);
 		$('.current.map-setting .north').text(extent.north);
 		$('.current.map-setting .south').text(extent.south);
@@ -79,16 +87,21 @@
 
 	mapConf.callbacks = function() {
 
-		mappress.maps.map_preview.addCallback('drawn', function() {
+		mappress.maps[map_id].addCallback('drawn', function() {
 			updateMapData();
 		});
-		mappress.maps.map_preview.addCallback('zoomed', function() {
+		mappress.maps[map_id].addCallback('zoomed', function() {
 			updateMapData();
 		});
-		mappress.maps.map_preview.addCallback('panned', function() {
+		mappress.maps[map_id].addCallback('panned', function() {
 			updateMapData();
 		});
 
+		// save mapConf
+		var storableConf = mapConf;
+		delete storableConf.callbacks
+		storableConf.preview = false;
+		$('input[name=map_conf]').val(JSON.stringify(storableConf));
 	}
 
 	$(document).ready(function() {
@@ -173,8 +186,8 @@
 		 });
 
 		function updateCenterZoom() {
-			var center = mappress.maps.map_preview.center();
-			var zoom = mappress.maps.map_preview.zoom();
+			var center = mappress.maps[map_id].center();
+			var zoom = mappress.maps[map_id].zoom();
 			$('.centerzoom.map-setting span.center').text(center);
 			$('.centerzoom.map-setting span.zoom').text(zoom);
 
@@ -185,7 +198,7 @@
 		}
 
 		function updatePanLimits() {
-			var extent = mappress.maps.map_preview.getExtent();
+			var extent = mappress.maps[map_id].getExtent();
 			$('.pan-limits.map-setting span.east').text(extent.east);
 			$('.pan-limits.map-setting span.north').text(extent.north);
 			$('.pan-limits.map-setting span.south').text(extent.south);
@@ -199,12 +212,12 @@
 		}
 
 		function updateMaxZoom() {
-			var zoom = mappress.maps.map_preview.zoom();
+			var zoom = mappress.maps[map_id].zoom();
 			$('#max-zoom-input').val(zoom);
 		}
 
 		function updateMinZoom() {
-			var zoom = mappress.maps.map_preview.zoom();
+			var zoom = mappress.maps[map_id].zoom();
 			$('#min-zoom-input').val(zoom);
 		}
 
