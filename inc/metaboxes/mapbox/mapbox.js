@@ -146,7 +146,7 @@
 
 		// filtering layers opts
 		$('#mapbox-metabox .filtering-opts').hide();
-		$('#mapbox-metabox .layers-list input.filtering-opt').change(function() {
+		$('#mapbox-metabox .layers-list input.filtering-opt').live('change', function() {
 			var optInput = $(this).parent().find(':checked');
 			var filteringOpts = optInput.parents('.filter-opts').find('.filtering-opts');
 			var opt = optInput.val();
@@ -163,6 +163,11 @@
 				filteringOpts.hide();
 			}
 
+		}).change();
+
+		// update swap layer id
+		$('#mapbox-metabox .layers-list input.swap_first_layer').live('change', function() {
+			$(this).val($(this).parents('li').find('.layer_id').val());
 		}).change();
 
 		/*
@@ -253,7 +258,18 @@
 	});
 
 	function addLayer() {
-		$('#mapbox-metabox .layers-list').append($('<li><input type="text" name="map_data[layers][]" size="50" /> <a class="remove-layer button" href="#">' + mapbox_metabox_localization.remove_layer + '</a></li>'));
+		var layersList = $('#mapbox-metabox .layers-list');
+		var layerItem = $(mapbox_metabox_localization.layer_item);
+		var layerLength = layersList.find('li').length;
+
+		layerItem.find('.layer_id').attr('name', 'map_data[layers][' + layerLength + '][id]');
+		layerItem.find('.fixed_layer, .switch_layer, .swap_layer').attr('name', 'map_data[layers][' + layerLength + '][opts][filtering]');
+		layerItem.find('.layer_title').attr('name', 'map_data[layers][' + layerLength + '][title]');
+		layerItem.find('.layer_hidden').attr('name', 'map_data[layers][' + layerLength + '][switch_hidden]');
+
+		layerItem.find('.filtering-opts').hide();
+
+		layersList.append(layerItem);
 	}
 
 	function removeLayer(layer) {

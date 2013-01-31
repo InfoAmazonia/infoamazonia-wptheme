@@ -57,6 +57,7 @@
 			else
 				widget.find('li[data-layer="' + layer + '"]').removeClass('active');
 		}
+		mappress.interaction(map);
 	}
 
 	mappress.filterLayers.swap = function(map_id, layer, swapLayers, widget) {
@@ -77,6 +78,7 @@
 				}
 			}
 		});
+		mappress.interaction(map);
 	}
 
 })(jQuery);
