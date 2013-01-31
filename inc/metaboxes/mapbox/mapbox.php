@@ -6,7 +6,7 @@ add_action('save_post', 'mapbox_save_postdata');
 
 function mapbox_metabox_init() {
 	// javascript stuff for the metabox
-	wp_enqueue_script('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery', 'mappress'), '0.1.2.3');
+	wp_enqueue_script('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.js', array('jquery', 'mappress'), '0.1.4');
 	wp_enqueue_style('mapbox-metabox', get_template_directory_uri() . '/inc/metaboxes/mapbox/mapbox.css', array(), '0.0.8');
 
 	wp_localize_script('mapbox-metabox', 'mapbox_metabox_localization', array(
@@ -45,34 +45,70 @@ function mapbox_inner_custom_box($post) {
 		<h4><?php _e('Edit the default layer and fill the IDs of the maps to overlay layers of your map, in order of appearance', 'infoamazonia'); ?></h4>
 		<div class="layers-container">
 			<ol class="layers-list">
+
 			<?php if(!isset($map_data['layers'])) { ?>
+
 				<li><input type="text" name="map_data[layers][]" value="examples.map-vyofok3q" size="50" /></li>
+
 			<?php } else {
+
 				$i = 0;
+				$swap_first = false;
+				if(isset($map_data['swap_first_layer']))
+					$swap_first = $map_data['swap_first_layer'];
+
 				foreach($map_data['layers'] as $layer) {
-					$hidden = $switchable = $layer_title = false;
-					if(isset($map_data['switch_layers'])) {
-						foreach($map_data['switch_layers'] as $switch_layer) {
-							if(isset($switch_layer['layer']) && $layer == $switch_layer['layer']) {
-								$switchable = true;
-								$layer_title = $switch_layer['title'];
-								break;
-							}
-						}
+
+					/*
+					 * Deprecated fallback
+					 */
+					if(isset($layer['layer'])) {
+						$layer_id = $layer['layer'];
+						$layer['id'] = $layer_id;	
 					}
-					if(isset($map_data['hidden_layers']))
-						$hidden = in_array($layer, $map_data['hidden_layers']);
+
+					if(is_string($layer)) {
+						$layer_id = $layer;
+						$layer = [];
+						$layer['id'] = $layer_id;
+					}
+					/*
+					 *
+					 */
+
+					$filtering = 'fixed';
+					if(isset($layer['opts']['filtering']))
+						$filtering = $layer['opts']['filtering'];
+
+					$title = '';
+					if(isset($layer['title']))
+						$title = $layer['title'];
+
 					?>
 					<li>
-						<input type="text" name="map_data[layers][]" value="<?php echo $layer; ?>" size="40" />
+						<input type="text" name="map_data[layers][<?php echo $i; ?>][id]" value="<?php echo $layer['id']; ?>" class="layer_id" size="40" />
 						<a href="#" class="button remove-layer"><?php _e('Remove', 'infoamazonia'); ?></a>
-						<input name="map_data[switch_layers][<?php echo $i; ?>][layer]" class="switch_layer" value="<?php echo $layer; ?>" type="checkbox" <?php if($switchable) echo 'checked'; ?> />
-						<?php _e('Switchable', 'infoamazonia'); ?>
-						<span class="switchable-opts">
-							<input name="map_data[switch_layers][<?php echo $i; ?>][title]" class="layer_title" type="text" placeholder="<?php _e('Title', 'infoamazonia'); ?>" value="<?php echo $layer_title; ?>" size="20" />
-							<input type="checkbox" name="map_data[hidden_layers][]" class="hidden_layer" value="<?php echo $layer; ?>" <?php if($hidden) echo 'checked'; ?> />
-							<?php _e('Hidden by default', 'infoamazonia'); ?>
-						</span>
+						<div class="layer-opts">
+							<h4><?php _e('Layer options', 'infoamazonia'); ?></h4>
+							<div class="filter-opts">
+								<input name="map_data[layers][<?php echo $i; ?>][opts][filtering]" class="fixed_layer filtering-opt" value="fixed" type="radio" <?php if($filtering == 'fixed') echo 'checked'; ?> />
+								<?php _e('Fixed', 'infoamazonia'); ?>
+								<input name="map_data[layers][<?php echo $i; ?>][opts][filtering]" class="switch_layer filtering-opt" value="switch" type="radio" <?php if($filtering == 'switch') echo 'checked'; ?> />
+								<?php _e('Switchable', 'infoamazonia'); ?>
+								<input name="map_data[layers][<?php echo $i; ?>][opts][filtering]" class="swap_layer filtering-opt" value="swap" type="radio" <?php if($filtering == 'swap') echo 'checked'; ?> />
+								<?php _e('Swapable', 'infoamazonia'); ?>
+
+								<div class="filtering-opts">
+									<input type="text" name="map_data[layers][<?php echo $i; ?>][title]" class="layer_title" value="<?php echo $title; ?>" size="60" placeholder="<?php _e('Layer title', 'infoamazonia'); ?>" />
+									<span class="switch-opts">
+										<input type="checkbox" name="map_data[layers][<?php echo $i; ?>][switch_hidden]" class="layer_hidden" value="1" <?php if(isset($layer['switch_hidden'])) echo 'checked'; ?> /> <?php _e('Hidden', 'infoamazonia'); ?>
+									</span>
+									<span class="swap-opts">
+										<input type="radio" name="map_data[swap_first_layer]" class="swap_first_layer" value="<?php echo $layer['id']; ?>" <?php if($swap_first == $layer['id']) echo 'checked'; ?> /> <?php _e('Default swap option', 'infoamazonia'); ?>
+									</span>
+								</div>
+							</div>
+						</div>
 					</li><?php
 					$i++;
 				}

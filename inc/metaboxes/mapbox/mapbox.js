@@ -12,19 +12,9 @@
 
 	var updateMapConf = function() {
 
-		// layers and container id
+		// layers
 		mapConf.layers = getLayers();
-
-		// switchable layers
-		mapConf.switchableLayers = [];
-		$('#mapbox-metabox input.switch_layer:checked').each(function() {
-			// switchable data
-			var switchable = {
-				layer: $(this).val(),
-				title: $(this).parents('li').find('input.layer_title').val()
-			}
-			mapConf.switchableLayers.push(switchable);
-		});
+		mapConf.filteringLayers = getFilteringLayers();
 
 		// hidden layers
 		mapConf.hiddenLayers = [];
@@ -154,13 +144,25 @@
 			return false;
 		});
 
-		// switchable layer
-		$('#mapbox-metabox input.switch_layer').change(function() {
-			if($(this).is(':checked')) {
-				$(this).parents('li').find('.switchable-opts').show();
+		// filtering layers opts
+		$('#mapbox-metabox .filtering-opts').hide();
+		$('#mapbox-metabox .layers-list input.filtering-opt').change(function() {
+			var optInput = $(this).parent().find(':checked');
+			var filteringOpts = optInput.parents('.filter-opts').find('.filtering-opts');
+			var opt = optInput.val();
+			if(opt != 'fixed') { 
+				filteringOpts.show();
+				if(opt == 'switch') {
+					filteringOpts.find('.switch-opts').show();
+					filteringOpts.find('.swap-opts').hide();
+				} else if(opt == 'swap') {
+					filteringOpts.find('.switch-opts').hide();
+					filteringOpts.find('.swap-opts').show();
+				}
 			} else {
-				$(this).parents('li').find('.switchable-opts').hide();
+				filteringOpts.hide();
 			}
+
 		}).change();
 
 		/*
@@ -262,9 +264,47 @@
 	function getLayers() {
 		var layers = [];
 		$('#mapbox-metabox .layers-list li').each(function() {
-			layers.push($(this).find('input').val());
+			layers.push($(this).find('input.layer_id').val());
+			var filteringOpt = $(this).find('.filtering-opt:checked').val();
+			if(filteringOpt == 'checked') {
+
+			}
 		});
 		return layers;
+	}
+
+	function getFilteringLayers() {
+		var filtering = {};
+		filtering.switch = [];
+		filtering.swap = [];
+		$('#mapbox-metabox .layers-list li').each(function() {
+			var id = $(this).find('input.layer_id').val();
+			var filteringOpt = $(this).find('.filtering-opt:checked').val();
+			if(filteringOpt == 'switch') {
+
+				var layer = {
+					id: id,
+					title: $(this).find('input.layer_title').val()
+				}
+				if($(this).find('input.layer_hidden:checked').length)
+					layer.hidden = true;
+
+				filtering.switch.push(layer);
+
+			} else if(filteringOpt == 'swap') {
+
+				var layer = {
+					id: id,
+					title: $(this).find('input.layer_title').val()
+				}
+				if($('#mapbox .layers-list .swap_first_layer:checked').val() == id)
+					layer.first = true;
+
+				filtering.swap.push(layer);
+
+			}
+		});
+		return filtering;
 	}
 
 })(jQuery);

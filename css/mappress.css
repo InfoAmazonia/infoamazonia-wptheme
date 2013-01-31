@@ -117,13 +117,15 @@
  * Switch layers
  */
 
-.map-container .map-widgets .switch-layers {
+.map-container .map-widgets .switch-layers,
+.map-container .map-widgets .swap-layers {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-.map-container .map-widgets .switch-layers li {
+.map-container .map-widgets .switch-layers li,
+.map-container .map-widgets .swap-layers li {
 	margin: 0;
 	padding: 5px;
 	cursor: pointer;
@@ -136,10 +138,12 @@
 	opacity: .5;
 }
 
-.map-container .map-widgets .switch-layers li.active {
+.map-container .map-widgets .switch-layers li.active,
+.map-container .map-widgets .swap-layers li.active {
 	opacity: 1;
 }
 
-.map-container .map-widgets .switch-layers li:hover {
+.map-container .map-widgets .switch-layers li:hover,
+.map-container .map-widgets .swap-layers li:hover {
 	opacity: .7;
 }

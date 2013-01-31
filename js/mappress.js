@@ -93,8 +93,8 @@ var mappress;
 			if(conf.geocode)
 				mappress.geocode(map_id);
 
-			if(conf.switchableLayers.length)
-				mappress.switchableLayers(map_id, conf.switchableLayers, conf.hiddenLayers);
+			if(conf.filteringLayers)
+				mappress.filterLayers(map_id, conf.filteringLayers);
 
 			if(typeof conf.callbacks == 'function')
 				conf.callbacks();
