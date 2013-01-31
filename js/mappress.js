@@ -90,6 +90,7 @@ var mappress;
 			/*
 			 * Widgets
 			 */
+			var $widgets = $map.parent().find('.map-widgets');
 			if(conf.geocode)
 				mappress.geocode(map_id);
 
@@ -98,6 +99,17 @@ var mappress;
 
 			if(typeof conf.callbacks == 'function')
 				conf.callbacks();
+
+			// fullscreen widgets callback
+			map.addCallback('drawn', function(map) {
+				if($map.hasClass('map-fullscreen-map')) {
+					$widgets.addClass('fullscreen');
+					// temporary fix scrollTop
+					document.body.scrollTop = 0;
+				} else {
+					$widgets.removeClass('fullscreen');
+				}
+			});
 
 		});
 	};
@@ -109,8 +121,11 @@ var mappress;
 	 */
 
 	mappress.widget = function(map_id, content) {
+		var $map = $('#' + map_id);
+		var $widgets = $map.parent().find('.map-widgets');
+		// add widget
 		var widget = $('<div class="map-widget"></div>').append($(content));
-		$('#' + map_id).parent().find('.map-widgets').append(widget);
+		$widgets.append(widget);
 		return widget;
 	};
 

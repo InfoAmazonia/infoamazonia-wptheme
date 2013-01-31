@@ -11,26 +11,8 @@
 	height: 100%;
 }
 
-/*
- * D3 Vectors
- */
-
-.d3-vec {
-	position:absolute;
-}
-.d3-vec path {
-	fill: #000;
-	fill-opacity: .3;
-	stroke: #fff;
-	stroke-width: 1.5px;
-	
-}
-.d3-vec path:hover {
-	fill-opacity: .7;
-}
-
-.map-container {
-	overflow: hidden;
+.map-container .map.map-fullscreen-map {
+	z-index: 9999999;
 }
 
 /*
@@ -43,6 +25,11 @@
 	top: 10px;
 	right: 10px;
 	z-index: 100;
+}
+
+.map-container .map-widgets.fullscreen {
+	position: fixed;
+	z-index: 999999999999;
 }
 
 .map-container .map-widgets .map-widget {
@@ -146,4 +133,30 @@
 .map-container .map-widgets .switch-layers li:hover,
 .map-container .map-widgets .swap-layers li:hover {
 	opacity: .7;
+}
+
+.map-container .map-widgets .swap-layers li.active:hover {
+	opacity: 1;
+}
+
+/*
+ * D3 Vectors
+ */
+
+.d3-vec {
+	position:absolute;
+}
+.d3-vec path {
+	fill: #000;
+	fill-opacity: .3;
+	stroke: #fff;
+	stroke-width: 1.5px;
+	
+}
+.d3-vec path:hover {
+	fill-opacity: .7;
+}
+
+.map-container {
+	overflow: hidden;
 }
