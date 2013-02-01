@@ -114,6 +114,9 @@
 
 	$(document).ready(function() {
 
+		var layersList = $('#mapbox-metabox .layers-list');
+		layersList.sortable();
+		
 		mappress(updateMapConf());
 
 		/*
