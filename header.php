@@ -21,7 +21,7 @@
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(get_bloginfo('language')); ?>>
 	<header>
 		<h1><?php bloginfo('name'); ?></h1>
 		<h2><?php bloginfo('description'); ?></h2>

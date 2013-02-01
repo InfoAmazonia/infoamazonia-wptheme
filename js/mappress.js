@@ -47,11 +47,10 @@ var mappress;
 					map.addLayer(layer.markers);
 			});
 
-			/*
-			 *
-			 */
+			// setup custom interaction
+			map.interaction = mappress.interaction().map(map);
 
-			mappress.interaction(map);
+			map.interaction.auto();
 			map.ui.zoomer.add();
 			map.ui.legend.add();
 			map.ui.fullscreen.add();
@@ -89,13 +88,15 @@ var mappress;
 			if((conf.minZoom || conf.maxZoom) && !conf.preview)
 				map.setZoomRange(conf.minZoom, conf.maxZoom);
 
-			// store map
-			mappress.maps[map_id] = map;
-
 			/*
 			 * Widgets
 			 */
 			var $widgets = $map.parent().find('.map-widgets');
+			map.widgets = $widgets;
+
+			// store map
+			mappress.maps[map_id] = map;
+
 			if(conf.geocode)
 				mappress.geocode(map_id);
 
@@ -104,16 +105,6 @@ var mappress;
 
 			if(typeof conf.callbacks == 'function')
 				conf.callbacks();
-
-			// hide widgets on interaction
-			map.interaction.on({
-				on: function() {
-					$widgets.addClass('hide');
-				},
-				off: function() {
-					$widgets.removeClass('hide');
-				}
-			});
 
 			// fullscreen widgets callback
 			map.addCallback('drawn', function(map) {
@@ -148,9 +139,25 @@ var mappress;
 	 * Interaction fix
 	 */
 
+	/*
 	mappress.interaction = function(map) {
 			
 		var interaction = wax.mm.interaction().map(map);
+
+		interaction
+			.on(wax.tooltip()
+				.animate(true)
+				.parent(map.parent)
+				.events())
+			.on(wax.location().events())
+			.on({
+				on: function() {
+					map.widgets.addClass('hide');
+				},
+				off: function() {
+					map.widgets.removeClass('hide');
+				}
+			});
 
 		var interactive_layers = [];
 		$.each(map.layers, function(i, layer) {
@@ -162,15 +169,52 @@ var mappress;
 		if(interactive_layers.length) {
 			var tilejson_url = 'http://api.tiles.mapbox.com/v3/' + interactive_layers.join() + '.jsonp';
 			wax.tilejson(tilejson_url, function(tj) {
-				interaction
-					.tilejson(tj)
-					.on(wax.tooltip()
-						.animate(true)
-						.parent(map.parent)
-						.events()).on(wax.location().events());
+				interaction.tilejson(tj);
 			});
 		}
 
+	}
+	*/
+
+	mappress.interaction = function() {
+
+	    var interaction = wax.mm.interaction(),
+	        auto = false;
+
+	    interaction.refresh = function() {
+	        var map = interaction.map();
+	        if (!auto || !map) return interaction;
+
+			var interactive_layers = [];
+			$.each(map.layers, function(i, layer) {
+				if(layer._mapboxhosting && layer.tilejson && layer.enabled) {
+					interactive_layers.push(layer._id);
+				}
+			});
+			var tilejson_url = 'http://api.tiles.mapbox.com/v3/' + interactive_layers.join() + '.jsonp';
+			return wax.tilejson(tilejson_url, function(tj) { return interaction.tilejson(tj); });
+	    };
+
+	    interaction.auto = function() {
+	        auto = true;
+	        interaction
+		        .on(wax.tooltip()
+		            .animate(true)
+		            .parent(interaction.map().parent)
+		            .events())
+		        .on(wax.location().events())
+				.on({
+					on: function() {
+						interaction.map().widgets.addClass('hide');
+					},
+					off: function() {
+						interaction.map().widgets.removeClass('hide');
+					}
+				});
+	        return interaction.refresh();
+	    };
+
+	    return interaction;
 	}
 
 })(jQuery);

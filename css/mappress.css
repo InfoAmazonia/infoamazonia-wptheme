@@ -15,6 +15,24 @@
 	z-index: 9999999;
 }
 
+.map-container .map-tooltip .lang-en,
+.map-container .map-tooltip .lang-pt,
+.map-container .map-tooltip .lang-es {
+	display: none;
+}
+
+body.pt-BR .map-container .map-tooltip .lang-pt {
+	display: block;
+}
+
+body.en-US .map-container .map-tooltip .lang-en {
+	display: block;
+}
+
+body.es-ES .map-container .map-tooltip .lang-es {
+	display: block;
+}
+ 
 /*
  * Map widgets
  */
