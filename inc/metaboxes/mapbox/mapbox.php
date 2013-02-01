@@ -12,8 +12,11 @@ function mapbox_metabox_init() {
 	wp_localize_script('mapbox-metabox', 'mapbox_metabox_localization', array(
 		'layer_item' => '
 				<li class="layer-model">
+					<div class="layer-actions">
+						<span class="sort"></span>
+						<a href="#" class="button remove-layer">' . __('Remove', 'infoamazonia'). '</a>
+					</div>
 					<input type="text" class="layer_id" size="40" />
-					<a href="#" class="button remove-layer">' . __('Remove', 'infoamazonia'). '</a>
 					<div class="layer-opts">
 						<h4>' . __('Layer options', 'infoamazonia') . '</h4>
 						<div class="filter-opts">
@@ -72,8 +75,11 @@ function mapbox_inner_custom_box($post) {
 			<ol class="layers-list">
 			<?php if(!isset($map_data['layers'])) { ?>
 				<li>
+					<div class="layer-actions">
+						<span class="sort"></span>
+						<a href="#" class="button remove-layer"><?php _e('Remove', 'infoamazonia'); ?></a>
+					</div>
 					<input type="text" name="map_data[layers][0][id]" value="examples.map-vyofok3q" class="layer_id" size="40" />
-					<a href="#" class="button remove-layer"><?php _e('Remove', 'infoamazonia'); ?></a>
 					<div class="layer-opts">
 						<h4><?php _e('Layer options', 'infoamazonia'); ?></h4>
 						<div class="filter-opts">
@@ -132,8 +138,11 @@ function mapbox_inner_custom_box($post) {
 
 					?>
 					<li>
+						<div class="layer-actions">
+							<span class="sort"></span>
+							<a href="#" class="button remove-layer"><?php _e('Remove', 'infoamazonia'); ?></a>
+						</div>
 						<input type="text" name="map_data[layers][<?php echo $i; ?>][id]" value="<?php echo $layer['id']; ?>" class="layer_id" size="40" />
-						<a href="#" class="button remove-layer"><?php _e('Remove', 'infoamazonia'); ?></a>
 						<div class="layer-opts">
 							<h4><?php _e('Layer options', 'infoamazonia'); ?></h4>
 							<div class="filter-opts">

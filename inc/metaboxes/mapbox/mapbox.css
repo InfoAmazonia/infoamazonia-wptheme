@@ -32,8 +32,32 @@
 	background: #fefefe;
 }
 
+#mapbox-metabox .layers-list li .layer-actions {
+	float: right;
+}
+
+#mapbox-metabox .layers-list li .layer-actions .sort {
+	float: right;
+	display: inline-block;
+	height: 24px;
+	cursor: move;
+	width: 14px;
+	margin-left: 20px;
+	background: url(../images/sort.gif) center no-repeat;
+	opacity: .5;
+}
+
+#mapgroup-metabox .map-list li .map-actions .sort:hover {
+	opacity: 1;
+}
+
 #mapbox-metabox .layer-opts {
 	margin: 10px 0 0;
+}
+
+#mapbox-metabox .layer-opts h4 {
+	margin: 0 0 5px 3px;
+	color: #999;
 }
 
 #mapbox-metabox .layer-opts input[type=radio] {
