@@ -66,7 +66,7 @@ function register_cpt_map_group() {
         'labels' => $labels,
         'hierarchical' => false,
         'description' => __('MapBox maps agroupment', 'infoamazonia'),
-        'supports' => array( 'title', 'excerpt'),
+        'supports' => array( 'title'),
 
         'public' => false,
         'show_ui' => true,

@@ -47,7 +47,7 @@ var mappress;
 					map.addLayer(layer.markers);
 			});
 
-			// setup custom interaction
+			// overwrite interaction with custom
 			map.interaction = mappress.interaction().map(map);
 
 			map.interaction.auto();
@@ -136,45 +136,8 @@ var mappress;
 	};
 
 	/*
-	 * Interaction fix
+	 * Custom interaction
 	 */
-
-	/*
-	mappress.interaction = function(map) {
-			
-		var interaction = wax.mm.interaction().map(map);
-
-		interaction
-			.on(wax.tooltip()
-				.animate(true)
-				.parent(map.parent)
-				.events())
-			.on(wax.location().events())
-			.on({
-				on: function() {
-					map.widgets.addClass('hide');
-				},
-				off: function() {
-					map.widgets.removeClass('hide');
-				}
-			});
-
-		var interactive_layers = [];
-		$.each(map.layers, function(i, layer) {
-			if(layer._mapboxhosting && layer.tilejson && layer.enabled) {
-				interactive_layers.push(layer._id);
-			}
-		});
-
-		if(interactive_layers.length) {
-			var tilejson_url = 'http://api.tiles.mapbox.com/v3/' + interactive_layers.join() + '.jsonp';
-			wax.tilejson(tilejson_url, function(tj) {
-				interaction.tilejson(tj);
-			});
-		}
-
-	}
-	*/
 
 	mappress.interaction = function() {
 

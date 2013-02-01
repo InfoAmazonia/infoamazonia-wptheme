@@ -7,3 +7,4 @@ add_action('admin_footer', 'mappress_scripts');
 
 include(TEMPLATEPATH .  '/inc/metaboxes/geocode/geocode.php');
 include(TEMPLATEPATH .  '/inc/metaboxes/mapbox/mapbox.php');
+include(TEMPLATEPATH .  '/inc/metaboxes/mapgroup/mapgroup.php');
