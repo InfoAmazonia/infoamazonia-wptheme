@@ -121,7 +121,7 @@ function mapbox_inner_custom_box($post) {
 
 					if(is_string($layer)) {
 						$layer_id = $layer;
-						$layer = [];
+						$layer = array();
 						$layer['id'] = $layer_id;
 					}
 					/*
