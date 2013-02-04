@@ -60,7 +60,7 @@ function mapgroup_inner_custom_box($post) {
 						<strong class="title"><?php echo $map['title']; ?></strong>
 						<input type="hidden" class="map_id" name="mapgroup_data[maps][<?php echo $i; ?>][id]" value="<?php echo $map['id']; ?>" />
 						<input type="hidden" class="map_title" name="mapgroup_data[maps][<?php echo $i; ?>][title]" value="<?php echo $map['title']; ?>" />
-						<input type="checkbox" class="more_list" name="mapgroup_data[maps][<?php echo $i; ?>][more]" value="1" />
+						<input type="checkbox" class="more_list" name="mapgroup_data[maps][<?php echo $i; ?>][more]" value="1" <?php if(isset($map['more'])) echo 'checked'; ?>  />
 						<?php _e('Add to "more" tab', 'infoamazonia'); ?>
 						<span class="map-actions">
 							<span class="sort"></span>
