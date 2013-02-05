@@ -68,16 +68,9 @@ var groups = {};
 			var layers = mappress.setupLayers(newMap);
 			mapbox.load(layers, function(data) {
 
-				// clean up current layers
-				var currentMap = mappress.convertMapConf(group.mapsData[group.currentMapID]);
-				var oldLayer = mappress.setupLayers(currentMap);
-
-				group.map.removeLayer(oldLayer);
-
-				group.map.addLayer(data.layer);
-
+				group.map.setLayerAt(0, data.layer);
 				group.map.interaction.refresh();
-
+				
 			});
 
 			// update current map id
