@@ -8,6 +8,7 @@ var mappress;
 	 * - containerID
 	 * - server
 	 * - layers
+	 * - filterLayers
 	 * - center
 	 * - zoom
 	 * - extent (MM.Extent)
@@ -52,7 +53,6 @@ var mappress;
 
 			map.interaction.auto();
 			map.ui.zoomer.add();
-			map.ui.legend.add();
 			map.ui.fullscreen.add();
 			map.center(data[0].center).zoom(2);
 
@@ -117,6 +117,8 @@ var mappress;
 				}
 			});
 
+			return map;
+
 		});
 	};
 
@@ -178,6 +180,57 @@ var mappress;
 	    };
 
 	    return interaction;
+	}
+
+	/*
+	 * Utils
+	 */
+
+	mappress.convertMapConf = function(conf) {
+
+		var newConf = {};
+		if(conf.server != 'mapbox')
+			newConf.server = conf.server;
+
+		newConf.layers = [];
+		newConf.filterLayers = [];
+		newConf.filterLayers.switch = [];
+		newConf.filterLayers.swap = [];
+
+		$.each(conf.layers, function(i, layer) {
+			newConf.layers.push(layer.id);
+			if(layer.opts) {
+				if(layer.opts.filtering == 'switch') {
+					var switchLayer = {
+						id: layer.id,
+						title: layer.title
+					};
+					if(layer.switch_hidden)
+						switchLayer.hidden = true;
+					newConf.filterLayers.switch.push(switchLayer);
+				}
+				if(layer.opts.filtering == 'swap') {
+					var swapLayer = {
+						id: layer.id,
+						title: layer.title
+					}
+					if(conf.swap_first_layer == layer.id) {
+						layer.first = true;
+					}
+				}
+			}
+		});
+
+		newConf.center = conf.center;
+		newConf.panLimits = conf.pan_limits.north + ',' + conf.pan_limits.west + ',' + conf.pan_limits.south + ',' + conf.pan_limits.east;
+		newConf.zoom = parseInt(conf.zoom);
+		newConf.minZoom = parseInt(conf.min_zoom);
+		newConf.maxZoom = parseInt(conf.max_zoom);
+
+		if(conf.geocode)
+			newConf.geocode = true;
+
+		return newConf;
 	}
 
 })(jQuery);

@@ -165,7 +165,6 @@
 			} else {
 				filteringOpts.hide();
 			}
-
 		}).change();
 
 		// update swap layer id
