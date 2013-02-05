@@ -25,15 +25,9 @@ var mappress = {};
 
 		map.conf = conf;
 
-		var layers = conf.layers;
-		if(conf.server) {
-			layers = [];
-			$.each(conf.layers, function(i, layer) {
-				layers.push(conf.server + layer + '.json');
-			});
-		}
+		var layers = mappress.setupLayers(conf);
 
-		return mapbox.load(layers, function(data) {
+		mapbox.load(layers, function(data) {
 
 			map = mapbox.map(map_id);
 		
@@ -43,20 +37,22 @@ var mappress = {};
 
 			map.map_id = map_id;
 
-			$.each(data, function(i, layer) {
-				if(!conf.server)
-					layer.layer._mapboxhosting = true;
-				map.addLayer(layer.layer);
-				if(layer.markers)
-					map.addLayer(layer.markers);
-			});
+			if(data.length >= 2) {
+				$.each(data, function(i, layer) {
+					if(!conf.server)
+						layer.layer._mapboxhosting = true;
+					map.addLayer(layer.layer);
+					if(layer.markers)
+						map.addLayer(layer.markers);
+				});
+			} else
+				map.addLayer(data.layer);
 
 			// overwrite interaction with custom
 			map.interaction = mappress.interaction().map(map);
 
 			map.interaction.auto();
 			map.ui.zoomer.add();
-			map.center(data[0].center).zoom(2);
 
 			if(conf.center)
 				map.center(conf.center);
@@ -123,6 +119,35 @@ var mappress = {};
 
 	mappress.maps = {};
 
+	mappress.setupLayers = function(conf) {
+
+		var layers = conf.layers;
+
+		// separate layers
+		var tileLayers = [];
+		var mapboxLayers = [];
+		var customServerLayers = [];
+
+		$.each(conf.layers, function(i, layer) {
+			if(layer.indexOf('http') !== -1) {
+				tileLayers.push(layer);
+			} else {
+				if(conf.server) {
+					customServerLayers.push(conf.server + layer + '.json');
+				} else {
+					mapboxLayers.push(layer);
+				}
+			}
+		});
+
+		/*
+		 * Currently only working with mapbox layers
+		 */
+		
+		mapboxLayers = mapboxLayers.join();
+		return mapboxLayers;
+	};
+
 	/*
 	 * Map widgets
 	 */
@@ -145,18 +170,42 @@ var mappress = {};
 	    var interaction = wax.mm.interaction(),
 	        auto = false;
 
+	    /*
 	    interaction.refresh = function() {
 	        var map = interaction.map();
 	        if (!auto || !map) return interaction;
 
 			var interactive_layers = [];
-			$.each(map.layers, function(i, layer) {
-				if(layer._mapboxhosting && layer.tilejson && layer.enabled) {
-					interactive_layers.push(layer._id);
-				}
-			});
-			var tilejson_url = 'http://api.tiles.mapbox.com/v3/' + interactive_layers.join() + '.jsonp';
-			return wax.tilejson(tilejson_url, function(tj) { return interaction.tilejson(tj); });
+			if(map.layers.length >= 2) {
+
+				$.each(map.layers, function(i, layer) {
+					if(layer._mapboxhosting && layer.tilejson && layer.enabled) {
+						interactive_layers.push(layer._id);
+					}
+				});
+
+				var tilejson_url = 'http://api.tiles.mapbox.com/v3/' + interactive_layers.join() + '.jsonp';
+				return wax.tilejson(tilejson_url, function(tj) { return interaction.tilejson(tj); });
+
+			} else {
+
+                var tj = map.layers[0].tilejson && map.layers[0].tilejson();
+                if (tj && tj.template) return interaction.tilejson(tj);
+
+			}
+	    };
+	    */
+
+	    interaction.refresh = function() {
+	        var map = interaction.map();
+	        if (!auto || !map) return interaction;
+	        for (var i = map.layers.length - 1; i >= 0; i --) {
+	            if (map.layers[i].enabled) {
+	                var tj = map.layers[i].tilejson && map.layers[i].tilejson();
+	                if (tj && tj.template) return interaction.tilejson(tj);
+	            }
+	        }
+	        return interaction.tilejson({});
 	    };
 
 	    interaction.auto = function() {

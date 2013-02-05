@@ -65,7 +65,8 @@ var groups = {};
 
 			// prepare new layers
 			var newMap = mappress.convertMapConf(group.mapsData[mapID]);
-			var layers = mapbox.load(newMap.layers, function(data) {
+			var layers = mappress.setupLayers(newMap);
+			mapbox.load(layers, function(data) {
 
 				// clean up current layers
 				var currentMap = mappress.convertMapConf(group.mapsData[group.currentMapID]);
@@ -74,13 +75,16 @@ var groups = {};
 				});
 
 				// add new layers
-				_.each(data, function(layer) {
-					if(!newMap.server)
-						layer.layer._mapboxhosting = true;
-					group.map.addLayer(layer.layer);
-					if(layer.markers)
-						group.map.addLayer(layer.markers);
-				});
+				if(data.length >= 2) {
+					$.each(data, function(i, layer) {
+						if(!newMap.server)
+							layer.layer._mapboxhosting = true;
+						group.map.addLayer(layer.layer);
+						if(layer.markers)
+							group.map.addLayer(layer.markers);
+					});
+				} else
+					group.map.addLayer(data.layer);
 
 				group.map.interaction.refresh();
 
