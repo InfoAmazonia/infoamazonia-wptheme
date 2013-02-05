@@ -53,7 +53,6 @@ var mappress;
 
 			map.interaction.auto();
 			map.ui.zoomer.add();
-			map.ui.fullscreen.add();
 			map.center(data[0].center).zoom(2);
 
 			if(conf.center)
