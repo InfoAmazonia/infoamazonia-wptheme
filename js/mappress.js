@@ -1,4 +1,4 @@
-var mappress;
+var mappress = {};
 
 (function($) {
 
@@ -20,7 +20,10 @@ var mappress;
 
 	mappress = function(conf) {
 
+		var	map = {};
 		var map_id = conf.containerID;
+
+		map.conf = conf;
 
 		var layers = conf.layers;
 		if(conf.server) {
@@ -30,15 +33,15 @@ var mappress;
 			});
 		}
 
-		mapbox.load(layers, function(data) {
+		return mapbox.load(layers, function(data) {
+
+			map = mapbox.map(map_id);
 		
-			var $map = $('#' + map_id);
-			$map.empty().parent().find('.map-widgets').remove();
-			$map.parent().prepend('<div class="map-widgets"></div>');
+			map.$ = $('#' + map_id);
+			map.$.empty().parent().find('.map-widgets').remove();
+			map.$.parent().prepend('<div class="map-widgets"></div>');
 
-			var map = mapbox.map(map_id);
-
-			map.id = map_id;
+			map.map_id = map_id;
 
 			$.each(data, function(i, layer) {
 				if(!conf.server)
@@ -90,8 +93,7 @@ var mappress;
 			/*
 			 * Widgets
 			 */
-			var $widgets = $map.parent().find('.map-widgets');
-			map.widgets = $widgets;
+			map.$.widgets = map.$.parent().find('.map-widgets');
 
 			// store map
 			mappress.maps[map_id] = map;
@@ -102,21 +104,19 @@ var mappress;
 			if(conf.filteringLayers)
 				mappress.filterLayers(map_id, conf.filteringLayers);
 
-			if(typeof conf.callbacks == 'function')
+			if(typeof conf.callbacks === 'function')
 				conf.callbacks();
 
 			// fullscreen widgets callback
 			map.addCallback('drawn', function(map) {
-				if($map.hasClass('map-fullscreen-map')) {
-					$widgets.addClass('fullscreen');
+				if(map.$.hasClass('map-fullscreen-map')) {
+					map.$.widgets.addClass('fullscreen');
 					// temporary fix scrollTop
 					document.body.scrollTop = 0;
 				} else {
-					$widgets.removeClass('fullscreen');
+					map.$.widgets.removeClass('fullscreen');
 				}
 			});
-
-			return map;
 
 		});
 	};
@@ -169,10 +169,10 @@ var mappress;
 		        .on(wax.location().events())
 				.on({
 					on: function() {
-						interaction.map().widgets.addClass('hide');
+						interaction.map().$.widgets.addClass('hide');
 					},
 					off: function() {
-						interaction.map().widgets.removeClass('hide');
+						interaction.map().$.widgets.removeClass('hide');
 					}
 				});
 	        return interaction.refresh();
