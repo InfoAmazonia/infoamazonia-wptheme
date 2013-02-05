@@ -2,7 +2,8 @@
 
 <section id="stage">
 	<div class="limiter">
-		<?php mappress_mapgroup(121); ?>
+		<?php $mapgroup = array_shift(get_posts('post_type=map-group&posts_per_page=1')); ?>
+		<?php mappress_mapgroup($mapgroup->ID); ?>
 	</div>
 </section>
 
