@@ -70,21 +70,11 @@ var groups = {};
 
 				// clean up current layers
 				var currentMap = mappress.convertMapConf(group.mapsData[group.currentMapID]);
-				_.each(currentMap.layers, function(layer) {
-					group.map.removeLayer(layer);
-				});
+				var oldLayer = mappress.setupLayers(currentMap);
 
-				// add new layers
-				if(data.length >= 2) {
-					$.each(data, function(i, layer) {
-						if(!newMap.server)
-							layer.layer._mapboxhosting = true;
-						group.map.addLayer(layer.layer);
-						if(layer.markers)
-							group.map.addLayer(layer.markers);
-					});
-				} else
-					group.map.addLayer(data.layer);
+				group.map.removeLayer(oldLayer);
+
+				group.map.addLayer(data.layer);
 
 				group.map.interaction.refresh();
 

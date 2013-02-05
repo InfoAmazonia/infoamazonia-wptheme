@@ -37,6 +37,7 @@ var mappress = {};
 
 			map.map_id = map_id;
 
+			/*
 			if(data.length >= 2) {
 				$.each(data, function(i, layer) {
 					if(!conf.server)
@@ -45,8 +46,9 @@ var mappress = {};
 					if(layer.markers)
 						map.addLayer(layer.markers);
 				});
-			} else
-				map.addLayer(data.layer);
+			} */
+
+			map.addLayer(data.layer);
 
 			// overwrite interaction with custom
 			map.interaction = mappress.interaction().map(map);
@@ -143,7 +145,7 @@ var mappress = {};
 		/*
 		 * Currently only working with mapbox layers
 		 */
-		
+
 		mapboxLayers = mapboxLayers.join();
 		return mapboxLayers;
 	};
