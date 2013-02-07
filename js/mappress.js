@@ -23,14 +23,16 @@ var mappress = {};
 		var	map = {};
 		var map_id = conf.containerID;
 
-		map.conf = conf;
-
-		var layers = mappress.setupLayers(conf);
+		var layers = mappress.setupLayers(conf.layers);
 
 		mapbox.load(layers, function(data) {
 
 			map = mapbox.map(map_id);
-		
+
+			map.conf = conf;
+
+			map.conf.formattedLayers = layers;
+
 			map.$ = $('#' + map_id);
 			map.$.empty().parent().find('.map-widgets').remove();
 			map.$.parent().prepend('<div class="map-widgets"></div>');
@@ -121,24 +123,18 @@ var mappress = {};
 
 	mappress.maps = {};
 
-	mappress.setupLayers = function(conf) {
-
-		var layers = conf.layers;
+	mappress.setupLayers = function(layers) {
 
 		// separate layers
 		var tileLayers = [];
 		var mapboxLayers = [];
 		var customServerLayers = [];
 
-		$.each(conf.layers, function(i, layer) {
+		$.each(layers, function(i, layer) {
 			if(layer.indexOf('http') !== -1) {
 				tileLayers.push(layer);
 			} else {
-				if(conf.server) {
-					customServerLayers.push(conf.server + layer + '.json');
-				} else {
-					mapboxLayers.push(layer);
-				}
+				mapboxLayers.push(layer);
 			}
 		});
 
