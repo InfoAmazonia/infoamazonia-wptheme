@@ -268,11 +268,16 @@ header#masthead {
 
 .map-container {
 	.map-widgets {
-		top: 15px;
-		right: 15px;
+		bottom: 15px !important;
+		left: 15px !important;
+		right: auto !important;
+		top: auto !important;
 		opacity: 0.7;
 		&:hover {
 			opacity: 1;
+		}
+		.map-widget {
+			margin: 10px 0 0 !important;
 		}
 	}
 	.map {

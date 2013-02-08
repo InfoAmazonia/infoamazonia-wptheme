@@ -16,7 +16,8 @@ header#masthead aside.right nav#langnav a{color:#808080;text-transform:lowercase
 .mapgroup .sidebar::-webkit-scrollbar-thumb{background:#666;border-radius:15px;border:5px #303030 solid;}
 .mapgroup .sidebar .sidebar-inner{padding:10px 15px;}
 .mapgroup .map-container{width:75%;height:100%;float:left;}
-.map-container .map-widgets{top:15px;right:15px;opacity:0.7;}.map-container .map-widgets:hover{opacity:1;}
+.map-container .map-widgets{bottom:15px !important;left:15px !important;right:auto !important;top:auto !important;opacity:0.7;}.map-container .map-widgets:hover{opacity:1;}
+.map-container .map-widgets .map-widget{margin:10px 0 0 !important;}
 .map-container .map{background-color:#000;position:relative;}.map-container .map .map-tooltip{border:0;background-color:#202020;background-color:rgba(0, 0, 0, 0.8);-moz-border-radius:2px;border-radius:2px;-moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.15);box-shadow:0 1px 2px rgba(0, 0, 0, 0.15);width:230px;padding:10px;position:absolute;z-index:15000;top:15px;right:15px;color:#a0a0a0;}.map-container .map .map-tooltip h2,.map-container .map .map-tooltip h3{color:#fff;font-size:16px;margin:0 0 5px;line-height:20px;}
 .map-container .map .zoomer{-webkit-border-radius:0;border-radius:0;-moz-border-radius:0;border:0;text-indent:0;display:block;position:absolute;top:15px;left:15px;z-index:1000;width:24px;height:24px;line-height:24px;font-weight:bold;color:white;background:#303030;text-align:center;}.map-container .map .zoomer:hover{color:#fff;}
 .map-container .map .zoomer:active{background-color:#333;box-shadow:inset rgba(0, 0, 0, 0.1) 0px 1px 3px;-moz-box-shadow:inset rgba(0, 0, 0, 0.1) 0px 1px 3px;-webkit-box-shadow:inset rgba(0, 0, 0, 0.1) 0px 1px 3px;}
