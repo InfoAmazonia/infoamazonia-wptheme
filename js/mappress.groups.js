@@ -64,8 +64,8 @@ var groups = {};
 				group.map = mappress.maps[group.id];
 
 			// prepare new layers
-			var newMap = mappress.convertMapConf(group.mapsData[mapID]);
-			var layers = mappress.setupLayers(newMap);
+			var conf = mappress.convertMapConf(group.mapsData[mapID]);
+			var layers = mappress.setupLayers(conf.layers);
 			mapbox.load(layers, function(data) {
 
 				group.map.setLayerAt(0, data.layer);

@@ -2,107 +2,182 @@
 
 	mappress.filterLayers = function(map_id, layers) {
 
+		var filter = mappress.filterLayers;
+
 		var map = mappress.maps[map_id];
+		layers.status = [];
+		_.each(map.conf.layers, function(layerID) {
+			var layer = {
+				id: layerID,
+				on: true
+			};
+			layers.status.push(layer);
+		});
+		var	swapWidget,
+			switchWidget;
 
 		console.log(map.conf);
 
-		/*
-		 * Swapables
-		 */
-		if(layers.swap && layers.swap.length >= 2) {
-			var swap = layers.swap;
-			var list = '';
-			_.each(swap, function(layer) {
-				var attrs = '';
-				if(layer.first)
-					attrs = 'class="active"';
-				else
-					mappress.disableLayer(map, layer.id);
-				list += '<li data-layer="' + layer.id + '" ' + attrs + '>' + layer.title + '</li>';
-			});
-			var swapWidget = mappress.widget(map_id, '<ul class="swap-layers">' + list + '</ul>');
+		mappress.filterLayers.prepare = function() {
+			/*
+			 * Swapables
+			 */
+			if(layers.swap && layers.swap.length >= 2) {
+				var swap = layers.swap;
+				var list = '';
+				_.each(swap, function(layer) {
+					var attrs = '';
+					if(layer.first)
+						attrs = 'class="active"';
+					else
+						filter.disableLayer(layer.id);
+					list += '<li data-layer="' + layer.id + '" ' + attrs + '>' + layer.title + '</li>';
+				});
+				swapWidget = mappress.widget(map_id, '<ul class="swap-layers">' + list + '</ul>');
 
-			swapWidget.find('li').click(function() {
-				mappress.filterLayers.swap(map_id, $(this).data('layer'), swap, swapWidget);
-			});
-		}
-
-		/*
-		 * Switchables
-		 */
-		if(layers.switch && layers.switch.length) {
-			var switchable = layers.switch;
-			var list = '';
-			_.each(switchable, function(layer) {
-				var attrs = 'class="active"';
-				if(layer.hidden) {
-					attrs = '';
-					map.disableLayer(layer.id);
-				}
-				list += '<li data-layer="' + layer.id + '" ' + attrs + '>' + layer.title + '</li>';
-			});
-			var switchWidget = mappress.widget(map_id, '<ul class="switch-layers">' + list + '</ul>');
-
-			switchWidget.find('li').click(function() {
-				mappress.filterLayers.switch(map_id, $(this).data('layer'), switchWidget);
-			});
-		}
-
-		mappress.filterLayers.switch = function(map_id, layer, widget) {
-			var map = mappress.maps[map_id];
-			map.getLayer(layer).enabled ? map.getLayer(layer).disable() : map.getLayer(layer).enable();
-			if(typeof widget != 'undefined') {
-				if(map.getLayer(layer).enabled)
-					widget.find('li[data-layer="' + layer + '"]').addClass('active');
-				else
-					widget.find('li[data-layer="' + layer + '"]').removeClass('active');
+				swapWidget.find('li').click(function() {
+					filter.swap($(this).data('layer'), swap);
+				});
 			}
-			map.interaction.refresh();
+
+			/*
+			 * Switchables
+			 */
+			if(layers.switch && layers.switch.length) {
+				var switchable = layers.switch;
+				var list = '';
+				_.each(switchable, function(layer) {
+					var attrs = 'class="active"';
+					if(layer.hidden) {
+						attrs = '';
+						filter.disableLayer(layer.id);
+					}
+					list += '<li data-layer="' + layer.id + '" ' + attrs + '>' + layer.title + '</li>';
+				});
+				switchWidget = mappress.widget(map_id, '<ul class="switch-layers">' + list + '</ul>');
+
+				switchWidget.find('li').click(function() {
+					filter.switch($(this).data('layer'));
+				});
+			}
+
+			filter.update();
+		}
+
+		mappress.filterLayers.switch = function(layer) {
+
+			var widget = switchWidget;
+
+			if(filter.getStatus(layer).on) {
+
+				filter.disableLayer(layer);
+
+				if(typeof widget != 'undefined')
+					widget.find('li[data-layer="' + layer + '"]').removeClass('active');
+
+			} else {
+
+				filter.enableLayer(layer);
+
+				if(typeof widget != 'undefined')
+					widget.find('li[data-layer="' + layer + '"]').addClass('active');
+
+			}
+
+			filter.update();
 		};
 
-		mappress.filterLayers.swap = function(map_id, layer, swapLayers, widget) {
-			var map = mappress.maps[map_id];
-			if(map.getLayer(layer).enabled)
+		mappress.filterLayers.swap = function(layer) {
+
+			var widget = swapWidget;
+
+			if(filter.getStatus(layer).on)
 				return;
 
-			_.each(swapLayers, function(swapLayer) {
+			_.each(map.conf.filteringLayers.swap, function(swapLayer) {
+
 				if(swapLayer.id == layer) {
-					map.getLayer(layer).enable();
+
+					filter.enableLayer(layer);
+
 					if(typeof widget != 'undefined')
 						widget.find('li[data-layer="' + layer + '"]').addClass('active');
+
 				} else {
-					if(map.getLayer(swapLayer.id).enable) {
-						map.getLayer(swapLayer.id).disable();
+
+					if(filter.getStatus(swapLayer.id).on) {
+
+						filter.disableLayer(swapLayer.id);
+
 						if(typeof widget != 'undefined')
 							widget.find('li[data-layer="' + swapLayer.id + '"]').removeClass('active');
+
 					}
+
 				}
 			});
-			map.interaction.refresh();
+
+			filter.update();
 		};
 
-		mappress.filterLayers.disableLayer = function(map, layer) {
-			var mapLayers = map.conf.layers;
-			$.each(mapLayers, function(i, mapLayer) {
-				if(mapLayer == layer)
-					mapLayers.splice(i, 1);
-			});
+		mappress.filterLayers.disableLayer = function(layer) {
 
-			var updatedLayers = mappress.setupLayers(mapLayers);
+			layers.status[filter.getStatusIndex(layer)] = {
+				id: layer,
+				on: false
+			}
 
-			mapbox.load(updatedLayers, function(data) {
+		};
+
+		mappress.filterLayers.enableLayer = function(layer) {
+
+			layers.status[filter.getStatusIndex(layer)] = {
+				id: layer,
+				on: true
+			}
+
+		};
+
+		mappress.filterLayers.update = function() {
+
+			var layers = mappress.setupLayers(filter.getActiveLayers());
+
+			console.log(layers);
+
+			mapbox.load(layers, function(data) {
 				map.setLayerAt(0, data.layer);
 				map.interaction.refresh();
 			});
+
 		};
 
-		mappress.filterLayers.enableLayer = function(map, layer) {
-			var mapLayers = map.conf.layers;
-		};
+		mappress.filterLayers.getStatus = function(layer) {
+			return _.find(layers.status, function(l) { return layer == l.id; });
+		}
 
-		mappress.filterLayers.update = function(conf) {
-			mappress(conf);
-		};
+		mappress.filterLayers.getStatusIndex = function(layer) {
+			var index;
+			_.each(layers.status, function(l, i) {
+				if(layer == l.id)
+					index = i;
+			});
+			return index;
+		}
+
+		mappress.filterLayers.getActiveLayers = function() {
+			var activeLayers = [];
+			_.each(layers.status, function(layer) {
+				if(layer.on)
+					activeLayers.push(layer.id);
+			});
+			return activeLayers;
+		}
+
+		$(document).ready(function() {
+			filter.prepare();
+		});
+
+		return filter;
 
 	};
 

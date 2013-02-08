@@ -129,7 +129,7 @@ var mappress = {};
 		var tileLayers = [];
 		var mapboxLayers = [];
 		var customServerLayers = [];
-
+		
 		$.each(layers, function(i, layer) {
 			if(layer.indexOf('http') !== -1) {
 				tileLayers.push(layer);
