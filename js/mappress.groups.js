@@ -63,14 +63,28 @@ var groups = {};
 			if(!group.map)
 				group.map = mappress.maps[group.id];
 
-			// prepare new layers
+			// prepare new conf and layers
 			var conf = mappress.convertMapConf(group.mapsData[mapID]);
 			var layers = mappress.setupLayers(conf.layers);
+
+			// store new conf
+			mappress.maps[group.id].conf = conf;
+
 			mapbox.load(layers, function(data) {
 
 				group.map.setLayerAt(0, data.layer);
 				group.map.interaction.refresh();
-				
+
+				// clear widgets
+
+				group.map.$.widgets.empty();
+
+				if(conf.geocode)
+					mappress.geocode(mapID);
+
+				if(conf.filteringLayers)
+					mappress.filterLayers(group.id, conf.filteringLayers);
+
 			});
 
 			// update current map id

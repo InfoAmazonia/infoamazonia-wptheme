@@ -5,6 +5,7 @@
 		var filter = mappress.filterLayers;
 
 		var map = mappress.maps[map_id];
+
 		layers.status = [];
 		_.each(map.conf.layers, function(layerID) {
 			var layer = {
@@ -13,10 +14,9 @@
 			};
 			layers.status.push(layer);
 		});
+
 		var	swapWidget,
 			switchWidget;
-
-		console.log(map.conf);
 
 		mappress.filterLayers.prepare = function() {
 			/*
@@ -141,8 +141,6 @@
 		mappress.filterLayers.update = function() {
 
 			var layers = mappress.setupLayers(filter.getActiveLayers());
-
-			console.log(layers);
 
 			mapbox.load(layers, function(data) {
 				map.setLayerAt(0, data.layer);

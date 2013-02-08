@@ -129,7 +129,7 @@ var mappress = {};
 		var tileLayers = [];
 		var mapboxLayers = [];
 		var customServerLayers = [];
-		
+
 		$.each(layers, function(i, layer) {
 			if(layer.indexOf('http') !== -1) {
 				tileLayers.push(layer);
@@ -239,9 +239,9 @@ var mappress = {};
 			newConf.server = conf.server;
 
 		newConf.layers = [];
-		newConf.filterLayers = [];
-		newConf.filterLayers.switch = [];
-		newConf.filterLayers.swap = [];
+		newConf.filteringLayers = [];
+		newConf.filteringLayers.switch = [];
+		newConf.filteringLayers.swap = [];
 
 		$.each(conf.layers, function(i, layer) {
 			newConf.layers.push(layer.id);
@@ -253,16 +253,16 @@ var mappress = {};
 					};
 					if(layer.switch_hidden)
 						switchLayer.hidden = true;
-					newConf.filterLayers.switch.push(switchLayer);
+					newConf.filteringLayers.switch.push(switchLayer);
 				}
 				if(layer.opts.filtering == 'swap') {
 					var swapLayer = {
 						id: layer.id,
 						title: layer.title
-					}
-					if(conf.swap_first_layer == layer.id) {
-						layer.first = true;
-					}
+					};
+					if(conf.swap_first_layer == layer.id)
+						swapLayer.first = true;
+					newConf.filteringLayers.swap.push(swapLayer);
 				}
 			}
 		});
