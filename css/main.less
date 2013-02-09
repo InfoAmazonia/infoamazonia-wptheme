@@ -268,16 +268,60 @@ header#masthead {
 
 .map-container {
 	.map-widgets {
-		bottom: 15px !important;
-		left: 15px !important;
-		right: auto !important;
-		top: auto !important;
-		opacity: 0.7;
-		&:hover {
-			opacity: 1;
-		}
+		bottom: 15px;
+		left: 15px;
+		right: auto;
+		top: auto;
 		.map-widget {
-			margin: 10px 0 0 !important;
+			margin: 15px 0 0;
+			border: 0;
+			background: transparent;
+			.map-search {
+				background: #303030;
+				input {
+					color: #fff;
+					font-size: 11px;
+				}
+			}
+			.geocode-results {
+				font-size: 90%;
+				background: #303030;
+				.widget-title {
+					border-color: #111;
+				}
+				a {
+					color: #999;
+					&:hover {
+						color: #fff;
+					}
+				}
+				ul {
+					li {
+						border-color: #111;
+						color: #999;
+						&:hover {
+							color: #fff;
+							background: transparent;
+						}
+					}
+				}
+			}
+			.switch-layers,
+			.swap-layers {
+				li {
+					background: #303030;
+					border: 0;
+					border-radius: 0;
+					-webkit-border-radius: 0;
+					-moz-border-radius: 0;
+					-o-border-radius: 0;
+					-khtml-border-radius: 0;
+					color: #fff;
+					font-size: 11px;
+					font-weight: bold;
+					margin: 1px 0 0;
+				}
+			}
 		}
 	}
 	.map {

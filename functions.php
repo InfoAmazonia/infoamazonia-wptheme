@@ -1,5 +1,17 @@
 <?php
 
+// map functions
+include(TEMPLATEPATH . '/inc/map-functions.php');
+
+// metaboxes
+include(TEMPLATEPATH . '/inc/metaboxes/metaboxes.php');
+
+// register post types
+include(TEMPLATEPATH . '/inc/post-types.php');
+
+// shortcodes
+include(TEMPLATEPATH . '/inc/shortcodes/shortcodes.php');
+
 function infoamazonia_scripts() {
 	/*
 	 * Register scripts & styles
@@ -20,15 +32,3 @@ function infoamazonia_scripts() {
 	wp_enqueue_style('site');
 }
 add_action('wp_enqueue_scripts', 'infoamazonia_scripts');
-
-// map functions
-include(TEMPLATEPATH . '/inc/map-functions.php');
-
-// metaboxes
-include(TEMPLATEPATH . '/inc/metaboxes/metaboxes.php');
-
-// register post types
-include(TEMPLATEPATH . '/inc/post-types.php');
-
-// shortcodes
-include(TEMPLATEPATH . '/inc/shortcodes/shortcodes.php');

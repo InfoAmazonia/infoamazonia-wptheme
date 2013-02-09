@@ -30,7 +30,7 @@
 		// map setup
 		if(typeof map_id != 'undefined') {
 			// clear previous search on map
-			mappress.geocode.clear(map_id, widget);
+			mappress.geocode.clear(map, widget);
 
 			var map = mappress.maps[map_id];
 
@@ -51,17 +51,18 @@
 		);
 	}
 
-	mappress.geocode.clear = function(map_id, widget) {
-		if(typeof map_id == 'undefined')
+	mappress.geocode.clear = function(map, widget) {
+		if(typeof map == 'undefined')
 			return;
 
 		// clear results list
 		widget.find('.geocode-results').empty();
 
 		// clear markers
-		var markerLayer = mappress.maps[map_id].removeLayer('search-layer');
+		map.removeLayer('search-layer');
+
 		// clear d3
-		$searchLayer = $('#' + map_id).find('.search-layer');
+		$searchLayer = $('#' + map.map_id).find('.search-layer');
 		if($searchLayer.length)
 			$searchLayer.remove();
 	}
@@ -92,7 +93,7 @@
 
 				resultsContainer.find('.clear-search').click(function() {
 					widget.find('input').val('');
-					mappress.geocode.clear(map.id, widget);
+					mappress.geocode.clear(map, widget);
 					return false;
 				});
 
@@ -133,7 +134,7 @@
 					if(extent) {
 						map.setExtent(new MM.Extent(extent.north, extent.west, extent.south, extent.east));
 					} else if(loc) {
-						map.ease.location(loc).zoom(map.zoom()).run(700).optimal();
+						map.ease.location(loc).zoom(map.zoom()).run(700);
 					}
 				});
 			}
