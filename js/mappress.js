@@ -20,83 +20,70 @@ var mappress = {};
 
 	mappress = function(conf) {
 
-		var	map = {};
 		var map_id = conf.containerID;
 
+		mappress.maps[map_id] = mapbox.map(map_id);
+
+		var map = mappress.maps[map_id];
+
+		// store jquery node
+		map.$ = $('#' + map_id);
+
+		/*
+		 * Sidebar
+		 */
+		if(map.$.parent().parent().find('.map-sidebar').length) {
+			map.$.sidebar = map.$.parent().parent().find('.map-sidebar .sidebar-inner');
+		}
+
+		/*
+		 * Widgets (reset and add)
+		 */
+		map.$.empty().parent().find('.map-widgets').remove();
+		map.$.parent().prepend('<div class="map-widgets"></div>');
+
+		map.$.widgets = map.$.parent().find('.map-widgets');
+
+		if(typeof conf.callbacks === 'function')
+			conf.callbacks();
+
+		// fullscreen widgets callback
+		map.addCallback('drawn', function(map) {
+			if(map.$.hasClass('map-fullscreen-map')) {
+				map.$.widgets.addClass('fullscreen');
+				// temporary fix scrollTop
+				document.body.scrollTop = 0;
+			} else {
+				map.$.widgets.removeClass('fullscreen');
+			}
+		});
+
+        // Enable zoom-level dependent design.
+        map.$.addClass('zoom-' + map.getZoom());
+        map.addCallback('drawn', _.throttle(function(map) {
+        	if(!map.ease.running()) {
+	            map.$.removeClass(function(i, cl) {
+	                if (cl.indexOf('zoom') === 0) return cl;
+	            });
+	            map.$.addClass('map');
+	            map.$.addClass('zoom-' + parseInt(map.getZoom()));
+	        }
+        }, 100));
+
+		// store conf
+		map.conf = conf;
+		map.conf.formattedLayers = layers;
+
+		// store map id
+		map.map_id = map_id;
+
+		// layers
 		var layers = mappress.setupLayers(conf.layers);
-
-		mapbox.load(layers, function(data) {
-
-			map = mapbox.map(map_id);
-
-			map.conf = conf;
-
-			map.conf.formattedLayers = layers;
-
-			map.$ = $('#' + map_id);
-			map.$.empty().parent().find('.map-widgets').remove();
-			map.$.parent().prepend('<div class="map-widgets"></div>');
-
-			map.map_id = map_id;
-
-			/*
-			if(data.length >= 2) {
-				$.each(data, function(i, layer) {
-					if(!conf.server)
-						layer.layer._mapboxhosting = true;
-					map.addLayer(layer.layer);
-					if(layer.markers)
-						map.addLayer(layer.markers);
-				});
-			} */
-
-			map.addLayer(data.layer);
+		map.addLayer(mapbox.layer().id(layers, function() {
 
 			// overwrite interaction with custom
-			map.interaction = mappress.interaction().map(map);
-
+			// map.interaction = mappress.interaction().map(map);
 			map.interaction.auto();
-			map.ui.zoomer.add();
-
-			if(conf.center)
-				map.center(conf.center);
-
-			if(conf.zoom)
-				map.zoom(conf.zoom);
-
-			if(conf.extent) {
-				if(typeof conf.extent === 'string')
-					conf.extent = new MM.Extent.fromString(conf.extent);
-				else if(typeof conf.extent === 'array')
-					conf.extent = new MM.Extent.fromArray(conf.extent);
-
-				if(conf.extent instanceof MM.Extent)
-					map.setExtent(conf.extent);
-			}
-
-			if(conf.panLimits) {
-				if(typeof conf.panLimits === 'string')
-					conf.panLimits = new MM.Extent.fromString(conf.panLimits);
-				else if(typeof conf.panLimits === 'array')
-					conf.panLimits = new MM.Extent.fromArray(conf.panLimits);
-
-				if(conf.panLimits instanceof MM.Extent) {
-					map.panLimits = conf.panLimits;
-					if(!conf.preview)
-						map.setPanLimits(conf.panLimits);
-				}
-			}
-
-			if((conf.minZoom || conf.maxZoom) && !conf.preview)
-				map.setZoomRange(conf.minZoom, conf.maxZoom);
-
-			/*
-			 * Widgets
-			 */
-			map.$.widgets = map.$.parent().find('.map-widgets');
-
-			// store map
-			mappress.maps[map_id] = map;
 
 			if(conf.geocode)
 				mappress.geocode(map_id);
@@ -104,21 +91,47 @@ var mappress = {};
 			if(conf.filteringLayers)
 				mappress.filterLayers(map_id, conf.filteringLayers);
 
-			if(typeof conf.callbacks === 'function')
-				conf.callbacks();
+		}));
+		
+		/*
+		 * CONFS
+		 */
+		map.ui.zoomer.add();
 
-			// fullscreen widgets callback
-			map.addCallback('drawn', function(map) {
-				if(map.$.hasClass('map-fullscreen-map')) {
-					map.$.widgets.addClass('fullscreen');
-					// temporary fix scrollTop
-					document.body.scrollTop = 0;
-				} else {
-					map.$.widgets.removeClass('fullscreen');
-				}
-			});
+		if(conf.center)
+			map.center(conf.center);
 
-		});
+		if(conf.zoom)
+			map.zoom(conf.zoom);
+
+		if(conf.extent) {
+			if(typeof conf.extent === 'string')
+				conf.extent = new MM.Extent.fromString(conf.extent);
+			else if(typeof conf.extent === 'array')
+				conf.extent = new MM.Extent.fromArray(conf.extent);
+
+			if(conf.extent instanceof MM.Extent)
+				map.setExtent(conf.extent);
+		}
+
+		if(conf.panLimits) {
+			if(typeof conf.panLimits === 'string')
+				conf.panLimits = new MM.Extent.fromString(conf.panLimits);
+			else if(typeof conf.panLimits === 'array')
+				conf.panLimits = new MM.Extent.fromArray(conf.panLimits);
+
+			if(conf.panLimits instanceof MM.Extent) {
+				map.panLimits = conf.panLimits;
+				if(!conf.preview)
+					map.setPanLimits(conf.panLimits);
+			}
+		}
+
+		if((conf.minZoom || conf.maxZoom) && !conf.preview)
+			map.setZoomRange(conf.minZoom, conf.maxZoom);
+
+		return map;
+
 	};
 
 	mappress.maps = {};
@@ -213,15 +226,7 @@ var mappress = {};
 		            .animate(true)
 		            .parent(interaction.map().parent)
 		            .events())
-		        .on(wax.location().events())
-				.on({
-					on: function() {
-						interaction.map().$.widgets.addClass('hide');
-					},
-					off: function() {
-						interaction.map().$.widgets.removeClass('hide');
-					}
-				});
+		        .on(wax.location().events());
 	        return interaction.refresh();
 	    };
 

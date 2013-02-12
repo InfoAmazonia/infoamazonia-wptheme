@@ -6,8 +6,8 @@ include(TEMPLATEPATH . '/inc/map-functions.php');
 // metaboxes
 include(TEMPLATEPATH . '/inc/metaboxes/metaboxes.php');
 
-// register post types
-include(TEMPLATEPATH . '/inc/post-types.php');
+// register taxonomies
+include(TEMPLATEPATH . '/inc/taxonomies.php');
 
 // shortcodes
 include(TEMPLATEPATH . '/inc/shortcodes/shortcodes.php');

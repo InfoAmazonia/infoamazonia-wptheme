@@ -6,10 +6,12 @@ var groups = {};
 
 		var group = {};
 
-		$.getJSON(mappress_groups.ajaxurl, {
+		$.getJSON(mappress_groups.ajaxurl,
+		{
 			action: 'mapgroup_data',
 			group_id: groupID
-		}, function(data) {
+		},
+		function(data) {
 			mappress.group.build(data);
 		});
 
@@ -32,12 +34,16 @@ var groups = {};
 
 			// set mappress conf containerID to group id
 			group.conf.containerID = group.id;
+			group.conf.postID = groupID;
 
 			// store current map id
 			group.currentMapID = firstMapID;
 
 			// build group
-			mappress(group.conf);
+			group.map = mappress(group.conf);
+
+			// set markers
+			mappress.markers(group.map);
 
 			// bind nav events
 			group.$.nav.find('li a').click(function() {
@@ -60,8 +66,7 @@ var groups = {};
 
 		mappress.group.update = function(mapID) {
 
-			if(!group.map)
-				group.map = mappress.maps[group.id];
+			group.map = mappress.maps[group.id];
 
 			// prepare new conf and layers
 			var conf = mappress.convertMapConf(group.mapsData[mapID]);

@@ -1,5 +1,14 @@
 <?php
 
+function mappress_setup() {
+	// register map and map group post types
+	include(TEMPLATEPATH . '/inc/map-post-types.php');
+
+	add_theme_support('post-thumbnails');
+	add_image_size('map-group-thumb', 230, 152, true);
+}
+add_action('after_setup_theme', 'mappress_setup');
+
 /*
  * Register/enqueue scripts & styles
  */
@@ -10,10 +19,11 @@ function mappress_scripts() {
 
 	wp_register_script('d3js', get_template_directory_uri() . '/lib/d3.v2.min.js', array('jquery'), '3.0.5');
 
-	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'jquery'), '0.0.5.6');
+	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.6.16');
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.3');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
-	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.2.3');
+	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.5');
+	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.1.120');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
 
@@ -25,6 +35,8 @@ function mappress_scripts() {
 	);
 
 	wp_localize_script('mappress.groups', 'mappress_groups', array('ajaxurl' => admin_url('admin-ajax.php')));
+
+	wp_localize_script('mappress.markers', 'mappress_markers', array('ajaxurl' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts', 'mappress_scripts');
 
@@ -80,7 +92,7 @@ function mappress_mapgroup($post_id = false) {
 				$i++;
 				} ?>
 			</ul>
-			<div class="sidebar">
+			<div class="map-sidebar">
 				<div class="sidebar-inner"></div>
 			</div>
 			<div class="map-container">
@@ -100,6 +112,7 @@ function mappress_mapgroup($post_id = false) {
 add_action('wp_ajax_nopriv_mapgroup_data', 'mappress_get_mapgroup_data');
 add_action('wp_ajax_mapgroup_data', 'mappress_get_mapgroup_data');
 function mappress_get_mapgroup_data() {
+
 	$group_id = $_REQUEST['group_id'];
 	$data = array();
 
@@ -115,6 +128,68 @@ function mappress_get_mapgroup_data() {
 
 		$data['maps'][$map_id] = get_post_meta($map['id'], 'map_data', true);
 		$data['maps'][$map_id]['title'] = $map_title;
+	}
+
+	$data = json_encode($data);
+	header('Content Type: application/json');
+	echo $data;
+	exit;
+}
+
+/*
+ * Markers
+ */
+
+add_action('wp_ajax_nopriv_markers_geojson', 'mappress_get_markers_data');
+add_action('wp_ajax_markers_geojson', 'mappress_get_markers_data');
+function mappress_get_markers_data() {
+
+	$map_id = $_REQUEST['map_id'];
+	$data = array();
+
+	if(get_post_type($map_id) != 'map' && get_post_type($map_id) != 'map-group')
+		return;
+
+	$query = false;
+	if(isset($map_id))
+		$query = get_post_meta($map_id, 'markers', true);
+
+	if(!$query) { // if no query, show all posts
+		$query = array(
+			'post_type' => 'post',
+			'posts_per_page' => -1
+		);
+	}
+
+	$posts = get_posts($query);
+
+	if($posts) {
+		global $post;
+		$data['type'] = 'FeatureCollection';
+		$data['features'] = array();
+		$i = 0;
+		foreach($posts as $post) {
+
+			setup_postdata($post);
+
+			$data['features'][$i]['type'] = 'Feature';
+
+			$data['features'][$i]['geometry'] = array();
+			$data['features'][$i]['geometry']['type'] = 'Point';
+			$data['features'][$i]['geometry']['coordinates'] = array(get_post_meta($post->ID, 'geocode_longitude', true), get_post_meta($post->ID, 'geocode_latitude', true));
+
+			$data['features'][$i]['properties'] = array();
+			$data['features'][$i]['properties']['id'] = 'post-' . $post->ID;
+			$data['features'][$i]['properties']['title'] = get_the_title($post->ID);
+			$data['features'][$i]['properties']['date'] = get_the_date($post->ID);
+			$data['features'][$i]['properties']['story'] = get_the_content();
+			$data['features'][$i]['properties']['url'] = get_post_meta($post->ID, 'url', true);
+			$data['features'][$i]['properties']['source'] = get_post_meta($post->ID, 'publisher', true);
+
+			$i++;
+
+			wp_reset_postdata();
+		}
 	}
 
 	$data = json_encode($data);

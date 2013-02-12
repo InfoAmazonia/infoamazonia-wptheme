@@ -228,30 +228,6 @@ header#masthead {
 			}
 		}
 	}
-	.sidebar {
-		background: #000;
-		color: #96979C;
-		height: 100%;
-		width: 25%;
-		z-index: 1000;
-		word-wrap: break-word;
-		overflow: auto;
-		overflow-x: hidden;
-		overflow-y: auto;
-		float: left;
-		&::-webkit-scrollbar {
-			background: #303030;
-			width: 15px;
-		}
-		&::-webkit-scrollbar-thumb {
-			background: #666;
-			border-radius: 15px;
-			border: 5px #303030 solid;
-		}
-		.sidebar-inner {
-			padding: 10px 15px;
-		}
-	}
 	.map-container {
 		width: 75%;
 		height: 100%;
@@ -382,5 +358,138 @@ header#masthead {
 				border-top: 1px solid #202020;
 			}
 		}
+		/* Markers */
+		.story-points {
+			background: url(../img/sprite.png) no-repeat 0 -209px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 25px;
+			height: 30px;
+			margin-top: -30px;
+			margin-left: -12px;
+			cursor: pointer;
+			z-index: 100;
+			pointer-events: all;
+			&.hide,
+			&.forever-hide {
+				display: none;
+			}
+			&.active {
+				background-position: -35px -209px;
+				z-index: 101;
+			}
+			&:hover {
+				z-index: 102;
+				.popup {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+			.popup {
+				background: #fff;
+				width: 160px;
+				padding: 10px;
+				position: absolute;
+				bottom: 41px;
+				left: 50%;
+				margin-left: -90px;
+				opacity: 0;
+				visibility: hidden;
+				-moz-border-radius: 2px;
+				border-radius: 2px;
+				-webkit-transition: opacity 0.2s ease-in-out;
+				-moz-transition: opacity 0.2s ease-in-out;
+				transition: opacity 0.2s ease-in-out;
+				small {
+					color: #96979C;
+				}
+				h4 {
+					margin: 0;
+				}
+				.arrow {
+					width: 0; height: 0;
+					position: absolute;
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-top: 10px solid #fff;
+					bottom: -10px;
+					left: 50%;
+					margin-left: -10px;
+				}
+			}
+		}
+		.cluster .popup .story {
+			display: none;
+		}
+		.cluster.open .popup .story {
+			display: block;
+		}
+		.cluster.open .popup .count {
+			display: none;
+		}
+		.inplace {
+			height: 100%;
+			display: none;
+			width: 100%;
+			padding: 0 15px 5px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #000;
+		}
+		&.zoom-1,
+		&.zoom-2,
+		&.zoom-3,
+		&.zoom-4,
+		&.zoom-5 {
+			.story-points {
+				width: 12px;
+				height: 15px;
+				margin-top: -7px;
+				margin-left: -6px;
+				background-position: -80px -224px;
+				&.active {
+					background-position: -105px -224px;
+				}
+				.popup {
+					bottom: 26px;
+				}
+			}
+		}
+	}
+}
+
+.map-sidebar {
+	background: #000;
+	color: #96979C;
+	height: 100%;
+	width: 25%;
+	z-index: 1000;
+	word-wrap: break-word;
+	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
+	float: left;
+	&::-webkit-scrollbar {
+		background: #303030;
+		width: 15px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #666;
+		border-radius: 15px;
+		border: 5px #303030 solid;
+	}
+	.sidebar-inner {
+		padding: 10px 15px;
+	}
+	h2.title {
+		color: #fff;
+	}
+	object,
+	object embed,
+	iframe,
+	img {
+		max-width: 100%;
 	}
 }

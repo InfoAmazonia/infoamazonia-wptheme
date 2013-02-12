@@ -29,8 +29,11 @@
 			<em class="revision">
 				<?php
 				// get last post date
-				$last_post = array_shift(get_posts('post_type=any&posts_per_page=1'));
-				echo __('Last updated: ', 'infoamazonia') . get_the_date(false, $last_post);
+				$last_post = get_posts('post_type=post&posts_per_page=1');
+				if($last_post) {
+					$last_post = array_shift($last_post);
+					echo __('Last updated: ', 'infoamazonia') . get_the_date(false, $last_post);
+				}
 				?>
 			</em>
 			<aside class="right">

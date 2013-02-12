@@ -8,6 +8,7 @@
 
 		$('.map-container > .map').attr('id', 'map_' + post_id);
 		mapConf.containerID = map_id = 'map_' + post_id;
+		mapConf.postID = post_id;
 	});
 
 	var updateMapConf = function() {
