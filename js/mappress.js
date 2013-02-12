@@ -98,12 +98,6 @@ var mappress = {};
 		 */
 		map.ui.zoomer.add();
 
-		if(conf.center)
-			map.center(conf.center);
-
-		if(conf.zoom)
-			map.zoom(conf.zoom);
-
 		if(conf.extent) {
 			if(typeof conf.extent === 'string')
 				conf.extent = new MM.Extent.fromString(conf.extent);
@@ -130,6 +124,31 @@ var mappress = {};
 		if((conf.minZoom || conf.maxZoom) && !conf.preview)
 			map.setZoomRange(conf.minZoom, conf.maxZoom);
 
+		var center = conf.center;
+		var zoom = conf.zoom;
+
+		// setup hash
+		if(typeof mappress.fragment === 'function') {
+			var fragment = mappress.fragment();
+			var loc = fragment.get('loc');
+			if(loc) {
+				loc = loc.split(',');
+				if(loc.length = 3) {
+					center = {
+						lat: parseFloat(loc[0]),
+						lon: parseFloat(loc[1])
+					};
+					zoom = parseInt(loc[2]);
+
+					console.log(center);
+					console.log(zoom);
+				}
+			}
+		}
+		
+		map.centerzoom(center, zoom, true);
+
+		mappress.setupHash();
 		return map;
 
 	};

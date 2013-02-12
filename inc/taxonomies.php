@@ -30,15 +30,14 @@ function register_taxonomy_publisher() {
 
     $args = array( 
         'labels' => $labels,
-        'public' => false,
+        'public' => true,
         'show_in_nav_menus' => false,
         'show_ui' => true,
-        'show_tagcloud' => false,
-        'hierarchical' => false,
+        'show_tagcloud' => true,
+        'hierarchical' => true,
 
-        'rewrite' => false,
-        'query_var' => false,
-        'yarpp_support' => true
+        'rewrite' => array('slug' => 'publisher', 'with_front' => false),
+        'query_var' => true,
     );
 
     register_taxonomy('publisher', array('post'), $args);

@@ -117,26 +117,6 @@ h4 {
   line-height: 18px;
   margin: 0 0 8px;
   }
-a img,
-a {
-  font-family: 'OpenSansSemiboldRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
-  text-decoration: none;
-  color: #2c8fc6;
-  -moz-transition: all .25s ease;
-  -o-transition: all .25s ease;
-  -webkit-transition: all .25s ease;
-  transition: all .25s ease;
-  }
-  a:hover {
-    color: #92c9e7;
-    }
-a:hover img {
-  opacity:.65;
-  zoom:1;
-  }
-.active a:hover img {
-  opacity: 1;
-  }
 a.button {
   background: #77a832;
   border: 1px solid #77a832;

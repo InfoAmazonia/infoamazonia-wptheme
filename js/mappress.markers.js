@@ -5,8 +5,10 @@
 		var markers = mappress.markers;
 		var markersLayer = mapbox.markers.layer();
 		var features;
-
-		map.ui.hash.add();
+		var fragment = false;
+		var listPost;
+		if(typeof mappress.fragment === 'function')
+			fragment = mappress.fragment();
 
 		$.getJSON(mappress_markers.ajaxurl,
 		{
@@ -113,7 +115,7 @@
 						}
 
 						if(!$(this).hasClass('active'))
-							markers.open(x);
+							markers.open(x, false);
 
 					});
 
@@ -121,15 +123,73 @@
 
 				});
 
-			markers.open(geojson.features[0], true);
+
+			// FIRST STORY
+			var story = geojson.features[0];
+			var silent = true;
+
+			if(fragment) {
+				var fStoryID = fragment.get('story');
+				if(fStoryID) {
+					var found = _.any(geojson.features, function(c) {
+						if(c.properties.id == fStoryID) {
+							story = c;
+							if(!fragment.get('loc'))
+								silent = false;
+							return true;
+						}
+					});
+					if(!found) {
+						fragment.rm('story');
+					}
+				}
+			}
+			markers.open(story, silent);
+
+			// bind list post events
+			listPosts = $('.list-posts');
+			if(listPosts.length) {
+				listPosts.find('li').click(function() {
+					var markerID = $(this).attr('id');
+					document.body.scrollTop = 0;
+					markers.open(markerID, false);
+					return false;
+				});
+			}
 
 		};
 
 		mappress.markers.open = function(marker, silent) {
 
-			if(markers.hasLocation(marker) && !silent)
-				map.ease.location({lat: marker.geometry.coordinates[1], lon: marker.geometry.coordinates[0]}).zoom(9).optimal();
+			// if marker is string, get object
+			if(typeof marker === 'string') {
+				marker = _.find(features, function(m) { return m.properties.id === marker; });
+			}
 
+			if(fragment) {
+				if(!silent)
+					fragment.set({story: marker.properties.id});
+			}
+
+			if(!silent) {
+				if(markers.hasLocation(marker)) { 
+					var center = {
+						lat: marker.geometry.coordinates[1],
+						lon: marker.geometry.coordinates[0]
+					}
+					var zoom = 9;
+				} else {
+					var center = map.conf.center;
+					var zoom = map.conf.zoom;
+				}
+				map.ease.location(center).zoom(zoom).optimal(0.9, 1.42, function() {
+					if(fragment) {
+						fragment.rm('loc');
+					}
+				});				
+			}
+
+			// populate sidebar
 			if(map.$.sidebar.length) {
 				map.$.find('.story-points').removeClass('active');
 				var $point = map.$.find('.story-points.' + marker.properties.id);
@@ -145,6 +205,16 @@
 				story += storyData.story;
 
 				map.$.sidebar.empty().append($(story));
+			}
+
+			// activate post in post list
+			var postList = $('.list-posts');
+			if(postList.length) {
+				postList.find('li').removeClass('active');
+				var item = postList.find('#' + marker.properties.id);
+				if(item.length) {
+					item.addClass('active');
+				}
 			}
 		};
 
