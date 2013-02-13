@@ -32,3 +32,6 @@ function infoamazonia_scripts() {
 	wp_enqueue_style('site');
 }
 add_action('wp_enqueue_scripts', 'infoamazonia_scripts');
+
+
+include(TEMPLATEPATH . '/inc/import-geojson.php');
