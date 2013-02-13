@@ -172,15 +172,19 @@
 			}
 
 			if(!silent) {
+				var zoom;
+				var center;
 				if(markers.hasLocation(marker)) { 
-					var center = {
+					center = {
 						lat: marker.geometry.coordinates[1],
 						lon: marker.geometry.coordinates[0]
 					}
-					var zoom = 9;
+					zoom = 9;
+					if(map.conf.maxZoom < 9)
+						zoom = map.conf.maxZoom;
 				} else {
-					var center = map.conf.center;
-					var zoom = map.conf.zoom;
+					center = map.conf.center;
+					zoom = map.conf.zoom;
 				}
 				map.ease.location(center).zoom(zoom).optimal(0.9, 1.42, function() {
 					if(fragment) {
