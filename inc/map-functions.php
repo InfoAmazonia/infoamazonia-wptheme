@@ -5,7 +5,7 @@ function mappress_setup() {
 	include(TEMPLATEPATH . '/inc/map-post-types.php');
 
 	add_theme_support('post-thumbnails');
-	add_image_size('map-group-thumb', 230, 152, true);
+	add_image_size('post-thumb', 245, 90, true);
 }
 add_action('after_setup_theme', 'mappress_setup');
 
@@ -19,12 +19,12 @@ function mappress_scripts() {
 
 	wp_register_script('d3js', get_template_directory_uri() . '/lib/d3.v2.min.js', array('jquery'), '3.0.5');
 
-	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.6.25');
+	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.6.26');
 	wp_enqueue_script('mappress.hash', get_template_directory_uri() . '/js/mappress.hash.js', array('mappress', 'underscore'), '0.0.1.5');
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.3');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
 	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.5');
-	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.11');
+	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.14');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
 
@@ -37,7 +37,12 @@ function mappress_scripts() {
 
 	wp_localize_script('mappress.groups', 'mappress_groups', array('ajaxurl' => admin_url('admin-ajax.php')));
 
-	wp_localize_script('mappress.markers', 'mappress_markers', array('ajaxurl' => admin_url('admin-ajax.php')));
+	global $wp_query;
+	wp_localize_script('mappress.markers', 'mappress_markers', array(
+		'ajaxurl' => admin_url('admin-ajax.php?lang=' . qtrans_getLanguage()),
+		'query' => $wp_query->query_vars
+		)
+	);
 }
 add_action('wp_enqueue_scripts', 'mappress_scripts');
 
@@ -119,64 +124,64 @@ add_action('wp_ajax_markers_geojson', 'mappress_get_markers_data');
 function mappress_get_markers_data() {
 
 	$map_id = $_REQUEST['map_id'];
-	$data = array();
+	$query = $_REQUEST['query'];
 
-	if(get_post_type($map_id) != 'map' && get_post_type($map_id) != 'map-group')
-		return;
+	$data = wp_cache_get($map_id . '_geojson');
 
-	$query = false;
-	if(isset($map_id))
-		$query = get_post_meta($map_id, 'markers', true);
+	if($data === false) {
 
-	if(!$query) { // if no query, show all posts on currently available query
+		$data = array();
 
-		$query = array(
-			'post_type' => 'post',
-			'posts_per_page' => -1
-		);
+		if(get_post_type($map_id) != 'map' && get_post_type($map_id) != 'map-group')
+			return;
 
-		$posts = wp_cache_get('all_posts');
-		if($posts === false) {
-			$posts = get_posts($query);
-			wp_cache_set('all_posts', $posts);
-		}
-
-	} else {
+		$query['posts_per_page'] = -1;
 
 		$posts = get_posts($query);
 
-	}
+		if($posts) {
+			global $post;
+			$data['type'] = 'FeatureCollection';
+			$data['features'] = array();
+			$i = 0;
+			foreach($posts as $post) {
 
-	if($posts) {
-		global $post;
-		$data['type'] = 'FeatureCollection';
-		$data['features'] = array();
-		$i = 0;
-		foreach($posts as $post) {
+				setup_postdata($post);
 
-			setup_postdata($post);
+				$data['features'][$i]['type'] = 'Feature';
 
-			$data['features'][$i]['type'] = 'Feature';
+				$data['features'][$i]['geometry'] = array();
+				$data['features'][$i]['geometry']['type'] = 'Point';
+				$data['features'][$i]['geometry']['coordinates'] = array(get_post_meta($post->ID, 'geocode_longitude', true), get_post_meta($post->ID, 'geocode_latitude', true));
 
-			$data['features'][$i]['geometry'] = array();
-			$data['features'][$i]['geometry']['type'] = 'Point';
-			$data['features'][$i]['geometry']['coordinates'] = array(get_post_meta($post->ID, 'geocode_longitude', true), get_post_meta($post->ID, 'geocode_latitude', true));
+				$data['features'][$i]['properties'] = array();
+				$data['features'][$i]['properties']['id'] = 'post-' . $post->ID;
+				$data['features'][$i]['properties']['title'] = get_the_title();
+				$data['features'][$i]['properties']['date'] = get_the_date(__('m/d/Y', 'infoamazonia'));
+				$data['features'][$i]['properties']['story'] = get_the_content();
+				$data['features'][$i]['properties']['url'] = get_post_meta($post->ID, 'url', true);
 
-			$data['features'][$i]['properties'] = array();
-			$data['features'][$i]['properties']['id'] = 'post-' . $post->ID;
-			$data['features'][$i]['properties']['title'] = get_the_title($post->ID);
-			$data['features'][$i]['properties']['date'] = get_the_date($post->ID);
-			$data['features'][$i]['properties']['story'] = get_the_content();
-			$data['features'][$i]['properties']['url'] = get_post_meta($post->ID, 'url', true);
-			$data['features'][$i]['properties']['source'] = get_post_meta($post->ID, 'publisher', true);
+				// source
+				$publishers = get_the_terms($post->ID, 'publisher');
+				if($publishers) {
+					$publisher = array_shift($publishers);
+					$data['features'][$i]['properties']['source'] = $publisher->name;
+				}
 
-			$i++;
+				// thumbnail
+				$thumb_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post-thumb');
+				if($thumb_src)
+					$data['features'][$i]['properties']['thumbnail'] = $thumb_src[0];
 
-			wp_reset_postdata();
+				$i++;
+
+				wp_reset_postdata();
+			}
 		}
+		$data = json_encode($data);
+		wp_cache_set($map_id . '_geojson', $data, 'map_data');
 	}
 
-	$data = json_encode($data);
 	header('Content Type: application/json');
 	echo $data;
 	exit;

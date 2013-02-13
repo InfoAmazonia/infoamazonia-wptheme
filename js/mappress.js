@@ -139,13 +139,10 @@ var mappress = {};
 						lon: parseFloat(loc[1])
 					};
 					zoom = parseInt(loc[2]);
-
-					console.log(center);
-					console.log(zoom);
 				}
 			}
 		}
-		
+
 		map.centerzoom(center, zoom, true);
 
 		mappress.setupHash();

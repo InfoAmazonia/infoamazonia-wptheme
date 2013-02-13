@@ -7,13 +7,15 @@
 		var features;
 		var fragment = false;
 		var listPost;
+		
 		if(typeof mappress.fragment === 'function')
 			fragment = mappress.fragment();
 
 		$.getJSON(mappress_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
-			map_id: map.conf.postID
+			map_id: map.conf.postID,
+			query: mappress_markers.query
 		},
 		function(geojson) {
 			markers.build(geojson);

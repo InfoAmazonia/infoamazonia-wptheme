@@ -192,10 +192,6 @@ img.thumbnail {
   }
 
 /* Inliners */
-form {
-  display: block;
-  margin: 10px 0;
-  }
 label {
   font-family: 'OpenSansSemiboldRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
   font-size: 8px;
@@ -236,16 +232,11 @@ input,
 textarea,
 select {
   display: inline-block;
-  width: 90%;
   padding: 0 8px;
   font-size: 13px;
   color: #666;
   background-color: white;
   border: 1px solid #b0b0b0;
-  }
-input {
-  /*height: 28px;
-  line-height: 28px;*/
   }
 input,
 textarea {
@@ -397,10 +388,6 @@ textarea {
 .stage {
   background: #f0f0f0;
   padding-bottom: 15px;
-  }
-.filter {
-  height: 40px;
-  padding-top: 20px;
   }
   ul.layers li a,
   .filter a {
