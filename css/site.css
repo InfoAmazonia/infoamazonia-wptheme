@@ -316,58 +316,6 @@ textarea {
         background-image:         linear-gradient(to bottom, #8ec63d, #77a832);
         color: #fff;
         }
-
-#footer {
-  margin-top: 20px;
-  padding: 50px 0 0;
-  height: 120px;
-  background: #fff;
-  color: #96979C;
-  }
-#footer ul {
-  position: relative;
-  margin: 0 auto;
-  width: 630px;
-  }
-#footer li a.icon {
-  height: 50px;
-  margin-left: 0;
-  margin-right: 15px;
-  }
-#footer li.label {
-  position: absolute;
-  top: -30px;
-  left: 0;
-  }
-  #footer li.label.supported {
-    left: 275px;
-    }
-
-#footer li a.icon.oeco      { background-position: -390px 5px;    width: 110px; }
-#footer li a.icon.internews { background-position: -367px -55px;  width: 133px; }
-#footer li a.icon.cdkn      {
-  background-position: -361px -115px;
-  width: 140px;
-  height: 56px;
-  position: relative;
-  top: -5px;
-  }
-#footer li a.icon.knight    {
-  background-position: -228px -169px;
-  width: 100px;
-  height: 75px;
-  position: relative;
-  top: -18px;
-  }
-#footer li a.icon.devseed   {
-  background-position: -270px 0;
-  width: 85px;
-  margin: 0;
-  height: 55px;
-  position: relative;
-  top: -8px;
-  }
-
 /* Language */
 .lang-en .lang-es,
 .lang-en .lang-pt {

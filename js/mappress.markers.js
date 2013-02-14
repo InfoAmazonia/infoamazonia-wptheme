@@ -150,7 +150,6 @@
 					}
 				}
 			}
-			markers.open(story, silent);
 
 			// bind list post events
 			listPosts = $('.list-posts');
@@ -161,7 +160,11 @@
 					markers.open(markerID, false);
 					return false;
 				});
+
+				story = listPosts.find('li:nth-child(1)').attr('id');
 			}
+
+			markers.open(story, silent);
 
 		};
 
@@ -185,8 +188,8 @@
 						lat: marker.geometry.coordinates[1],
 						lon: marker.geometry.coordinates[0]
 					}
-					zoom = 9;
-					if(map.conf.maxZoom < 9)
+					zoom = 7;
+					if(map.conf.maxZoom < 7)
 						zoom = map.conf.maxZoom;
 				} else {
 					center = map.conf.center;

@@ -9,7 +9,7 @@
 			if(is_tax('publisher')) {
 				$current_publisher = get_query_var('publisher');
 				$current_publisher = get_term_by('slug', $publisher, 'publisher');
-				$title = '<h2 class="title">' . $current_publisher->name . '</h2>';
+				$title = '<h1 class="title">' . $current_publisher->name . '</h1>';
 			}
 			if($publishers) : ?>
 				<div class="box">
@@ -40,12 +40,23 @@
 		</div>
 	<?php elseif(is_search()) : ?>
 
-		<?php echo '<h2 class="title">' . __('Search results for: ', 'infoamazonia') . '"' . $_REQUEST['s'] . '"</h2>'; ?>
+		<?php echo '<h1 class="title">' . __('Search results for: ', 'infoamazonia') . '"' . $_REQUEST['s'] . '"</h1>'; ?>
 
-	<?php endif; ?>
+	<?php
+	elseif(is_archive()) :
+		if (is_day()) :
+			printf('<h1 class="title">' . __('Daily Archives: %s', 'infoamazonia' ), get_the_date() . '</h1>' );
+		elseif (is_month()) :
+			printf('<h1 class="title">' . __( 'Monthly Archives: %s', 'infoamazonia' ), get_the_orig_date(_x('F Y', 'monthly archives date format', 'infoamazonia')) . '</h1>');
+		elseif (is_year()) :
+			printf('<h1 class="title">' . __('Yearly Archives: %s', 'infoamazonia'), get_the_orig_date(_x('Y', 'yearly archives date format', 'infoamazonia')) . '</h1>');
+		else :
+			_e( 'Archives', 'twentytwelve' );
+		endif;
+	endif; ?>
 
 	<div class="clearfix">
-		<?php get_search_form(); ?>
+		<?php // get_search_form(); ?>
 	</div>
 
 </div>

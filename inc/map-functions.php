@@ -24,7 +24,7 @@ function mappress_scripts() {
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.3');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
 	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.5');
-	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.22');
+	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.24');
 	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.2');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
@@ -131,7 +131,7 @@ function mappress_get_markers_data() {
 	$query_id = md5(serialize($query));
 
 	$data = false;
-	//$data = get_transient($query_id . '_geojson');
+	$data = get_transient($query_id . '_geojson');
 
 	if($data === false) {
 
@@ -169,7 +169,7 @@ function mappress_get_markers_data() {
 				$data['features'][$i]['properties'] = array();
 				$data['features'][$i]['properties']['id'] = 'post-' . $post->ID;
 				$data['features'][$i]['properties']['title'] = get_the_title();
-				$data['features'][$i]['properties']['date'] = get_the_date(__('m/d/Y', 'infoamazonia'));
+				$data['features'][$i]['properties']['date'] = get_the_orig_date(_x('m/d/Y', 'reduced date format', 'infoamazonia'));
 				$data['features'][$i]['properties']['story'] = apply_filters('the_content', get_the_content());
 				$data['features'][$i]['properties']['url'] = get_post_meta($post->ID, 'url', true);
 
@@ -197,7 +197,7 @@ function mappress_get_markers_data() {
 		set_transient($query_id . '_geojson', $data, 60*60*1);
 	}
 
-	$expires = 60 * 60 * 1;
+	$expires = 60 * 15; // 15 minutes of browser cache
 	header('Pragma: public');
 	header('Cache-Control: maxage=' . $expires);
 	header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $expires) . ' GMT');

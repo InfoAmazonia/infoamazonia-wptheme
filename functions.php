@@ -35,5 +35,32 @@ function infoamazonia_scripts() {
 }
 add_action('wp_enqueue_scripts', 'infoamazonia_scripts');
 
+// infoamazonia setup
+
+function infoamazonia_setup() {
+
+	//sidebars
+	register_sidebar(array(
+		'name' => __('Main widgets', 'infoamazonia'),
+		'id' => 'main-sidebar',
+		'description' => __('Widgets used on front and inside pages.', 'infoamazonia'),
+		'before_title' => '<h3>',
+		'after_title' => '</h3>'
+	));
+
+}
+add_action('after_setup_theme', 'infoamazonia_setup');
+
+// fix forced formated date on qtranslate
+function get_the_orig_date($format = false) {
+	global $post;
+	$date = get_the_date($format);
+	if(function_exists('qtrans_getLanguage')) {
+		remove_filter('get_the_date', 'qtrans_dateFromPostForCurrentLanguage', 0, 4);
+		$date = get_the_date($format);
+		add_filter('get_the_date', 'qtrans_dateFromPostForCurrentLanguage', 0, 4);
+	}
+	return $date;
+}
 
 include(TEMPLATEPATH . '/inc/import-geojson.php');
