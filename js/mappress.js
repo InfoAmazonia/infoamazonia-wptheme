@@ -81,8 +81,6 @@ var mappress = {};
 		var layers = mappress.setupLayers(conf.layers);
 		map.addLayer(mapbox.layer().id(layers, function() {
 
-			// overwrite interaction with custom
-			// map.interaction = mappress.interaction().map(map);
 			map.interaction.auto();
 
 			if(conf.geocode)
@@ -97,6 +95,12 @@ var mappress = {};
 		 * CONFS
 		 */
 		map.ui.zoomer.add();
+
+		if(conf.legend)
+			map.ui.legend.add().content(conf.legend);
+
+		if(conf.legend_page)
+			mappress.enableDetails(map, conf.legend, conf.legend_page);
 
 		if(conf.extent) {
 			if(typeof conf.extent === 'string')
@@ -189,64 +193,32 @@ var mappress = {};
 	};
 
 	/*
-	 * Custom interaction
+	 * Legend page (map details)
 	 */
+	mappress.enableDetails = function(map, legend, page_id) {
+		map.ui.legend.add().content(legend + '<span class="map-details-link">' + mappress_localization.more_label + '</span>');
 
-	mappress.interaction = function() {
+		var isMapGroup = map.$.parents('.mapgroup').length;
+		var $detailsContainer = map.$.parents('.map-container');
+		if(isMapGroup)
+			$detailsContainer = map.$.parents('.mapgroup');
 
-	    var interaction = wax.mm.interaction(),
-	        auto = false;
+		map.$.find('.map-details-link').unbind().click(function() {
 
-	    /*
-	    interaction.refresh = function() {
-	        var map = interaction.map();
-	        if (!auto || !map) return interaction;
-
-			var interactive_layers = [];
-			if(map.layers.length >= 2) {
-
-				$.each(map.layers, function(i, layer) {
-					if(layer._mapboxhosting && layer.tilejson && layer.enabled) {
-						interactive_layers.push(layer._id);
-					}
+			$.get(mappress_localization.ajaxurl,
+			{
+				action: 'map_details',
+				page_id: page_id
+			},
+			function(data) {
+				$detailsContainer.append($('<div class="map-details-page"><div class="inner"><a href="#" class="close">×</a>' + data + '</div></div>'));
+				$detailsContainer.find('.map-details-page .close, .map-nav a').click(function() {
+					$detailsContainer.find('.map-details-page').remove();
+					return false;
 				});
+			});
 
-				var tilejson_url = 'http://api.tiles.mapbox.com/v3/' + interactive_layers.join() + '.jsonp';
-				return wax.tilejson(tilejson_url, function(tj) { return interaction.tilejson(tj); });
-
-			} else {
-
-                var tj = map.layers[0].tilejson && map.layers[0].tilejson();
-                if (tj && tj.template) return interaction.tilejson(tj);
-
-			}
-	    };
-	    */
-
-	    interaction.refresh = function() {
-	        var map = interaction.map();
-	        if (!auto || !map) return interaction;
-	        for (var i = map.layers.length - 1; i >= 0; i --) {
-	            if (map.layers[i].enabled) {
-	                var tj = map.layers[i].tilejson && map.layers[i].tilejson();
-	                if (tj && tj.template) return interaction.tilejson(tj);
-	            }
-	        }
-	        return interaction.tilejson({});
-	    };
-
-	    interaction.auto = function() {
-	        auto = true;
-	        interaction
-		        .on(wax.tooltip()
-		            .animate(true)
-		            .parent(interaction.map().parent)
-		            .events())
-		        .on(wax.location().events());
-	        return interaction.refresh();
-	    };
-
-	    return interaction;
+		});
 	}
 
 	/*
@@ -296,6 +268,12 @@ var mappress = {};
 
 		if(conf.geocode)
 			newConf.geocode = true;
+
+		if(conf.legend)
+			newConf.legend = conf.legend;
+
+		if(conf.legend_page)
+			newConf.legend_page = conf.legend_page;
 
 		return newConf;
 	}

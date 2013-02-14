@@ -54,6 +54,10 @@ function infoamazonia_setup() {
 }
 add_action('after_setup_theme', 'infoamazonia_setup');
 
+/*
+ * qTranslate fixes
+ */
+
 // fix forced formated date on qtranslate
 function get_the_orig_date($format = false) {
 	global $post;

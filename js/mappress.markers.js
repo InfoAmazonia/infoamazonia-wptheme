@@ -79,7 +79,7 @@
 							$(e).hover(function() {
 								var len = $('.' + cluster + ':not(.hide)').length;
 								if (len > 1) {
-									$('.count h4', this).text(len + ' stories');
+									$('.count h4', this).text(len + ' ' + mappress_markers.stories_label);
 								} else {
 									$(e).addClass('open');
 								}
@@ -140,8 +140,8 @@
 					var found = _.any(geojson.features, function(c) {
 						if(c.properties.id == fStoryID) {
 							story = c;
-							if(!fragment.get('loc'))
-								silent = false;
+							if(fragment.get('loc'))
+								silent = true;
 							return true;
 						}
 					});

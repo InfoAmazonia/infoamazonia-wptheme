@@ -85,10 +85,18 @@ var groups = {};
 				group.map.$.widgets.empty();
 
 				if(conf.geocode)
-					mappress.geocode(mapID);
+					mappress.geocode(group.id);
 
 				if(conf.filteringLayers)
 					mappress.filterLayers(group.id, conf.filteringLayers);
+
+				group.map.ui.legend.remove();
+
+				if(conf.legend)
+					group.map.ui.legend.add().content(conf.legend);
+
+				if(conf.legend_page)
+					mappress.enableDetails(group.map, conf.legend, conf.legend_page);
 
 			});
 
