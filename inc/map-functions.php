@@ -24,14 +24,15 @@ function mappress_scripts() {
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.3');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
 	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.5');
-	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.14');
+	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.22');
+	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.2');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
 
 	wp_localize_script('mappress.geocode', 'mappress_labels', array(
 		'search_placeholder' => __('Find a location', 'infoamazonia'),
 		'results_title' => __('Results', 'infoamazonia'),
-		'clear_search' => __('Clear search', 'infoamazonia')
+		'clear_search' => __('Clear search', 'infoamazonia'),
 		)
 	);
 
@@ -40,7 +41,9 @@ function mappress_scripts() {
 	global $wp_query;
 	wp_localize_script('mappress.markers', 'mappress_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php?lang=' . qtrans_getLanguage()),
-		'query' => $wp_query->query_vars
+		'query' => $wp_query->query_vars,
+		'stories_label' => __('stories', 'infoamazonia'),
+		'home' => is_front_page()
 		)
 	);
 }
@@ -152,7 +155,14 @@ function mappress_get_markers_data() {
 
 				$data['features'][$i]['geometry'] = array();
 				$data['features'][$i]['geometry']['type'] = 'Point';
-				$data['features'][$i]['geometry']['coordinates'] = array(get_post_meta($post->ID, 'geocode_longitude', true), get_post_meta($post->ID, 'geocode_latitude', true));
+
+				$latitude = get_post_meta($post->ID, 'geocode_latitude', true);
+				$longitude = get_post_meta($post->ID, 'geocode_longitude', true);
+
+				if($latitude && $longitude)
+					$data['features'][$i]['geometry']['coordinates'] = array($longitude, $latitude);
+				else
+					$data['features'][$i]['geometry']['coordinates'] = array(0, 0);
 
 				$data['features'][$i]['properties'] = array();
 				$data['features'][$i]['properties']['id'] = 'post-' . $post->ID;
@@ -172,6 +182,9 @@ function mappress_get_markers_data() {
 				$thumb_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post-thumb');
 				if($thumb_src)
 					$data['features'][$i]['properties']['thumbnail'] = $thumb_src[0];
+				else {
+					$data['features'][$i]['properties']['thumbnail'] = get_post_meta($post->ID, 'picture', true);
+				}
 
 				$i++;
 
@@ -187,4 +200,32 @@ function mappress_get_markers_data() {
 	exit;
 }
 
+add_action('wp_footer', 'mappress_submit');
+function mappress_submit() {
+	?>
+	<div id="submit-story">
+		<div class="submit-container">
+			<div class="submit-area">
+				<h2><?php _e('Submit a story', 'infoamazonia'); ?></h2>
+				<div class="choice">
+					<p><?php _e('Do you have news to share from the Amazon? Contribute to this map by submitting your story. Help broaden the understanding of the global impact of this important region in the world.', 'infoamazonia'); ?></p>
+					<div class="story-type">
+						<a href="#" class="submit-story-url button"><?php _e('Submit a url', 'infoamazonia'); ?></a>
+						<a href="#" class="submit-story-full button"><?php _e('Submit full story', 'infoamazonia'); ?></a>
+					</div>
+				</div>
+				<?php /*
+				<form id="submit-story-full">
+				</form>
+				<form id="submit-story-url">
+					<label for="full_name"><?php _e('Your full name', 'infoamazonia'); ?></label>
+					<input type="text" id="full_name" />
+				</form>
+				*/ ?>
+				<a href="#" class="close-submit-story"><?php _e('Close', 'infoamazonia'); ?></a>
+			</div>
+		</div>
+	</div>
+	<?php
+}
 ?>

@@ -31,7 +31,7 @@ function import_geojson() {
 			set_transient('imported_geojson', $geojson, 60*60*12);
 		}
 
-		print_r($geojson['en']['features'][0]);
+		//print_r($geojson['en']['features'][0]);
 
 		$posts = array();
 		foreach($geojson as $lang_key => $langs) {
@@ -126,6 +126,8 @@ function import_geojson() {
 			$i++;
 
 		}
+
+		echo 'done.';
 
 		exit;
 	}

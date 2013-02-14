@@ -659,6 +659,7 @@ header#masthead {
 		p.meta {
 			color: #96979C;
 			font: 12px/16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			margin-bottom: 5px;
 		}
 		&.active {
 			border-color: #77a832;
@@ -677,6 +678,40 @@ header#masthead {
 			&:hover {
 				opacity: 1;
 			}
+		}
+	}
+}
+
+/*
+ * Submit story
+ */
+
+#submit-story {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .7);
+	z-index: 999999;
+	display: none;
+	&.active {
+		display: block;
+	}
+	.submit-container {
+		width: 600px;
+		padding: 40px;
+		box-sizing: border-box;
+		border-radius: 5px;
+		top: 300px;
+		left: 50%;
+		margin-left: -300px;
+		margin-top: -150px;
+		position: absolute;
+		background: #f0f0f0;
+		box-shadow: 0 0 0px 10px rgba(0, 0, 0, .2);
+		p {
+			margin: 0 0 15px;
 		}
 	}
 }

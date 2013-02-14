@@ -130,6 +130,10 @@
 			var story = geojson.features[0];
 			var silent = true;
 
+			// if not home, navigate to post
+			if(!mappress_markers.home) 
+				silent = false;
+
 			if(fragment) {
 				var fStoryID = fragment.get('story');
 				if(fStoryID) {
