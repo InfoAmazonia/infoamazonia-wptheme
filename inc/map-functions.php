@@ -131,7 +131,8 @@ function mappress_get_markers_data() {
 
 	$query_id = md5(serialize($query));
 
-	$data = get_transient($query_id . '_geojson');
+	$data = false;
+	//$data = get_transient($query_id . '_geojson');
 
 	if($data === false) {
 
@@ -170,7 +171,7 @@ function mappress_get_markers_data() {
 				$data['features'][$i]['properties']['id'] = 'post-' . $post->ID;
 				$data['features'][$i]['properties']['title'] = get_the_title();
 				$data['features'][$i]['properties']['date'] = get_the_date(__('m/d/Y', 'infoamazonia'));
-				$data['features'][$i]['properties']['story'] = get_the_content();
+				$data['features'][$i]['properties']['story'] = apply_filters('the_content', get_the_content());
 				$data['features'][$i]['properties']['url'] = get_post_meta($post->ID, 'url', true);
 
 				// source

@@ -31,8 +31,10 @@
 				// get last post date
 				$last_post = get_posts('post_type=post&posts_per_page=1');
 				if($last_post) {
-					$last_post = array_shift($last_post);
-					echo __('Last updated: ', 'infoamazonia') . get_the_date(false, $last_post);
+					$post = array_shift($last_post);
+					setup_postdata($post);
+					echo __('Last updated: ', 'infoamazonia') . get_the_date();
+					wp_reset_postdata();
 				}
 				?>
 			</em>
