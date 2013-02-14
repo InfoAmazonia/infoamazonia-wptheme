@@ -39,6 +39,9 @@ add_action('wp_enqueue_scripts', 'infoamazonia_scripts');
 
 function infoamazonia_setup() {
 
+	// text domain
+	load_theme_textdomain('infoamazonia', get_template_directory() . '/languages');
+
 	//sidebars
 	register_sidebar(array(
 		'name' => __('Main widgets', 'infoamazonia'),

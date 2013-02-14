@@ -24,7 +24,7 @@ function mappress_scripts() {
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.3');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
 	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.5');
-	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.24');
+	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.26');
 	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.2');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
@@ -128,10 +128,14 @@ function mappress_get_markers_data() {
 	$map_id = $_REQUEST['map_id'];
 	$query = $_REQUEST['query'];
 
+	// all posts
+	$query['posts_per_page'] = -1;
+	unset($query['paged']);
+
 	$query_id = md5(serialize($query));
 
 	$data = false;
-	$data = get_transient($query_id . '_geojson');
+	//$data = get_transient($query_id . '_geojson');
 
 	if($data === false) {
 
@@ -139,8 +143,6 @@ function mappress_get_markers_data() {
 
 		if(get_post_type($map_id) != 'map' && get_post_type($map_id) != 'map-group')
 			return;
-
-		$query['posts_per_page'] = -1;
 
 		$posts = get_posts($query);
 
@@ -193,6 +195,7 @@ function mappress_get_markers_data() {
 				wp_reset_postdata();
 			}
 		}
+		$data['query_id'] = $query_id;
 		$data = json_encode($data);
 		set_transient($query_id . '_geojson', $data, 60*60*1);
 	}

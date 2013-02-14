@@ -33,7 +33,7 @@
 				if($last_post) {
 					$post = array_shift($last_post);
 					setup_postdata($post);
-					echo __('Last updated: ', 'infoamazonia') . get_the_date();
+					echo __('Last updated:', 'infoamazonia') . ' ' . get_the_date();
 					wp_reset_postdata();
 				}
 				?>
