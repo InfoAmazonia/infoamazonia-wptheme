@@ -125,7 +125,6 @@ function mappress_get_mapgroup_data() {
 add_action('wp_ajax_nopriv_markers_geojson', 'mappress_get_markers_data');
 add_action('wp_ajax_markers_geojson', 'mappress_get_markers_data');
 function mappress_get_markers_data() {
-
 	$map_id = $_REQUEST['map_id'];
 	$query = $_REQUEST['query'];
 
@@ -198,6 +197,10 @@ function mappress_get_markers_data() {
 		set_transient($query_id . '_geojson', $data, 60*60*1);
 	}
 
+	$expires = 60 * 60 * 1;
+	header('Pragma: public');
+	header('Cache-Control: maxage=' . $expires);
+	header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $expires) . ' GMT');
 	header('Content Type: application/json');
 	echo $data;
 	exit;
