@@ -129,7 +129,9 @@ function mappress_get_markers_data() {
 	$map_id = $_REQUEST['map_id'];
 	$query = $_REQUEST['query'];
 
-	$data = wp_cache_get($map_id . '_geojson');
+	$query_id = md5(serialize($query));
+
+	$data = get_transient($query_id . '_geojson');
 
 	if($data === false) {
 
@@ -192,7 +194,7 @@ function mappress_get_markers_data() {
 			}
 		}
 		$data = json_encode($data);
-		wp_cache_set($map_id . '_geojson', $data, 'map_data');
+		set_transient($query_id . '_geojson', $data, 60*60*1);
 	}
 
 	header('Content Type: application/json');
