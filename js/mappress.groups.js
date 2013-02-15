@@ -12,10 +12,10 @@ var groups = {};
 			group_id: groupID
 		},
 		function(data) {
-			mappress.group.build(data);
+			group.build(data);
 		});
 
-		mappress.group.build = function(data) {
+		group.build = function(data) {
 
 			group.$ = $('#mapgroup-' + groupID);
 
@@ -41,6 +41,7 @@ var groups = {};
 
 			// build group
 			group.map = mappress(group.conf);
+			group.map.currentMapID = firstMapID;
 
 			// bind nav events
 			group.$.nav.find('li a').click(function() {
@@ -54,14 +55,14 @@ var groups = {};
 				$(this).addClass('active');
 
 				// update layers
-				mappress.group.update(mapID);
+				group.update(mapID);
 
 				return false;
 			});
 
 		}
 
-		mappress.group.update = function(mapID) {
+		group.update = function(mapID) {
 
 			group.map = mappress.maps[group.id];
 
@@ -95,13 +96,17 @@ var groups = {};
 				if(conf.legend_page)
 					mappress.enableDetails(group.map, conf.legend, conf.legend_page);
 
+				group.map.markersLayer.features(group.map.features);
+
 			});
 
 			// update current map id
 			group.currentMapID = mapID;
+			group.map.currentMapID = mapID;
 		}
 
 		groups[group.id] = group;
+		return group;
 	}
 
 })(jQuery);

@@ -19,12 +19,12 @@ function mappress_scripts() {
 
 	wp_register_script('d3js', get_template_directory_uri() . '/lib/d3.v2.min.js', array('jquery'), '3.0.5');
 
-	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.6.50');
+	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.6.52');
 	wp_enqueue_script('mappress.hash', get_template_directory_uri() . '/js/mappress.hash.js', array('mappress', 'underscore'), '0.0.1.6');
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.4');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
-	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.21');
-	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.53');
+	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.27');
+	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.59');
 	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.2');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
@@ -275,6 +275,14 @@ function mappress_get_markers_data() {
 					$data['features'][$i]['properties']['thumbnail'] = $thumb_src[0];
 				else {
 					$data['features'][$i]['properties']['thumbnail'] = get_post_meta($post->ID, 'picture', true);
+				}
+
+				// maps
+				$maps = get_post_meta($post->ID, 'maps');
+				if($maps && !empty($maps)) {
+					foreach($maps as $map) {
+						$data['features'][$i]['properties']['maps'][] = $map;
+					}
 				}
 
 				$i++;

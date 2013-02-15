@@ -34,12 +34,13 @@
 
 		mappress.markers.build = function(geojson) {
 
-			map.draw();
 			map.addLayer(markersLayer);
-			map.markers = [];
 
 			// do clustering
 			features = markers.doClustering(geojson.features);
+
+			map.features = features;
+			map.markersLayer = markersLayer;
 
 			markersLayer
 				.features(features)
@@ -48,7 +49,8 @@
 				})
 				.factory(function(x) {
 
-					map.markers.push(x);
+					if(!markers.fromMap(x))
+						return;
 
 					if(!markers.hasLocation(x))
 						return;
@@ -172,6 +174,10 @@
 				listPosts.find('li').click(function() {
 					var markerID = $(this).attr('id');
 					document.body.scrollTop = 0;
+					var markerMap = markers.fromMap(markerID);
+					if(!markerMap) {
+						// to do, update map group map nav through map (only one) from post	
+					}
 					markers.open(markerID, false);
 					return false;
 				});
@@ -182,6 +188,10 @@
 			markers.open(story, silent);
 
 		};
+
+		mappress.markers.getMarker = function(id) {
+			return _.find(features, function(m) { return m.properties.id === id; });
+		}
 
 		mappress.markers.open = function(marker, silent) {
 
@@ -251,6 +261,18 @@
 				return false;
 			else
 				return true;
+		}
+
+		mappress.markers.fromMap = function(x) {
+			// if marker is string, get object
+			if(typeof x === 'string') {
+				x = _.find(features, function(m) { return m.properties.id === x; });
+			}
+
+			if(!x.properties.maps)
+				return true;
+
+			return _.find(x.properties.maps, function(markerMap) { return 'map_' + markerMap == map.currentMapID; });
 		}
 
 		mappress.markers.doClustering = function(features) {
