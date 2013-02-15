@@ -20,13 +20,10 @@ function mapbox_legend_add_meta_box() {
 
 function mapbox_legend_inner_custom_box($post) {
 	$legend = get_post_meta($post->ID, 'legend', true);
-	$legend_page = get_post_meta($post->ID, 'legend_page', true);
 	?>
 	<div id="mapbox-legend-metabox">
 		<h4><?php _e('Enter your HTML code to use as legend on the map', 'infoamazonia'); ?></h4>
 		<textarea style="width:100%;height:100px;" name="mapbox_legend" id="mapbox_legend_textarea"><?php if($legend) echo $legend; ?></textarea>
-		<h4><?php _e('Select the page with more information on this map', 'infoamazonia'); ?></h4>
-		<?php wp_dropdown_pages(array('show_option_none' => '--------', 'name' => 'mapbox_legend_page', 'selected' => $legend_page)); ?>
 	</div>
 	<?php
 }
@@ -43,9 +40,6 @@ function mapbox_legend_save_postdata($post_id) {
 
 	if(isset($_POST['mapbox_legend']))
 		update_post_meta($post_id, 'legend', $_POST['mapbox_legend']);
-
-	if(isset($_POST['mapbox_legend_page']))
-		update_post_meta($post_id, 'legend_page', $_POST['mapbox_legend_page']);
 
 }
 
