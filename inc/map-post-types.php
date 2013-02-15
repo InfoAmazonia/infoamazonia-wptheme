@@ -75,7 +75,7 @@ function register_cpt_map_group() {
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => true,
-        'has_archive' => false,
+        'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
         'rewrite' => array('slug' => 'mapgroup', 'with_front' => false),

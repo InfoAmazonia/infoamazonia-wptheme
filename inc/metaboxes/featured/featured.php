@@ -1,11 +1,7 @@
 <?php
 
-add_action('admin_footer', 'featured_init');
 add_action('add_meta_boxes', 'featured_add_meta_box');
 add_action('save_post', 'featured_save_postdata');
-
-function featured_init() {
-}
 
 function featured_add_meta_box() {
 	add_meta_box(

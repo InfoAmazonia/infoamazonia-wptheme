@@ -50,7 +50,7 @@ function mappress_scripts() {
 
 	wp_localize_script('mappress.markers', 'mappress_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php?lang=' . qtrans_getLanguage()),
-		'query' => mappress_get_marker_query(),
+		'query' => mappress_get_marker_query_args(),
 		'stories_label' => __('stories', 'infoamazonia'),
 		'home' => is_front_page()
 		)
@@ -58,25 +58,63 @@ function mappress_scripts() {
 }
 add_action('wp_enqueue_scripts', 'mappress_scripts');
 
-// marker query
+// marker query args
 
-function mappress_get_marker_query($posts_per_page = -1) {
-
-	global $wp_query, $post;
-
-	$query = $wp_query->query_vars;
-
-	if(is_single() && (get_post_type() == 'map' || get_post_type() == 'map-group')) {
-		$query = array(
-			'post_type' => 'post'
-		);
+function mappress_get_marker_query_args($posts_per_page = -1) {
+	global $post;
+	if(is_singular(array('map', 'map-group'))) {
+		$query = array('post_type' => 'post');
+		// map exclusive post query
+		if(is_singular('map')) {
+			$query['meta_query'] = array(
+				'relation' => 'OR',
+				array(
+					'key' => 'maps',
+					'value' => $post->ID,
+					'compare' => 'LIKE'
+				),
+				array(
+					'key' => 'has_maps',
+					'value' => null,
+					'compare' => 'NOT EXISTS'
+				)
+			);
+		} else  {
+			$groupdata = get_post_meta($post->ID, 'mapgroup_data', true);
+			$meta_query = array('relation' => 'OR');
+			$i = 1;
+			foreach($groupdata['maps'] as $map) {
+				$meta_query[$i] = array(
+					'key' => 'maps',
+					'value' => intval($map['id']),
+					'compare' => 'LIKE'
+				);
+				$i++;
+			}
+			$meta_query[$i] = array(
+				'key' => 'has_maps',
+				'value' => null,
+				'compare' => 'NOT EXISTS'
+			);
+			$query['meta_query'] = $meta_query;
+		}
+	} else {
+		global $wp_query;
+		$query = $wp_query->query_vars;
 	}
-
 	$query['posts_per_page'] = $posts_per_page;
-	if(isset($query['paged']) && $posts_per_page == -1)
+	if($posts_per_page == -1 && isset($query['paged']))
 		unset($query['paged']);
-
+	else 
+		$query['paged'] = (get_query_var('paged')) ? get_query_var('paged') : 1;
 	return $query;
+}
+
+// disable canonical redirect on map/map-group post type for stories pagination
+add_filter('redirect_canonical', 'mappress_disable_canonical');
+function mappress_disable_canonical($redirect_url) {
+	if(is_singular('map') || is_singular('map-group'))
+		return false;
 }
 
 // display map

@@ -2,9 +2,7 @@
 
 <section id="stage">
 	<div class="limiter clearfix">
-
 		<?php get_template_part('section', 'subheader'); ?>
-
 		<?php
 		// Display latest (featured) map group
 		query_posts('post_type=map-group&posts_per_page=1');

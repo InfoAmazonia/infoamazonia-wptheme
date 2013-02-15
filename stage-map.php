@@ -1,7 +1,5 @@
-<div id="main-map" class="stage-map">
-	<?php
-	while(have_posts()) : the_post();
-		get_template_part('content', get_post_type());
-	endwhile;
-	?>
-</div>
+<?php while(have_posts()) : the_post(); ?>
+	<div id="main-map" <?php post_class('stage-map'); ?>>
+		<?php get_template_part('content', get_post_type()); ?>
+	</div>
+<?php endwhile; ?>

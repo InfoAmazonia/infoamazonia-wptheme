@@ -27,7 +27,6 @@
 			query: mappress_markers.query
 		},
 		function(geojson) {
-			console.log(geojson);
 			if(geojson === 0)
 				return;
 			markers.build(geojson);

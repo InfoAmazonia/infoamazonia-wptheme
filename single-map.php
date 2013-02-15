@@ -13,18 +13,18 @@
 	<div class="limiter">
 
 		<?php
-		$query = mappress_get_marker_query(8);
+		$query = mappress_get_marker_query_args(8);
 		query_posts($query);
-		?>
-		<?php if(have_posts()) : ?>
+		if(have_posts()) : ?>
 
 			<section id="last-stories" class="loop-section">
 				<h3><?php _e('Stories', 'infoamazonia'); ?></h3>
 				<?php get_template_part('loop'); ?>
 			</section>
 
-		<?php endif; ?>
-		<?php wp_reset_query(); ?>
+		<?php
+		endif;
+		wp_reset_query(); ?>
 
 		<?php get_template_part('section', 'submit-call'); ?>
 

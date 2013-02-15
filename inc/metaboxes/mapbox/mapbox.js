@@ -3,14 +3,6 @@
 	var mapConf = {};
 	var map_id;
 
-	$(document).ready(function() {
-		var post_id = $('input[name=post_ID]').val();
-
-		$('.map-container > .map').attr('id', 'map_' + post_id);
-		mapConf.containerID = map_id = 'map_' + post_id;
-		mapConf.postID = post_id;
-	});
-
 	var updateMapConf = function() {
 
 		// layers
@@ -115,9 +107,18 @@
 
 	$(document).ready(function() {
 
+		if(!$('#mapbox-metabox').length)
+			return;
+
+		var post_id = $('input[name=post_ID]').val();
+
+		$('.map-container > .map').attr('id', 'map_' + post_id);
+		mapConf.containerID = map_id = 'map_' + post_id;
+		mapConf.postID = post_id;
+
 		var layersList = $('#mapbox-metabox .layers-list');
 		layersList.sortable();
-		
+
 		mappress(updateMapConf());
 
 		/*
