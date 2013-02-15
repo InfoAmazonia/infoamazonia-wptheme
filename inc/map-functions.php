@@ -122,7 +122,7 @@ add_filter('wp_title', 'mappress_story_fragment', 10);
 function mappress_story_fragment() {
 	if(isset($_GET['_escaped_fragment_'])) {
 		$args = substr($_GET['_escaped_fragment_'], 1);
-		$args = unserialize($args);
+		//$args = unserialize($args);
 		return $args;
 	}
 }
