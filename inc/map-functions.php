@@ -118,7 +118,7 @@ function mappress_disable_canonical($redirect_url) {
 }
 
 // fragment meta tags
-add_filter('wp_title', 'mappress_story_fragment');
+add_filter('wp_title', 'mappress_story_fragment', 10);
 function mappress_story_fragment() {
 	if(isset($_GET['_escaped_fragment_'])) {
 		$args = substr($_GET['_escaped_fragment_'], 1);
