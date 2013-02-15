@@ -521,10 +521,23 @@ header#masthead {
 			border: 0;
 			background: transparent;
 			.map-search {
-				background: #303030;
 				input {
+					width: 24px;
+					padding: 0 0 0 24px;
+					height: 24px;
+					box-sizing: border-box;
 					color: #fff;
 					font-size: 11px;
+					background: #303030 url(../img/search.png) 5px 5px no-repeat;
+					position: absolute;
+					top: -27px;
+					left: 79px;
+					-webkit-transition: all .2s ease-in-out;
+					&:focus {
+						width: 121px;
+						background-position: -50px 5px;
+						padding: 5px;
+					}
 				}
 			}
 			.geocode-results {
