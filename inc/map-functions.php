@@ -118,13 +118,16 @@ function mappress_disable_canonical($redirect_url) {
 }
 
 // fragment meta tags
-add_filter('wp_title', 'mappress_story_fragment', 10);
-function mappress_story_fragment() {
+add_filter('wp_title', 'mappress_story_fragment_metadata', 10, 2);
+function mappress_story_fragment_metadata($title, $sep) {
 	if(isset($_GET['_escaped_fragment_'])) {
 		$args = substr($_GET['_escaped_fragment_'], 1);
-		$args = parse_str($args);
-		return $args['story'];
+		parse_str($args, $query);
+		if(isset($query['story'])) {
+			$title = get_the_title(substr($query['story'], 9));
+		}
 	}
+	return $title . ' ' . $sep . ' ';
 }
 
 // display map
