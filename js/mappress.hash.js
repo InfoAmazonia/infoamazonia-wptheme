@@ -8,13 +8,13 @@
             _.each(query, function(v, k) {
                 hash.push(k + '=' + v);
             });
-            document.location.hash = hash.join('&');
+            document.location.hash = '!/' + hash.join('&');
         };
         f.set = function(options) {
             _set(_.extend(f.get(), options));
         };
         f.get = function(key, defaultVal) {
-            var vars = document.location.hash.substring(1).split('&');
+            var vars = document.location.hash.substring(3).split('&');
             var hash = {};
             _.each(vars, function(v) {
                 var pair = v.split("=");
