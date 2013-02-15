@@ -29,6 +29,8 @@ var mappress = {};
 		// store jquery node
 		map.$ = $('#' + map_id);
 
+		mappress.setupHash();
+
 		/*
 		 * Widgets (reset and add)
 		 */
@@ -43,22 +45,36 @@ var mappress = {};
 		// fullscreen widgets callback
 		map.addCallback('drawn', function(map) {
 			if(map.$.hasClass('map-fullscreen-map')) {
+				map.$.parents('.content-map').addClass('fullscreen');
 				map.$.widgets.addClass('fullscreen');
+				// store hash
+				fragment.set({full: true});
 				// temporary fix scrollTop
 				document.body.scrollTop = 0;
+				map.dimensions = new MM.Point(map.parent.offsetWidth, map.parent.offsetHeight);
 			} else {
+				// remove hash
+				fragment.rm('full');
+				map.$.parents('.content-map').removeClass('fullscreen');
 				map.$.widgets.removeClass('fullscreen');
 			}
+		});
+
+		map.$.parents('.content-map').resize(function() {
+			map.dimensions = new MM.Point(map.parent.offsetWidth, map.parent.offsetHeight);
+			map.draw();
 		});
 
         // Enable zoom-level dependent design.
         map.$.addClass('zoom-' + map.getZoom());
         map.addCallback('drawn', _.throttle(function(map) {
         	if(!map.ease.running()) {
-	            map.$.removeClass(function(i, cl) {
-	                if (cl.indexOf('zoom') === 0) return cl;
-	            });
-	            map.$.addClass('map');
+        		var classes = map.$.attr('class');
+        		classes = classes.split(' ');
+        		$.each(classes, function(i, cl) {
+        			if(cl.indexOf('zoom') === 0)
+			            map.$.removeClass(cl);
+        		});
 	            map.$.addClass('zoom-' + parseInt(map.getZoom()));
 	        }
         }, 100));
@@ -90,6 +106,7 @@ var mappress = {};
 		 * CONFS
 		 */
 		map.ui.zoomer.add();
+		map.ui.fullscreen.add();
 
 		if(conf.legend)
 			map.ui.legend.add().content(conf.legend);
@@ -143,8 +160,6 @@ var mappress = {};
 		}
 
 		map.centerzoom(center, zoom, true);
-
-		mappress.setupHash();
 
 		return map;
 
@@ -213,6 +228,28 @@ var mappress = {};
 					return false;
 				});
 			});
+
+		});
+	}
+
+	/*
+	 * Custom fullscreen
+	 */
+	mappress.fullscreen = function(map) {
+
+		if(map.$.parents('.content-map').length)
+			var container = map.$.parents('.content-map');
+		else
+			var container = map.$.parents('.map-container');
+
+		map.$.find('.map-fullscreen').click(function() {
+
+			if(container.hasClass('fullsreen-map'))
+				container.removeClass('fullscreen-map');
+			else
+				container.addClass('fullscreen-map');
+
+			return false;
 
 		});
 	}

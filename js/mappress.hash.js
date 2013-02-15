@@ -50,7 +50,8 @@
 	        }, 400)
 	        map.addCallback('zoomed', track);
 	        map.addCallback('panned', track);
-
+			fragment.get('full') && map.ui.fullscreen.full();
+			fragment.get('iframe') && $('body').addClass('iframe');
 		}
 	}
 

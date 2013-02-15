@@ -480,14 +480,44 @@ header#masthead {
  * Map stuff
  */
 
+.content-map.fullscreen {
+	z-index: 99999999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	.map-container {
+		position: relative !important;
+		.map-fullscreen-map {
+			position: absolute !important;
+		}
+		.map-widgets {
+			position: absolute !important;
+		}
+	}
+}
+
+.map-fullscreen-view {
+	.map-fullscreen {
+		background-position: -23px -33px !important;
+	}
+}
+
+.iframe {
+	.map-fullscreen {
+		display: none !important;
+	}
+}
+
 .map-container {
 	.map-widgets {
-		bottom: 15px;
+		top: 42px;
 		left: 15px;
+		bottom: auto;
 		right: auto;
-		top: auto;
 		.map-widget {
-			margin: 15px 0 0;
+			margin: 0 0 3px;
 			border: 0;
 			background: transparent;
 			.map-search {
@@ -564,7 +594,8 @@ header#masthead {
 				line-height: 20px;
 			}
 		}
-		.zoomer {
+		.zoomer,
+		.map-fullscreen {
 			-webkit-border-radius: 0;
 			border-radius: 0;
 			-moz-border-radius: 0;
@@ -591,9 +622,14 @@ header#masthead {
 				-moz-box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
 				-webkit-box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
 			}
-			&.zoomout {
-				top: 38px;
-				border-top: 1px solid #202020;
+			&.zoomin {
+				left: 40px;
+			}
+			&.map-fullscreen {
+				left: 67px;
+				background-position: 2px -33px;
+				background-image: url(../img/sprite.png);
+				background-repeat: no-repeat;
 			}
 		}
 		/* Markers */
