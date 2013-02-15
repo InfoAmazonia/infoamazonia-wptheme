@@ -20,9 +20,6 @@ foreach($data['maps'] as $map) {
 			$i++;
 			} ?>
 		</ul>
-		<div class="map-sidebar">
-			<div class="sidebar-inner"></div>
-		</div>
 		<div class="map-container">
 			<div id="mapgroup_<?php echo $post->ID; ?>_map" class="map">
 			</div>

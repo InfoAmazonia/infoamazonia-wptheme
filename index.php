@@ -1,21 +1,14 @@
 <?php get_header(); ?>
 
 <section id="stage">
-	<div class="limiter">
+	<div class="limiter clearfix">
 
 		<?php get_template_part('section', 'subheader'); ?>
 
 		<?php
 		// Display latest (featured) map group
 		query_posts('post_type=map-group&posts_per_page=1');
-			if(have_posts()) : ?>
-				<?php
-				while(have_posts()) : the_post();
-					get_template_part('content', 'map-group');
-				endwhile;
-				?>
-		<?php
-		endif;
+			if(have_posts()) get_template_part('stage', 'map');
 		wp_reset_query();
 		?>
 	</div>
@@ -60,14 +53,7 @@
 
 	</div>
 </section>
-<?php if(is_active_sidebar('main-sidebar')) : ?>
-	<aside id="main-widgets">
-		<div class="limiter clearfix">
-			<ul class="widgets">
-				<?php dynamic_sidebar('main-sidebar'); ?>
-			</ul>
-		</div>
-	</aside>
-<?php endif; ?>
+
+<?php get_template_part('section', 'main-widget'); ?>
 
 <?php get_footer(); ?>

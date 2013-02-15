@@ -25,14 +25,14 @@ function register_cpt_map() {
         'labels' => $labels,
         'hierarchical' => false,
         'description' => __('MapBox Maps', 'infoamazonia'),
-        'supports' => array( 'title', 'excerpt'),
+        'supports' => array( 'title', 'content', 'excerpt'),
 
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 4,
 
-        'show_in_nav_menus' => false,
+        'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
         'has_archive' => 'maps',
@@ -68,17 +68,17 @@ function register_cpt_map_group() {
         'description' => __('MapBox maps agroupment', 'infoamazonia'),
         'supports' => array( 'title'),
 
-        'public' => false,
+        'public' => true,
         'show_ui' => true,
         'show_in_menu' => false,
 
-        'show_in_nav_menus' => false,
-        'publicly_queryable' => false,
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
         'exclude_from_search' => true,
         'has_archive' => false,
         'query_var' => true,
         'can_export' => true,
-        'rewrite' => false,
+        'rewrite' => array('slug' => 'mapgroup', 'with_front' => false),
         'capability_type' => 'post'
     );
 

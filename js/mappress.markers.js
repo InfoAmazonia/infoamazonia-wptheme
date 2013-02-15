@@ -2,28 +2,42 @@
 
 	mappress.markers = function(map) {
 
+		if(!mappress_markers.query)
+			return;
+
 		var markers = mappress.markers;
 		var markersLayer = mapbox.markers.layer();
 		var features;
 		var fragment = false;
 		var listPost;
-		
+
+		// setup sidebar
+		map.$.parents('.map-container').wrapAll('<div class="content-map" />');
+		map.$.parents('.content-map').prepend('<div class="map-sidebar"><div class="sidebar-inner"></div></div>');
+		map.$.sidebar = map.$.parents('.content-map').find('.sidebar-inner');
+		map.dimensions = new MM.Point(map.parent.offsetWidth, map.parent.offsetHeight);
+		map.draw();
+
 		if(typeof mappress.fragment === 'function')
 			fragment = mappress.fragment();
 
 		$.getJSON(mappress_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
-			map_id: map.conf.postID,
 			query: mappress_markers.query
 		},
 		function(geojson) {
+			console.log(geojson);
+			if(geojson === 0)
+				return;
 			markers.build(geojson);
 		});
 
 		mappress.markers.build = function(geojson) {
 
+			map.draw();
 			map.addLayer(markersLayer);
+			map.markers = [];
 
 			// do clustering
 			features = markers.doClustering(geojson.features);
@@ -34,6 +48,8 @@
 					return f.properties.id;
 				})
 				.factory(function(x) {
+
+					map.markers.push(x);
 
 					if(!markers.hasLocation(x))
 						return;

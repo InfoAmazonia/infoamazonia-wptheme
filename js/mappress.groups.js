@@ -42,9 +42,6 @@ var groups = {};
 			// build group
 			group.map = mappress(group.conf);
 
-			// set markers
-			mappress.markers(group.map);
-
 			// bind nav events
 			group.$.nav.find('li a').click(function() {
 

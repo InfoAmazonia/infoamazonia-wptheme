@@ -30,13 +30,6 @@ var mappress = {};
 		map.$ = $('#' + map_id);
 
 		/*
-		 * Sidebar
-		 */
-		if(map.$.parent().parent().find('.map-sidebar').length) {
-			map.$.sidebar = map.$.parent().parent().find('.map-sidebar .sidebar-inner');
-		}
-
-		/*
 		 * Widgets (reset and add)
 		 */
 		map.$.empty().parent().find('.map-widgets').remove();
@@ -90,6 +83,8 @@ var mappress = {};
 				mappress.filterLayers(map_id, conf.filteringLayers);
 
 		}));
+
+		mappress.markers(map);
 		
 		/*
 		 * CONFS
@@ -150,6 +145,7 @@ var mappress = {};
 		map.centerzoom(center, zoom, true);
 
 		mappress.setupHash();
+
 		return map;
 
 	};
