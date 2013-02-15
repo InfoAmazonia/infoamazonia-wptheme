@@ -25,7 +25,7 @@ function register_cpt_map() {
         'labels' => $labels,
         'hierarchical' => false,
         'description' => __('MapBox Maps', 'infoamazonia'),
-        'supports' => array( 'title', 'content', 'excerpt'),
+        'supports' => array( 'title', 'editor', 'excerpt'),
 
         'public' => true,
         'show_ui' => true,

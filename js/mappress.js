@@ -111,8 +111,8 @@ var mappress = {};
 		if(conf.legend)
 			map.ui.legend.add().content(conf.legend);
 
-		if(conf.legend_page)
-			mappress.enableDetails(map, conf.legend, conf.legend_page);
+		if(conf.legend_full)
+			mappress.enableDetails(map, conf.legend, conf.legend_full);
 
 		if(conf.extent) {
 			if(typeof conf.extent === 'string')
@@ -206,16 +206,19 @@ var mappress = {};
 	/*
 	 * Legend page (map details)
 	 */
-	mappress.enableDetails = function(map, legend, page_id) {
+	mappress.enableDetails = function(map, legend, full) {
 		map.ui.legend.add().content(legend + '<span class="map-details-link">' + mappress_localization.more_label + '</span>');
 
-		var isMapGroup = map.$.parents('.mapgroup').length;
+		var isMapGroup = map.$.parents('.content-map').length;
 		var $detailsContainer = map.$.parents('.map-container');
 		if(isMapGroup)
-			$detailsContainer = map.$.parents('.mapgroup');
+			$detailsContainer = map.$.parents('.content-map');
+
+		$detailsContainer.addClass('clearfix');
 
 		map.$.find('.map-details-link').unbind().click(function() {
 
+			/*
 			$.get(mappress_localization.ajaxurl,
 			{
 				action: 'map_details',
@@ -227,6 +230,13 @@ var mappress = {};
 					$detailsContainer.find('.map-details-page').remove();
 					return false;
 				});
+			});
+			*/
+
+			$detailsContainer.append($('<div class="map-details-page"><div class="inner"><a href="#" class="close">×</a>' + full + '</div></div>'));
+			$detailsContainer.find('.map-details-page .close, .map-nav a').click(function() {
+				$detailsContainer.find('.map-details-page').remove();
+				return false;
 			});
 
 		});
@@ -305,8 +315,8 @@ var mappress = {};
 		if(conf.legend)
 			newConf.legend = conf.legend;
 
-		if(conf.legend_page)
-			newConf.legend_page = conf.legend_page;
+		if(conf.legend_full)
+			newConf.legend_full = conf.legend_full;
 
 		return newConf;
 	}

@@ -19,7 +19,7 @@ function mappress_scripts() {
 
 	wp_register_script('d3js', get_template_directory_uri() . '/lib/d3.v2.min.js', array('jquery'), '3.0.5');
 
-	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.7.1');
+	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.7.4');
 	wp_enqueue_script('mappress.hash', get_template_directory_uri() . '/js/mappress.hash.js', array('mappress', 'underscore'), '0.0.1.9');
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.4');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
@@ -186,26 +186,14 @@ function mappress_get_map_data($map_id = false) {
 	$map_id = $map_id ? $map_id : $post->ID;
 	if(get_post_type($map_id) != 'map')
 		return;
+	$post = get_post($map_id);
+	setup_postdata($post);
 	$data = get_post_meta($map_id, 'map_data', true);
 	$data['title'] = get_the_title($map_id);
 	$data['legend'] = get_post_meta($map_id, 'legend', true);
-	$data['legend_page'] = get_post_meta($map_id, 'legend_page', true);
+	$data['legend_full'] = '<h2>' . $data['title'] . '</h2>' .  apply_filters('the_content', get_the_content());
+	wp_reset_postdata();
 	return $data;
-}
-
-add_action('wp_ajax_nopriv_map_details', 'mappress_get_map_details');
-add_action('wp_ajax_map_details', 'mappress_get_map_details');
-function mappress_get_map_details() {
-	global $post;
-	$post = get_post(intval($_REQUEST['page_id']));
-	if($post) {
-		setup_postdata($post);
-		$content = '<h2>' . get_the_title() . '</h2>';
-		$content .= '<div class="details-content">' . apply_filters('the_content', get_the_content()) . '</div>';
-		echo $content;
-		wp_reset_postdata();
-	}
-	exit;
 }
 
 /*
