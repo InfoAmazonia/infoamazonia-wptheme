@@ -123,7 +123,7 @@ function mappress_story_fragment() {
 	if(isset($_GET['_escaped_fragment_'])) {
 		$args = substr($_GET['_escaped_fragment_'], 1);
 		$args = unserialize($args);
-		return $args['story'];
+		return $args;
 	}
 }
 
