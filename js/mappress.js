@@ -214,7 +214,8 @@ var mappress = {};
 		if(isMapGroup)
 			$detailsContainer = map.$.parents('.content-map');
 
-		$detailsContainer.addClass('clearfix');
+		if(!$detailsContainer.hasClass('clearfix'))
+			$detailsContainer.addClass('clearfix');
 
 		map.$.find('.map-details-link').unbind().click(function() {
 
