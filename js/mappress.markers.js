@@ -229,6 +229,12 @@
 
 			// populate sidebar
 			if(map.$.sidebar.length) {
+
+				if(!map.$.sidebar.story) {
+					map.$.sidebar.append('<div class="story" />');
+					map.$.sidebar.story = map.$.sidebar.find('.story');
+				}
+
 				map.$.find('.story-points').removeClass('active');
 				var $point = map.$.find('.story-points.' + marker.properties.id);
 				$point.addClass('active');
@@ -237,12 +243,52 @@
 
 				var story = '';
 				story += '<small>' + storyData.date + ' - ' + storyData.source + '</small>';
-				story += '<h2 class="title">' + storyData.title + '</h2>';
+				story += '<h2>' + storyData.title + '</h2>';
 				if(storyData.thumbnail)
 					story += '<div class="media-limit"><img class="thumbnail" src="' + storyData.thumbnail + '" /></div>';
 				story += storyData.story;
+				story += ' <a href="' + storyData.url + '" target="_blank" rel="external">' + mappress_markers.read_more_label + '</a>';
 
-				map.$.sidebar.empty().append($(story));
+				map.$.sidebar.story.empty().append($(story));
+
+				// add share button
+				if(!map.$.sidebar.share) {
+
+					map.$.sidebar.append('<div class="sharing" />');
+					map.$.sidebar.share = map.$.sidebar.find('.sharing');
+
+					var shareContent = '';
+					shareContent += '<a class="button share-button" href="#">' + mappress_markers.share_label + '</a>';
+					shareContent += '<div class="share-options">';
+					shareContent += '<label for="story_embed_iframe_input" class="iframe_input">' + mappress_markers.copy_embed_label + '</label>';
+					shareContent += '<input type="text" id="story_embed_iframe_input" class="iframe_input" readonly="readonly">';
+					shareContent += '</div>';
+
+					map.$.sidebar.share.append(shareContent);
+
+					map.$.sidebar.share.find('.share-button').click(function() {
+						var sharing = map.$.sidebar.share.find('.share-options');
+						if(sharing.hasClass('hidden')) {
+							sharing.show().removeClass('hidden');
+						} else {
+							sharing.hide().addClass('hidden');
+						}
+						return false;
+					});
+
+					map.$.sidebar.share.find('.iframe_input').click(function() {
+						map.$.sidebar.share.find('input.iframe_input').select();
+						return false;
+					});
+				}
+
+				map.$.sidebar.share.find('.share-options').hide().addClass('hidden');
+
+				// update share button
+				var iframe_url = mappress_markers.site_url + '#!/' + 'story=' + marker.properties.id + '&iframe=true&full=true';
+				var iframe_content = '<iframe src="' + iframe_url + '" frameborder="0" width="1100" height="480"></iframe>';
+				map.$.sidebar.share.find('.iframe_input').attr('value', iframe_content);
+
 			}
 
 			// activate post in post list

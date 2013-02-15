@@ -24,7 +24,7 @@ function mappress_scripts() {
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.4');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
 	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.27');
-	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.2.59');
+	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.3.12');
 	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.2');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
@@ -52,11 +52,23 @@ function mappress_scripts() {
 		'ajaxurl' => admin_url('admin-ajax.php?lang=' . qtrans_getLanguage()),
 		'query' => mappress_get_marker_query_args(),
 		'stories_label' => __('stories', 'infoamazonia'),
-		'home' => is_front_page()
+		'home' => is_front_page(),
+		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
+		'share_label' => __('Share this', 'infoamazonia'),
+		'site_url' => mappress_get_home_url('/'),
+		'read_more_label' => __('Read', 'infoamazonia')
 		)
 	);
 }
 add_action('wp_enqueue_scripts', 'mappress_scripts');
+
+function mappress_get_home_url($path = '') {
+	$home_url = home_url();
+	if(function_exists('qtrans_getLanguage'))
+		$home_url = qtrans_convertURL($home_url, qtrans_getLanguage());
+
+	return $home_url . $path;
+}
 
 // marker query args
 

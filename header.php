@@ -25,12 +25,7 @@
 <body <?php body_class(get_bloginfo('language')); ?>>
 	<header id="masthead">
 		<div class="limiter">
-			<?php
-			$home_url = home_url('/');
-			if(function_exists('qtrans_getLanguage'))
-				$home_url = qtrans_convertURL($home_url, qtrans_getLanguage());
-			?>
-			<h1><a href="<?php echo $home_url; ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
+			<h1><a href="<?php echo mappress_get_home_url('/'); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
 			<em class="revision">
 				<?php
 				// get last post date
