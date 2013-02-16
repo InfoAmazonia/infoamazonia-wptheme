@@ -40,9 +40,9 @@ var mappress = {};
 				mapConf = mappress.convertMapConf(map_data);
 
 				if(typeof conf === 'object')
-					conf = _.extend(mapConf, conf);
+					mapConf = _.extend(mapConf, conf);
 
-				mappress.build(conf);
+				mappress.build(mapConf);
 			});
 
 		return map;

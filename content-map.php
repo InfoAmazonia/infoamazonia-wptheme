@@ -10,4 +10,4 @@
 		$mapConf = json_encode($mapConf);
 ?>
 <div class="map-container"><div id="map_<?php echo $post->ID; ?>" class="map"></div></div>
-<script type="text/javascript">mappress(<?php echo $post->ID; ?>, <?php echo $mapConf; ?>);</script>
+<script type="text/javascript">mappress(<?php echo $post->ID; ?><?php if($mapConf) echo ', ' . $mapConf; ?>);</script>
