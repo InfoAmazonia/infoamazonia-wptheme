@@ -262,7 +262,10 @@
 					shareContent += '<div class="share-options">';
 					shareContent += '<label for="story_embed_iframe_input" class="iframe_input">' + mappress_markers.copy_embed_label + '</label>';
 					shareContent += '<input type="text" id="story_embed_iframe_input" class="iframe_input" readonly="readonly">';
+					shareContent += '<div class="social">';
+					shareContent += '<div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>';
 					shareContent += '</div>';
+
 
 					map.$.sidebar.share.append(shareContent);
 
@@ -285,9 +288,12 @@
 				map.$.sidebar.share.find('.share-options').hide().addClass('hidden');
 
 				// update share button
-				var iframe_url = mappress_markers.site_url + '#!/' + 'story=' + marker.properties.id + '&iframe=true&full=true';
+				var share_url = mappress_markers.site_url + '#!/' + 'story=' + marker.properties.id;
+				var iframe_url = share_url + '&iframe=true&full=true';
 				var iframe_content = '<iframe src="' + iframe_url + '" frameborder="0" width="1100" height="480"></iframe>';
 				map.$.sidebar.share.find('.iframe_input').attr('value', iframe_content);
+				// fb
+				map.$.sidebar.share.find('.fb-like').data('href', share_url);
 
 			}
 

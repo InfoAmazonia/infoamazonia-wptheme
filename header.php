@@ -23,6 +23,14 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=174607379284946";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<header id="masthead">
 		<div class="limiter">
 			<h1><a href="<?php echo mappress_get_home_url('/'); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
