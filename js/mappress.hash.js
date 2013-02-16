@@ -39,20 +39,39 @@
 
 	mappress.setupHash = function() {
 
-		if(objectSize(mappress.maps) === 1) {
+		var map = firstObject(mappress.maps);
 
-			var map = firstObject(mappress.maps);
+		var track = _.debounce(function(m) {
+			var c = m.center();
+			(isNumber(c.lat) && isNumber(c.lon) && isNumber(m.zoom())) &&
+			fragment.set({loc: [c.lat, c.lon, parseInt(m.zoom())].join(',')});
+		}, 400);
+		map.addCallback('zoomed', track);
+		map.addCallback('panned', track);
+		fragment.get('full') && map.ui.fullscreen.full();
+		fragment.get('iframe') && $('body').addClass('iframe');
 
-	        var track = _.debounce(function(m) {
-	            var c = m.center();
-	            (isNumber(c.lat) && isNumber(c.lon) && isNumber(m.zoom())) &&
-	                fragment.set({loc: [c.lat, c.lon, parseInt(m.zoom())].join(',')});
-	        }, 400)
-	        map.addCallback('zoomed', track);
-	        map.addCallback('panned', track);
-			fragment.get('full') && map.ui.fullscreen.full();
-			fragment.get('iframe') && $('body').addClass('iframe');
+		var loc = fragment.get('loc');
+		if(loc) {
+			loc = loc.split(',');
+			if(loc.length = 3) {
+				var center = {
+					lat: parseFloat(loc[0]),
+					lon: parseFloat(loc[1])
+				};
+				var zoom = parseInt(loc[2]);
+			}
 		}
+		map.centerzoom(center, zoom, true);
+
+		// fullscreen hash
+		map.addCallback('drawn', function() {
+			if(map.$.hasClass('map-fullscreen-map')) {
+				fragment.set({full: true});
+			} else {
+				fragment.rm('full');
+			}
+		})
 	}
 
 	function objectSize(obj) {

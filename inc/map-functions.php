@@ -19,11 +19,11 @@ function mappress_scripts() {
 
 	wp_register_script('d3js', get_template_directory_uri() . '/lib/d3.v2.min.js', array('jquery'), '3.0.5');
 
-	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.7.6');
-	wp_enqueue_script('mappress.hash', get_template_directory_uri() . '/js/mappress.hash.js', array('mappress', 'underscore'), '0.0.1.11');
+	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.7.20');
+	wp_enqueue_script('mappress.hash', get_template_directory_uri() . '/js/mappress.hash.js', array('mappress', 'underscore'), '0.0.1.12');
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.4');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
-	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.27');
+	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.30');
 	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.3.14');
 	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.2');
 
@@ -198,7 +198,7 @@ function mappress_get_mapgroup_data($group_id) {
 }
 
 add_action('wp_ajax_nopriv_map_data', 'mappress_get_map_json_data');
-add_action('wp_ajax_map_data', 'mappress_get_map_data_json_data');
+add_action('wp_ajax_map_data', 'mappress_get_map_json_data');
 function mappress_get_map_json_data($map_id = false) {
 	$map_id = $map_id ? $map_id : $_REQUEST['map_id'];
 	$data = json_encode(mappress_get_map_data($map_id));
@@ -215,9 +215,11 @@ function mappress_get_map_data($map_id = false) {
 	$post = get_post($map_id);
 	setup_postdata($post);
 	$data = get_post_meta($map_id, 'map_data', true);
+	$data['post_id'] = $map_id;
 	$data['title'] = get_the_title($map_id);
 	$data['legend'] = get_post_meta($map_id, 'legend', true);
-	$data['legend_full'] = '<h2>' . $data['title'] . '</h2>' .  apply_filters('the_content', get_the_content());
+	if(get_the_content())
+		$data['legend_full'] = '<h2>' . $data['title'] . '</h2>' .  apply_filters('the_content', get_the_content());
 	wp_reset_postdata();
 	return $data;
 }

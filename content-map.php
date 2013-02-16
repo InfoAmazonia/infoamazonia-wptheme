@@ -1,2 +1,13 @@
+<?php
+	$mapConf = false; // default;
+	if(is_post_type_archive('map')) {
+		$mapConf = array(
+			'disableMarkers' => true,
+			'disableHash' => true
+		);
+	}
+	if($mapConf)
+		$mapConf = json_encode($mapConf);
+?>
 <div class="map-container"><div id="map_<?php echo $post->ID; ?>" class="map"></div></div>
-<script type="text/javascript">mappress(<?php echo get_post_meta($post->ID, 'map_conf', true); ?>);</script>
+<script type="text/javascript">mappress(<?php echo $post->ID; ?>, <?php echo $mapConf; ?>);</script>

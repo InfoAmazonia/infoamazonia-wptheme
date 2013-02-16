@@ -20,7 +20,38 @@ var mappress = {};
 	 * - disableMarkers (bool)
 	 */
 
-	mappress = function(conf) {
+	mappress = function(post_id, conf) {
+
+		var map;
+
+		if(typeof post_id === 'object') { // conf ready
+
+			var conf = post_id;
+			return mappress.build(conf);
+
+		}
+
+		return $.getJSON(mappress_localization.ajaxurl,
+			{
+				action: 'map_data',
+				map_id: post_id
+			},
+			function(map_data) {
+				mapConf = mappress.convertMapConf(map_data);
+
+				if(typeof conf === 'object')
+					conf = _.extend(mapConf, conf);
+
+				mappress.build(conf);
+			});
+
+		return map;
+
+	};
+
+	mappress.maps = {};
+
+	mappress.build = function(conf) {
 
 		var map_id = conf.containerID;
 
@@ -30,9 +61,6 @@ var mappress = {};
 
 		// store jquery node
 		map.$ = $('#' + map_id);
-
-		if(!conf.disableHash)
-			mappress.setupHash();
 
 		/*
 		 * Widgets (reset and add)
@@ -50,14 +78,10 @@ var mappress = {};
 			if(map.$.hasClass('map-fullscreen-map')) {
 				map.$.parents('.content-map').addClass('fullscreen');
 				map.$.widgets.addClass('fullscreen');
-				// store hash
-				fragment.set({full: true});
 				// temporary fix scrollTop
 				document.body.scrollTop = 0;
 				map.dimensions = new MM.Point(map.parent.offsetWidth, map.parent.offsetHeight);
 			} else {
-				// remove hash
-				fragment.rm('full');
 				map.$.parents('.content-map').removeClass('fullscreen');
 				map.$.widgets.removeClass('fullscreen');
 			}
@@ -102,9 +126,6 @@ var mappress = {};
 				mappress.filterLayers(map_id, conf.filteringLayers);
 
 		}));
-
-		if(!conf.disableMarkers)
-			mappress.markers(map);
 		
 		/*
 		 * CONFS
@@ -144,32 +165,16 @@ var mappress = {};
 		if((conf.minZoom || conf.maxZoom) && !conf.preview)
 			map.setZoomRange(conf.minZoom, conf.maxZoom);
 
-		var center = conf.center;
-		var zoom = conf.zoom;
+		map.centerzoom(conf.center, conf.zoom, true);
 
-		// setup hash
-		if(typeof mappress.fragment === 'function') {
-			var fragment = mappress.fragment();
-			var loc = fragment.get('loc');
-			if(loc) {
-				loc = loc.split(',');
-				if(loc.length = 3) {
-					center = {
-						lat: parseFloat(loc[0]),
-						lon: parseFloat(loc[1])
-					};
-					zoom = parseInt(loc[2]);
-				}
-			}
-		}
+		if(!conf.disableHash)
+			mappress.setupHash();
 
-		map.centerzoom(center, zoom, true);
+		if(!conf.disableMarkers)
+			mappress.markers(map);
 
 		return map;
-
-	};
-
-	mappress.maps = {};
+	}
 
 	mappress.setupLayers = function(layers) {
 
@@ -222,22 +227,6 @@ var mappress = {};
 			$detailsContainer.addClass('clearfix');
 
 		map.$.find('.map-details-link').unbind().click(function() {
-
-			/*
-			$.get(mappress_localization.ajaxurl,
-			{
-				action: 'map_details',
-				page_id: page_id
-			},
-			function(data) {
-				$detailsContainer.append($('<div class="map-details-page"><div class="inner"><a href="#" class="close">×</a>' + data + '</div></div>'));
-				$detailsContainer.find('.map-details-page .close, .map-nav a').click(function() {
-					$detailsContainer.find('.map-details-page').remove();
-					return false;
-				});
-			});
-			*/
-
 			$detailsContainer.append($('<div class="map-details-page"><div class="inner"><a href="#" class="close">×</a>' + full + '</div></div>'));
 			$detailsContainer.find('.map-details-page .close, .map-nav a').click(function() {
 				$detailsContainer.find('.map-details-page').remove();
@@ -276,9 +265,11 @@ var mappress = {};
 	mappress.convertMapConf = function(conf) {
 
 		var newConf = {};
+
 		if(conf.server != 'mapbox')
 			newConf.server = conf.server;
 
+		newConf.containerID = 'map_' + conf.post_id;
 		newConf.layers = [];
 		newConf.filteringLayers = [];
 		newConf.filteringLayers.switch = [];
