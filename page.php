@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 
+<section id="content">
 <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-	<section id="page">
+	<div id="page" class="gray-page">
 		<div class="limiter clearfix">
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header>
@@ -19,7 +20,8 @@
 				</aside>
 			<?php endif; ?>
 		</div>
-	</section>
+	</div>
 <?php endwhile; endif; ?>
+</section>
 
 <?php get_footer(); ?>

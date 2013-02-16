@@ -5,17 +5,19 @@ var mappress = {};
 	/*
 	 * MAP BUILD
 	 * conf:
-	 * - containerID
-	 * - server
-	 * - layers
-	 * - filterLayers
-	 * - center
-	 * - zoom
+	 * - containerID (string)
+	 * - server (string)
+	 * - layers (array (layer))
+	 * - filterLayers (array (layer))
+	 * - center (array (lat,lon))
+	 * - zoom (int)
 	 * - extent (MM.Extent)
 	 * - panLimits (MM.Extent)
-	 * - minZoom
-	 * - maxZoom
+	 * - minZoom (int)
+	 * - maxZoom (int)
 	 * - geocode (bool)
+	 * - disableHash (bool)
+	 * - disableMarkers (bool)
 	 */
 
 	mappress = function(conf) {
@@ -29,7 +31,8 @@ var mappress = {};
 		// store jquery node
 		map.$ = $('#' + map_id);
 
-		mappress.setupHash();
+		if(!conf.disableHash)
+			mappress.setupHash();
 
 		/*
 		 * Widgets (reset and add)
@@ -100,7 +103,8 @@ var mappress = {};
 
 		}));
 
-		mappress.markers(map);
+		if(!conf.disableMarkers)
+			mappress.markers(map);
 		
 		/*
 		 * CONFS
