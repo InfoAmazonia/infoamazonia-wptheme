@@ -212,7 +212,7 @@
 					fragment.set({story: marker.properties.id});
 			}
 
-			if(_gaq) {
+			if(typeof _gaq !== 'undefined') {
 				_gaq.push(['_trackPageView', location.pathname + location.search + '#!/story=' + marker.properties.id]);
 			}
 
