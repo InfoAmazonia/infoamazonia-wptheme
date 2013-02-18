@@ -47,13 +47,13 @@ var groups = {};
 			group.$.nav.find('li a').click(function() {
 
 				// disable "more" tab click
-				if($(this).parent().hasClass('more-tab'))
-					return;
+				if($(this).hasClass('toggle-more'))
+					return false;
 
 				var mapID = $(this).data('map');
 
 				if($(this).hasClass('active'))
-					return;
+					return false;
 
 				group.$.nav.find('li a').removeClass('active');
 				$(this).addClass('active');

@@ -28,7 +28,7 @@
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
 	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=174607379284946";
+	  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=459964104075857";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<header id="masthead">
