@@ -14,8 +14,9 @@ foreach($data['maps'] as $map) {
 		<ul class="map-nav">
 			<?php
 			$i = 0;
-			foreach($main_maps as $map) : ?>
-				<li><a href="#" data-map="map_<?php echo $map['id']; ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php echo $map['title']; ?></a></li>
+			foreach($main_maps as $map) :
+				?>
+				<li><a href="#" data-map="map_<?php echo $map['id']; ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php _e($map['title']); ?></a></li>
 			<?php
 			$i++;
 			endforeach; ?>
