@@ -21,6 +21,8 @@
 		if(typeof mappress.fragment === 'function')
 			fragment = mappress.fragment();
 
+		console.log(mappress_markers.query);
+
 		$.getJSON(mappress_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
@@ -195,6 +197,9 @@
 
 		mappress.markers.open = function(marker, silent) {
 
+			if(!markers.fromMap(marker))
+				return;
+
 			// if marker is string, get object
 			if(typeof marker === 'string') {
 				marker = _.find(features, function(m) { return m.properties.id === marker; });
@@ -320,6 +325,9 @@
 			if(typeof x === 'string') {
 				x = _.find(features, function(m) { return m.properties.id === x; });
 			}
+
+			if(!x)
+				return false;
 
 			if(!x.properties.maps)
 				return true;

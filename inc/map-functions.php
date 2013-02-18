@@ -23,8 +23,8 @@ function mappress_scripts() {
 	wp_enqueue_script('mappress.hash', get_template_directory_uri() . '/js/mappress.hash.js', array('mappress', 'underscore'), '0.0.1.12');
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.4');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
-	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.35');
-	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.3.14');
+	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.4');
+	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.3.16');
 	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.3.14');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
@@ -52,7 +52,7 @@ function mappress_scripts() {
 		'home' => is_front_page(),
 		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
 		'share_label' => __('Share this', 'infoamazonia'),
-		'site_url' => mappress_get_home_url('/'),
+		'site_url' => mappress_home_url('/'),
 		'read_more_label' => __('Read', 'infoamazonia')
 	));
 
@@ -71,7 +71,7 @@ function mappress_admin_url() {
 	return admin_url('admin-ajax.php?lang=' . qtrans_getLanguage());
 }
 
-function mappress_get_home_url($path = '') {
+function mappress_home_url($path = '') {
 	$home_url = home_url();
 	if(function_exists('qtrans_getLanguage'))
 		$home_url = qtrans_convertURL($home_url, qtrans_getLanguage());
@@ -96,7 +96,7 @@ function mappress_get_marker_query_args($posts_per_page = -1) {
 				),
 				array(
 					'key' => 'has_maps',
-					'value' => null,
+					'value' => '',
 					'compare' => 'NOT EXISTS'
 				)
 			);
@@ -234,7 +234,7 @@ function mappress_get_map_data($map_id = false) {
 }
 
 /*
- * Markers
+ * Markers in GeoJSON
  */
 
 add_action('wp_ajax_nopriv_markers_geojson', 'mappress_get_markers_data');

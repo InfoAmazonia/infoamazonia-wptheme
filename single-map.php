@@ -18,7 +18,7 @@
 		if(have_posts()) : ?>
 
 			<section id="last-stories" class="loop-section">
-				<h3><?php _e('Stories', 'infoamazonia'); ?></h3>
+				<h3><?php _e('Stories on', 'infoamazonia'); ?> &ldquo;<?php the_title(); ?>&ldquo;</h3>
 				<?php get_template_part('loop'); ?>
 			</section>
 
