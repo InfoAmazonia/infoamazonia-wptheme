@@ -41,6 +41,8 @@
 					<h3><?php _e('Last stories', 'infoamazonia'); ?></h3>
 				<?php elseif(is_tax('publisher')) : ?>
 					<h3><?php _e('Stories by ', 'infoamazonia'); ?> &ldquo;<?php single_term_title(); ?>&rdquo;</h3>
+				<?php elseif(is_tag()) : ?>
+					<h3><?php _e('Stories on ', 'infoamazonia'); ?> &ldquo;<?php single_tag_title(); ?>&rdquo;</h3>
 				<?php else : ?>
 					<h3><?php _e('Stories', 'infoamazonia'); ?></h3>
 				<?php endif; ?>

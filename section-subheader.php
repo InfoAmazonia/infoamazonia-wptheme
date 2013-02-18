@@ -46,6 +46,10 @@
 
 	<h1 class="title"><?php single_cat_title(); ?></h1>
 
+<?php elseif(is_tag()) : ?>
+
+	<h1 class="title">Tag: <?php single_tag_title(); ?></h1>
+
 <?php
 elseif(is_archive()) :
 	if (is_day()) :
