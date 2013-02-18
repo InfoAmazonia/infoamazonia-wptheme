@@ -21,8 +21,6 @@
 		if(typeof mappress.fragment === 'function')
 			fragment = mappress.fragment();
 
-		console.log(mappress_markers.query);
-
 		$.getJSON(mappress_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
