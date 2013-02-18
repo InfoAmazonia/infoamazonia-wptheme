@@ -39,6 +39,8 @@
 			<section id="last-stories" class="loop-section">
 				<?php if(is_front_page()) : ?>
 					<h3><?php _e('Last stories', 'infoamazonia'); ?></h3>
+				<?php elseif(is_tax('publisher')) : ?>
+					<h3><?php _e('Stories by ', 'infoamazonia'); ?> &ldquo;<?php single_term_title(); ?>&rdquo;</h3>
 				<?php else : ?>
 					<h3><?php _e('Stories', 'infoamazonia'); ?></h3>
 				<?php endif; ?>

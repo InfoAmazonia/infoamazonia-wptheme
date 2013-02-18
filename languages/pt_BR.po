@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InfoAmazonia 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-18 03:57-0300\n"
-"PO-Revision-Date: 2013-02-18 04:01-0300\n"
+"POT-Creation-Date: 2013-02-18 04:56-0300\n"
+"PO-Revision-Date: 2013-02-18 04:56-0300\n"
 "Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
 "Language-Team: Cardume\n"
 "Language: \n"
@@ -45,8 +45,8 @@ msgid "Widgets used on front and inside pages."
 msgstr "Widgets utilizados na página inicial e internas."
 
 #: ../single-map.php:21
-msgid "Stories"
-msgstr "Artigos"
+msgid "Stories on"
+msgstr "Artigos em"
 
 #: ../loop.php:8
 msgctxt "reduced date format"
@@ -113,6 +113,14 @@ msgstr "Destaques"
 #: ../index.php:41
 msgid "Last stories"
 msgstr "Últimos artigos"
+
+#: ../index.php:43
+msgid "Stories by "
+msgstr "Artigos por"
+
+#: ../index.php:45
+msgid "Stories"
+msgstr "Artigos"
 
 #: ../inc/map-functions.php:34
 #: ../inc/map-functions.php:45
@@ -615,8 +623,8 @@ msgid "Add to \"more\" tab"
 msgstr "Adicionar à aba \"mais\""
 
 #: ../inc/metaboxes/mapgroup/mapgroup.php:45
-msgid "Selected a map to add to your map group"
-msgstr ""
+msgid "Select a map to add to your map group"
+msgstr "Selecione um mapa para adicionar ao seu grupo de mapas"
 
 #: ../inc/metaboxes/mapgroup/mapgroup.php:54
 msgid "Add map"
