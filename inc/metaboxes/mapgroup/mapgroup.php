@@ -42,7 +42,7 @@ function mapgroup_inner_custom_box($post) {
 		$maps = $data['maps'];
 	?>
 	<div id="mapgroup-metabox">
-		<h4><?php _e('Selected a map to add to your map group', 'infoamazonia'); ?></h4>
+		<h4><?php _e('Select a map to add to your map group', 'infoamazonia'); ?></h4>
 		<select id="mapgroup_maps">
 			<?php
 			$all_maps = get_posts('post_type=map&posts_per_page=-1');
