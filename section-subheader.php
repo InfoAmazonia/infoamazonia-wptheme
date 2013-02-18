@@ -42,6 +42,10 @@
 
 	<?php echo '<h1 class="title">' . __('Search results for: ', 'infoamazonia') . '"' . $_REQUEST['s'] . '"</h1>'; ?>
 
+<?php elseif(is_category()) : ?>
+
+	<h1 class="title"><?php single_cat_title(); ?></h1>
+
 <?php
 elseif(is_archive()) :
 	if (is_day()) :
@@ -51,6 +55,6 @@ elseif(is_archive()) :
 	elseif (is_year()) :
 		printf('<h1 class="title">' . __('Yearly Archives: %s', 'infoamazonia'), get_the_orig_date(_x('Y', 'yearly archives date format', 'infoamazonia')) . '</h1>');
 	else :
-		_e( 'Archives', 'twentytwelve' );
+		echo '<h1 class="title">' . __('Archives', 'twentytwelve') . '</h1>';
 	endif;
 endif; ?>

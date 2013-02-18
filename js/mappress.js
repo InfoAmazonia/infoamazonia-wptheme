@@ -127,12 +127,6 @@ var mappress = {};
 		map.ui.zoomer.add();
 		map.ui.fullscreen.add();
 
-		if(conf.legend)
-			map.ui.legend.add().content(conf.legend);
-
-		if(conf.legend_full)
-			mappress.enableDetails(map, conf.legend, conf.legend_full);
-
 		if(conf.extent) {
 			if(typeof conf.extent === 'string')
 				conf.extent = new MM.Extent.fromString(conf.extent);
@@ -166,6 +160,12 @@ var mappress = {};
 
 		if(!conf.disableMarkers && !conf.admin)
 			mappress.markers(map);
+
+		if(conf.legend)
+			map.ui.legend.add().content(conf.legend);
+
+		if(conf.legend_full)
+			mappress.enableDetails(map, conf.legend, conf.legend_full);
 
 		return map;
 	}
@@ -212,9 +212,9 @@ var mappress = {};
 	mappress.enableDetails = function(map, legend, full) {
 		map.ui.legend.add().content(legend + '<span class="map-details-link">' + mappress_localization.more_label + '</span>');
 
-		var isMapGroup = map.$.parents('.content-map').length;
+		var isContentMap = map.$.parents('.content-map').length;
 		var $detailsContainer = map.$.parents('.map-container');
-		if(isMapGroup)
+		if(isContentMap)
 			$detailsContainer = map.$.parents('.content-map');
 
 		if(!$detailsContainer.hasClass('clearfix'))

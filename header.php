@@ -32,7 +32,7 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<header id="masthead">
-		<div class="limiter">
+		<div class="limiter clearfix">
 			<h1><a href="<?php echo mappress_get_home_url('/'); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
 			<em class="revision">
 				<?php
@@ -46,12 +46,21 @@
 				}
 				?>
 			</em>
-			<aside class="right">
-				<nav id="mastnav">
+			<div class="project-by">
+				<ul>
+					<li class="label"><?php _e('by', 'infoamazonia'); ?></li>
+					<li><a class="icon oeco" href="http://www.oecoamazonia.com">O Eco</a></li>
+					<li><a class="icon internews" href="http://www.internews.org">Internews</a></li>
+				</ul>
+			</div>
+		</div>
+		<section id="mastnav" class="clearfix">
+			<div class="limiter">
+				<nav>
 					<ul>
-						<li><a href="#submit" class="submit-story"><?php _e('Submit a story', 'infoamazonia'); ?></a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Data</a></li>
+						<?php wp_nav_menu(array(
+							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li></ul>'
+						)); ?>
 					</ul>
 				</nav>
 				<?php if(function_exists('qtrans_getLanguage')) : ?>
@@ -71,7 +80,7 @@
 						</ul>
 					</nav>
 				<?php endif; ?>
-			</aside>
-		</div>
+			</div>
+		</section>
 	</header>
 	<section id="main-content">

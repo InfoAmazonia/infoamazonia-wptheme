@@ -19,37 +19,34 @@ function mappress_scripts() {
 
 	wp_register_script('d3js', get_template_directory_uri() . '/lib/d3.v2.min.js', array('jquery'), '3.0.5');
 
-	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.7.25');
+	wp_enqueue_script('mappress', get_template_directory_uri() . '/js/mappress.js', array('mapbox-js', 'underscore', 'jquery'), '0.0.8.1');
 	wp_enqueue_script('mappress.hash', get_template_directory_uri() . '/js/mappress.hash.js', array('mappress', 'underscore'), '0.0.1.12');
 	wp_enqueue_script('mappress.geocode', get_template_directory_uri() . '/js/mappress.geocode.js', array('mappress', 'd3js', 'underscore'), '0.0.2.4');
 	wp_enqueue_script('mappress.filterLayers', get_template_directory_uri() . '/js/mappress.filterLayers.js', array('mappress', 'underscore'), '0.0.5');
 	wp_enqueue_script('mappress.groups', get_template_directory_uri() . '/js/mappress.groups.js', array('mappress', 'underscore'), '0.0.3.35');
 	wp_enqueue_script('mappress.markers', get_template_directory_uri() . '/js/mappress.markers.js', array('mappress', 'underscore'), '0.0.3.14');
-	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.2');
+	wp_enqueue_script('mappress.submit', get_template_directory_uri() . '/js/mappress.submit.js', array('jquery'), '0.0.3.14');
 
 	wp_enqueue_style('mappress', get_template_directory_uri() . '/css/mappress.css', array(), '0.0.1.1');
 
 	wp_localize_script('mappress', 'mappress_localization', array(
-		'ajaxurl' => admin_url('admin-ajax.php?lang=' . qtrans_getLanguage()),
+		'ajaxurl' => mappress_admin_url(),
 		'more_label' => __('More', 'infoamazonia')
-		)
-	);
+	));
 
 	wp_localize_script('mappress.geocode', 'mappress_labels', array(
 		'search_placeholder' => __('Find a location', 'infoamazonia'),
 		'results_title' => __('Results', 'infoamazonia'),
 		'clear_search' => __('Clear search', 'infoamazonia')
-		)
-	);
+	));
 
 	wp_localize_script('mappress.groups', 'mappress_groups', array(
-		'ajaxurl' => admin_url('admin-ajax.php'),
+		'ajaxurl' => mappress_admin_url(),
 		'more_label' => __('More', 'infoamazonia')
-		)
-	);
+	));
 
 	wp_localize_script('mappress.markers', 'mappress_markers', array(
-		'ajaxurl' => admin_url('admin-ajax.php?lang=' . qtrans_getLanguage()),
+		'ajaxurl' => mappress_admin_url(),
 		'query' => mappress_get_marker_query_args(),
 		'stories_label' => __('stories', 'infoamazonia'),
 		'home' => is_front_page(),
@@ -57,10 +54,22 @@ function mappress_scripts() {
 		'share_label' => __('Share this', 'infoamazonia'),
 		'site_url' => mappress_get_home_url('/'),
 		'read_more_label' => __('Read', 'infoamazonia')
-		)
-	);
+	));
+
+	wp_localize_script('mappress.submit', 'mappress_submit', array(
+		'ajaxurl' => mappress_admin_url(),
+		'success_label' => __('Success! Thank you, your story will be reviewed by one of our editors and soon will be online.', 'infoamazonia'),
+		'error_label' => __('Oops, please try again in a few minutes.', 'infoamazonia')
+	));
 }
 add_action('wp_enqueue_scripts', 'mappress_scripts');
+
+function mappress_admin_url() {
+	if(!function_exists('qtrans_getLanguage'))
+		return admin_url('admin-ajax.php');
+
+	return admin_url('admin-ajax.php?lang=' . qtrans_getLanguage());
+}
 
 function mappress_get_home_url($path = '') {
 	$home_url = home_url();
@@ -316,38 +325,133 @@ function mappress_get_markers_data() {
 	header('Pragma: public');
 	header('Cache-Control: maxage=' . $expires);
 	header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $expires) . ' GMT');
-	header('Content Type: application/json');
 	*/
+	header('Content Type: application/json');
 	echo $data;
 	exit;
 }
 
-add_action('wp_footer', 'mappress_submit');
-function mappress_submit() {
+add_action('wp_footer', 'infoamazonia_submit');
+function infoamazonia_submit() {
 	?>
 	<div id="submit-story">
 		<div class="submit-container">
 			<div class="submit-area">
+				<a href="#" class="close-submit-story" title="<?php _e('Close', 'infoamazonia'); ?>">×</a>
 				<h2><?php _e('Submit a story', 'infoamazonia'); ?></h2>
-				<div class="choice">
-					<p><?php _e('Do you have news to share from the Amazon? Contribute to this map by submitting your story. Help broaden the understanding of the global impact of this important region in the world.', 'infoamazonia'); ?></p>
-					<div class="story-type">
-						<a href="#" class="submit-story-url button"><?php _e('Submit a url', 'infoamazonia'); ?></a>
-						<a href="#" class="submit-story-full button"><?php _e('Submit full story', 'infoamazonia'); ?></a>
+				<p class="description"><?php _e('Do you have news to share from the Amazon? Contribute to this map by submitting your story. Help broaden the understanding of the global impact of this important region in the world.', 'infoamazonia'); ?></p>
+				<div class="submit-content">
+					<div class="error"></div>
+					<div class="choice">
+						<div class="story-type">
+							<a href="#" data-choice="submit-story-url" class="button"><?php _e('Submit a url', 'infoamazonia'); ?></a>
+							<a href="#" data-choice="submit-story-full" class="button"><?php _e('Submit full story', 'infoamazonia'); ?></a>
+						</div>
 					</div>
+					<form id="submit-story-full" class="submit-choice-content">
+						<input type="hidden" name="action" value="infoamazonia_submit" />
+						<p>
+							<label for="story_author_full_name"><?php _e('Your full name', 'infoamazonia'); ?> <span class="required">*</span></label>
+							<input type="text" name="story[meta][author_name]" id="story_author_full_name" size="30" />
+						</p>
+						<p>
+							<label for="story_author_email"><?php _e('E-mail', 'infoamazonia'); ?> <span class="required">*</span></label>
+							<input type="text" name="story[meta][author_email]" id="story_author_email" size="35" />
+						</p>
+						<p>
+							<label for="story_reporter"><?php _e('Reporter', 'infoamazonia'); ?></label>
+							<input type="text" name="story[meta][reporter]" id="story_reporter" size="30" />
+						</p>
+						<p>
+							<label for="story_title"><?php _e('Story title', 'infoamazonia'); ?> <span class="required">*</span></label>
+							<input type="text" name="story[post][post_title]" id="story_title" size="30" />
+						</p>
+						<p>
+							<label for="story_content"><?php _e('Story text', 'infoamazonia'); ?></label>
+							<textarea name="story[post][post_content]" id="story_content" rows="7" cols="50"></textarea>
+						</p>
+						<p>
+							<label for="story_url"><?php _e('Story url', 'infoamazonia'); ?></label>
+							<input type="text" name="story[meta][url]" id="story_url" size="60" />
+						</p>
+						<p>
+							<label for="story_picture"><?php _e('Lead picture', 'infoamazonia'); ?></label>
+							<input type="text" name="story[meta][picture]" id="story_picture" size="60" />
+						</p>
+						<div class="geocode">
+							<p>
+								<label for="story_location"><?php _e('Story location', 'infoamazonia'); ?></label>
+								<input type="text" name="story[meta][geocode_address]" id="story_location" size="40" />
+								<?php /* soon
+								<a class="button" href="#"><?php _e('Find location on map', 'infoamazonia'); ?></a>
+								*/ ?>
+							</p>
+						</div>
+						<p>
+							<label for="story_date"><?php _e('Publishing date', 'infoamazonia'); ?></label>
+							<input type="text" name="story[meta][publish_date]" id="story_date" size="20" />
+						</p>
+						<p>
+							<label for="story_notes"><?php _e('Notes to the InfoAmazonia editor', 'infoamazonia'); ?></label>
+							<textarea name="story[meta][notes]" id="story_notes" rows="7" cols="50"></textarea>
+						</p>
+						<input class="button" type="submit" value="<?php _e('Send story', 'infoamazonia'); ?>" />
+					</form>
+					<form id="submit-story-url" class="submit-choice-content">
+						<input type="hidden" name="action" value="infoamazonia_submit" />
+						<p>
+							<label for="story_full_name"><?php _e('Your full name', 'infoamazonia'); ?> <span class="required">*</span></label>
+							<input type="text" name="story[meta][author_name]" id="story_full_name" size="30" />
+						</p>
+						<p>
+							<label for="story_email"><?php _e('E-mail', 'infoamazonia'); ?> <span class="required">*</span></label>
+							<input type="text" name="story[meta][author_email]" id="story_email" size="35" />
+						</p>
+						<p>
+							<label for="story_url"><?php _e('Story url', 'infoamazonia'); ?></label>
+							<input type="text" name="story[meta][url]" id="story_url" size="60" />
+						</p>
+						<input class="button" type="submit" value="<?php _e('Send story', 'infoamazonia'); ?>" />
+					</form>
 				</div>
-				<?php /*
-				<form id="submit-story-full">
-				</form>
-				<form id="submit-story-url">
-					<label for="full_name"><?php _e('Your full name', 'infoamazonia'); ?></label>
-					<input type="text" id="full_name" />
-				</form>
-				*/ ?>
-				<a href="#" class="close-submit-story"><?php _e('Close', 'infoamazonia'); ?></a>
 			</div>
 		</div>
 	</div>
 	<?php
+}
+
+add_action('wp_ajax_nopriv_infoamazonia_submit', 'infoamazonia_submit_post');
+add_action('wp_ajax_infoamazonia_submit', 'infoamazonia_submit_post');
+function infoamazonia_submit_post() {
+	$story = $_GET['story'];
+	$return = array();
+
+	$post = $story['post'];
+	$post['post_status'] = 'pending';
+	if(!isset($post['post_title']))
+		$post['post_title'] = 'Submission by ' . $story['meta']['author_name'];
+
+	if(!$story['meta']['author_name'] || !$story['meta']['author_email'])
+		return json_death(array('error' => __('Missing information. Please fill all the required fields!', 'infoamazonia')));
+
+	$post_id = wp_insert_post($post);
+	if($post_id) {
+		foreach($story['meta'] as $meta => $value) {
+			update_post_meta($post_id, $meta, $value);
+		}
+		$return['post_id'] = $post_id;
+	} else {
+		$return['error'] = __('Could not save submission', 'infoamazonia');
+	}
+
+	header('Content Type: application/json');
+	echo json_encode($return);
+	exit;
+}
+
+function json_death($o) {
+	header('Content Type: application/json');
+	echo json_encode($o);
+	exit;
 }
 ?>

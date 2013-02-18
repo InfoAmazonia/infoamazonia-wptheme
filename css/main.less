@@ -73,7 +73,10 @@ h4 {
 	line-height: 18px;
 	margin: 0 0 8px;
 }
-a.button {
+input {
+	padding: 5px;
+}
+.button {
 	background: #77a832;
 	border: 1px solid #77a832;
 	color: #fff;
@@ -90,11 +93,11 @@ a.button {
 	transition: all 100ms ease;
 	text-align: center;
 }
-#sidebar a.button:hover,
-#sidebar a.button {
+#sidebar .button:hover,
+#sidebar .button {
 	color: #fff;
 }
-a.button:hover {
+.button:hover {
 	color: #fff;
 	background-color: #8ec63d;
 }
@@ -165,8 +168,7 @@ body {
 
 header#masthead {
 	background: white;
-	border-bottom: 1px solid #CCC;
-	height: 80px;
+	border-bottom: 1px solid #dfdfdf;
 	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 	position: relative;
@@ -201,55 +203,106 @@ header#masthead {
 		line-height: 14px;
 		margin-top: 33px;
 	}
-	aside.right {
+	.project-by {
 		float: right;
-		margin-top: 30px;
-		nav {
-			margin: 0;
-			padding: 0;
+		ul {
 			float: left;
-			ul {
-				margin: 0;
-				padding: 0;
-				list-style: none;
+			padding: 15px 0;
+			li {
 				float: left;
-				li {
+				margin-left: 20px;
+				&.label {
+					padding-top: 15px;
+					color: #999;
+				}
+				a {
+					display: block;
 					float: left;
-					a {
-						display: block;
-						margin-left: 10px;
-						text-transform: uppercase;
+					&.oeco {
+						background-position: -390px 5px;
+						width: 110px;
+						height: 50px;
+					}
+					&.internews {
+						background-position: -367px -55px;
+						width: 133px;
+						height: 50px;
 					}
 				}
 			}
 		}
-		nav#langnav {
-			&:before {
-				content: '|';
-				margin-left: 10px;
-				color: #808080;
-				font-size: 8px;
-				line-height: 18px;
-				display: inline;
+	}
+}
+#mastnav {
+	width: 100%;
+	display: block;
+	background: #f7f7f7;
+	//box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+	nav {
+		margin: 0;
+		padding: 0;
+		float: left;
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			float: left;
+			li {
 				float: left;
-			}
-			a {
-				color: #808080;
-				text-transform: lowercase;
-				height: 18px;
-				line-height: 18px;
-				padding: 0 5px;
-				margin: 0 0 0 5px;
-				&.active {
-					background-color: #8ec63d;
-					background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
-					background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
-					background-image:    -moz-linear-gradient(top, #8ec63d, #77a832);
-					background-image:     -ms-linear-gradient(top, #8ec63d, #77a832);
-					background-image:      -o-linear-gradient(top, #8ec63d, #77a832);
-					background-image:         linear-gradient(to bottom, #8ec63d, #77a832);
-					color: #fff;
+				a {
+					display: block;
+					text-transform: uppercase;
+					padding: 7px 10px;
+					&:hover {
+						background: #fff;
+					}
+					&.submit-story {
+						background-color: #8ec63d;
+						background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+						background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+						background-image:    -moz-linear-gradient(top, #8ec63d, #77a832);
+						background-image:     -ms-linear-gradient(top, #8ec63d, #77a832);
+						background-image:      -o-linear-gradient(top, #8ec63d, #77a832);
+						background-image:         linear-gradient(to bottom, #8ec63d, #77a832);
+						color: #fff;
+					}
 				}
+				&.current_page_item {
+					a {
+						background: #fff;
+					}
+				}
+			}
+		}
+	}
+	nav#langnav {
+		padding: 7px 0;
+		float: right;
+		&:before {
+			//content: '|';
+			margin-left: 10px;
+			color: #808080;
+			font-size: 8px;
+			line-height: 18px;
+			display: inline;
+			float: left;
+		}
+		a {
+			color: #808080;
+			text-transform: lowercase;
+			height: 18px;
+			line-height: 18px;
+			padding: 0 5px;
+			margin: 0 0 0 5px;
+			&.active {
+				background-color: #8ec63d;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+				background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+				background-image:    -moz-linear-gradient(top, #8ec63d, #77a832);
+				background-image:     -ms-linear-gradient(top, #8ec63d, #77a832);
+				background-image:      -o-linear-gradient(top, #8ec63d, #77a832);
+				background-image:         linear-gradient(to bottom, #8ec63d, #77a832);
+				color: #fff;
 			}
 		}
 	}
@@ -454,6 +507,7 @@ header#masthead {
 					background-image: linear-gradient(to bottom, #8EC63D, #77A832);
 					color: white;
 					border-color: #77A832;
+					z-index: 9999999;
 					&:after {
 						content: '';
 						width: 0;
@@ -494,7 +548,7 @@ header#masthead {
 					position: absolute;
 					top: 35px;
 					right: 0;
-					z-index: 99999;
+					z-index: 9999999;
 					border-bottom: 1px solid #ccc;
 					li {
 						display: block;
@@ -949,7 +1003,7 @@ header#masthead {
  	}
  	.navigation {
  		float: right;
- 		margin: 15px 0;
+ 		margin: 30px 0;
  		.current {
  			background: #8ec63d;
  			border: 1px solid #77a832;
@@ -977,7 +1031,7 @@ header#masthead {
 		border-bottom: 1px solid #f0f0f0;
 		box-sizing: border-box;
 		padding: 15px;
-		margin: 0 0 15px;
+		margin: 0;
 		float: left;
 		overflow: hidden;
 		-webkit-transition: opacity 0.1s linear;
@@ -1075,7 +1129,7 @@ header#masthead {
  */
 
 aside#submit-call {
-	margin: 30px 0;
+	margin: 0 0 30px;
 	background: rgba(134, 210, 252, .2);
 	box-shadow: 0 0 10px 10px rgba(134, 210, 252, .1);
 	border-radius: 6px;
@@ -1249,25 +1303,57 @@ top: -18px;
 	right: 0;
 	bottom: 0;
 	background: rgba(0, 0, 0, .8);
-	z-index: 999999;
+	z-index: 9999999;
 	display: none;
 	&.active {
 		display: block;
 	}
 	.submit-container {
 		width: 600px;
-		padding: 40px;
+		max-height: 90%;
+		overflow: auto;
+		padding: 20px;
 		box-sizing: border-box;
 		border-radius: 5px;
-		top: 300px;
+		top: 5%;
 		left: 50%;
 		margin-left: -300px;
-		margin-top: -150px;
 		position: absolute;
 		background: #f0f0f0;
 		box-shadow: 0 0 0px 10px rgba(0, 0, 0, .2);
 		p {
 			margin: 0 0 15px;
+		}
+		&::-webkit-scrollbar {
+			background: #f0f0f0;
+			width: 15px;
+			border-radius: 5px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: #666;
+			border-radius: 15px;
+			border: 5px #f0f0f0 solid;
+		}
+		.close-submit-story {
+			top: 20px;
+			right: 20px;
+			position: absolute;
+			color: #555;
+			background: #fff;
+			font-size: 20px;
+			line-height: 24px;
+			text-align: center;
+			width: 24px;
+			height: 24px;
+			display: block;
+			font-weight: 500;
+			font-family: 'OpenSansSemiboldRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
+			border-radius: 3px;
+		}
+		.error,
+		.required {
+			color: #f00;
+			font-weight: bold;
 		}
 	}
 }
