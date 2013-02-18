@@ -124,11 +124,11 @@
 		if(!$('#mapbox-metabox').length)
 			return;
 
-		var post_id = $('input[name=post_ID]').val();
+		var postID = $('input[name=post_ID]').val();
 
-		$('.map-container > .map').attr('id', 'map_' + post_id);
-		mapConf.containerID = map_id = 'map_' + post_id;
-		mapConf.postID = post_id;
+		$('.map-container > .map').attr('id', 'map_' + postID);
+		mapConf.containerID = map_id = 'map_' + postID;
+		mapConf.postID = postID;
 
 		var layersList = $('#mapbox-metabox .layers-list');
 		layersList.sortable();

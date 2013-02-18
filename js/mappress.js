@@ -152,15 +152,15 @@ var mappress = {};
 			}
 		}
 
-		if((conf.minZoom || conf.maxZoom) && !conf.preview)
+		if(((conf.minZoom && !isNaN(conf.minZoom)) || (conf.maxZoom && !isNaN(conf.maxZoom))) && !conf.preview)
 			map.setZoomRange(conf.minZoom, conf.maxZoom);
 
-		if(conf.center)
+		if(conf.center && conf.center.lat && !isNaN(conf.center.lat) && conf.center.lon && !isNaN(conf.center.lon))
 			map.center(conf.center);
 		else
 			map.center({lat: 0, lon: 0});
 
-		if(conf.zoom)
+		if(conf.zoom && !isNaN(conf.zoom))
 			map.zoom(conf.zoom);
 		else
 			map.zoom(2);
