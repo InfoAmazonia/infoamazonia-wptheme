@@ -3,14 +3,15 @@
 function import_geojson() {
 	if(isset($_GET['import_geojson'])) {
 
-		$geojson = get_transient('imported_geojson');
-
+		$geojson = array();
+		//$geojson = get_transient('imported_geojson');
+	
 		if(!$geojson) {
 
 			$json_urls = array(
-				'en' => 'http://infoamazonia.org/data/en/stories-en.geojson',
-				'pt' => 'http://infoamazonia.org/data/pt/stories-pt.geojson',
-				'es' => 'http://infoamazonia.org/data/es/stories-es.geojson'
+				'en' => 'http://dev.cardume.art.br/infoamazonia/geojson/stories-en.geojson',
+				'pt' => 'http://dev.cardume.art.br/infoamazonia/geojson/stories-pt.geojson',
+				'es' => 'http://dev.cardume.art.br/infoamazonia/geojson/stories-es.geojson'
 			);
 
 			$options = array(
@@ -28,10 +29,8 @@ function import_geojson() {
 				curl_close($ch);
 			}
 
-			set_transient('imported_geojson', $geojson, 60*60*12);
+			//set_transient('imported_geojson', $geojson, 60*60*12);
 		}
-
-		//print_r($geojson['en']['features'][0]);
 
 		$posts = array();
 		foreach($geojson as $lang_key => $langs) {
@@ -39,51 +38,51 @@ function import_geojson() {
 			$lang_start = '<!--:' . $lang_key . '-->';
 			$lang_finish = '<!--:-->';
 
-			if($lang_key == 'en') { // only importing english (missing id)
+			foreach($langs['features'] as $f) {
 
-				foreach($langs['features'] as $f) {
+				$post_id = $f['properties']['id'];
 
-					$post_id = $f['properties']['id'];
+				$post['post'] = array();
+				$post['post']['post_type'] = 'post';
+				$post['post']['post_status'] = 'publish';
+				$post['post']['post_title'] = $lang_start . $f['properties']['title'] . $lang_finish;
+				$post['post']['post_content'] = $lang_start . $f['properties']['story'] . $lang_finish;
 
-					$post['post'] = array();
-					$post['post']['post_type'] = 'post';
-					$post['post']['post_status'] = 'publish';
-					$post['post']['post_title'] = $lang_start . $f['properties']['title'] . $lang_finish;
-					$post['post']['post_content'] = $lang_start . $f['properties']['story'] . $lang_finish;
+				// fix buggy dates....
+				$date = split('/', $f['properties']['date']);
+				if(strlen($date[0]) == 1) {
+					$date[0] = '0' . $date[0];
+				}
+				if(strlen($date[1]) == 1) {
+					$date[1] = '0' . $date[1];
+				}
+				if(strlen($date[2]) == 2) {
+					$date[2] = '20' . $date[2];
+				}
+				$date = $date[2] . '-' . $date[1] . '-' . $date[0];
 
-					// fix buggy dates....
-					$date = split('/', $f['properties']['date']);
-					if(strlen($date[0]) == 1) {
-						$date[0] = '0' . $date[0];
-					}
-					if(strlen($date[1]) == 1) {
-						$date[1] = '0' . $date[1];
-					}
-					if(strlen($date[2]) == 2) {
-						$date[2] = '20' . $date[2];
-					}
-					$date = $date[2] . '-' . $date[1] . '-' . $date[0];
+				$post['post']['post_date'] = $date;
+				$post['post']['post_date_gmt'] = $date;
+				$post['post']['tags_input'] = $f['properties']['tags'];
+				$post['meta'] = array();
+				$post['meta']['url'] = $f['properties']['url'];
+				$post['meta']['picture'] = $f['properties']['picture'];
+				$post['meta']['reporter'] = $f['properties']['reporter'];
+				$post['meta']['geocode_address'] = $f['properties']['location'];
+				$post['meta']['geocode_latitude'] = $f['geometry']['coordinates'][1];
+				$post['meta']['geocode_longitude'] = $f['geometry']['coordinates'][0];
+				$post['tax'] = array();
+				$post['tax']['publisher'] = $f['properties']['source'];
 
-					$post['post']['post_date'] = $date;
-					$post['post']['post_date_gmt'] = $date;
-					$post['meta'] = array();
-					$post['meta']['url'] = $f['properties']['url'];
-					$post['meta']['picture'] = $f['properties']['picture'];
-					$post['meta']['geocode_latitude'] = $f['geometry']['coordinates'][1];
-					$post['meta']['geocode_longitude'] = $f['geometry']['coordinates'][0];
-					$post['tax'] = array();
-					$post['tax']['publisher'] = $f['properties']['source'];
+				if(!isset($posts[$post_id])) {
 
-					if(!isset($posts[$post_id])) {
+					$posts[$post_id] = $post;
 
-						$posts[$post_id] = $post;
+				} else {
 
-					} else {
+					$posts[$post_id]['post']['post_title'] .= $post['post']['post_title'];
+					$posts[$post_id]['post']['post_content'] .= $post['post']['post_content'];
 
-						$posts[$post_id]['post']['post_title'] .= $post['post']['post_title'];
-						$posts[$post_id]['post']['post_content'] .= $post['post']['post_content'];
-
-					}
 				}
 
 			}
@@ -95,7 +94,7 @@ function import_geojson() {
 			//if($i == 5) break;
 
 			$post_id = false;
-			//$post_id = wp_insert_post($post['post']);
+			$post_id = wp_insert_post($post['post']);
 
 			if($post_id) {
 
