@@ -15,18 +15,26 @@ foreach($data['maps'] as $map) {
 			<?php
 			$i = 0;
 			foreach($main_maps as $map) :
+				$post = get_post($map['id']);
+				setup_postdata($post);
 				?>
-				<li><a href="#" data-map="map_<?php echo $map['id']; ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php _e($map['title']); ?></a></li>
-			<?php
-			$i++;
+				<li><a href="#" data-map="map_<?php the_ID(); ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php the_title(); ?></a></li>
+				<?php
+				wp_reset_postdata();
+				$i++;
 			endforeach; ?>
 			<?php if($more_maps) : ?>
 				<li class="more-tab">
 					<a href="#" class="toggle-more"><?php _e('More...', 'infoamazonia'); ?></a>
 					<ul class="more-maps-list">
-						<?php foreach($more_maps as $map) : ?>
-							<li class="more-item"><a href="#" data-map="map_<?php echo $map['id']; ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php echo $map['title']; ?></a></li>
-						<?php endforeach; ?>
+						<?php foreach($more_maps as $map) :
+							$post = get_post($map['id']);
+							setup_postdata($post);
+							?>
+							<li class="more-item"><a href="#" data-map="map_<?php the_ID(); ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php the_title(); ?></a></li>
+							<?php
+							wp_reset_postdata();
+						endforeach; ?>
 					</ul>
 				</li>
 			<?php endif; ?>
