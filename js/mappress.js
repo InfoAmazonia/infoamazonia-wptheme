@@ -30,6 +30,10 @@ var mappress = {};
 
 		}
 
+		if(conf.admin) { // is admin panel
+			return mappress.build(conf);
+		}
+
 		return $.getJSON(mappress_localization.ajaxurl,
 			{
 				action: 'map_data',
@@ -72,7 +76,8 @@ var mappress = {};
 		// fullscreen widgets callback
 		map.addCallback('drawn', function(map) {
 			if(map.$.hasClass('map-fullscreen-map')) {
-				map.$.parents('.content-map').addClass('fullscreen');
+				if(map.$.parents('.content-map').length)
+					map.$.parents('.content-map').addClass('fullscreen');
 				map.$.widgets.addClass('fullscreen');
 				// temporary fix scrollTop
 				document.body.scrollTop = 0;
@@ -100,7 +105,7 @@ var mappress = {};
         		});
 	            map.$.addClass('zoom-' + parseInt(map.getZoom()));
 	        }
-        }, 100));
+        }, 200));
 
 		// store conf
 		map.conf = conf;
@@ -303,7 +308,7 @@ var mappress = {};
 			}
 		});
 
-		newConf.center = conf.center;
+		newConf.center = {lat: parseFloat(conf.center.lat), lon: parseFloat(conf.center.lon)};
 		newConf.panLimits = conf.pan_limits.north + ',' + conf.pan_limits.west + ',' + conf.pan_limits.south + ',' + conf.pan_limits.east;
 		newConf.zoom = parseInt(conf.zoom);
 		newConf.minZoom = parseInt(conf.min_zoom);

@@ -25,14 +25,14 @@
 		if($('.centerzoom.map-setting input.center-lat').val()) {
 			var $centerInputs = $('.centerzoom.map-setting');
 			mapConf.center = {
-				lat: $centerInputs.find('input.center-lat').val(),
-				lon: $centerInputs.find('input.center-lon').val()
+				lat: parseFloat($centerInputs.find('input.center-lat').val()),
+				lon: parseFloat($centerInputs.find('input.center-lon').val())
 			}
 		}
 
 		// zoom
 		if($('.centerzoom.map-setting input.zoom').val())
-			mapConf.zoom = $('.centerzoom.map-setting input.zoom').val();
+			mapConf.zoom = parseInt($('.centerzoom.map-setting input.zoom').val());
 		// min zoom
 		if($('#min-zoom-input').val())
 			mapConf.minZoom = parseInt($('#min-zoom-input').val());
@@ -64,7 +64,7 @@
 	 	if($('#mapbox-legend-metabox').length) {
 	 		if($('#mapbox-legend-textarea').val())
 	 			mapConf.legend = $('#mapbox-legend-textarea').val();
-	 		else
+	 		else if(mapConf.legend)
 	 			delete mapConf.legend;
 	 	}
 
@@ -169,7 +169,7 @@
 			var optInput = $(this).parent().find(':checked');
 			var filteringOpts = optInput.parents('.filter-opts').find('.filtering-opts');
 			var opt = optInput.val();
-			if(opt != 'fixed') { 
+			if(opt != 'fixed') {
 				filteringOpts.show();
 				if(opt == 'switch') {
 					filteringOpts.find('.switch-opts').show();
@@ -299,10 +299,6 @@
 		var layers = [];
 		$('#mapbox-metabox .layers-list li').each(function() {
 			layers.push($(this).find('input.layer_id').val());
-			var filteringOpt = $(this).find('.filtering-opt:checked').val();
-			if(filteringOpt == 'checked') {
-
-			}
 		});
 		return layers;
 	}
