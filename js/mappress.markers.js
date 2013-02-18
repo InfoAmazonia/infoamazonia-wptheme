@@ -212,6 +212,10 @@
 					fragment.set({story: marker.properties.id});
 			}
 
+			if(_gaq) {
+				_gaq.push(['_trackPageView', location.pathname + location.search + '#!/story=' + marker.properties.id]);
+			}
+
 			if(!silent) {
 				var zoom;
 				var center;
