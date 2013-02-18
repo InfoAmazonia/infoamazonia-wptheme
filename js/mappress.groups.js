@@ -107,7 +107,7 @@ var groups = {};
 				if(conf.legend_full)
 					mappress.enableDetails(group.map, conf.legend, conf.legend_full);
 
-				group.map.markersLayer.features(group.map.features);
+				//group.map.markersLayer.features(group.map.features);
 
 			});
 

@@ -51,9 +51,6 @@
 				})
 				.factory(function(x) {
 
-					if(!markers.fromMap(x))
-						return;
-
 					if(!markers.hasLocation(x))
 						return;
 
@@ -64,6 +61,13 @@
 						.attr('data-publisher', x.properties.source);
 
 					$(e).data('feature', x);
+
+					/* soon
+					if(!markers.fromMap(x))
+						$(e).addClass('hide');
+					else
+						$(e).removeClass('hide');
+					*/
 
 					// POPUP
 
