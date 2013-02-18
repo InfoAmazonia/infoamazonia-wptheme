@@ -153,7 +153,15 @@ var mappress = {};
 		if((conf.minZoom || conf.maxZoom) && !conf.preview)
 			map.setZoomRange(conf.minZoom, conf.maxZoom);
 
-		map.centerzoom(conf.center, conf.zoom, true);
+		if(conf.center)
+			map.center(conf.center);
+		else
+			map.center({lat: 0, lon: 0});
+
+		if(conf.zoom)
+			map.zoom(conf.zoom);
+		else
+			map.zoom(2);
 
 		if(!conf.disableHash && !conf.admin)
 			mappress.setupHash();

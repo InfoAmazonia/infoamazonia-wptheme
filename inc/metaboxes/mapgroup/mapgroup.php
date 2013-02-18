@@ -47,7 +47,7 @@ function mapgroup_inner_custom_box($post) {
 			<?php
 			$all_maps = get_posts('post_type=map&posts_per_page=-1');
 			foreach($all_maps as $map) {
-				?><option value="<?php echo $map->ID; ?>"><?php echo $map->post_title; ?></option><?php
+				?><option value="<?php echo $map->ID; ?>"><?php _e($map->post_title); ?></option><?php
 			}
 			?>
 		</select>
