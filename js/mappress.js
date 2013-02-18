@@ -20,6 +20,8 @@ var mappress = {};
 	 * - disableMarkers (bool)
 	 */
 
+	var map;
+
 	mappress = function(conf) {
 
 		if(!conf.postID && typeof conf === 'object') { // conf ready
@@ -51,7 +53,7 @@ var mappress = {};
 
 		mappress.maps[map_id] = mapbox.map(map_id);
 
-		var map = mappress.maps[map_id];
+		map = mappress.maps[map_id];
 
 		// store jquery node
 		map.$ = $('#' + map_id);
@@ -271,7 +273,7 @@ var mappress = {};
 		if(conf.server != 'mapbox')
 			newConf.server = conf.server;
 
-		newConf.containerID = 'map_' + conf.post_id;
+		newConf.containerID = 'map_' + conf.postID;
 		newConf.layers = [];
 		newConf.filteringLayers = [];
 		newConf.filteringLayers.switch = [];
