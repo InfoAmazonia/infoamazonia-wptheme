@@ -468,6 +468,42 @@ header#masthead {
 					}
 				}
 			}
+			&.more-tab {
+				> a {
+					&:before {
+						content: '';
+						float: right;
+						width: 5px;
+						height: 4px;
+						margin-top: 15px;
+						margin-left: 10px;
+						background: url(../img/down-arrow.png);
+						opacity: .3;
+					}
+				}
+				&:hover {
+					> a {
+						color: #404040;
+					}
+					ul {
+						display: block;
+					}
+				}
+				ul {
+					display: none;
+					position: absolute;
+					top: 35px;
+					right: 0;
+					z-index: 99999;
+					li {
+						display: block;
+						float: none;
+						a.active:after {
+							display: none;
+						}
+					}
+				}
+			}
 		}
 	}
 }

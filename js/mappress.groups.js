@@ -34,7 +34,6 @@ var groups = {};
 
 			// set mappress conf containerID to group id
 			group.conf.containerID = group.id;
-			group.conf.postID = groupID;
 
 			// store current map id
 			group.currentMapID = firstMapID;
@@ -44,7 +43,12 @@ var groups = {};
 			group.map.currentMapID = firstMapID;
 
 			// bind nav events
+			var moreLabel = group.$.nav.find('.more-tab > a').text(); // store more label
 			group.$.nav.find('li a').click(function() {
+
+				// disable "more" tab click
+				if($(this).parent().hasClass('more-tab'))
+					return;
 
 				var mapID = $(this).data('map');
 
@@ -53,6 +57,13 @@ var groups = {};
 
 				group.$.nav.find('li a').removeClass('active');
 				$(this).addClass('active');
+
+				// ui behaviour for more tab
+				if($(this).parent().hasClass('more-item')) {
+					group.$.nav.find('.more-tab > a').addClass('active').text($(this).text());
+				} else {
+					group.$.nav.find('.more-tab > a').removeClass('active').text(moreLabel);
+				}
 
 				// update layers
 				group.update(mapID);

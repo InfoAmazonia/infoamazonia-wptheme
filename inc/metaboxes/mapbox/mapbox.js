@@ -60,6 +60,19 @@
 	 	else
 	 		mapConf.preview = false;
 
+	 	// legend
+	 	if($('#mapbox-legend-metabox').length) {
+	 		if($('#mapbox-legend-textarea').val())
+	 			mapConf.legend = $('#mapbox-legend-textarea').val();
+	 		else
+	 			delete mapConf.legend;
+	 	}
+
+	 	// don't show full legend
+	 	mapConf.legend_full = false;
+
+	 	mapConf.admin = true;
+
 		// save mapConf
 		storeConf(mapConf);
 
@@ -70,6 +83,7 @@
 		var storable = $.extend({}, conf);
 		delete storable.callbacks;
 		delete storable.preview;
+		delete storable.admin;
 		$('input[name=map_conf]').val(JSON.stringify(storable));
 	}
 

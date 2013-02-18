@@ -14,11 +14,21 @@ foreach($data['maps'] as $map) {
 		<ul class="map-nav">
 			<?php
 			$i = 0;
-			foreach($main_maps as $map) { ?>
+			foreach($main_maps as $map) : ?>
 				<li><a href="#" data-map="map_<?php echo $map['id']; ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php echo $map['title']; ?></a></li>
 			<?php
 			$i++;
-			} ?>
+			endforeach; ?>
+			<?php if($more_maps) : ?>
+				<li class="more-tab">
+					<a href="#" class="toggle-more"><?php _e('More...', 'infoamazonia'); ?></a>
+					<ul class="more-maps-list">
+						<?php foreach($more_maps as $map) : ?>
+							<li class="more-item"><a href="#" data-map="map_<?php echo $map['id']; ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php echo $map['title']; ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+			<?php endif; ?>
 		</ul>
 		<div class="map-container">
 			<div id="mapgroup_<?php echo $post->ID; ?>_map" class="map">

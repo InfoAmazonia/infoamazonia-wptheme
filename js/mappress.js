@@ -20,13 +20,10 @@ var mappress = {};
 	 * - disableMarkers (bool)
 	 */
 
-	mappress = function(post_id, conf) {
+	mappress = function(conf) {
 
-		var map;
+		if(!conf.postID && typeof conf === 'object') { // conf ready
 
-		if(typeof post_id === 'object') { // conf ready
-
-			var conf = post_id;
 			return mappress.build(conf);
 
 		}
@@ -34,18 +31,15 @@ var mappress = {};
 		return $.getJSON(mappress_localization.ajaxurl,
 			{
 				action: 'map_data',
-				map_id: post_id
+				map_id: conf.postID
 			},
 			function(map_data) {
 				mapConf = mappress.convertMapConf(map_data);
 
-				if(typeof conf === 'object')
-					mapConf = _.extend(mapConf, conf);
+				mapConf = _.extend(mapConf, conf);
 
-				mappress.build(mapConf);
+				return mappress.build(mapConf);
 			});
-
-		return map;
 
 	};
 
@@ -167,10 +161,10 @@ var mappress = {};
 
 		map.centerzoom(conf.center, conf.zoom, true);
 
-		if(!conf.disableHash)
+		if(!conf.disableHash && !conf.admin)
 			mappress.setupHash();
 
-		if(!conf.disableMarkers)
+		if(!conf.disableMarkers && !conf.admin)
 			mappress.markers(map);
 
 		return map;

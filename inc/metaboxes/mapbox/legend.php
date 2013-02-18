@@ -13,8 +13,8 @@ function mapbox_legend_add_meta_box() {
 		__('Map legend', 'infoamazonia'),
 		'mapbox_legend_inner_custom_box',
 		'map',
-		'advanced',
-		'high'
+		'side',
+		'default'
 	);
 }
 
