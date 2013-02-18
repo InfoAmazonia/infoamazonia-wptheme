@@ -15,21 +15,21 @@
 	z-index: 9999999;
 }
 
-.map-container .map-tooltip .lang-en,
-.map-container .map-tooltip .lang-pt,
-.map-container .map-tooltip .lang-es {
+.map-container .lang-en,
+.map-container .lang-pt,
+.map-container .lang-es {
 	display: none;
 }
 
-body.locale-en-us .map-container .map-tooltip .lang-en,
-body.locale-pt-br .map-container .map-tooltip .lang-pt,
-body.locale-es-es .map-container .map-tooltip .lang-es {
+body.locale-en-us .map-container .lang-en,
+body.locale-pt-br .map-container .lang-pt,
+body.locale-es-es .map-container .lang-es {
 	display: block;
 }
 
-body.pt-BR .map-container .map-tooltip .lang-pt,
-body.en-US .map-container .map-tooltip .lang-en,
-body.es-ES .map-container .map-tooltip .lang-es {
+body.pt-BR .map-container .lang-pt,
+body.en-US .map-container .lang-en,
+body.es-ES .map-container .lang-es {
 	display: block;
 }
 
