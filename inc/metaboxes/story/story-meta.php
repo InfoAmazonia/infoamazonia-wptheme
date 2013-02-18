@@ -7,14 +7,14 @@ function story_meta_add_meta_box() {
 	add_meta_box(
 		'story_meta',
 		__('Story data', 'infoamazonia'),
-		'story_data_inner_custom_box',
+		'story_meta_inner_custom_box',
 		'post',
 		'advanced',
 		'high'
 	);
 }
 
-function story_data_inner_custom_box($post) {
+function story_meta_inner_custom_box($post) {
 	$author_name = get_post_meta($post->ID, 'author_name', true);
 	$author_email = get_post_meta($post->ID, 'author_email', true);
 	$reporter = get_post_meta($post->ID, 'reporter', true);
@@ -56,7 +56,7 @@ function story_data_inner_custom_box($post) {
 	<?php
 }
 
-function story_data_save_postdata($post_id) {
+function story_meta_save_postdata($post_id) {
 	if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
 		return;
 
