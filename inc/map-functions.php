@@ -250,7 +250,7 @@ function mappress_get_markers_data() {
 		$transient .= '_' . $_REQUEST['lang'];
 
 	$data = false;
-	//$data = get_transient($transient);
+	$data = get_transient($transient);
 
 	if($data === false) {
 
@@ -320,12 +320,10 @@ function mappress_get_markers_data() {
 		set_transient($transient, $data, 60*60*1);
 	}
 
-	/*
 	$expires = 60 * 15; // 15 minutes of browser cache
 	header('Pragma: public');
 	header('Cache-Control: maxage=' . $expires);
 	header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $expires) . ' GMT');
-	*/
 
 	header('Content Type: application/json');
 	echo $data;
