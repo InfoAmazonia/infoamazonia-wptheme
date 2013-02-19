@@ -17,9 +17,9 @@ function infoamazonia_scripts() {
 	wp_register_script('html5', get_template_directory_uri() . '/js/html5shiv.js', array(), '3.6.2');
 	wp_register_script('submit-story', get_template_directory_uri() . '/js/submit-story.js', array('jquery'), '0.0.3.14');
 	// styles
-	wp_register_style('site', get_template_directory_uri() . '/css/site.css', array(), '0.0.2');
+	wp_register_style('site', get_template_directory_uri() . '/css/site.css', array(), '1.0'); // old styles
 	wp_register_style('reset', get_template_directory_uri() . '/css/reset.css', array(), '2.0');
-	wp_register_style('main', get_template_directory_uri() . '/css/main.css', array(), '0.0.2');
+	wp_register_style('main', get_template_directory_uri() . '/css/main.css', array(), '1.0');
 
 	/*
 	 * Enqueue scripts & styles
