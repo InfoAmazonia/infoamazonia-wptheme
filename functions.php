@@ -57,7 +57,7 @@ add_action('after_setup_theme', 'infoamazonia_setup');
 function infoamazonia_permalink($permalink, $post) {
 	return get_post_meta($post->ID, 'url', true);
 }
-add_filter('post_link', 'infoamazonia_permalink', 10, 2)
+add_filter('post_link', 'infoamazonia_permalink', 10, 2);
 
 /*
  * qTranslate fixes
