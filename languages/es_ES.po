@@ -5,18 +5,17 @@ msgstr ""
 "Project-Id-Version: InfoAmazonia 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-19 15:16-0300\n"
-"PO-Revision-Date: 2013-02-19 15:17-0300\n"
+"PO-Revision-Date: 2013-02-19 15:25-0300\n"
 "Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
 "Language-Team: Cardume\n"
-"Language: \n"
+"Language: en_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: BRAZIL\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../searchform.php:3
@@ -29,7 +28,7 @@ msgstr "Buscar"
 
 #: ../content-map-group.php:28
 msgid "More..."
-msgstr "Mais..."
+msgstr "Más..."
 
 #: ../header.php:44
 msgid "Last updated:"
@@ -39,16 +38,19 @@ msgstr "Última atualização:"
 msgid "by"
 msgstr "por"
 
-#: ../header.php:62
-#: ../section-submit-call.php:4
-#: ../functions.php:85
+#: ../header.php:62 ../section-submit-call.php:4 ../functions.php:85
 msgid "Submit a story"
 msgstr "Envie um artigo"
 
-#: ../section-submit-call.php:2
-#: ../functions.php:86
-msgid "Do you have news to share from the Amazon? Contribute to this map by submitting your story. Help broaden the understanding of the global impact of this important region in the world."
-msgstr "Você tem alguma notícia para compartilhar sobre a Amazônia? Contribua para este mapa enviando uma reportagem. Ajude a ampliar o entendimento do impacto global desta importante região."
+#: ../section-submit-call.php:2 ../functions.php:86
+msgid ""
+"Do you have news to share from the Amazon? Contribute to this map by "
+"submitting your story. Help broaden the understanding of the global impact "
+"of this important region in the world."
+msgstr ""
+"Você tem alguma notícia para compartilhar sobre a Amazônia? Contribua para "
+"este mapa enviando uma reportagem. Ajude a ampliar o entendimento do impacto "
+"global desta importante região."
 
 #: ../loop.php:8
 msgctxt "reduced date format"
@@ -146,13 +148,11 @@ msgstr "Envie uma URL"
 msgid "Submit full story"
 msgstr "Envie uma história completa"
 
-#: ../functions.php:98
-#: ../functions.php:147
+#: ../functions.php:98 ../functions.php:147
 msgid "Your full name"
 msgstr "Nome completo"
 
-#: ../functions.php:102
-#: ../functions.php:151
+#: ../functions.php:102 ../functions.php:151
 msgid "E-mail"
 msgstr "Email"
 
@@ -168,8 +168,7 @@ msgstr "Título do artigo"
 msgid "Story text"
 msgstr "Texto do artigo"
 
-#: ../functions.php:118
-#: ../functions.php:155
+#: ../functions.php:118 ../functions.php:155
 msgid "Story url"
 msgstr "Link do artigo"
 
@@ -189,8 +188,7 @@ msgstr "Data de publicação"
 msgid "Notes to the InfoAmazonia editor"
 msgstr "Notas para o editor do InfoAmazonia"
 
-#: ../functions.php:142
-#: ../functions.php:158
+#: ../functions.php:142 ../functions.php:158
 msgid "Send story"
 msgstr "Enviar artigo"
 
@@ -202,14 +200,12 @@ msgstr "Preencha todos os campos requeridos"
 msgid "Could not save submission"
 msgstr "Não pôde salvar envio"
 
-#: ../archive-map.php:13
-#: ../inc/mappress/mappress-post-types.php:11
+#: ../archive-map.php:13 ../inc/mappress/mappress-post-types.php:11
 #: ../inc/mappress/mappress-post-types.php:21
 msgid "Maps"
 msgstr "Mapas"
 
-#: ../inc/taxonomies.php:14
-#: ../inc/taxonomies.php:28
+#: ../inc/taxonomies.php:14 ../inc/taxonomies.php:28
 msgid "Publishers"
 msgstr "Editores"
 
@@ -299,8 +295,12 @@ msgid "Read"
 msgstr "Leia"
 
 #: ../inc/mappress/mappress-functions.php:60
-msgid "Success! Thank you, your story will be reviewed by one of our editors and soon will be online."
-msgstr "Obrigado! Seu artigo será revisado por um dos nossos editores e em breve estará online."
+msgid ""
+"Success! Thank you, your story will be reviewed by one of our editors and "
+"soon will be online."
+msgstr ""
+"Obrigado! Seu artigo será revisado por um dos nossos editores e em breve "
+"estará online."
 
 #: ../inc/mappress/mappress-functions.php:61
 msgid "Oops, please try again in a few minutes."
@@ -397,8 +397,12 @@ msgid "Set maps for this post"
 msgstr "Selecione mapas para este post"
 
 #: ../inc/mappress/metaboxes/map-relation/map-relation.php:23
-msgid "Select which maps this post belongs to. If you don't mark any they will appear in all maps."
-msgstr "Selecione os mapas correspondentes a este post. Se você não marcar nenhum, este post aparecerá em todos os mapas."
+msgid ""
+"Select which maps this post belongs to. If you don't mark any they will "
+"appear in all maps."
+msgstr ""
+"Selecione os mapas correspondentes a este post. Se você não marcar nenhum, "
+"este post aparecerá em todos os mapas."
 
 #: ../inc/mappress/metaboxes/map-relation/map-relation.php:32
 msgid "You haven't created any map, yet!"
@@ -508,8 +512,15 @@ msgid "MapBox Setup"
 msgstr "Configurações do MapBox"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:68
-msgid "First, define your map server. Most likely you will be using the MapBox default servers. If not and you know what you are doing, feel free to type your own TileStream server url below."
-msgstr "Primeiro, defina seu servidor de mapa. Muito provavelmente você estará usando os servidores do MapBox. Caso contrário e você sabe o que está fazendo, fique a vontade para configurar seu próprio servidor TileStream abaixo."
+msgid ""
+"First, define your map server. Most likely you will be using the MapBox "
+"default servers. If not and you know what you are doing, feel free to type "
+"your own TileStream server url below."
+msgstr ""
+"Primeiro, defina seu servidor de mapa. Muito provavelmente você estará "
+"usando os servidores do MapBox. Caso contrário e você sabe o que está "
+"fazendo, fique a vontade para configurar seu próprio servidor TileStream "
+"abaixo."
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:70
 msgid "Use MapBox servers"
@@ -524,8 +535,12 @@ msgid "Use custom TileStream server"
 msgstr "Utilize um servidor TileStream customizado"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:73
-msgid "Edit the default layer and fill the IDs of the maps to overlay layers of your map, in order of appearance"
-msgstr "Altere a layer padrão e preencha com os IDs dos mapas para sobrepor camadas em seu mapa, em order de exibição."
+msgid ""
+"Edit the default layer and fill the IDs of the maps to overlay layers of "
+"your map, in order of appearance"
+msgstr ""
+"Altere a layer padrão e preencha com os IDs dos mapas para sobrepor camadas "
+"em seu mapa, em order de exibição."
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:172
 msgid "Add new layer"
@@ -621,7 +636,9 @@ msgstr "Modo de pré-visualização"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:278
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
-msgstr "(o modo de pré-visualização não aplica os limites de zoom e margem configurados para o mapa)"
+msgstr ""
+"(o modo de pré-visualização não aplica os limites de zoom e margem "
+"configurados para o mapa)"
 
 #: ../inc/metaboxes/story/story-meta.php:9
 msgid "Story data"
@@ -642,4 +659,3 @@ msgstr "Artigo destacado"
 #: ../inc/metaboxes/featured/featured.php:21
 msgid "This post is featured"
 msgstr "Este artigo está destacado"
-
