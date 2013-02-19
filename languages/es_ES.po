@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InfoAmazonia 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-19 15:32-0300\n"
-"PO-Revision-Date: 2013-02-19 15:33-0300\n"
+"POT-Creation-Date: 2013-02-19 15:33-0300\n"
+"PO-Revision-Date: 2013-02-19 17:17-0300\n"
 "Last-Translator: uiu <wil.cavalheiro@gmail.com>\n"
 "Language-Team: Cardume\n"
-"Language: en_US\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,19 +29,19 @@ msgstr "Más..."
 
 #: ../functions.php:46
 msgid "Main widgets"
-msgstr "Widgets principais"
+msgstr "Widgets principales"
 
 #: ../functions.php:48
 msgid "Widgets used on front and inside pages."
-msgstr "Widgets utilizados na página inicial e internas."
+msgstr "Widgets utilizados en la página principal e internas."
 
 #: ../functions.php:84
 msgid "Close"
-msgstr "Fechar"
+msgstr "Cerrar"
 
 #: ../functions.php:85 ../header.php:62 ../section-submit-call.php:4
 msgid "Submit a story"
-msgstr "Envie um artigo"
+msgstr "Envíe un reportaje"
 
 #: ../functions.php:86 ../section-submit-call.php:2
 msgid ""
@@ -49,21 +49,21 @@ msgid ""
 "submitting your story. Help broaden the understanding of the global impact "
 "of this important region in the world."
 msgstr ""
-"Você tem alguma notícia para compartilhar sobre a Amazônia? Contribua para "
-"este mapa enviando uma reportagem. Ajude a ampliar o entendimento do impacto "
-"global desta importante região."
+"¿Tienes alguna noticia para compartir sobre la Amazonia? Contribuya a este "
+"mapa enviando un reportaje. Ayude a ampliar el entendimiento del impacto "
+"global de esta importante región. "
 
 #: ../functions.php:91
 msgid "Submit a url"
-msgstr "Envie uma URL"
+msgstr "Envíe una URL"
 
 #: ../functions.php:92
 msgid "Submit full story"
-msgstr "Envie uma história completa"
+msgstr "Envíe una historia completa"
 
 #: ../functions.php:98 ../functions.php:147
 msgid "Your full name"
-msgstr "Nome completo"
+msgstr "Nombre completo"
 
 #: ../functions.php:102 ../functions.php:151
 msgid "E-mail"
@@ -71,52 +71,52 @@ msgstr "Email"
 
 #: ../functions.php:106 ../inc/metaboxes/story/story-meta.php:36
 msgid "Reporter"
-msgstr "Repórter"
+msgstr "Reportero"
 
 #: ../functions.php:110
 msgid "Story title"
-msgstr "Título do artigo"
+msgstr "Título del artículo"
 
 #: ../functions.php:114
 msgid "Story text"
-msgstr "Texto do artigo"
+msgstr "Texto del artículo"
 
 #: ../functions.php:118 ../functions.php:155
 #: ../inc/metaboxes/story/story-meta.php:40
 msgid "Story url"
-msgstr "Link do artigo"
+msgstr "Link para el artículo"
 
 #: ../functions.php:122 ../inc/metaboxes/story/story-meta.php:44
 msgid "Lead picture"
-msgstr "Imagem principal"
+msgstr "Imagen principal"
 
 #: ../functions.php:127
 msgid "Story location"
-msgstr "Localização do artigo"
+msgstr "Localización del artículo"
 
 #: ../functions.php:135 ../inc/metaboxes/story/story-meta.php:48
 msgid "Publishing date"
-msgstr "Data de publicação"
+msgstr "Fecha de publicação"
 
 #: ../functions.php:139 ../inc/metaboxes/story/story-meta.php:52
 msgid "Notes to the InfoAmazonia editor"
-msgstr "Notas para o editor do InfoAmazonia"
+msgstr "Notas para el editor del InfoAmazonia"
 
 #: ../functions.php:142 ../functions.php:158
 msgid "Send story"
-msgstr "Enviar artigo"
+msgstr "Enviar artículo"
 
 #: ../functions.php:179
 msgid "Missing information. Please fill all the required fields!"
-msgstr "Preencha todos os campos requeridos"
+msgstr "Completa todos los campos obligatorios"
 
 #: ../functions.php:188
 msgid "Could not save submission"
-msgstr "Não pôde salvar envio"
+msgstr "No es posible guardar el envío"
 
 #: ../header.php:44
 msgid "Last updated:"
-msgstr "Última atualização:"
+msgstr "Última actualización:"
 
 #: ../header.php:51
 msgid "by"
@@ -124,24 +124,23 @@ msgstr "por"
 
 #: ../index.php:27
 msgid "Highlights"
-msgstr "Destaques"
+msgstr "destacados"
 
 #: ../index.php:41
 msgid "Last stories"
-msgstr "Últimos artigos"
+msgstr "Últimos artículos"
 
 #: ../index.php:43
 msgid "Stories by "
-msgstr "Artigos por"
+msgstr "Artículos por"
 
 #: ../index.php:45
-#, fuzzy
 msgid "Stories on "
-msgstr "Artigos em"
+msgstr "artículos en"
 
 #: ../index.php:47
 msgid "Stories"
-msgstr "Artigos"
+msgstr "Artículos"
 
 #: ../loop-maps.php:12
 #, fuzzy
@@ -155,7 +154,7 @@ msgstr "d/m/Y"
 
 #: ../searchform.php:3
 msgid "Search for stories"
-msgstr "Busque por artigos"
+msgstr "Buscar artículos"
 
 #: ../searchform.php:4
 msgid "Search"
@@ -163,25 +162,25 @@ msgstr "Buscar"
 
 #: ../section-subheader.php:6
 msgid "Choose a publisher"
-msgstr "Escolha um editor"
+msgstr "Elige un editor"
 
 #: ../section-subheader.php:22
 msgid "All stories"
-msgstr "Todos os artigos"
+msgstr "Todos los artículos"
 
 #: ../section-subheader.php:43
 msgid "Search results for: "
-msgstr "Resultados da busca por:"
+msgstr "Resultados de la búsqueda para:"
 
 #: ../section-subheader.php:56
 #, php-format
 msgid "Daily Archives: %s"
-msgstr "Arquivo do dia: %s"
+msgstr "Archivo para el día: %s"
 
 #: ../section-subheader.php:58
 #, php-format
 msgid "Monthly Archives: %s"
-msgstr "Arquivo do mês: %s"
+msgstr "Archivos por mes: %s"
 
 #: ../section-subheader.php:58
 msgctxt "monthly archives date format"
@@ -191,7 +190,7 @@ msgstr "F,  Y"
 #: ../section-subheader.php:60
 #, php-format
 msgid "Yearly Archives: %s"
-msgstr "Arquivos do ano: %s"
+msgstr "Archivos del año: %s"
 
 #: ../section-subheader.php:60
 msgctxt "yearly archives date format"
@@ -200,11 +199,11 @@ msgstr "Y"
 
 #: ../section-subheader.php:62
 msgid "Archives"
-msgstr "Arquivos"
+msgstr "Archivos"
 
 #: ../single-map.php:21
 msgid "Stories on"
-msgstr "Artigos em"
+msgstr "Artículos en"
 
 #: ../inc/taxonomies.php:14 ../inc/taxonomies.php:28
 msgid "Publishers"
@@ -216,7 +215,7 @@ msgstr "Editor"
 
 #: ../inc/taxonomies.php:16
 msgid "Search publishers"
-msgstr "Buscar editores"
+msgstr "Búsqueda editores"
 
 #: ../inc/taxonomies.php:17
 msgid "Popular publishers"
@@ -224,15 +223,15 @@ msgstr "Editores populares"
 
 #: ../inc/taxonomies.php:18
 msgid "All publishers"
-msgstr "Todos os editores"
+msgstr "Todos los editores"
 
 #: ../inc/taxonomies.php:19
 msgid "Parent publisher"
-msgstr "Editor pai"
+msgstr "Editor padre"
 
 #: ../inc/taxonomies.php:20
 msgid "Parent publisher:"
-msgstr "Editor pai:"
+msgstr "Editor padre:"
 
 #: ../inc/taxonomies.php:21
 msgid "Edit publisher"
@@ -240,36 +239,36 @@ msgstr "Editar editor"
 
 #: ../inc/taxonomies.php:22
 msgid "Update publisher"
-msgstr "Atualizar editor"
+msgstr "Actualizar editor"
 
 #: ../inc/taxonomies.php:23
 msgid "Add new publisher"
-msgstr "Adicionar novo editor"
+msgstr "Añadir nuevo editor"
 
 #: ../inc/taxonomies.php:24
 msgid "New publisher name"
-msgstr "Novo nome de editor"
+msgstr "Nuevo nombre de editor"
 
 #: ../inc/taxonomies.php:25
 msgid "Separate publishers with commas"
-msgstr "Separar editores com vírgulas"
+msgstr "Separe editores con comas"
 
 #: ../inc/taxonomies.php:26
 msgid "Add or remove publishers"
-msgstr "Adicionar ou remover editores"
+msgstr "Añadir o eliminar editores"
 
 #: ../inc/taxonomies.php:27
 msgid "Choose from most used publishers"
-msgstr "Escolher entre os editores mais utilizados"
+msgstr "Elija entre los editores más utilizados"
 
 #: ../inc/mappress/mappress-functions.php:33
 #: ../inc/mappress/mappress-functions.php:44
 msgid "More"
-msgstr "Mais"
+msgstr "Más"
 
 #: ../inc/mappress/mappress-functions.php:37
 msgid "Find a location"
-msgstr "Encontre no mapa"
+msgstr "Encontrar en el mapa"
 
 #: ../inc/mappress/mappress-functions.php:38
 msgid "Results"
@@ -277,35 +276,35 @@ msgstr "Resultados"
 
 #: ../inc/mappress/mappress-functions.php:39
 msgid "Clear search"
-msgstr "Limpar busca"
+msgstr "Borrar búsqueda"
 
 #: ../inc/mappress/mappress-functions.php:50
 msgid "stories"
-msgstr "artigos"
+msgstr "artículos"
 
 #: ../inc/mappress/mappress-functions.php:52
 msgid "Copy the embed code"
-msgstr "Copie o código de incorporação"
+msgstr "Copie el código para incrustar"
 
 #: ../inc/mappress/mappress-functions.php:53
 msgid "Share this"
-msgstr "Compartilhe"
+msgstr "Compartir"
 
 #: ../inc/mappress/mappress-functions.php:55
 msgid "Read"
-msgstr "Leia"
+msgstr "Leer"
 
 #: ../inc/mappress/mappress-functions.php:60
 msgid ""
 "Success! Thank you, your story will be reviewed by one of our editors and "
 "soon will be online."
 msgstr ""
-"Obrigado! Seu artigo será revisado por um dos nossos editores e em breve "
-"estará online."
+"¡Gracias! Tu artículo será revisado por uno de nuestros editores y luego "
+"online"
 
 #: ../inc/mappress/mappress-functions.php:61
 msgid "Oops, please try again in a few minutes."
-msgstr "Ops, tente novamente em alguns minutos."
+msgstr "Por favor, vuelve a intentarlo en unos minutos."
 
 #: ../inc/mappress/mappress-post-types.php:12
 msgid "Map"
@@ -314,7 +313,7 @@ msgstr "Mapa"
 #: ../inc/mappress/mappress-post-types.php:13
 #: ../inc/mappress/mappress-post-types.php:14
 msgid "Add new map"
-msgstr "Adicionar novo mapa"
+msgstr "Añadir nuevo mapa"
 
 #: ../inc/mappress/mappress-post-types.php:15
 msgid "Edit map"
@@ -322,7 +321,7 @@ msgstr "Editar mapa"
 
 #: ../inc/mappress/mappress-post-types.php:16
 msgid "New map"
-msgstr "Novo mapa"
+msgstr "Nuevo mapa"
 
 #: ../inc/mappress/mappress-post-types.php:17
 msgid "View map"
@@ -334,15 +333,15 @@ msgstr "Buscar mapas"
 
 #: ../inc/mappress/mappress-post-types.php:19
 msgid "No map found"
-msgstr "Nenhum mapa foi encontrado"
+msgstr "Ningún mapa encontrado "
 
 #: ../inc/mappress/mappress-post-types.php:20
 msgid "No map found in the trash"
-msgstr "Nenhum mapa foi encontrado na lixeira"
+msgstr "Ningún mapa encontrado en la basura"
 
 #: ../inc/mappress/mappress-post-types.php:27
 msgid "MapBox Maps"
-msgstr "Mapas do MapBox"
+msgstr "Mapas de MapBox"
 
 #: ../inc/mappress/mappress-post-types.php:52
 #: ../inc/mappress/mappress-post-types.php:62
@@ -359,7 +358,7 @@ msgstr "Grupo de mapa"
 #: ../inc/mappress/mappress-post-types.php:55
 #: ../inc/mappress/mappress-post-types.php:90
 msgid "Add new map group"
-msgstr "Adicionar novo grupo de mapa"
+msgstr "Añadir nuevo grupo de mapa"
 
 #: ../inc/mappress/mappress-post-types.php:56
 msgid "Edit map group"
@@ -367,7 +366,7 @@ msgstr "Editar grupo de mapa"
 
 #: ../inc/mappress/mappress-post-types.php:57
 msgid "New map group"
-msgstr "Novo grupo de mapa"
+msgstr "Nuevo grupo de mapa"
 
 #: ../inc/mappress/mappress-post-types.php:58
 msgid "View map group"
@@ -379,27 +378,27 @@ msgstr "Buscar grupo de mapa"
 
 #: ../inc/mappress/mappress-post-types.php:60
 msgid "No map group found"
-msgstr "Nenhum grupo de mapa foi encontrado"
+msgstr "Ningún grupo de mapa ha sido encontrado"
 
 #: ../inc/mappress/mappress-post-types.php:61
 msgid "No map group found in the trash"
-msgstr "Nenhum grupo de mapa foi encontrado na lixeira"
+msgstr "Ningún grupo de mapa ha sido encontrado en la basura"
 
 #: ../inc/mappress/mappress-post-types.php:68
 msgid "MapBox maps agroupment"
-msgstr "Agrupamento de mapas do MapBox"
+msgstr "Agrupación de  mapas do MapBox"
 
 #: ../inc/mappress/mappress-post-types.php:90
 msgid "Add new group"
-msgstr "Adicionar novo grupo"
+msgstr "Agrupación nuevo grupo"
 
 #: ../inc/mappress/metaboxes/geocode/geocode.php:15
 msgid "Address and geolocation"
-msgstr "Endereço e geolocalização"
+msgstr "Dirección y geolocalización"
 
 #: ../inc/mappress/metaboxes/geocode/geocode.php:30
 msgid "Write an address"
-msgstr "Escreva um endereço"
+msgstr "Escriba una dirección"
 
 #: ../inc/mappress/metaboxes/geocode/geocode.php:33
 msgid "Geolocate"
@@ -407,7 +406,7 @@ msgstr "Geolocalizar"
 
 #: ../inc/mappress/metaboxes/geocode/geocode.php:36
 msgid "Drag the marker for a more precise result"
-msgstr "Arraste o marcador para um resultado mais preciso"
+msgstr "Arrastre el marcador para obtener un resultado más preciso"
 
 #: ../inc/mappress/metaboxes/geocode/geocode.php:38
 msgid "Result"
@@ -415,35 +414,35 @@ msgstr "Resultado"
 
 #: ../inc/mappress/metaboxes/geocode/geocode.php:40
 msgid "Latitude"
-msgstr "Latitude"
+msgstr "Latitud"
 
 #: ../inc/mappress/metaboxes/geocode/geocode.php:43
 msgid "Longitude"
-msgstr "Longitude"
+msgstr "Longitud"
 
 #: ../inc/mappress/metaboxes/map-relation/map-relation.php:9
 msgid "Set maps for this post"
-msgstr "Selecione mapas para este post"
+msgstr "Seleccione los mapas para esta entrada"
 
 #: ../inc/mappress/metaboxes/map-relation/map-relation.php:23
 msgid ""
 "Select which maps this post belongs to. If you don't mark any they will "
 "appear in all maps."
 msgstr ""
-"Selecione os mapas correspondentes a este post. Se você não marcar nenhum, "
-"este post aparecerá em todos os mapas."
+"Seleccione los mapas correspondientes a esta entrada. Si no selecciona "
+"ningún mapa, este mensaje aparecerá en todos los mapas."
 
 #: ../inc/mappress/metaboxes/map-relation/map-relation.php:32
 msgid "You haven't created any map, yet!"
-msgstr "Você não criou mapas, ainda!"
+msgstr "Usted no ha creado mapas todavía!"
 
 #: ../inc/mappress/metaboxes/mapbox/legend.php:13
 msgid "Map legend"
-msgstr "Legenda do mapa"
+msgstr "Leyenda del mapa"
 
 #: ../inc/mappress/metaboxes/mapbox/legend.php:25
 msgid "Enter your HTML code to use as legend on the map"
-msgstr "Entre com código HTML para usar como legenda do mapa"
+msgstr "Introduzca su código de HTML para utilizar la leyenda en el mapa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:17
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:80
@@ -451,19 +450,19 @@ msgstr "Entre com código HTML para usar como legenda do mapa"
 #: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:18
 #: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:67
 msgid "Remove"
-msgstr "Remover"
+msgstr "Eliminar"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:21
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:84
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:147
 msgid "Layer options"
-msgstr "Opções de layer"
+msgstr "Opciones de capa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:24
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:87
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:150
 msgid "Fixed"
-msgstr "Fixa"
+msgstr "Fijo"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:26
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:89
@@ -481,7 +480,7 @@ msgstr ""
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:94
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:157
 msgid "Layer title"
-msgstr "Título da layer"
+msgstr "Título de la capa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:33
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:96
@@ -497,7 +496,7 @@ msgstr ""
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:50
 msgid "MapBox Setup"
-msgstr "Configurações do MapBox"
+msgstr "Configuración del MapBox"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:68
 msgid ""
@@ -505,51 +504,50 @@ msgid ""
 "default servers. If not and you know what you are doing, feel free to type "
 "your own TileStream server url below."
 msgstr ""
-"Primeiro, defina seu servidor de mapa. Muito provavelmente você estará "
-"usando os servidores do MapBox. Caso contrário e você sabe o que está "
-"fazendo, fique a vontade para configurar seu próprio servidor TileStream "
-"abaixo."
+"En primer lugar, definir el servidor del mapa. Lo más probable es que va a "
+"utilizar servidores MapBox. Si no es así y usted sabe lo que está haciendo, "
+"no dude en configurar su propio servidor TileStream abajo."
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:70
 msgid "Use MapBox servers"
-msgstr "Utilize os servidores do MapBox"
+msgstr "Utilice servidores MapBox"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:70
 msgid "(default)"
-msgstr "(padrão)"
+msgstr "(predeterminado)"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:71
 msgid "Use custom TileStream server"
-msgstr "Utilize um servidor TileStream customizado"
+msgstr "Utilice un servidor TileStream personalizado "
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:73
 msgid ""
 "Edit the default layer and fill the IDs of the maps to overlay layers of "
 "your map, in order of appearance"
 msgstr ""
-"Altere a layer padrão e preencha com os IDs dos mapas para sobrepor camadas "
-"em seu mapa, em order de exibição."
+"Cambiar la capa predeterminada y llenarlo con los ID de los mapas para "
+"superponer capas en el mapa en orden de presentación."
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:172
 msgid "Add new layer"
-msgstr "Adicionar nova layer"
+msgstr "Añadir nueva capa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:173
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:276
 msgid "Update preview"
-msgstr "Atualizar pré-visualização"
+msgstr "Actualizar previsualización"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:175
 msgid "Preview map"
-msgstr "Pré-visualizar mapa"
+msgstr "Pre vista del mapa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:180
 msgid "Map settings"
-msgstr "Configurações do mapa"
+msgstr "Configuración del mapa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:182
 msgid "Currently viewing"
-msgstr "Atualmente visualizando"
+msgstr "Actualmente viendo"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:185
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:215
@@ -564,7 +562,7 @@ msgstr "Zoom"
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:193
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:246
 msgid "East"
-msgstr "Leste"
+msgstr "Este"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:197
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:250
@@ -574,7 +572,7 @@ msgstr "Norte"
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:201
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:254
 msgid "South"
-msgstr "Sul"
+msgstr "Sur"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:205
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:258
@@ -583,11 +581,11 @@ msgstr "Oeste"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:211
 msgid "Map center & zoom"
-msgstr "Centro e zoom do mapa"
+msgstr "Centro e zoom del mapa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:212
 msgid "Set current as map center & zoom"
-msgstr "Defina o atual como centro e zoom do mapa"
+msgstr "Fijar actual como el centro y ampliar el mapa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:223
 msgid "Min zoom"
@@ -596,7 +594,7 @@ msgstr "Zoom mín."
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:226
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:233
 msgid "Current"
-msgstr "Atual"
+msgstr "Actual"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:230
 msgid "Max zoom"
@@ -604,59 +602,59 @@ msgstr "Zoom máx."
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:242
 msgid "Pan limits"
-msgstr "Limites de margem"
+msgstr "Límites de margen"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:243
 msgid "Set current as map panning limits"
-msgstr "Defina o atual como limite de margem do mapa"
+msgstr "Fijar actual como el limite de margen del mapa"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:268
 msgid "Enable geocoding service"
-msgstr "Ativar serviço de geocoding"
+msgstr "Habilitar el servicio de geocodificación"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:271
 msgid "Enable geocode search service"
-msgstr "Ativar serviço de busca de localização"
+msgstr "Habilitar el servicio de búsqueda de localización"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:277
 msgid "Preview mode"
-msgstr "Modo de pré-visualização"
+msgstr "Modo Previsualizar"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:278
 msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
 msgstr ""
-"(o modo de pré-visualização não aplica os limites de zoom e margem "
-"configurados para o mapa)"
+"(En el modo de previsualización no se aplican límites de zoom y margen para "
+"ampliar el mapa)"
 
 #: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:15
 #: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:64
 msgid "Add to \"more\" tab"
-msgstr "Adicionar à aba \"mais\""
+msgstr "Añadir la solapa \"más\""
 
 #: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:45
 msgid "Select a map to add to your map group"
-msgstr "Selecione um mapa para adicionar ao seu grupo de mapas"
+msgstr "Seleccione un mapa para agregar a su grup de mapas"
 
 #: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:54
 msgid "Add map"
-msgstr "Adicionar mapa"
+msgstr "Añadir mapa"
 
 #: ../inc/metaboxes/featured/featured.php:9
 msgid "Featured post"
-msgstr "Artigo destacado"
+msgstr "Artículo destacado"
 
 #: ../inc/metaboxes/featured/featured.php:21
 msgid "This post is featured"
-msgstr "Este artigo está destacado"
+msgstr "Este artículo está destacado"
 
 #: ../inc/metaboxes/story/story-meta.php:9
 msgid "Story data"
-msgstr "Dados do artigo"
+msgstr "Datos del artículo"
 
 #: ../inc/metaboxes/story/story-meta.php:28
 msgid "Author name"
-msgstr "Nome do autor"
+msgstr "Nombre del Autor"
 
 #: ../inc/metaboxes/story/story-meta.php:32
 msgid "Author email"
-msgstr "Email do autor"
+msgstr "Email del autor"
