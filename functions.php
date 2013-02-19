@@ -53,6 +53,12 @@ function infoamazonia_setup() {
 }
 add_action('after_setup_theme', 'infoamazonia_setup');
 
+// custom permalink url
+function infoamazonia_permalink($permalink, $post) {
+	return get_post_meta($post->ID, 'url', true);
+}
+add_filter('post_link', 'infoamazonia_permalink', 10, 2)
+
 /*
  * qTranslate fixes
  */
