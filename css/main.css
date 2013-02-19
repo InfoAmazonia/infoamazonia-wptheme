@@ -44,6 +44,7 @@ header#masthead .project-by ul li a.internews{background-position:-367px -55px;w
 #stage .choose-filter.active ul{display:block;border-radius:0 0 3px 3px;}
 #stage .stage-map{width:100%;height:480px;}
 #stage .mapgroup-container{padding:0px;}
+.content-map,.map-container{position:relative;}
 .mapgroup-container{padding:35px 0 15px 0;}
 .mapgroup{position:relative;}.mapgroup .map-nav{position:absolute;top:-35px;right:0;margin:0;padding:0;}.mapgroup .map-nav li{float:left;}.mapgroup .map-nav li a{font-family:'OpenSansRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;-moz-transition:none;-o-transition:none;-webkit-transition:none;transition:none;background-color:white;border:1px solid #CCC;border-bottom:none;display:block;color:#96979C;padding:0 15px;height:34px;line-height:35px;margin-left:1px;position:relative;font-size:11px;text-transform:uppercase;}.mapgroup .map-nav li a:active{-moz-box-shadow:inset 0 2px 4px rgba(0, 0, 0, 0.1);box-shadow:inset 0 2px 4px rgba(0, 0, 0, 0.1);}
 .mapgroup .map-nav li a:hover{color:#404040;}
