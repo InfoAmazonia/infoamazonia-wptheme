@@ -8,7 +8,7 @@
 							<?php echo get_the_orig_date(_x('m/d/Y', 'reduced date format', 'infoamazonia')); ?> - 
 							<?php echo array_shift(get_the_terms($post->ID, 'publisher'))->name; ?></p>
 						<div class="media-limit">
-							<a href="#!/story=post-<?php the_ID(); ?>" title="<?php the_title(); ?>">
+							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 								<?php
 								if(has_post_thumbnail())
 									the_post_thumbnail('post-thumb');
@@ -17,7 +17,7 @@
 								?>
 							</a>
 						</div>
-						<h2><a href="#!/story=post-<?php the_ID(); ?>"><?php the_title(); ?></a></h2>
+						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					</header>
 				</article>
 			</li>
