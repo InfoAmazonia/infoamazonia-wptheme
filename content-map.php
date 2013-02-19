@@ -3,6 +3,7 @@
 	if(is_post_type_archive('map')) {
 		$mapConf['disableMarkers'] = true;
 		$mapConf['disableHash'] = true;
+		$mapConf['disableInteraction'] = true;
 	}
 	if($mapConf)
 		$mapConf = json_encode($mapConf);

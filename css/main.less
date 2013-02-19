@@ -1073,17 +1073,22 @@ header#masthead {
 	}
 }
 
-#page {
-	padding-top: 30px;
+#page,
+.archive-page {
+	padding: 30px 0;
 	background: #f0f0f0;
-	article {
+	article.main,
+	.archive-list {
 		width: 66%;
 		float: left;
 		h1 {
 			margin: 0 0 30px;
 		}
 	}
-	aside {
+	#searchform {
+		margin: 0 0 30px;
+	}
+	.page-sidebar {
 		width: 33%;
 		float: left;
 		box-sizing: border-box;
@@ -1115,12 +1120,13 @@ header#masthead {
 #map-archive {
 	.list-maps {
 		> li {
-			width: 50%;
-			height: 300px;
-			padding: 15px;
-			box-sizing: border-box;
-			float: left;
 			margin: 0 0 20px;
+			.map-container {
+				width: 200px;
+				height: 200px;
+				float: left;
+				margin: 0 20px 20px 0;
+			}
 		}
 	}
 }
@@ -1163,7 +1169,7 @@ aside#submit-call {
 aside#main-widgets {
 	background: #111;
 	padding: 15px 0;
-	margin: 30px 0 15px;
+	margin: 0 0 15px;
 	color: #f0f0f0;
 	h3 {
 		margin-bottom: 30px;

@@ -55,7 +55,11 @@ var mappress = {};
 
 		var map_id = conf.containerID;
 
-		mappress.maps[map_id] = mapbox.map(map_id);
+		var handlers = null;
+		if(conf.disableInteraction)
+			handlers = [];
+
+		mappress.maps[map_id] = mapbox.map(map_id, null, null, handlers);
 
 		map = mappress.maps[map_id];
 
@@ -120,10 +124,10 @@ var mappress = {};
 
 			map.interaction.auto();
 
-			if(conf.geocode)
+			if(conf.geocode && !conf.disableInteraction)
 				mappress.geocode(map_id);
 
-			if(conf.filteringLayers)
+			if(conf.filteringLayers && !conf.disableInteraction)
 				mappress.filterLayers(map_id, conf.filteringLayers);
 
 		}));
@@ -131,8 +135,10 @@ var mappress = {};
 		/*
 		 * CONFS
 		 */
-		map.ui.zoomer.add();
-		map.ui.fullscreen.add();
+		if(!conf.disableInteraction) {
+			map.ui.zoomer.add();
+			map.ui.fullscreen.add();
+		}
 
 		if(conf.extent) {
 			if(typeof conf.extent === 'string')
@@ -176,10 +182,10 @@ var mappress = {};
 		if(!conf.disableMarkers && !conf.admin)
 			mappress.markers(map);
 
-		if(conf.legend)
+		if(conf.legend && !conf.disableInteraction)
 			map.ui.legend.add().content(conf.legend);
 
-		if(conf.legend_full)
+		if(conf.legend_full && !conf.disableInteraction)
 			mappress.enableDetails(map, conf.legend, conf.legend_full);
 
 		return map;
