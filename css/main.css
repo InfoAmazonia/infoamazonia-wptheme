@@ -97,8 +97,8 @@ header#masthead .project-by ul li a.internews{background-position:-367px -55px;w
 .map-details-page .close{top:20px;right:20px;position:absolute;color:#fff;background:#303030;font-size:20px;line-height:24px;text-align:center;width:24px;height:24px;display:block;font-weight:500;font-family:'OpenSansSemiboldRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;}
 section.loop-section h3{line-height:34px;margin-bottom:0;border-bottom:1px solid #f0f0f0;background:#fff;padding:15px;-webkit-transition:background 0.1s ease-in-out;}
 section.loop-section:hover h3{-moz-box-shadow:0 2px 5px rgba(0, 0, 0, 0.05);box-shadow:0 2px 5px rgba(0, 0, 0, 0.05);}
-section.loop-section .navigation{float:right;margin:30px 0;}section.loop-section .navigation .current{background:#8ec63d;border:1px solid #77a832;padding:7px 12px;border-radius:3px;}
-section.loop-section .navigation a{background:#f0f0f0;border-color:#ccc;padding:7px 12px;border-radius:3px;}
+.navigation{float:right;margin:30px 0;}.navigation .current{background:#8ec63d;border:1px solid #77a832;padding:7px 12px;border-radius:3px;}
+.navigation a{background:#f0f0f0;border-color:#ccc;padding:7px 12px;border-radius:3px;}
 .list-posts{-moz-transition:all 25s ease;-o-transition:all 25s ease;-webkit-transition:all 25s ease;transition:all 25s ease;}.list-posts li{cursor:pointer;width:25%;height:229px;border-bottom:1px solid #f0f0f0;box-sizing:border-box;padding:15px;margin:0;float:left;overflow:hidden;-webkit-transition:opacity 0.1s linear;}.list-posts li:hover{opacity:.7;}
 .list-posts li img{max-width:100%;height:auto;}
 .list-posts li h2{font-size:16px;line-height:18px;}
