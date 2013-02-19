@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InfoAmazonia 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-19 15:16-0300\n"
-"PO-Revision-Date: 2013-02-19 15:25-0300\n"
-"Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
+"POT-Creation-Date: 2013-02-19 15:32-0300\n"
+"PO-Revision-Date: 2013-02-19 15:33-0300\n"
+"Last-Translator: uiu <wil.cavalheiro@gmail.com>\n"
 "Language-Team: Cardume\n"
-"Language: en_BR\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,31 +18,32 @@ msgstr ""
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../searchform.php:3
-msgid "Search for stories"
-msgstr "Busque por artigos"
-
-#: ../searchform.php:4
-msgid "Search"
-msgstr "Buscar"
+#: ../archive-map.php:13 ../inc/mappress/mappress-post-types.php:11
+#: ../inc/mappress/mappress-post-types.php:21
+msgid "Maps"
+msgstr "Mapas"
 
 #: ../content-map-group.php:28
 msgid "More..."
 msgstr "Más..."
 
-#: ../header.php:44
-msgid "Last updated:"
-msgstr "Última atualização:"
+#: ../functions.php:46
+msgid "Main widgets"
+msgstr "Widgets principais"
 
-#: ../header.php:51
-msgid "by"
-msgstr "por"
+#: ../functions.php:48
+msgid "Widgets used on front and inside pages."
+msgstr "Widgets utilizados na página inicial e internas."
 
-#: ../header.php:62 ../section-submit-call.php:4 ../functions.php:85
+#: ../functions.php:84
+msgid "Close"
+msgstr "Fechar"
+
+#: ../functions.php:85 ../header.php:62 ../section-submit-call.php:4
 msgid "Submit a story"
 msgstr "Envie um artigo"
 
-#: ../section-submit-call.php:2 ../functions.php:86
+#: ../functions.php:86 ../section-submit-call.php:2
 msgid ""
 "Do you have news to share from the Amazon? Contribute to this map by "
 "submitting your story. Help broaden the understanding of the global impact "
@@ -52,10 +53,74 @@ msgstr ""
 "este mapa enviando uma reportagem. Ajude a ampliar o entendimento do impacto "
 "global desta importante região."
 
-#: ../loop.php:8
-msgctxt "reduced date format"
-msgid "m/d/Y"
-msgstr "d/m/Y"
+#: ../functions.php:91
+msgid "Submit a url"
+msgstr "Envie uma URL"
+
+#: ../functions.php:92
+msgid "Submit full story"
+msgstr "Envie uma história completa"
+
+#: ../functions.php:98 ../functions.php:147
+msgid "Your full name"
+msgstr "Nome completo"
+
+#: ../functions.php:102 ../functions.php:151
+msgid "E-mail"
+msgstr "Email"
+
+#: ../functions.php:106 ../inc/metaboxes/story/story-meta.php:36
+msgid "Reporter"
+msgstr "Repórter"
+
+#: ../functions.php:110
+msgid "Story title"
+msgstr "Título do artigo"
+
+#: ../functions.php:114
+msgid "Story text"
+msgstr "Texto do artigo"
+
+#: ../functions.php:118 ../functions.php:155
+#: ../inc/metaboxes/story/story-meta.php:40
+msgid "Story url"
+msgstr "Link do artigo"
+
+#: ../functions.php:122 ../inc/metaboxes/story/story-meta.php:44
+msgid "Lead picture"
+msgstr "Imagem principal"
+
+#: ../functions.php:127
+msgid "Story location"
+msgstr "Localização do artigo"
+
+#: ../functions.php:135 ../inc/metaboxes/story/story-meta.php:48
+msgid "Publishing date"
+msgstr "Data de publicação"
+
+#: ../functions.php:139 ../inc/metaboxes/story/story-meta.php:52
+msgid "Notes to the InfoAmazonia editor"
+msgstr "Notas para o editor do InfoAmazonia"
+
+#: ../functions.php:142 ../functions.php:158
+msgid "Send story"
+msgstr "Enviar artigo"
+
+#: ../functions.php:179
+msgid "Missing information. Please fill all the required fields!"
+msgstr "Preencha todos os campos requeridos"
+
+#: ../functions.php:188
+msgid "Could not save submission"
+msgstr "Não pôde salvar envio"
+
+#: ../header.php:44
+msgid "Last updated:"
+msgstr "Última atualização:"
+
+#: ../header.php:51
+msgid "by"
+msgstr "por"
 
 #: ../index.php:27
 msgid "Highlights"
@@ -77,6 +142,24 @@ msgstr "Artigos em"
 #: ../index.php:47
 msgid "Stories"
 msgstr "Artigos"
+
+#: ../loop-maps.php:12
+#, fuzzy
+msgid "View this map"
+msgstr "Ver mapa"
+
+#: ../loop.php:8 ../inc/mappress/mappress-functions.php:285
+msgctxt "reduced date format"
+msgid "m/d/Y"
+msgstr "d/m/Y"
+
+#: ../searchform.php:3
+msgid "Search for stories"
+msgstr "Busque por artigos"
+
+#: ../searchform.php:4
+msgid "Search"
+msgstr "Buscar"
 
 #: ../section-subheader.php:6
 msgid "Choose a publisher"
@@ -122,88 +205,6 @@ msgstr "Arquivos"
 #: ../single-map.php:21
 msgid "Stories on"
 msgstr "Artigos em"
-
-#: ../loop-maps.php:12
-#, fuzzy
-msgid "View this map"
-msgstr "Ver mapa"
-
-#: ../functions.php:46
-msgid "Main widgets"
-msgstr "Widgets principais"
-
-#: ../functions.php:48
-msgid "Widgets used on front and inside pages."
-msgstr "Widgets utilizados na página inicial e internas."
-
-#: ../functions.php:84
-msgid "Close"
-msgstr "Fechar"
-
-#: ../functions.php:91
-msgid "Submit a url"
-msgstr "Envie uma URL"
-
-#: ../functions.php:92
-msgid "Submit full story"
-msgstr "Envie uma história completa"
-
-#: ../functions.php:98 ../functions.php:147
-msgid "Your full name"
-msgstr "Nome completo"
-
-#: ../functions.php:102 ../functions.php:151
-msgid "E-mail"
-msgstr "Email"
-
-#: ../functions.php:106
-msgid "Reporter"
-msgstr "Repórter"
-
-#: ../functions.php:110
-msgid "Story title"
-msgstr "Título do artigo"
-
-#: ../functions.php:114
-msgid "Story text"
-msgstr "Texto do artigo"
-
-#: ../functions.php:118 ../functions.php:155
-msgid "Story url"
-msgstr "Link do artigo"
-
-#: ../functions.php:122
-msgid "Lead picture"
-msgstr "Imagem principal"
-
-#: ../functions.php:127
-msgid "Story location"
-msgstr "Localização do artigo"
-
-#: ../functions.php:135
-msgid "Publishing date"
-msgstr "Data de publicação"
-
-#: ../functions.php:139
-msgid "Notes to the InfoAmazonia editor"
-msgstr "Notas para o editor do InfoAmazonia"
-
-#: ../functions.php:142 ../functions.php:158
-msgid "Send story"
-msgstr "Enviar artigo"
-
-#: ../functions.php:179
-msgid "Missing information. Please fill all the required fields!"
-msgstr "Preencha todos os campos requeridos"
-
-#: ../functions.php:188
-msgid "Could not save submission"
-msgstr "Não pôde salvar envio"
-
-#: ../archive-map.php:13 ../inc/mappress/mappress-post-types.php:11
-#: ../inc/mappress/mappress-post-types.php:21
-msgid "Maps"
-msgstr "Mapas"
 
 #: ../inc/taxonomies.php:14 ../inc/taxonomies.php:28
 msgid "Publishers"
@@ -392,22 +393,6 @@ msgstr "Agrupamento de mapas do MapBox"
 msgid "Add new group"
 msgstr "Adicionar novo grupo"
 
-#: ../inc/mappress/metaboxes/map-relation/map-relation.php:9
-msgid "Set maps for this post"
-msgstr "Selecione mapas para este post"
-
-#: ../inc/mappress/metaboxes/map-relation/map-relation.php:23
-msgid ""
-"Select which maps this post belongs to. If you don't mark any they will "
-"appear in all maps."
-msgstr ""
-"Selecione os mapas correspondentes a este post. Se você não marcar nenhum, "
-"este post aparecerá em todos os mapas."
-
-#: ../inc/mappress/metaboxes/map-relation/map-relation.php:32
-msgid "You haven't created any map, yet!"
-msgstr "Você não criou mapas, ainda!"
-
 #: ../inc/mappress/metaboxes/geocode/geocode.php:15
 msgid "Address and geolocation"
 msgstr "Endereço e geolocalização"
@@ -436,26 +421,21 @@ msgstr "Latitude"
 msgid "Longitude"
 msgstr "Longitude"
 
-#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:15
-#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:64
-msgid "Add to \"more\" tab"
-msgstr "Adicionar à aba \"mais\""
+#: ../inc/mappress/metaboxes/map-relation/map-relation.php:9
+msgid "Set maps for this post"
+msgstr "Selecione mapas para este post"
 
-#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:18
-#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:67
-#: ../inc/mappress/metaboxes/mapbox/mapbox.php:17
-#: ../inc/mappress/metaboxes/mapbox/mapbox.php:80
-#: ../inc/mappress/metaboxes/mapbox/mapbox.php:143
-msgid "Remove"
-msgstr "Remover"
+#: ../inc/mappress/metaboxes/map-relation/map-relation.php:23
+msgid ""
+"Select which maps this post belongs to. If you don't mark any they will "
+"appear in all maps."
+msgstr ""
+"Selecione os mapas correspondentes a este post. Se você não marcar nenhum, "
+"este post aparecerá em todos os mapas."
 
-#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:45
-msgid "Select a map to add to your map group"
-msgstr "Selecione um mapa para adicionar ao seu grupo de mapas"
-
-#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:54
-msgid "Add map"
-msgstr "Adicionar mapa"
+#: ../inc/mappress/metaboxes/map-relation/map-relation.php:32
+msgid "You haven't created any map, yet!"
+msgstr "Você não criou mapas, ainda!"
 
 #: ../inc/mappress/metaboxes/mapbox/legend.php:13
 msgid "Map legend"
@@ -464,6 +444,14 @@ msgstr "Legenda do mapa"
 #: ../inc/mappress/metaboxes/mapbox/legend.php:25
 msgid "Enter your HTML code to use as legend on the map"
 msgstr "Entre com código HTML para usar como legenda do mapa"
+
+#: ../inc/mappress/metaboxes/mapbox/mapbox.php:17
+#: ../inc/mappress/metaboxes/mapbox/mapbox.php:80
+#: ../inc/mappress/metaboxes/mapbox/mapbox.php:143
+#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:18
+#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:67
+msgid "Remove"
+msgstr "Remover"
 
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:21
 #: ../inc/mappress/metaboxes/mapbox/mapbox.php:84
@@ -640,6 +628,27 @@ msgstr ""
 "(o modo de pré-visualização não aplica os limites de zoom e margem "
 "configurados para o mapa)"
 
+#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:15
+#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:64
+msgid "Add to \"more\" tab"
+msgstr "Adicionar à aba \"mais\""
+
+#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:45
+msgid "Select a map to add to your map group"
+msgstr "Selecione um mapa para adicionar ao seu grupo de mapas"
+
+#: ../inc/mappress/metaboxes/mapgroup/mapgroup.php:54
+msgid "Add map"
+msgstr "Adicionar mapa"
+
+#: ../inc/metaboxes/featured/featured.php:9
+msgid "Featured post"
+msgstr "Artigo destacado"
+
+#: ../inc/metaboxes/featured/featured.php:21
+msgid "This post is featured"
+msgstr "Este artigo está destacado"
+
 #: ../inc/metaboxes/story/story-meta.php:9
 msgid "Story data"
 msgstr "Dados do artigo"
@@ -651,11 +660,3 @@ msgstr "Nome do autor"
 #: ../inc/metaboxes/story/story-meta.php:32
 msgid "Author email"
 msgstr "Email do autor"
-
-#: ../inc/metaboxes/featured/featured.php:9
-msgid "Featured post"
-msgstr "Artigo destacado"
-
-#: ../inc/metaboxes/featured/featured.php:21
-msgid "This post is featured"
-msgstr "Este artigo está destacado"
