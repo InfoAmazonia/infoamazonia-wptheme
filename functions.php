@@ -53,6 +53,13 @@ function infoamazonia_setup() {
 }
 add_action('after_setup_theme', 'infoamazonia_setup');
 
+// delete all transients
+function infoamazonia_clear_transients() {
+	global $wpdb;
+	$wpdb->query("DELETE FROM `wp_options` WHERE `option_name` LIKE ('_transient_%');");
+}
+add_action('init', 'infoamazonia_clear_transients');
+
 // custom permalink url
 function infoamazonia_permalink($permalink, $post) {
 	return get_post_meta($post->ID, 'url', true);
