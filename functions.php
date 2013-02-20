@@ -1,8 +1,5 @@
 <?php
 
-// MAPPRESS
-include(STYLESHEETPATH . '/inc/mappress/mappress.php');
-
 // metaboxes
 include(STYLESHEETPATH . '/inc/metaboxes/metaboxes.php');
 
@@ -32,7 +29,7 @@ function infoamazonia_scripts() {
 	wp_enqueue_style('reset');
 	wp_enqueue_style('main');
 }
-add_action('wp_enqueue_scripts', 'infoamazonia_scripts');
+add_action('wp_enqueue_scripts', 'infoamazonia_scripts', 11);
 
 // infoamazonia setup
 
