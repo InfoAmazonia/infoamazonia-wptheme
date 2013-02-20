@@ -1,25 +1,25 @@
 <?php
 
 // MAPPRESS
-include(TEMPLATEPATH . '/inc/mappress/mappress.php');
+include(STYLESHEETPATH . '/inc/mappress/mappress.php');
 
 // metaboxes
-include(TEMPLATEPATH . '/inc/metaboxes/metaboxes.php');
+include(STYLESHEETPATH . '/inc/metaboxes/metaboxes.php');
 
 // register taxonomies
-include(TEMPLATEPATH . '/inc/taxonomies.php');
+include(STYLESHEETPATH . '/inc/taxonomies.php');
 
 function infoamazonia_scripts() {
 	/*
 	 * Register scripts & styles
 	 */
 	// scripts
-	wp_register_script('html5', get_template_directory_uri() . '/js/html5shiv.js', array(), '3.6.2');
-	wp_register_script('submit-story', get_template_directory_uri() . '/js/submit-story.js', array('jquery'), '0.0.3.14');
+	wp_register_script('html5', get_stylesheet_directory_uri() . '/js/html5shiv.js', array(), '3.6.2');
+	wp_register_script('submit-story', get_stylesheet_directory_uri() . '/js/submit-story.js', array('jquery'), '0.0.3.14');
 	// styles
-	wp_register_style('site', get_template_directory_uri() . '/css/site.css', array(), '1.0'); // old styles
-	wp_register_style('reset', get_template_directory_uri() . '/css/reset.css', array(), '2.0');
-	wp_register_style('main', get_template_directory_uri() . '/css/main.css', array(), '1.0');
+	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.0'); // old styles
+	wp_register_style('reset', get_stylesheet_directory_uri() . '/css/reset.css', array(), '2.0');
+	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.0');
 
 	/*
 	 * Enqueue scripts & styles
@@ -37,6 +37,9 @@ add_action('wp_enqueue_scripts', 'infoamazonia_scripts');
 // infoamazonia setup
 
 function infoamazonia_setup() {
+
+	add_theme_support('post-thumbnails');
+	add_image_size('post-thumb', 245, 90, true);
 
 	// text domain
 	load_theme_textdomain('infoamazonia', get_template_directory() . '/languages');
@@ -66,23 +69,7 @@ function infoamazonia_permalink($permalink, $post) {
 }
 add_filter('post_link', 'infoamazonia_permalink', 10, 2);
 
-/*
- * qTranslate fixes
- */
-
-// fix forced formated date on qtranslate
-function get_the_orig_date($format = false) {
-	global $post;
-	$date = get_the_date($format);
-	if(function_exists('qtrans_getLanguage')) {
-		remove_filter('get_the_date', 'qtrans_dateFromPostForCurrentLanguage', 0, 4);
-		$date = get_the_date($format);
-		add_filter('get_the_date', 'qtrans_dateFromPostForCurrentLanguage', 0, 4);
-	}
-	return $date;
-}
-
-include(TEMPLATEPATH . '/inc/import-geojson.php');
+include(STYLESHEETPATH . '/inc/import-geojson.php');
 
 /*
  * Submit story
