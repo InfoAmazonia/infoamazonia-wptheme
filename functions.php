@@ -45,7 +45,7 @@ function infoamazonia_setup() {
 	add_image_size('post-thumb', 245, 90, true);
 
 	// text domain
-	load_theme_textdomain('infoamazonia', get_template_directory() . '/languages');
+	load_child_theme_textdomain('infoamazonia', get_stylesheet_directory() . '/languages');
 
 	//sidebars
 	register_sidebar(array(
