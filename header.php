@@ -33,7 +33,7 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<header id="masthead">
 		<div class="limiter clearfix">
-			<h1><a href="<?php echo mappress_home_url('/'); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
+			<h1><a href="<?php echo home_url('/'); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
 			<em class="revision">
 				<?php
 				// get last post date
