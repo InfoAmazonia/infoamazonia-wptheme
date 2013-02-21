@@ -21,14 +21,14 @@
 		// submit
 		$submit.find('form').submit(function() {
 			var submission = $submit.find('#' + choice).serialize();
-			$.getJSON(mappress_submit.ajaxurl, submission, function(data) {
+			$.getJSON(infoamazonia_submit.ajaxurl, submission, function(data) {
 				if(data.post_id) {
 					$submit.find('.submit-content').empty();
-					$submit.find('.description').text(mappress_submit.success_label);
+					$submit.find('.description').text(infoamazonia_submit.success_label);
 				} else if(data.error)
 					$submit.find('.error').empty().append('<p>' + data.error + '</p>');
 				else
-					$submit.find('.error').empty().append('<p>' + mappress_submit.error_label + '</p>');
+					$submit.find('.error').empty().append('<p>' + infoamazonia_submit.error_label + '</p>');
 			});
 			return false;
 		});

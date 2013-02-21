@@ -28,6 +28,12 @@ function infoamazonia_scripts() {
 	wp_enqueue_style('site');
 	wp_enqueue_style('reset');
 	wp_enqueue_style('main');
+
+	wp_localize_script('submit-story', 'infoamazonia_submit', array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
+		'success_label' => __('Success! Thank you, your story will be reviewed by one of our editors and soon will be online.', 'infoamazonia'),
+		'error_label' => __('Oops, please try again in a few minutes.', 'infoamazonia')
+	));
 }
 add_action('wp_enqueue_scripts', 'infoamazonia_scripts', 11);
 
