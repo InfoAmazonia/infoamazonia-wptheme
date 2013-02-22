@@ -791,98 +791,29 @@ header#masthead {
 				}
 			}
 		}
-		/* Markers */
-		.story-points {
-			background: url(../img/sprite.png) no-repeat 0 -209px;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 25px;
-			height: 30px;
-			cursor: pointer;
-			z-index: 100;
-			pointer-events: all;
-			&.hide,
-			&.forever-hide {
-				display: none;
-			}
-			&.active {
-				background-position: -35px -209px;
-				z-index: 101;
-			}
-			&:hover {
-				z-index: 102;
-				.popup {
-					opacity: 1;
-					visibility: visible;
-				}
-			}
-			.popup {
-				background: #fff;
-				width: 160px;
-				padding: 10px;
-				position: absolute;
-				bottom: 41px;
-				left: 50%;
-				margin-left: -90px;
-				opacity: 0;
-				visibility: hidden;
-				-moz-border-radius: 2px;
-				.border-radius(2px);
-				.transition(opacity 0.2s ease-in-out);
-				small {
-					color: #96979C;
-				}
-				h4 {
-					margin: 0;
-				}
-				.arrow {
-					width: 0; height: 0;
-					position: absolute;
-					border-left: 10px solid transparent;
-					border-right: 10px solid transparent;
-					border-top: 10px solid #fff;
-					bottom: -10px;
-					left: 50%;
-					margin-left: -10px;
-				}
-			}
-		}
-		.cluster .popup .story {
-			display: none;
-		}
-		.cluster.open .popup .story {
-			display: block;
-		}
-		.cluster.open .popup .count {
-			display: none;
-		}
-		.inplace {
-			height: 100%;
-			display: none;
-			width: 100%;
-			padding: 0 15px 5px;
-			position: absolute;
-			top: 0;
-			left: 0;
-			background-color: #111;
-		}
+		/* Markers custom for zoom */
 		&.zoom-1,
 		&.zoom-2,
 		&.zoom-3,
 		&.zoom-4,
 		&.zoom-5 {
 			.story-points {
-				width: 12px;
-				height: 15px;
-				margin-top: -7px;
-				margin-left: -6px;
-				background-position: -80px -224px;
+				background: url(../img/sprite.png) no-repeat !important;
+				background-position: -80px -224px !important;
+				width: 12px !important;
+				height: 15px !important;
+				margin-top: -7px !important;
+				margin-left: -6px !important;
 				&.active {
-					background-position: -105px -224px;
+					background-position: -105px -224px !important;
 				}
 				.popup {
-					bottom: 26px;
+					bottom: 36px !important;
+				}
+				&:hover {
+					.popup {
+						bottom: 26px !important;
+					}
 				}
 			}
 		}
