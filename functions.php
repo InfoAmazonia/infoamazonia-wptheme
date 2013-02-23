@@ -39,6 +39,17 @@ function infoamazonia_scripts() {
 		'success_label' => __('Success! Thank you, your story will be reviewed by one of our editors and soon will be online.', 'infoamazonia'),
 		'error_label' => __('Oops, please try again in a few minutes.', 'infoamazonia')
 	));
+
+	wp_localize_script('infoamazonia.markers', 'infoamazonia_markers', array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
+		'query' => mappress_get_marker_query_args(),
+		'stories_label' => __('stories', 'infoamazonia'),
+		'home' => is_front_page(),
+		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
+		'share_label' => __('Share this', 'infoamazonia'),
+		'site_url' => home_url('/'),
+		'read_more_label' => __('Read', 'infoamazonia')
+	));
 }
 add_action('wp_enqueue_scripts', 'infoamazonia_scripts', 11);
 
@@ -69,13 +80,27 @@ function infoamazonia_clear_transients() {
 	global $wpdb;
 	$wpdb->query("DELETE FROM `wp_options` WHERE `option_name` LIKE ('_transient_%');");
 }
-add_action('init', 'infoamazonia_clear_transients');
+//add_action('init', 'infoamazonia_clear_transients');
 
 // custom permalink url
 function infoamazonia_permalink($permalink, $post) {
 	return get_post_meta($post->ID, 'url', true);
 }
 add_filter('post_link', 'infoamazonia_permalink', 10, 2);
+
+// story fragment title
+add_filter('wp_title', 'infoamazonia_story_fragment_title', 10, 2);
+function infoamazonia_story_fragment_title($title, $sep) {
+	if(isset($_GET['_escaped_fragment_'])) {
+		$args = substr($_GET['_escaped_fragment_'], 1);
+		parse_str($args, $query);
+		if(isset($query['story'])) {
+			$title = get_the_title(substr($query['story'], 9));
+			return $title . ' ' . $sep . ' ';
+		}
+	}
+	return $title;
+}
 
 // custom marker data
 function infoamazonia_marker_data($data) {

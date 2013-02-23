@@ -2,7 +2,7 @@
 
 	mappress.markers = function(map) {
 
-		if(!mappress_markers.query)
+		if(!infoamazonia_markers.query)
 			return;
 
 		var markers = mappress.markers;
@@ -21,10 +21,10 @@
 		if(typeof mappress.fragment === 'function')
 			fragment = mappress.fragment();
 
-		$.getJSON(mappress_markers.ajaxurl,
+		$.getJSON(infoamazonia_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
-			query: mappress_markers.query
+			query: infoamazonia_markers.query
 		},
 		function(geojson) {
 			if(geojson === 0)
@@ -115,7 +115,7 @@
 							$(e).hover(function() {
 								var len = $('.' + cluster + ':not(.hide)').length;
 								if (len > 1) {
-									$('.count h4', this).text(len + ' ' + mappress_markers.stories_label);
+									$('.count h4', this).text(len + ' ' + infoamazonia_markers.stories_label);
 								} else {
 									$(e).addClass('open');
 								}
@@ -178,7 +178,7 @@
 			var silent = true;
 
 			// if not home, navigate to post
-			if(!mappress_markers.home) 
+			if(!infoamazonia_markers.home) 
 				silent = false;
 
 			if(fragment) {
@@ -290,7 +290,7 @@
 				if(storyData.thumbnail)
 					story += '<div class="media-limit"><img class="thumbnail" src="' + storyData.thumbnail + '" /></div>';
 				story += storyData.content;
-				story += ' <a href="' + storyData.url + '" target="_blank" rel="external">' + mappress_markers.read_more_label + '</a>';
+				story += ' <a href="' + storyData.url + '" target="_blank" rel="external">' + infoamazonia_markers.read_more_label + '</a>';
 
 				map.$.sidebar.story.empty().append($(story));
 
@@ -301,9 +301,9 @@
 					map.$.sidebar.share = map.$.sidebar.find('.sharing');
 
 					var shareContent = '';
-					shareContent += '<a class="button share-button" href="#">' + mappress_markers.share_label + '</a>';
+					shareContent += '<a class="button share-button" href="#">' + infoamazonia_markers.share_label + '</a>';
 					shareContent += '<div class="share-options">';
-					shareContent += '<label for="story_embed_iframe_input" class="iframe_input">' + mappress_markers.copy_embed_label + '</label>';
+					shareContent += '<label for="story_embed_iframe_input" class="iframe_input">' + infoamazonia_markers.copy_embed_label + '</label>';
 					shareContent += '<input type="text" id="story_embed_iframe_input" class="iframe_input" readonly="readonly">';
 					shareContent += '<div class="social">';
 					shareContent += '<div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>';
@@ -331,7 +331,7 @@
 				map.$.sidebar.share.find('.share-options').hide().addClass('hidden');
 
 				// update share button
-				var share_url = mappress_markers.site_url + '#!/' + 'story=' + marker.properties.id;
+				var share_url = infoamazonia_markers.site_url + '#!/' + 'story=' + marker.properties.id;
 				var iframe_url = share_url + '&iframe=true&full=true';
 				var iframe_content = '<iframe src="' + iframe_url + '" frameborder="0" width="1100" height="480"></iframe>';
 				map.$.sidebar.share.find('.iframe_input').attr('value', iframe_content);
