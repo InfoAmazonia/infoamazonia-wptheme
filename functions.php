@@ -15,6 +15,7 @@ function infoamazonia_scripts() {
 	wp_register_script('submit-story', get_stylesheet_directory_uri() . '/js/submit-story.js', array('jquery'), '0.0.3.14');
 
 	// custom marker system
+	wp_deregister_script('mappress.markers');
 	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore'), '0.0.4.13');
 
 	// styles
@@ -120,6 +121,7 @@ function infoamazonia_marker_data($data) {
 		$data['thumbnail'] = get_post_meta($post->ID, 'picture', true);
 	}
 	// maps
+	/* under construction
 	$maps = get_post_meta($post->ID, 'maps');
 	if($maps && !empty($maps)) {
 		$data['maps'] = array();
@@ -127,6 +129,7 @@ function infoamazonia_marker_data($data) {
 			$data['maps'][] = $map;
 		}
 	}
+	*/
 	return $data;
 }
 add_filter('mappress_marker_data', 'infoamazonia_marker_data');
