@@ -626,9 +626,9 @@ header#masthead {
 
 .map-container {
 	.map-widgets {
-		top: 42px;
+		top: auto;
 		left: 15px;
-		bottom: auto;
+		bottom: 15px;
 		right: auto;
 		.map-widget {
 			margin: 0 0 3px;
@@ -644,7 +644,7 @@ header#masthead {
 					font-size: 11px;
 					background: #303030 url(../img/search.png) 5px 5px no-repeat;
 					position: absolute;
-					top: -27px;
+					top: -414px;
 					left: 79px;
 					.transition(all .2s ease-in-out);
 					&:focus,
@@ -657,9 +657,13 @@ header#masthead {
 			}
 			.geocode-results {
 				font-size: 90%;
+				width: 100%;
 				background: #303030;
+				position: absolute;
+				top: -388px;
 				.widget-title {
 					border-color: #111;
+					color: #999;
 				}
 				a {
 					color: #999;
@@ -695,6 +699,9 @@ header#masthead {
 	.map {
 		background-color: #111;
 		position: relative;
+		.search-layer {
+			background: rgba(0,0,0,0.5);
+		}
 		.map-tooltip  {
 			border: 0;
 			background-color: #202020;
@@ -1071,10 +1078,9 @@ header#masthead {
 
 aside#submit-call {
 	margin: 0 0 30px;
-	background: rgba(134, 210, 252, .2);
-	.box-shadow(0 0 10px 10px rgba(134, 210, 252, .1));
+	background: rgba(0,0,0,.05);
 	.border-radius(6px);
-	padding: 30px 60px;
+	padding: 40px 60px;
 	p {
 		font-size: 16px;
 		line-height: 26px;

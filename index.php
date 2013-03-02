@@ -17,18 +17,14 @@
 
 		<?php get_search_form(); ?>
 
-		<?php $highlight = false; ?>
-
 		<?php if(is_front_page() && !is_paged()) : ?>
 
-			<?php query_posts(array('meta_key' => 'featured')); if(have_posts()) : $highlight = true; ?>
+			<?php query_posts(array('meta_key' => 'featured')); if(have_posts()) : ?>
 
 				<section id="highlights" class="loop-section">
 					<h3><?php _e('Highlights', 'infoamazonia'); ?></h3>
 					<?php get_template_part('loop'); ?>
 				</section>
-
-				<?php get_template_part('section', 'submit-call'); ?>
 
 			<?php endif; wp_reset_query(); ?>
 
@@ -51,7 +47,7 @@
 
 		<?php endif; ?>
 
-		<?php if(!$highlight) get_template_part('section', 'submit-call'); ?>
+		<?php get_template_part('section', 'submit-call'); ?>
 
 	</div>
 </section>

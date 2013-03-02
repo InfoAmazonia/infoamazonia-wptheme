@@ -138,3 +138,13 @@ add_filter('mappress_marker_data', 'infoamazonia_marker_data');
 include(STYLESHEETPATH . '/inc/submit-story.php');
 
 //include(STYLESHEETPATH . '/inc/import-geojson.php');
+
+// remove page from search result
+
+function infoamazonia_remove_page_from_search($query) {
+	if($query->is_search) {
+		$query->set('post_type', 'post');
+	}
+	return $query;
+}
+add_filter('pre_get_posts', 'infoamazonia_remove_page_from_search');
