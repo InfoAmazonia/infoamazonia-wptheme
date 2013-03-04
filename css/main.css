@@ -110,6 +110,7 @@ aside#submit-call{margin:0 0 30px;background:rgba(0, 0, 0, 0.05);-webkit-border-
 aside#submit-call .button-area{width:50%;float:left;}
 aside#submit-call .button{display:block;margin:15px auto;width:50%;padding:15px 0;font-family:'OpenSansSemiboldRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px;}
 aside#main-widgets{background:#111;padding:15px 0;margin:0 0 15px;color:#f0f0f0;}aside#main-widgets a{color:#aaa;}aside#main-widgets a:hover{color:#8EC63D;}
+aside#main-widgets .button{color:#fff;}aside#main-widgets .button:hover{color:#fff;}
 aside#main-widgets ul.widgets{margin:0;padding:0;}aside#main-widgets ul.widgets>li{width:50%;float:left;padding:15px;margin-bottom:15px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}aside#main-widgets ul.widgets>li.widget_archive li{width:25%;float:left;margin-bottom:5px;font-size:90%;}
 aside#main-widgets ul.widgets>li.widget_tag_cloud{width:100%;}aside#main-widgets ul.widgets>li.widget_tag_cloud .tagcloud{text-align:center;}
 aside#main-widgets ul.widgets>li .textwidget{color:#96979c;font-size:14px;line-height:24px;}
