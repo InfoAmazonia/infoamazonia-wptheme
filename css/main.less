@@ -773,7 +773,11 @@ header#masthead {
 			bottom: 15px;
 			right: 15px;
 			.map-legend {
+				max-width: 220px;
 				padding: 0;
+				strong {
+					font-weight: bold;
+				}
 				.key {
 					line-height: 25px;
 					margin-left: 20px;
@@ -1171,6 +1175,12 @@ aside#main-widgets {
 					float: left;
 					margin-bottom: 5px;
 					font-size: 90%;
+				}
+			}
+			&.widget_tag_cloud {
+				width: 100%;
+				.tagcloud {
+					text-align: center;
 				}
 			}
 		}
