@@ -62,6 +62,7 @@ function infoamazonia_setup() {
 
 	add_theme_support('post-thumbnails');
 	add_image_size('post-thumb', 245, 90, true);
+	add_image_size('map-thumb', 200, 200, true);
 
 	// text domain
 	load_child_theme_textdomain('infoamazonia', get_stylesheet_directory() . '/languages');

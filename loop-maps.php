@@ -3,7 +3,11 @@
 		<?php while(have_posts()) : the_post(); ?>
 			<li id="post-<?php the_ID(); ?>" <?php post_class('post-item clearfix'); ?>>
 				<article>
-					<?php get_template_part('content', 'map'); ?>
+					<?php if(has_post_thumbnail()) {
+						the_post_thumbnail('map-thumb');
+					} else {
+						get_template_part('content', 'map');
+					} ?>
 					<header class="post-header">
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					</header>
