@@ -3,9 +3,6 @@
 // metaboxes
 include(STYLESHEETPATH . '/inc/metaboxes/metaboxes.php');
 
-// register taxonomies
-include(STYLESHEETPATH . '/inc/taxonomies.php');
-
 function infoamazonia_scripts() {
 	/*
 	 * Register scripts & styles
@@ -57,6 +54,11 @@ add_action('wp_enqueue_scripts', 'infoamazonia_scripts', 11);
 // infoamazonia setup
 
 function infoamazonia_setup() {
+
+	// register taxonomies
+	include(STYLESHEETPATH . '/inc/taxonomies.php');
+	// taxonomy meta
+	include(STYLESHEETPATH . '/inc/taxonomies-meta.php');
 
 	add_theme_support('post-thumbnails');
 	add_image_size('post-thumb', 245, 90, true);
@@ -111,7 +113,7 @@ function infoamazonia_marker_data($data) {
 	$publishers = get_the_terms($post->ID, 'publisher');
 	if($publishers) {
 		$publisher = array_shift($publishers);
-		$data['source'] = $publisher->name;
+		$data['source'] = apply_filters('single_cat_title', $publisher->name);
 	}
 	// thumbnail
 	$thumb_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post-thumb');
@@ -137,6 +139,7 @@ add_filter('mappress_marker_data', 'infoamazonia_marker_data');
 // submit story
 include(STYLESHEETPATH . '/inc/submit-story.php');
 
+// import geojson
 //include(STYLESHEETPATH . '/inc/import-geojson.php');
 
 // remove page from search result
@@ -148,3 +151,14 @@ function infoamazonia_remove_page_from_search($query) {
 	return $query;
 }
 add_filter('pre_get_posts', 'infoamazonia_remove_page_from_search');
+
+function infoamazonia_all_markers_if_none($posts, $query) {
+	if(empty($posts))
+		$posts = get_posts(array('post_type' => 'post', 'posts_per_page' => -1));
+	return $posts;
+}
+add_filter('mappress_the_markers_posts', 'infoamazonia_all_markers_if_none', 10, 2);
+
+// multilanguage publishers
+add_action('publisher_add_form', 'qtrans_modifyTermFormFor');
+add_action('publisher_edit_form', 'qtrans_modifyTermFormFor');

@@ -131,4 +131,4 @@ function import_geojson() {
 		exit;
 	}
 }
-//add_action('init', 'import_geojson');
+add_action('init', 'import_geojson');

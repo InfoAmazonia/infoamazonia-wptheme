@@ -15,6 +15,8 @@
 <section id="content">
 	<div class="limiter">
 
+		<?php get_template_part('section', 'publisher-description'); ?>
+
 		<?php get_search_form(); ?>
 
 		<?php if(is_front_page() && !is_paged()) : ?>
@@ -44,6 +46,17 @@
 				<?php endif; ?>
 				<?php get_template_part('loop'); ?>
 			</section>
+
+		<?php else : ?>
+
+			<?php query_posts('post_type=post'); if(have_posts()) : ?>
+
+				<section id="last-stories" class="loop-section">
+					<h3><?php _e('Nothing found. Viewing all posts', 'infoamazonia'); ?></h3>
+					<?php get_template_part('loop'); ?>
+				</section>
+
+			<?php endif; wp_reset_query(); ?>
 
 		<?php endif; ?>
 

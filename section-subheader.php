@@ -40,7 +40,13 @@
 	</div>
 <?php elseif(is_search()) : ?>
 
-	<?php echo '<h1 class="title">' . __('Search results for: ', 'infoamazonia') . '"' . $_REQUEST['s'] . '"</h1>'; ?>
+	<?php
+	global $wp_query;
+	if(empty($wp_query->posts))
+		echo '<h1 class="title">' . __('Nothing found for: ', 'infoamazonia') . '"' . $_REQUEST['s'] . '"</h1>';
+	else
+		echo '<h1 class="title">' . __('Search results for: ', 'infoamazonia') . '"' . $_REQUEST['s'] . '"</h1>';
+	?>
 
 <?php elseif(is_category()) : ?>
 
