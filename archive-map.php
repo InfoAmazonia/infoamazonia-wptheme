@@ -15,14 +15,7 @@
 					</section>
 
 				<?php endif; ?>
-
-				<?php if(is_active_sidebar('main-sidebar')) : ?>
-					<aside class="page-sidebar">
-						<ul class="widgets">
-							<?php dynamic_sidebar('main-sidebar'); ?>
-						</ul>
-					</aside>
-				<?php endif; ?>
+				
 			</div>
 
 			<?php get_template_part('section', 'submit-call'); ?>
