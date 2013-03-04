@@ -16,7 +16,7 @@ function infoamazonia_scripts() {
 	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore'), '0.0.4.13');
 
 	// styles
-	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.0'); // old styles
+	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
 	wp_register_style('reset', get_stylesheet_directory_uri() . '/css/reset.css', array(), '2.0');
 	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.0');
 
