@@ -7,13 +7,18 @@ function infoamazonia_scripts() {
 	/*
 	 * Register scripts & styles
 	 */
+
+	/* Shadowbox */
+	wp_register_script('shadowbox', get_stylesheet_directory_uri() . '/lib/shadowbox/shadowbox.js', array('jquery'), '3.0.3');
+	wp_register_style('shadowbox', get_stylesheet_directory_uri() . '/lib/shadowbox/shadowbox.css', array(), '3.0.3');
+
 	// scripts
 	wp_register_script('html5', get_stylesheet_directory_uri() . '/js/html5shiv.js', array(), '3.6.2');
 	wp_register_script('submit-story', get_stylesheet_directory_uri() . '/js/submit-story.js', array('jquery'), '0.0.3.14');
 
 	// custom marker system
 	wp_deregister_script('mappress.markers');
-	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore'), '0.0.4.13');
+	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.5.14');
 
 	// styles
 	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
@@ -31,6 +36,7 @@ function infoamazonia_scripts() {
 	wp_enqueue_style('site');
 	wp_enqueue_style('reset');
 	wp_enqueue_style('main');
+	wp_enqueue_style('shadowbox');
 
 	wp_localize_script('submit-story', 'infoamazonia_submit', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
@@ -46,8 +52,10 @@ function infoamazonia_scripts() {
 		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
 		'share_label' => __('Share this', 'infoamazonia'),
 		'site_url' => home_url('/'),
-		'read_more_label' => __('Read', 'infoamazonia')
+		'read_more_label' => __('Read', 'infoamazonia'),
+		'slideshow_label' => __('Open slideshow', 'infoamazonia')
 	));
+
 }
 add_action('wp_enqueue_scripts', 'infoamazonia_scripts', 11);
 
@@ -79,6 +87,9 @@ function infoamazonia_setup() {
 }
 add_action('after_setup_theme', 'infoamazonia_setup');
 
+// slideshow
+include(STYLESHEETPATH . '/inc/slideshow.php');
+
 // delete all transients
 function infoamazonia_clear_transients() {
 	global $wpdb;
@@ -109,7 +120,8 @@ function infoamazonia_story_fragment_title($title, $sep) {
 // custom marker data
 function infoamazonia_marker_data($data) {
 	global $post;
-	$data['content'] = apply_filters('the_content', get_the_content());
+	$data['content'] = infoamazonia_strip_content_media();
+	$data['slideshow'] = infoamazonia_get_content_media();
 	// source
 	$publishers = get_the_terms($post->ID, 'publisher');
 	if($publishers) {

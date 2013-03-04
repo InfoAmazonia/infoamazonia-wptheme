@@ -34,6 +34,10 @@
 
 		mappress.markers.build = function(geojson) {
 
+			Shadowbox.init({
+				skipSetup: true
+			});
+
 			map.addLayer(markersLayer);
 
 			// do clustering
@@ -287,10 +291,43 @@
 				story += '<h2>' + storyData.title + '</h2>';
 				if(storyData.thumbnail)
 					story += '<div class="media-limit"><img class="thumbnail" src="' + storyData.thumbnail + '" /></div>';
-				story += storyData.content;
+				if(typeof storyData.slideshow === 'object')
+					story += '<a class="button open-slideshow" href="#">' + infoamazonia_markers.slideshow_label + '</a>';
+				story += '<div class="story-content">' + storyData.content + '</div>';
 				story += ' <a href="' + storyData.url + '" target="_blank" rel="external">' + infoamazonia_markers.read_more_label + '</a>';
 
-				map.$.sidebar.story.empty().append($(story));
+				var $story = $(story);
+
+				map.$.sidebar.story.empty().append($story);
+
+				if(typeof storyData.slideshow === 'object') {
+
+					var media = storyData.slideshow;
+					var shadowboxMedia = [];
+
+					if(media.images) {
+						$.each(media.images, function(i, image) {
+							shadowboxMedia.push({
+								content: image,
+								player: 'img'
+							});
+						});
+					}
+					if(media.iframes) {
+						$.each(media.iframes, function(i, iframe) {
+							shadowboxMedia.push({
+								content: iframe,
+								player: 'iframe'
+							})
+						});
+					}
+
+					map.$.sidebar.story.find('.open-slideshow').click(function() {
+						Shadowbox.open(shadowboxMedia);
+						return false;
+					});
+
+				}
 
 				// add share button
 				if(!map.$.sidebar.share) {
