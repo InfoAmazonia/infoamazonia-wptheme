@@ -61,9 +61,9 @@ elseif(is_archive()) :
 	if (is_day()) :
 		printf('<h1 class="title">' . __('Daily Archives: %s', 'infoamazonia' ), get_the_date() . '</h1>' );
 	elseif (is_month()) :
-		printf('<h1 class="title">' . __( 'Monthly Archives: %s', 'infoamazonia' ), get_the_orig_date(_x('F Y', 'monthly archives date format', 'infoamazonia')) . '</h1>');
+		printf('<h1 class="title">' . __( 'Monthly Archives: %s', 'infoamazonia' ), get_the_date(_x('F Y', 'monthly archives date format', 'infoamazonia')) . '</h1>');
 	elseif (is_year()) :
-		printf('<h1 class="title">' . __('Yearly Archives: %s', 'infoamazonia'), get_the_orig_date(_x('Y', 'yearly archives date format', 'infoamazonia')) . '</h1>');
+		printf('<h1 class="title">' . __('Yearly Archives: %s', 'infoamazonia'), get_the_date(_x('Y', 'yearly archives date format', 'infoamazonia')) . '</h1>');
 	else :
 		echo '<h1 class="title">' . __('Archives', 'twentytwelve') . '</h1>';
 	endif;
