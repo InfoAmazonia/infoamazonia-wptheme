@@ -116,6 +116,13 @@ function infoamazonia_story_fragment_title($title, $sep) {
 	return $title;
 }
 
+// geojson query filter
+function infoamazonia_geojson_api_query($query) {
+	$query['posts_per_page'] = 20;
+	return $query;
+}
+add_filter('mappress_geojson_api_query', 'infoamazonia_geojson_api_query');
+
 // custom marker data
 function infoamazonia_marker_data($data) {
 	global $post;
