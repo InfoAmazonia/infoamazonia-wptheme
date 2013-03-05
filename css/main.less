@@ -1291,6 +1291,76 @@ footer#colophon {
 }
 
 /*
+ * Geocode box
+ */
+
+#geocode-box {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 9999999;
+	display: none;
+	&.active {
+		display: block;
+	}
+	.geocode-box-container {
+		width: 500px;
+		position: absolute;
+		padding: 20px;
+		overflow: auto;
+		.border-radius(5px);
+		top: 15%;
+		left: 50%;
+		max-height: 60%;
+		margin-left: -260px;
+		background: #f0f0f0;
+		.box-shadow(0 0 0px 10px rgba(0,0,0,.2));
+		input#geocode_address {
+			width: 100%;
+		}
+		.results {
+			margin: 0 0 20px;
+			p {
+				font-size: 10px;
+				font-weight: bold;
+				margin: 0;
+			}
+			ul {
+				li {
+					background: #fff;
+					padding: 3px;
+					font-size: 11px;
+					margin-bottom: 1px;
+					cursor: pointer;
+					&:hover,
+					&.active {
+						background: #f0f0f0;
+					}
+				}
+			}
+		}
+		#geolocate_canvas {
+			width: 100%;
+			height: 280px;
+			margin-bottom: 20px;
+		}
+		&::-webkit-scrollbar {
+			background: #f0f0f0;
+			width: 15px;
+			.border-radius(5px);
+		}
+		&::-webkit-scrollbar-thumb {
+			background: #666;
+			.border-radius(15px);
+			border: 5px #f0f0f0 solid;
+		}
+	}
+}
+
+/*
  * Submit story
  */
 
@@ -1301,7 +1371,7 @@ footer#colophon {
 	right: 0;
 	bottom: 0;
 	background: rgba(0, 0, 0, .8);
-	z-index: 9999999;
+	z-index: 9999991;
 	display: none;
 	&.active {
 		display: block;

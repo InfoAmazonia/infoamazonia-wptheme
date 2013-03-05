@@ -3,6 +3,12 @@
 // metaboxes
 include(STYLESHEETPATH . '/inc/metaboxes/metaboxes.php');
 
+// set OSM geocode
+function infoamazonia_geocode_service() {
+	return 'osm';
+}
+add_filter('mappress_geocode_service', 'infoamazonia_geocode_service');
+
 function infoamazonia_scripts() {
 	/*
 	 * Register scripts & styles
@@ -90,13 +96,6 @@ add_action('after_setup_theme', 'infoamazonia_setup');
 // slideshow
 include(STYLESHEETPATH . '/inc/slideshow.php');
 
-// delete all transients
-function infoamazonia_clear_transients() {
-	global $wpdb;
-	$wpdb->query("DELETE FROM `wp_options` WHERE `option_name` LIKE ('_transient_%');");
-}
-//add_action('init', 'infoamazonia_clear_transients');
-
 // custom permalink url
 function infoamazonia_permalink($permalink, $post) {
 	return get_post_meta($post->ID, 'url', true);
@@ -148,6 +147,9 @@ function infoamazonia_marker_data($data) {
 	return $data;
 }
 add_filter('mappress_marker_data', 'infoamazonia_marker_data');
+
+// geocode box
+include(STYLESHEETPATH . '/inc/geocode-box.php');
 
 // submit story
 include(STYLESHEETPATH . '/inc/submit-story.php');

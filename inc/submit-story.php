@@ -54,10 +54,19 @@ function infoamazonia_submit() {
 						<div class="geocode">
 							<p>
 								<label for="story_location"><?php _e('Story location', 'infoamazonia'); ?></label>
-								<input type="text" name="story[meta][geocode_address]" id="story_location" size="40" />
-								<?php /* soon
-								<a class="button" href="#"><?php _e('Find location on map', 'infoamazonia'); ?></a>
-								*/ ?>
+								<input type="text" name="story[meta][geocode_address]" id="story_location" class="geocoded-address" size="40" />
+								<a class="button open-geocode-box" href="#"><?php _e('Find location on map', 'infoamazonia'); ?></a>
+								<div class="geocode-result" style="display:none;">
+									<input type="hidden" name="story[meta][geocode_latitude]" class="geocoded-latitude" />
+									<input type="hidden" name="story[meta][geocode_longitude]" class="geocoded-longitude" />
+									<p>
+										<?php _e('Latitude:', 'infoamazonia'); ?> <span class="geocoded-latitude"></span><br/>
+										<?php _e('Longitude:', 'infoamazonia'); ?> <span class="geocoded-longitude"></span>
+									</p>
+								</div>
+								<script type="text/javascript">
+									jQuery(document).ready(function($) { $('#submit-story .geocode').infoamazoniaGeocodeBox(); });
+								</script>
 							</p>
 						</div>
 						<p>
