@@ -98,6 +98,7 @@ include(STYLESHEETPATH . '/inc/slideshow.php');
 
 // custom permalink url
 function infoamazonia_permalink($permalink, $post) {
+	//global $post;
 	return get_post_meta($post->ID, 'url', true);
 }
 add_filter('post_link', 'infoamazonia_permalink', 10, 2);

@@ -38,7 +38,7 @@ function story_meta_inner_custom_box($post) {
 		</p>
 		<p>
 			<label for="story_url"><?php _e('Story url', 'infoamazonia'); ?></label><br/>
-			<input type="text" name="story_url" value="<?php echo $url; ?>" id="url" size="60" />
+			<input type="text" name="story_url" value="<?php echo $url; ?>" id="story_url" size="60" />
 		</p>
 		<p>
 			<label for="story_picture"><?php _e('Lead picture', 'infoamazonia'); ?></label><br/>
@@ -73,7 +73,7 @@ function story_meta_save_postdata($post_id) {
 	if(isset($_POST['reporter']))
 		update_post_meta($post_id, 'reporter', $_POST['reporter']);
 	if(isset($_POST['story_url']))
-		update_post_meta($post_id, 'url', $_POST['url']);
+		update_post_meta($post_id, 'url', $_POST['story_url']);
 	if(isset($_POST['picture']))
 		update_post_meta($post_id, 'picture', $_POST['picture']);
 	if(isset($_POST['publish_date']))

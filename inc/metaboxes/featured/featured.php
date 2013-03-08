@@ -35,6 +35,8 @@ function featured_save_postdata($post_id) {
 
 	if(isset($_POST['featured_post']))
 		update_post_meta($post_id, 'featured', $_POST['featured_post']);
+	else
+		delete_post_meta($post_id, 'featured');
 
 }
 
