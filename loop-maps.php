@@ -6,7 +6,7 @@
 					<?php if(has_post_thumbnail()) {
 						the_post_thumbnail('map-thumb');
 					} else {
-						get_template_part('content', 'map');
+						mappress_map($map->ID);
 					} ?>
 					<header class="post-header">
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>

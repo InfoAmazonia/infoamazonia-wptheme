@@ -3,12 +3,9 @@
 <section id="stage">
 	<div class="limiter clearfix">
 		<?php get_template_part('section', 'subheader'); ?>
-		<?php
-		// Display latest (featured) map group
-		query_posts('post_type=map-group&posts_per_page=1');
-			if(have_posts()) get_template_part('stage', 'map');
-		wp_reset_query();
-		?>
+		<div id="main-map" class="stage-map">
+			<?php mappress_featured_map('map-group'); ?>
+		</div>
 	</div>
 </section>
 

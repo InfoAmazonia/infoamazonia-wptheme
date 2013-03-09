@@ -2,10 +2,8 @@
 
 <section id="stage">
 	<div class="limiter clearfix">
-		<?php if(have_posts()) : ?>
-			<h1 class="title"><?php the_title(); ?></h1>
-			<?php get_template_part('stage', 'map'); ?>
-		<?php endif; ?>
+		<h1 class="title"><?php the_title(); ?></h1>
+		<?php get_template_part('stage', 'map'); ?>
 	</div>
 </section>
 
