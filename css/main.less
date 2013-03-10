@@ -1234,14 +1234,6 @@ aside#main-widgets {
 			padding: 15px;
 			margin-bottom: 15px;
 			.box-sizing(border-box);
-			&.widget_archive {
-				li {
-					width: 25%;
-					float: left;
-					margin-bottom: 5px;
-					font-size: 90%;
-				}
-			}
 			&.widget_tag_cloud {
 				width: 100%;
 				.tagcloud {
@@ -1252,6 +1244,39 @@ aside#main-widgets {
 				color: rgb(150,151,156);
 				font-size: 14px;
 				line-height: 24px;
+			}
+			#infoamazonia-calendar {
+				width: 80%;
+				margin-left: 20%;
+				table {
+					background: #1f1f1f;
+					width: 100%;
+					margin-bottom: 10px;
+					caption {
+						color: #f0f0f0;
+						font-weight: 800;
+						padding: 5px 0;
+						background: #333;
+					}
+					th, td {
+						padding: 2px 5px;
+						text-align: center;
+					}
+					thead {
+						border-bottom: 2px solid #202020;
+						th {
+							color: #f0f0f0;
+						}
+					}
+					td#prev {
+						text-align: left;
+						padding: 10px;
+					}
+					td#next {
+						text-align: right;
+						padding: 10px;
+					}
+				}
 			}
 		}
 	}

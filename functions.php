@@ -102,6 +102,9 @@ add_action('after_setup_theme', 'infoamazonia_setup');
 // slideshow
 include(STYLESHEETPATH . '/inc/slideshow.php');
 
+// ajax calendar
+include(STYLESHEETPATH . '/inc/ajax-calendar.php');
+
 // custom permalink url
 function infoamazonia_permalink($permalink, $post) {
 	//global $post;
@@ -191,3 +194,14 @@ add_filter('mappress_the_markers_posts', 'infoamazonia_all_markers_if_none', 10,
 // multilanguage publishers
 add_action('publisher_add_form', 'qtrans_modifyTermFormFor');
 add_action('publisher_edit_form', 'qtrans_modifyTermFormFor');
+
+// calendar fixes
+function infoamazonia_custom_calendar($calendar) {
+	global $m;
+	$title = '<div id="infoamazonia-calendar"><h2>' . __('Stories calendar', 'infoamazonia') . '</h2>';
+	$monthlink = '<a href="' . get_month_link($m) .  '">' . __('Access this month archive', 'infoamazonia') . '</a></div>';
+
+	$calendar = $title . $calendar . $monthlink;
+	return $calendar;
+}
+//add_filter('get_calendar', 'infoamazonia_custom_calendar');
