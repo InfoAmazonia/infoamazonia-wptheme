@@ -710,6 +710,29 @@ header#masthead {
 				top: 15px;
 				left: 94px;
 				z-index: 100;
+				.clear-search {
+					font-size: 10px;
+					line-height: 14px;
+					display: block;
+					background: #222;
+					padding: 7px 5px;
+					float: none;
+					color: #fff;
+					text-transform: uppercase;
+					font-weight: 800;
+					text-shadow: 0 0 3px #000;
+					&:after {
+						font-size: 11px;
+						line-height: 14px;
+						content: '×';
+						dispaly: block;
+						float: right;
+						margin-left: 2px;
+						padding: 0 5px;
+						background: #111;
+						.border-radius(2px);
+					}
+				}
 			}
 			&.switch-layers-widget,
 			&.swap-layers-widget {
