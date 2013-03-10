@@ -286,13 +286,31 @@
 
 				var storyData = marker.properties;
 
+				// slideshow label
+				var media = false;
+				if(typeof storyData.slideshow === 'object') {
+					media = storyData.slideshow;
+					var lightbox_label = infoamazonia_markers.lightbox_label.slideshow;
+					if(!media.images && media.iframes) {
+						if(media.iframes.length >= 2)
+							lightbox_label = infoamazonia_markers.lightbox_label.videos;
+						else
+							lightbox_label = infoamazonia_markers.lightbox_label.video;
+					} else if(media.images && !media.iframes) {
+						if(media.images.length >= 2)
+							lightbox_label = infoamazonia_markers.lightbox_label.images;
+						else
+							lightbox_label = infoamazonia_markers.lightbox_label.image;
+					}
+				}
+
 				var story = '';
 				story += '<small>' + storyData.date + ' - ' + storyData.source + '</small>';
 				story += '<h2>' + storyData.title + '</h2>';
 				if(storyData.thumbnail)
 					story += '<div class="media-limit"><img class="thumbnail" src="' + storyData.thumbnail + '" /></div>';
-				if(typeof storyData.slideshow === 'object')
-					story += '<a class="button open-slideshow" href="#">' + infoamazonia_markers.slideshow_label + '</a>';
+				if(media)
+					story += '<a class="button open-slideshow" href="#">' + lightbox_label + '</a>';
 				story += '<div class="story-content">' + storyData.content + '</div>';
 				story += ' <a href="' + storyData.url + '" target="_blank" rel="external">' + infoamazonia_markers.read_more_label + '</a>';
 
@@ -300,9 +318,8 @@
 
 				map.$.sidebar.story.empty().append($story);
 
-				if(typeof storyData.slideshow === 'object') {
+				if(media) {
 
-					var media = storyData.slideshow;
 					var shadowboxMedia = [];
 
 					if(media.images) {
