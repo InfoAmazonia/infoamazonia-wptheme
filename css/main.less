@@ -603,20 +603,25 @@ header#masthead {
  */
 
 .content-map.fullscreen {
-	z-index: 99999999;
+	z-index: 9999999;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	.map-container {
-		position: relative !important;
 		z-index: 100;
 		.map-fullscreen-map {
 			position: absolute !important;
 		}
 		.map-widgets {
-			position: absolute !important;
+			position: static !important;
+			.map-widget {
+				z-index: 99999999 !important;
+				> * {
+					z-index: 99999999 !important;
+				}
+			}
 		}
 	}
 }
