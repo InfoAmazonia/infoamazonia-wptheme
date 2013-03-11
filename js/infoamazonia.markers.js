@@ -30,7 +30,6 @@
 			if(geojson === 0)
 				return;
 			markers.build(geojson);
-			console.log(geojson.features.length);
 		});
 
 		mappress.markers.build = function(geojson) {
