@@ -11,7 +11,7 @@
 	<div class="limiter">
 
 		<?php
-		$query = mappress_get_marker_query_vars(8);
+		$query = mappress_get_marker_query_vars();
 		query_posts($query);
 		if(have_posts()) : ?>
 
