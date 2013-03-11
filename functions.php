@@ -24,7 +24,7 @@ function infoamazonia_scripts() {
 
 	// custom marker system
 	wp_deregister_script('mappress.markers');
-	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.5.15', true);
+	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.5.16', true);
 
 	// styles
 	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
@@ -52,7 +52,7 @@ function infoamazonia_scripts() {
 
 	wp_localize_script('infoamazonia.markers', 'infoamazonia_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
-		'query' => mappress_get_marker_query_args(),
+		'query' => mappress_get_marker_query_vars(),
 		'stories_label' => __('stories', 'infoamazonia'),
 		'home' => is_front_page(),
 		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
@@ -195,13 +195,17 @@ add_filter('mappress_the_markers_posts', 'infoamazonia_all_markers_if_none', 10,
 add_action('publisher_add_form', 'qtrans_modifyTermFormFor');
 add_action('publisher_edit_form', 'qtrans_modifyTermFormFor');
 
-// calendar fixes
-function infoamazonia_custom_calendar($calendar) {
-	global $m;
-	$title = '<div id="infoamazonia-calendar"><h2>' . __('Stories calendar', 'infoamazonia') . '</h2>';
-	$monthlink = '<a href="' . get_month_link($m) .  '">' . __('Access this month archive', 'infoamazonia') . '</a></div>';
-
-	$calendar = $title . $calendar . $monthlink;
-	return $calendar;
+// limit markers per page
+function infoamazonia_markers_limit() {
+	return 100;
 }
-//add_filter('get_calendar', 'infoamazonia_custom_calendar');
+add_filter('mappress_markers_limit', 'infoamazonia_markers_limit');
+
+// flush w3tc on save_post
+function infoamazonia_flush_w3tc() {
+	if(function_exists('flush_pgcache')) {
+		flush_pgcache();
+		error_log('test');
+	}
+}
+add_action('save_post', 'infoamazonia_flush_w3tc');

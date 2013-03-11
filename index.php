@@ -18,7 +18,7 @@
 
 		<?php if(is_front_page() && !is_paged()) : ?>
 
-			<?php query_posts(array('meta_key' => 'featured')); if(have_posts()) : ?>
+			<?php query_posts(array('meta_key' => 'featured', 'posts_per_page' => 4)); if(have_posts()) : ?>
 
 				<section id="highlights" class="loop-section">
 					<h3><?php _e('Highlights', 'infoamazonia'); ?></h3>

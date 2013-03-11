@@ -57,4 +57,9 @@ function infoamazonia_strip_content_media($post_id = false) {
 	$content = apply_filters('the_content', $post->post_content);
 	return strip_tags($content, '<p><a><span><strong><i>');
 }
+
+function infoamazonia_update_content_media($post_id) {
+	infoamazonia_get_content_media($post_id, true);
+}
+add_action('save_post', 'infoamazonia_update_content_media');
 ?>
