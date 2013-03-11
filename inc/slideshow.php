@@ -59,7 +59,8 @@ function infoamazonia_strip_content_media($post_id = false) {
 }
 
 function infoamazonia_update_content_media($post_id) {
-	infoamazonia_get_content_media($post_id, true);
+	if(get_post_type($post_id) == 'post')
+		infoamazonia_get_content_media($post_id, true);
 }
 add_action('save_post', 'infoamazonia_update_content_media');
 ?>
