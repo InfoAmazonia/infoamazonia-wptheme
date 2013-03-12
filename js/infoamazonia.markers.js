@@ -2,9 +2,6 @@
 
 	mappress.markers = function(map) {
 
-		if(!infoamazonia_markers.query)
-			return;
-
 		var markers = mappress.markers;
 		var markersLayer = mapbox.markers.layer();
 		var features;
