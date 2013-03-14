@@ -116,12 +116,12 @@ aside#submit-call .button{display:block;margin:15px auto;width:50%;padding:15px 
 aside#main-widgets{background:#111;padding:15px 0;margin:0 0 15px;color:#f0f0f0;}aside#main-widgets a{color:#aaa;}aside#main-widgets a:hover{color:#8EC63D;}
 aside#main-widgets .button{color:#fff;}aside#main-widgets .button:hover{color:#fff;}
 aside#main-widgets ul.widgets{margin:0;padding:0;}aside#main-widgets ul.widgets>li{width:50%;float:left;padding:15px;margin-bottom:15px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}aside#main-widgets ul.widgets>li.widget_tag_cloud{width:100%;}aside#main-widgets ul.widgets>li.widget_tag_cloud .tagcloud{text-align:center;}
-aside#main-widgets ul.widgets>li .textwidget{color:#96979c;font-size:14px;line-height:24px;}
-aside#main-widgets ul.widgets>li #infoamazonia-calendar{width:80%;margin-left:20%;}aside#main-widgets ul.widgets>li #infoamazonia-calendar table{background:#1f1f1f;width:100%;margin-bottom:10px;}aside#main-widgets ul.widgets>li #infoamazonia-calendar table caption{color:#f0f0f0;font-weight:800;padding:5px 0;background:#333;}
-aside#main-widgets ul.widgets>li #infoamazonia-calendar table th,aside#main-widgets ul.widgets>li #infoamazonia-calendar table td{padding:2px 5px;text-align:center;}
+aside#main-widgets ul.widgets>li .textwidget{color:#96979c;font-size:15px;line-height:28px;}aside#main-widgets ul.widgets>li .textwidget .button{margin-top:10px;}
+aside#main-widgets ul.widgets>li #infoamazonia-calendar{width:60%;margin-left:40%;}aside#main-widgets ul.widgets>li #infoamazonia-calendar table{background:#1f1f1f;width:100%;margin-bottom:10px;}aside#main-widgets ul.widgets>li #infoamazonia-calendar table caption{color:#f0f0f0;font-weight:800;padding:5px 0;background:#333;}
+aside#main-widgets ul.widgets>li #infoamazonia-calendar table th,aside#main-widgets ul.widgets>li #infoamazonia-calendar table td{padding:0 5px;text-align:center;}
 aside#main-widgets ul.widgets>li #infoamazonia-calendar table thead{border-bottom:2px solid #202020;}aside#main-widgets ul.widgets>li #infoamazonia-calendar table thead th{color:#f0f0f0;}
-aside#main-widgets ul.widgets>li #infoamazonia-calendar table td#prev{text-align:left;padding:10px;}
-aside#main-widgets ul.widgets>li #infoamazonia-calendar table td#next{text-align:right;padding:10px;}
+aside#main-widgets ul.widgets>li #infoamazonia-calendar table td#prev{text-align:left;padding:2px 10px;}
+aside#main-widgets ul.widgets>li #infoamazonia-calendar table td#next{text-align:right;padding:2px 10px;}
 footer#colophon{margin-top:20px;padding:50px 0 0;height:120px;background:#fff;color:#96979C;}footer#colophon ul{position:relative;margin:0 auto;width:695px;}footer#colophon ul li a.icon{height:50px;margin-left:0;margin-right:15px;}footer#colophon ul li a.icon.knight{background-position:-228px -179px;width:200px;height:75px;position:relative;top:-18px;}
 footer#colophon ul li a.icon.devseed{background-position:-270px 0;width:85px;margin:0;height:55px;position:relative;top:-8px;}
 footer#colophon ul li a.icon.oeco{background-position:-390px 5px;width:110px;}
