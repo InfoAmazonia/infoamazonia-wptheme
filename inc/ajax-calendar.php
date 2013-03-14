@@ -72,7 +72,7 @@ this.r.send(this.pb);}}
 	function get_calendar() {
 		global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
-		$text = '<div id="infoamazonia-calendar"><h2>' . __('Stories calendar', 'infoamazonia') . '</h2>';
+		$text = '<div id="infoamazonia-calendar"><h3>' . __('Stories calendar', 'infoamazonia') . '</h3>';
 
 
 		add_filter( 'query', array( &$this, 'modify_calendar_query' ) );
