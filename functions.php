@@ -53,7 +53,7 @@ function infoamazonia_scripts() {
 	global $marker_query;
 	wp_localize_script('infoamazonia.markers', 'infoamazonia_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
-		'query' => $marker_query->query,
+		'query' => mappress_marker_get_query_vars(),
 		'stories_label' => __('stories', 'infoamazonia'),
 		'home' => is_front_page(),
 		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),

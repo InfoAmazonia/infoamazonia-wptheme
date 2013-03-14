@@ -11,8 +11,7 @@
 	<div class="limiter">
 
 		<?php
-		$query = mappress_get_marker_query_vars();
-		query_posts($query);
+		query_posts($marker_query->query);
 		if(have_posts()) : ?>
 
 			<section id="last-stories" class="loop-section">
