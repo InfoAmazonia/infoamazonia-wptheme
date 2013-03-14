@@ -382,6 +382,8 @@
 				// update share button
 				var share_url = infoamazonia_markers.site_url + '#!/' + 'story=' + marker.properties.id;
 				var iframe_url = share_url + '&iframe=true&full=true';
+				if(map.currentMapID)
+					iframe_url += '&map=' + map.currentMapID;
 				var iframe_content = '<iframe src="' + iframe_url + '" frameborder="0" width="1100" height="480"></iframe>';
 				map.$.sidebar.share.find('.iframe_input').attr('value', iframe_content);
 				// fb

@@ -20,7 +20,7 @@ foreach($data['maps'] as $map) {
 				$post = get_post($map['id']);
 				setup_postdata($post);
 				?>
-				<li><a href="<?php the_permalink(); ?>" data-map="map_<?php the_ID(); ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php the_title(); ?></a></li>
+				<li><a href="<?php the_permalink(); ?>" data-map="<?php the_ID(); ?>"><?php the_title(); ?></a></li>
 				<?php
 				mappress_reset_mapdata();
 				$i++;
@@ -33,7 +33,7 @@ foreach($data['maps'] as $map) {
 							$post = get_post($map['id']);
 							setup_postdata($post);
 							?>
-							<li class="more-item"><a href="<?php the_permalink(); ?>" data-map="map_<?php the_ID(); ?>" <?php if($i == 0) echo 'class="active"'; ?>><?php the_title(); ?></a></li>
+							<li class="more-item"><a href="<?php the_permalink(); ?>" data-map="<?php the_ID(); ?>"><?php the_title(); ?></a></li>
 							<?php
 							mappress_reset_mapdata();
 						endforeach; ?>

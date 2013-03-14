@@ -14,6 +14,11 @@ function infoamazonia_scripts() {
 	 * Register scripts & styles
 	 */
 
+	// deregister mappress styles
+	wp_deregister_style('mappress-base');
+	wp_deregister_style('mappress-skeleton');
+	wp_deregister_style('mappress-main');
+
 	/* Shadowbox */
 	wp_register_script('shadowbox', get_stylesheet_directory_uri() . '/lib/shadowbox/shadowbox.js', array('jquery'), '3.0.3');
 	wp_register_style('shadowbox', get_stylesheet_directory_uri() . '/lib/shadowbox/shadowbox.css', array(), '3.0.3');
@@ -24,7 +29,7 @@ function infoamazonia_scripts() {
 
 	// custom marker system
 	wp_deregister_script('mappress.markers');
-	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.5.16', true);
+	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.5.18', true);
 
 	// styles
 	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
