@@ -108,10 +108,9 @@ include(STYLESHEETPATH . '/inc/ajax-calendar.php');
 
 // custom permalink url
 function infoamazonia_permalink($permalink, $post) {
-	//global $post;
 	return get_post_meta($post->ID, 'url', true);
 }
-add_filter('post_link', 'infoamazonia_permalink', 10, 2);
+//add_filter('post_link', 'infoamazonia_permalink', 10, 2);
 
 // story fragment title
 add_filter('wp_title', 'infoamazonia_story_fragment_title', 10, 2);
@@ -137,6 +136,7 @@ add_filter('mappress_geojson_api_query', 'infoamazonia_geojson_api_query');
 // custom marker data
 function infoamazonia_marker_data($data) {
 	global $post;
+	$data['url'] = get_post_meta($post->ID, 'url', true);
 	$data['content'] = infoamazonia_strip_content_media();
 	$data['slideshow'] = infoamazonia_get_content_media();
 	// source
