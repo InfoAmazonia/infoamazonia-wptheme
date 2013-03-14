@@ -125,7 +125,7 @@ aside#main-widgets ul.widgets>li #infoamazonia-calendar table td#next{text-align
 footer#colophon{margin-top:20px;padding:50px 0 0;height:120px;background:#fff;color:#96979C;}footer#colophon ul{position:relative;margin:0 auto;width:695px;}footer#colophon ul li a.icon{height:50px;margin-left:0;margin-right:15px;}footer#colophon ul li a.icon.knight{background-position:-228px -179px;width:200px;height:75px;position:relative;top:-18px;}
 footer#colophon ul li a.icon.devseed{background-position:-270px 0;width:85px;margin:0;height:55px;position:relative;top:-8px;}
 footer#colophon ul li a.icon.oeco{background-position:-390px 5px;width:110px;}
-footer#colophon ul li a.icon.internews{background-position:-317px -55px;width:183px;}
+footer#colophon ul li a.icon.internews{background-position:-367px -55px;width:133px;margin-right:65px;}
 footer#colophon ul li a.icon.cdkn{background-position:-361px -115px;width:140px;height:56px;position:relative;top:-5px;}
 footer#colophon ul li.label{position:absolute;top:-30px;left:0;}footer#colophon ul li.label.supported{left:auto;right:20px;}
 #geocode-box{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0, 0, 0, 0.8);z-index:9999999;display:none;}#geocode-box.active{display:block;}
