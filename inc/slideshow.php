@@ -15,31 +15,34 @@ function infoamazonia_get_content_media($post_id = false, $force_update = false)
 	if(!$media || $force_update) {
 
 		$content = apply_filters('the_content', $post->post_content);
-		$doc = new DOMDocument();
-		$doc->loadHTML($content);
+		if($content) {
+			$doc = new DOMDocument();
+			
+			$doc->loadHTML($content);
 
-		$media = array();
+			$media = array();
 
-		$imageTags = $doc->getElementsByTagName('img');
-		if($imageTags->length) {
-			$media['images'] = array();
-			foreach($imageTags as $tag) {
-				array_push($media['images'], $tag->getAttribute('src'));
+			$imageTags = $doc->getElementsByTagName('img');
+			if($imageTags->length) {
+				$media['images'] = array();
+				foreach($imageTags as $tag) {
+					array_push($media['images'], $tag->getAttribute('src'));
+				}
 			}
-		}
 
-		$iframeTags = $doc->getElementsByTagName('iframe');
-		if($iframeTags->length) {
-			$media['iframes'] = array();
-			foreach($iframeTags as $tag) {
-				array_push($media['iframes'], $tag->getAttribute('src'));
+			$iframeTags = $doc->getElementsByTagName('iframe');
+			if($iframeTags->length) {
+				$media['iframes'] = array();
+				foreach($iframeTags as $tag) {
+					array_push($media['iframes'], $tag->getAttribute('src'));
+				}
 			}
+
+			if(empty($media))
+				$media = 'no-media';
+
+			update_post_meta($post->ID, 'post_media', $media);
 		}
-
-		if(empty($media))
-			$media = 'no-media';
-
-		update_post_meta($post->ID, 'post_media', $media);
 	}
 
 	if($media == 'no-media')
