@@ -121,12 +121,12 @@ aside#main-widgets ul.widgets>li #infoamazonia-calendar table th,aside#main-widg
 aside#main-widgets ul.widgets>li #infoamazonia-calendar table thead{border-bottom:2px solid #202020;}aside#main-widgets ul.widgets>li #infoamazonia-calendar table thead th{color:#f0f0f0;}
 aside#main-widgets ul.widgets>li #infoamazonia-calendar table td#prev{text-align:left;padding:10px;}
 aside#main-widgets ul.widgets>li #infoamazonia-calendar table td#next{text-align:right;padding:10px;}
-footer#colophon{margin-top:20px;padding:50px 0 0;height:120px;background:#fff;color:#96979C;}footer#colophon ul{position:relative;margin:0 auto;width:780px;}footer#colophon ul li a.icon{height:50px;margin-left:0;margin-right:15px;}footer#colophon ul li a.icon.knight{background-position:-228px -179px;width:200px;height:75px;position:relative;top:-18px;}
+footer#colophon{margin-top:20px;padding:50px 0 0;height:120px;background:#fff;color:#96979C;}footer#colophon ul{position:relative;margin:0 auto;width:695px;}footer#colophon ul li a.icon{height:50px;margin-left:0;margin-right:15px;}footer#colophon ul li a.icon.knight{background-position:-228px -179px;width:200px;height:75px;position:relative;top:-18px;}
 footer#colophon ul li a.icon.devseed{background-position:-270px 0;width:85px;margin:0;height:55px;position:relative;top:-8px;}
 footer#colophon ul li a.icon.oeco{background-position:-390px 5px;width:110px;}
 footer#colophon ul li a.icon.internews{background-position:-317px -55px;width:183px;}
 footer#colophon ul li a.icon.cdkn{background-position:-361px -115px;width:140px;height:56px;position:relative;top:-5px;}
-footer#colophon ul li.label{position:absolute;top:-30px;left:0;}footer#colophon ul li.label.supported{left:325px;}
+footer#colophon ul li.label{position:absolute;top:-30px;left:0;}footer#colophon ul li.label.supported{left:auto;right:20px;}
 #geocode-box{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0, 0, 0, 0.8);z-index:9999999;display:none;}#geocode-box.active{display:block;}
 #geocode-box .geocode-box-container{width:500px;position:absolute;padding:20px;overflow:auto;-webkit-border-radius:5px;-khtml-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px;top:15%;left:50%;max-height:60%;margin-left:-260px;background:#f0f0f0;-webkit-box-shadow:0 0 0px 10px rgba(0, 0, 0, 0.2);-khtml-box-shadow:0 0 0px 10px rgba(0, 0, 0, 0.2);-moz-box-shadow:0 0 0px 10px rgba(0, 0, 0, 0.2);-o-box-shadow:0 0 0px 10px rgba(0, 0, 0, 0.2);box-shadow:0 0 0px 10px rgba(0, 0, 0, 0.2);}#geocode-box .geocode-box-container input#geocode_address{width:100%;}
 #geocode-box .geocode-box-container .results{margin:0 0 20px;}#geocode-box .geocode-box-container .results p{font-size:10px;font-weight:bold;margin:0;}

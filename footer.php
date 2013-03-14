@@ -7,7 +7,6 @@
 		<li class="label supported">Supported by</li>
 		<li><a class="icon cdkn" href="http://cdkn.org">Climate &amp; Development Knowledge Network</a></li>
 		<li><a class="icon knight" href="http://www.icfj.org/our-work/knight/fellows">International Center for Journalists</a></li>
-		<li><a class="icon devseed" href="http://developmentseed.org">DevelopmentSeed</a></li>
 	</ul>
 </footer>
 <?php wp_footer(); ?>
