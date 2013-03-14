@@ -33,7 +33,6 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<header id="masthead">
 		<div class="limiter clearfix">
-			<h1><a href="<?php echo home_url('/' . qtrans_getLanguage() . '/'); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
 			<em class="revision">
 				<?php
 				// get last post date
@@ -46,13 +45,8 @@
 				}
 				?>
 			</em>
-			<div class="project-by">
-				<ul>
-					<li class="label"><?php _e('by', 'infoamazonia'); ?></li>
-					<li><a class="icon oeco" href="http://www.oecoamazonia.com">O Eco</a></li>
-					<li><a class="icon internews" href="http://www.internews.org">Internews</a></li>
-				</ul>
-			</div>
+			<h1><a href="<?php echo home_url('/' . qtrans_getLanguage() . '/'); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
+			<h2 class="project-by"><?php _e('by', 'infoamazonia'); ?> <a class="oeco" href="http://www.oecoamazonia.com">O Eco</a> <?php _e('and', 'infoamazonia'); ?> <a class="internews" href="http://www.internews.org">Internews</a></h2>
 		</div>
 		<section id="mastnav" class="clearfix">
 			<div class="limiter">
