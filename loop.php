@@ -6,7 +6,10 @@
 					<header class="post-header">
 						<p class="meta">
 							<?php echo get_the_date(_x('m/d/Y', 'reduced date format', 'infoamazonia')); ?> - 
-							<?php echo array_shift(get_the_terms($post->ID, 'publisher'))->name; ?></p>
+							<?php
+							if(get_the_terms($post->ID, 'publisher'))
+								echo array_shift(get_the_terms($post->ID, 'publisher'))->name;
+							?></p>
 						<div class="media-limit">
 							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 								<?php
