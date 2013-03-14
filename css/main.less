@@ -328,16 +328,19 @@ header#masthead {
 	padding: 0;
 	float: right;
 	display: block;
-	opacity: .6;
+	opacity: .8;
 	.transition(opacity .3s linear);
-	input {
+	input[type=text] {
 		padding: 8px;
-		border-color: #f0f0f0;
+		border-color: #e0e0e0;
 		.box-shadow(inset 0 2px 5px rgba(0, 0, 0, 0.05));
 		outline: none;
-		&[type=text] {
-			width: 300px;
-		}
+		.border-radius(3px);
+		width: 300px;
+	}
+	.button {
+		margin-left: 5px;
+		padding: 7px;
 	}
 	&:hover {
 		opacity: 1;
