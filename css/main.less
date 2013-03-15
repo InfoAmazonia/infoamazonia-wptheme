@@ -323,10 +323,20 @@ header#masthead {
 			a {
 				display: block;
 				height: 18px;
-				padding-right: 30px;
+				width: 0;
+				overflow: hidden;
+				position: relative;
 				background: url(../img/twitter.png) right center no-repeat;
 				span {
+					top: 6px;
+					width: 80px;
+					right: 10px;
+					position: absolute;
 					color: #77A832;
+				}
+				&:hover {
+					width: 100px;
+
 				}
 			}
 		}
