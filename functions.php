@@ -111,11 +111,11 @@ include(STYLESHEETPATH . '/inc/slideshow.php');
 // ajax calendar
 include(STYLESHEETPATH . '/inc/ajax-calendar.php');
 
-// custom permalink url
-function infoamazonia_permalink($permalink, $post) {
-	return get_post_meta($post->ID, 'url', true);
+// featured map type
+function infoamazonia_featured_map_type() {
+	return 'map-group';
 }
-//add_filter('post_link', 'infoamazonia_permalink', 10, 2);
+add_filter('mappress_featured_map_type', 'infoamazonia_featured_map_type');
 
 // story fragment title
 add_filter('wp_title', 'infoamazonia_story_fragment_title', 10, 2);
