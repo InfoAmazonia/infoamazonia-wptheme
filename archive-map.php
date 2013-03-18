@@ -5,8 +5,6 @@
 		<div class="limiter">
 
 			<div class="clearfix">
-				<?php get_search_form(); ?>
-
 				<?php if(have_posts()) : ?>
 
 					<section id="maps" class="map-loop-section archive-list">
