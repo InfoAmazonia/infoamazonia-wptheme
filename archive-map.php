@@ -18,8 +18,6 @@
 				
 			</div>
 
-			<?php get_template_part('section', 'submit-call'); ?>
-
 		</div>
 	</div>
 </section>
