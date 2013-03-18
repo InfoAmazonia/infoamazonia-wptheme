@@ -14,9 +14,6 @@
 						</section>
 				</article>
 			</div>
-
-			<?php get_template_part('section', 'submit-call'); ?>
-
 		</div>
 	</div>
 <?php endwhile; endif; ?>
