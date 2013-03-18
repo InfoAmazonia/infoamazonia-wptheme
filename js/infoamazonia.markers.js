@@ -380,7 +380,8 @@
 				map.$.sidebar.share.find('.share-options').hide().addClass('hidden');
 
 				// update share button
-				var share_url = infoamazonia_markers.site_url + '#!/' + 'story=' + marker.properties.id;
+				var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+				var share_url = share_url + '#!/' + 'story=' + marker.properties.id;
 				var iframe_url = share_url + '&iframe=true&full=true';
 				if(map.currentMapID)
 					iframe_url += '&map=' + map.currentMapID;
