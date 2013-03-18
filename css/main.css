@@ -144,3 +144,4 @@ footer#colophon ul li.label{position:absolute;top:-30px;left:0;}footer#colophon 
 #submit-story .submit-container .error,#submit-story .submit-container .required{color:#f00;font-weight:bold;}
 #sb-nav #sb-nav-next{position:fixed;top:50%;right:50px;margin:0;padding:0;width:50px;height:80px;background:url(../img/shadowbox-next.png);margin-top:-25px;}
 #sb-nav #sb-nav-previous{position:fixed;top:50%;left:50px;margin:0;padding:0;width:50px;height:80px;background:url(../img/shadowbox-previous.png);margin-top:-25px;}
+html#widget,html#widget body{position:relative;margin:0 !important;padding:0 !important;}
