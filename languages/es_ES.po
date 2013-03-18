@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InfoAmazonia 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-11 01:27-0300\n"
-"PO-Revision-Date: 2013-03-11 01:39-0300\n"
+"POT-Creation-Date: 2013-03-18 12:31-0300\n"
+"PO-Revision-Date: 2013-03-18 12:31-0300\n"
 "Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
 "Language-Team: Cardume\n"
 "Language: es_ES\n"
@@ -34,72 +34,80 @@ msgstr "Vea todos los mapas"
 msgid "Page"
 msgstr "Página"
 
-#: ../header.php:44
+#: ../header.php:43
 msgid "Last updated:"
 msgstr "Última actualización:"
 
-#: ../header.php:51
+#: ../header.php:49
 msgid "by"
 msgstr "por"
 
-#: ../header.php:62
+#: ../header.php:49
+msgid "and"
+msgstr "y"
+
+#: ../header.php:56
 #: ../section-submit-call.php:4
 msgid "Submit a story"
 msgstr "Envíe un reportaje"
 
-#: ../functions.php:49
+#: ../header.php:80
+msgid "Follow us"
+msgstr "Siguenos"
+
+#: ../functions.php:54
 msgid "Success! Thank you, your story will be reviewed by one of our editors and soon will be online."
 msgstr "¡Gracias! Tu artículo será revisado por uno de nuestros editores y luego online"
 
-#: ../functions.php:50
+#: ../functions.php:55
 msgid "Oops, please try again in a few minutes."
 msgstr "Por favor, vuelve a intentarlo en unos minutos."
 
-#: ../functions.php:56
+#: ../functions.php:62
 msgid "stories"
 msgstr "artículos"
 
-#: ../functions.php:58
+#: ../functions.php:64
 msgid "Copy the embed code"
 msgstr "Copie el código para incrustar"
 
-#: ../functions.php:59
+#: ../functions.php:65
 msgid "Share this"
 msgstr "Compartir"
 
-#: ../functions.php:61
+#: ../functions.php:67
 msgid "Read"
 msgstr "Leer"
 
-#: ../functions.php:63
+#: ../functions.php:69
 msgid "Open slideshow"
 msgstr "Abrir slideshow"
 
-#: ../functions.php:64
+#: ../functions.php:70
 msgid "Watch video gallery"
 msgstr "Ver galería de videos"
 
-#: ../functions.php:65
+#: ../functions.php:71
 msgid "Watch video"
 msgstr "Ver video"
 
-#: ../functions.php:66
+#: ../functions.php:72
 msgid "View image gallery"
 msgstr "Ver galería de imágenes"
 
-#: ../functions.php:67
+#: ../functions.php:73
 msgid "View fullscreen image"
 msgstr "Ver la imagen en pantalla completa"
 
-#: ../functions.php:92
+#: ../functions.php:98
 msgid "Main widgets"
 msgstr "Widgets principales"
 
-#: ../functions.php:94
+#: ../functions.php:100
 msgid "Widgets used on front and inside pages."
 msgstr "Widgets utilizados en la página principal e internas."
 
-#: ../single-map.php:19
+#: ../single-map.php:18
 msgid "Stories on"
 msgstr "Noticias en"
 
