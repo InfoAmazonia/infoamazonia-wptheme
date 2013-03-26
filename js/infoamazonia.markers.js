@@ -215,6 +215,9 @@
 					story = listPosts.find('li:nth-child(1)').attr('id');
 			}
 
+			// always zoom story
+			silent = false;
+
 			markers.open(story, silent);
 
 		};
