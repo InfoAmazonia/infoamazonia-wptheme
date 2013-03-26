@@ -289,13 +289,43 @@
 				// slideshow label
 				var media = false;
 				if(typeof storyData.slideshow === 'object') {
+
 					media = storyData.slideshow;
+
 					var lightbox_label = infoamazonia_markers.lightbox_label.slideshow;
+
 					if(!media.images && media.iframes) {
-						if(media.iframes.length >= 2)
-							lightbox_label = infoamazonia_markers.lightbox_label.videos;
-						else
-							lightbox_label = infoamazonia_markers.lightbox_label.video;
+						// iframes can be video, infographic or image gallery
+
+						// separate them
+						var infographics = _.filter(media.iframes, function(iframe) { return iframe.type === 'infographic'; });
+						var galleries = _.filter(media.iframes, function(iframe) { return iframe.type === 'image-gallery'; });
+						var videos = _.filter(media.iframes, function(iframe) { return iframe.type === 'video'; });
+
+						if((videos.length && galleries.length) || (videos.length && infographics.length) || (galleries.length && infographics.length)) {
+
+							lightbox_label = infoamazonia_markers.lightbox_label.slideshow;
+
+						} else {
+
+							if(videos.length) {
+								if(videos.length >= 2)
+									lightbox_label = infoamazonia_markers.lightbox_label.videos;
+								else
+									lightbox_label = infoamazonia_markers.lightbox_label.video;
+							}
+							if(galleries.length) {
+								lightbox_label = infoamazonia_markers.lightbox_label.images;
+							}
+							if(infographics.length) {
+								if(infographics.length >= 2)
+									lightbox_label = infoamazonia_markers.lightbox_label.infographics;
+								else
+									lightbox_label = infoamazonia_markers.lightbox_label.infographic;
+							}
+
+						}
+
 					} else if(media.images && !media.iframes) {
 						if(media.images.length >= 2)
 							lightbox_label = infoamazonia_markers.lightbox_label.images;
@@ -303,6 +333,8 @@
 							lightbox_label = infoamazonia_markers.lightbox_label.image;
 					}
 				}
+
+				console.log(media);
 
 				var story = '';
 				story += '<small>' + storyData.date + ' - ' + storyData.source + '</small>';
@@ -333,7 +365,9 @@
 					if(media.iframes) {
 						$.each(media.iframes, function(i, iframe) {
 							shadowboxMedia.push({
-								content: iframe,
+								content: iframe.src,
+								width: iframe.width,
+								height: iframe.height,
 								player: 'iframe'
 							})
 						});

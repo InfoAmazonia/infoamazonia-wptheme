@@ -34,7 +34,21 @@ function infoamazonia_get_content_media($post_id = false, $force_update = false)
 			if($iframeTags->length) {
 				$media['iframes'] = array();
 				foreach($iframeTags as $tag) {
-					array_push($media['iframes'], $tag->getAttribute('src'));
+					$src = $tag->getAttribute('src');
+					$type = $tag->getAttribute('data-type');
+					$width = $tag->getAttribute('width');
+					$height = $tag->getAttribute('height');
+
+					if(!$type) $type = 'video';
+
+					$media_content = array(
+						'src' => $src,
+						'width' => $width,
+						'height' => $height,
+						'type' => $type
+					);
+
+					array_push($media['iframes'], $media_content);
 				}
 			}
 
