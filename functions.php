@@ -110,6 +110,17 @@ function infoamazonia_setup() {
 }
 add_action('after_setup_theme', 'infoamazonia_setup');
 
+function infoamazonia_map_data($data, $map) {
+	$map_data = get_post_meta($map->ID, 'map_data', true);
+	$layers = $map_data['layers'];
+	foreach($layers as &$layer) {
+		$layer['title'] = __($layer['title']);
+	}
+	$data['layers'] = $layers;
+	return $data;
+}
+add_filter('mappress_map_data', 'infoamazonia_map_data', 10, 2);
+
 // slideshow
 include(STYLESHEETPATH . '/inc/slideshow.php');
 
