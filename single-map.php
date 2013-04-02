@@ -13,6 +13,8 @@
 		<?php
 		query_posts(mappress_marker_get_query_vars());
 		if(have_posts()) : ?>
+		
+			<?php get_search_form(); ?>
 
 			<section id="last-stories" class="loop-section">
 				<h3><?php _e('Stories on', 'infoamazonia'); ?> &ldquo;<?php the_title(); ?>&ldquo;</h3>

@@ -231,3 +231,15 @@ function infoamazonia_flush_w3tc() {
 	}
 }
 add_action('save_post', 'infoamazonia_flush_w3tc');
+
+// search placeholder
+function infoamazonia_search_placeholder() {
+	global $wp_the_query;
+	$placeholder = __('Search for stories', 'infoamazonia');
+	if($wp_the_query->is_singular(array('map', 'map-group')))
+		$placeholder = __('Search for stories on this map', 'infoamazonia');
+	elseif($wp_the_query->is_tax('publisher'))
+		$placeholder = __('Search for stories on this publisher', 'infoamazonia');
+
+	return $placeholder;
+}
