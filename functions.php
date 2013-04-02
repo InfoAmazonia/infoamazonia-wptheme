@@ -3,9 +3,6 @@
 // metaboxes
 include(STYLESHEETPATH . '/inc/metaboxes/metaboxes.php');
 
-// widgets
-include(STYLESHEETPATH . '/inc/widgets.php');
-
 // set OSM geocode
 function infoamazonia_geocode_service() {
 	return 'osm';
