@@ -417,10 +417,15 @@
 				// update share button
 				var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname;
 				var share_url = share_url + '#!/' + 'story=' + marker.properties.id;
-				var iframe_url = share_url + '&iframe=true&full=true';
+
+				var embed_url = infoamazonia_markers.embed_base_url;
+				embed_url += '?p=' + marker.properties.postID;
+				var map_id = map.map_id;
 				if(map.currentMapID)
-					iframe_url += '&map=' + map.currentMapID;
-				var iframe_content = '<iframe src="' + iframe_url + '" frameborder="0" width="1100" height="480"></iframe>';
+					map_id = map.currentMapID;
+				embed_url += '&map_id=' + map_id;
+
+				var iframe_content = '<iframe src="' + embed_url + '" frameborder="0" width="1100" height="480"></iframe>';
 				map.$.sidebar.share.find('.iframe_input').attr('value', iframe_content);
 				// fb
 				map.$.sidebar.share.find('.fb-like').data('href', share_url);
