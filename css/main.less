@@ -899,9 +899,8 @@ header#masthead {
 }
 .content-map {
 	.map-container {
-		width: 75%;
 		height: 100%;
-		float: left;
+		position: relative;
 	}
 }
 
@@ -910,6 +909,7 @@ header#masthead {
 	color: #96979C;
 	height: 100%;
 	width: 25%;
+	min-width: 250px;
 	z-index: 1000;
 	word-wrap: break-word;
 	overflow: auto;
@@ -953,6 +953,46 @@ header#masthead {
 		}
 	}
 }
+
+/* Media queries and custom stuff for embeded map */
+
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+	.content-map {
+		.map-container {
+			.map-widgets {
+				display: none !important;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 0px) and (max-width: 550px) {
+	.content-map {
+		.map-sidebar {
+			width: 0 !important;
+			min-width: 0;
+			overflow: hidden;
+			display: none;
+		}
+	}
+}
+
+html#map-embed,
+html#map-embed body {
+	overflow: hidden;
+	position: relative;
+	margin: 0 !important;
+	padding: 0 !important;
+	.map-container {
+		.map {
+			.map-fullscreen {
+				display: none !important;
+			}
+		}
+	}
+}
+
+/* ----------- */
 
 .map-details-page {
 	position: absolute;
@@ -1523,15 +1563,4 @@ footer#colophon {
 		background: url(../img/shadowbox-previous.png);
 		margin-top: -25px;
 	}
-}
-
-/*
- * Widget custom css
- */
-
-html#widget,
-html#widget body {
-	position: relative;
-	margin: 0 !important;
-	padding: 0 !important;
 }

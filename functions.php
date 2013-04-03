@@ -240,3 +240,11 @@ function infoamazonia_search_placeholder() {
 
 	return $placeholder;
 }
+
+// embed custom stuff 
+
+function infoamazonia_before_embed() {
+	remove_action('wp_footer', 'infoamazonia_submit');
+	remove_action('wp_footer', 'infoamazonia_geocode_box');
+}
+add_action('mappress_before_embed', 'infoamazonia_before_embed');

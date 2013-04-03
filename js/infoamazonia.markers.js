@@ -334,8 +334,6 @@
 					}
 				}
 
-				console.log(media);
-
 				var story = '';
 				story += '<small>' + storyData.date + ' - ' + storyData.source + '</small>';
 				story += '<h2>' + storyData.title + '</h2>';

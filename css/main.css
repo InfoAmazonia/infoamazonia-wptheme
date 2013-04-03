@@ -80,14 +80,15 @@ header#masthead .project-by{font-family:'OpenSansSemiboldRegular','Helvetica Neu
 .map-container .map.zoom-1 .story-points,.map-container .map.zoom-2 .story-points,.map-container .map.zoom-3 .story-points,.map-container .map.zoom-4 .story-points,.map-container .map.zoom-5 .story-points{background:url(../img/sprite.png) no-repeat !important;background-position:-80px -224px !important;width:12px !important;height:15px !important;margin-top:-7px !important;margin-left:-6px !important;}.map-container .map.zoom-1 .story-points.active,.map-container .map.zoom-2 .story-points.active,.map-container .map.zoom-3 .story-points.active,.map-container .map.zoom-4 .story-points.active,.map-container .map.zoom-5 .story-points.active{background-position:-105px -224px !important;}
 .map-container .map.zoom-1 .story-points .popup,.map-container .map.zoom-2 .story-points .popup,.map-container .map.zoom-3 .story-points .popup,.map-container .map.zoom-4 .story-points .popup,.map-container .map.zoom-5 .story-points .popup{bottom:36px !important;}
 .map-container .map.zoom-1 .story-points:hover .popup,.map-container .map.zoom-2 .story-points:hover .popup,.map-container .map.zoom-3 .story-points:hover .popup,.map-container .map.zoom-4 .story-points:hover .popup,.map-container .map.zoom-5 .story-points:hover .popup{bottom:26px !important;}
-.content-map .map-container{width:75%;height:100%;float:left;}
-.map-sidebar{background:#111;color:#96979C;height:100%;width:25%;z-index:1000;word-wrap:break-word;overflow:auto;overflow-x:hidden;overflow-y:auto;float:left;}.map-sidebar::-webkit-scrollbar{background:#303030;width:15px;}
+.content-map .map-container{height:100%;position:relative;}
+.map-sidebar{background:#111;color:#96979C;height:100%;width:25%;min-width:250px;z-index:1000;word-wrap:break-word;overflow:auto;overflow-x:hidden;overflow-y:auto;float:left;}.map-sidebar::-webkit-scrollbar{background:#303030;width:15px;}
 .map-sidebar::-webkit-scrollbar-thumb{background:#666;border-radius:15px;border:5px #303030 solid;}
 .map-sidebar .button.open-slideshow{padding:2px 7px;font-size:10px;background:#444;border-color:#555;}.map-sidebar .button.open-slideshow:hover{background:#404040;}
 .map-sidebar .sidebar-inner{padding:10px 15px;}
 .map-sidebar h2{color:#fff;margin:10px 0;}
 .map-sidebar object,.map-sidebar object embed,.map-sidebar iframe,.map-sidebar img{max-width:100%;}
 .map-sidebar .sharing .social{margin:15px 0 0;}
+@media only screen and (min-width:0px) and (max-width:768px){.content-map .map-container .map-widgets{display:none !important;}}@media only screen and (min-width:0px) and (max-width:550px){.content-map .map-sidebar{width:0 !important;min-width:0;overflow:hidden;display:none;}}html#map-embed,html#map-embed body{overflow:hidden;position:relative;margin:0 !important;padding:0 !important;}html#map-embed .map-container .map .map-fullscreen,html#map-embed body .map-container .map .map-fullscreen{display:none !important;}
 .map-details-page{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(17, 17, 17, 0.95);z-index:999999;color:#e0e0e0;overflow:auto;}.map-details-page .inner{padding:30px;}.map-details-page .inner h2{color:#f0f0f0;font-size:24px;margin-bottom:30px;}
 .map-details-page .inner .details-content h1,.map-details-page .inner .details-content h2,.map-details-page .inner .details-content h3,.map-details-page .inner .details-content h4{font-size:20px;margin-bottom:15px;}
 .map-details-page::-webkit-scrollbar{background:#303030;width:15px;}
@@ -144,4 +145,3 @@ footer#colophon ul li.label{position:absolute;top:-30px;left:0;}footer#colophon 
 #submit-story .submit-container .error,#submit-story .submit-container .required{color:#f00;font-weight:bold;}
 #sb-nav #sb-nav-next{position:fixed;top:50%;right:50px;margin:0;padding:0;width:50px;height:80px;background:url(../img/shadowbox-next.png);margin-top:-25px;}
 #sb-nav #sb-nav-previous{position:fixed;top:50%;left:50px;margin:0;padding:0;width:50px;height:80px;background:url(../img/shadowbox-previous.png);margin-top:-25px;}
-html#widget,html#widget body{position:relative;margin:0 !important;padding:0 !important;}
