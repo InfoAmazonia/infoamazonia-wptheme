@@ -977,16 +977,52 @@ header#masthead {
 	}
 }
 
-html#map-embed,
-html#map-embed body {
+html#embedded,
+html#embedded body {
 	overflow: hidden;
 	position: relative;
 	margin: 0 !important;
 	padding: 0 !important;
-	.map-container {
-		.map {
-			.map-fullscreen {
-				display: none !important;
+	#embed-map {
+		position: relative;
+		padding-bottom: 30px;
+		height: 100%;
+		.box-sizing(border-box);
+		.map-container {
+			.map {
+				.map-fullscreen {
+					display: none !important;
+				}
+			}
+		}
+	}
+	#embed-header {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 30px;
+		background: #101010;
+		h1 {
+			float: right;
+			font-family: 'OpenSansCondensedBold';
+			text-transform: uppercase;
+			display: block;
+			line-height: 30px;
+			font-size: 14px;
+			margin: 0 10px;
+			a {
+				color: #333;
+				&:hover {
+					color: #d0d0d0;
+				}
+			}
+			span {
+				background: transparent url(../img/logo-small.png) center no-repeat;
+				display: inline-block;
+				width: 13px;
+				height: 30px;
+				margin-left: 7px;
 			}
 		}
 	}

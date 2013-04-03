@@ -1,4 +1,4 @@
-<html id="map-embed" <?php language_attributes(); ?>>
+<html id="embedded" <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo('charset'); ?>" />
 <title><?php
@@ -25,7 +25,13 @@
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
 
-<?php mappress_map($_GET['map_id']); ?>
+<section id="embed-map">
+	<?php mappress_map($_GET['map_id']); ?>
+</section>
+
+<header id="embed-header">
+	<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
+</header>
 
 <?php wp_footer(); ?>
 </body>
