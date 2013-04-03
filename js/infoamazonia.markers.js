@@ -420,7 +420,7 @@
 
 				var embed_url = infoamazonia_markers.embed_base_url;
 				embed_url += '?p=' + marker.properties.postID;
-				var map_id = map.map_id;
+				var map_id = map.postID;
 				if(map.currentMapID)
 					map_id = map.currentMapID;
 				embed_url += '&map_id=' + map_id;
