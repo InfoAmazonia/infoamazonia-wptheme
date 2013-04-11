@@ -15,7 +15,7 @@
 		map.dimensions = new MM.Point(map.parent.offsetWidth, map.parent.offsetHeight);
 		map.draw();
 
-		if(typeof mappress.fragment === 'function')
+		if(typeof mappress.fragment === 'function' && !map.conf.disableHash)
 			fragment = mappress.fragment();
 
 		$.getJSON(infoamazonia_markers.ajaxurl,

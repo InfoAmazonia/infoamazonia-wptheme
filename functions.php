@@ -29,7 +29,7 @@ function infoamazonia_scripts() {
 
 	// custom marker system
 	wp_deregister_script('mappress.markers');
-	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.7.5', true);
+	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.7.10', true);
 
 	// styles
 	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
@@ -249,3 +249,11 @@ function infoamazonia_before_embed() {
 	remove_action('wp_footer', 'infoamazonia_geocode_box');
 }
 add_action('mappress_before_embed', 'infoamazonia_before_embed');
+
+function infoamazonia_embed_type($post_types) {
+	if(get_query_var('embed')) {
+		$post_types = 'map';
+	}
+	return $post_types;
+}
+add_filter('mappress_featured_map_type', 'infoamazonia_embed_type');

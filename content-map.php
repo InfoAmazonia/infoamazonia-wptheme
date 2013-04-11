@@ -1,6 +1,6 @@
 <?php
+	$conf = mappress_map_conf();
 	global $mappress_map;
-	$conf = array('postID' => $mappress_map->ID); // default;
 	if(is_post_type_archive('map')) {
 		$conf['disableMarkers'] = true;
 		$conf['disableHash'] = true;
