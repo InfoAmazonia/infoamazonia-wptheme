@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
+<?php
+$default_map = array_shift(get_posts(array('name' => 'deforestation', 'post_type' => 'map')));
+?>
 <section id="content"><div class="gray-page">
   <div id='ia-widget' class='limiter'>
     <div id='configuration' class='clearfix'>
@@ -18,7 +21,7 @@
           	<?php $maps = get_posts(array('post_type' => 'map', 'posts_per_page' => -1)); ?>
           	<select id="map-select" data-placeholder="<?php _e('Select a map', 'infoamazonia'); ?>" class="chzn-select">
 				<?php foreach($maps as $map) : ?>
-					<option value="<?php echo $map->ID; ?>"><?php echo get_the_title($map->ID); ?></option>
+					<option value="<?php echo $map->ID; ?>" <?php if($map->ID === $default_map->ID) echo 'selected'; ?>><?php echo get_the_title($map->ID); ?></option>
 				<?php endforeach; ?>
 			</select>
           </div>
@@ -40,7 +43,7 @@
           <?php $publishers = get_terms('publisher'); ?>
           <div id='stories'>
           	<select id="stories-select" data-placeholder="<?php _e('Select stories', 'infoamazonia'); ?>" class="chzn-select">
-				<option value="latest"><?php _e('Latest stories', 'infoamazonia'); ?></option>
+				<option value="latest"><?php _e('Map stories', 'infoamazonia'); ?></option>
 				<option value="no-story"><?php _e('No stories', 'infoamazonia'); ?></option>
 				<optgroup label="<?php _e('By publishers', 'infoamazonia'); ?>">
 					<?php foreach($publishers as $publisher) : ?>

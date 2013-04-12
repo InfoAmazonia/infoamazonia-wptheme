@@ -1,4 +1,5 @@
 var BASEURL = infoamazonia_widget.baseurl + '?';
+var DEFAULTMAP = infoamazonia_widget.defaultmap;
 
 // indexOf shim via
 // developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf
@@ -87,7 +88,7 @@ if (!Array.prototype.indexOf) {
         function unserialize(hash) {
             if (!hash) {
                 return {
-                    map: '49'
+                    map: DEFAULTMAP
                 };
             }
 
@@ -115,7 +116,7 @@ if (!Array.prototype.indexOf) {
             story: state.story || undefined,
             publisher: state.publisher || undefined,
             noStory: state.noStory || undefined,
-            map: state.map || '49',
+            map: state.map || DEFAULTMAP,
             width: 960,
             height: 480
         };
