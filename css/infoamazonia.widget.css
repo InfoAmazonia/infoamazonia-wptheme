@@ -1,14 +1,44 @@
+
+#ia-widget *, *:after, *:before {
+  -webkit-box-sizing:border-box;
+     -moz-box-sizing:border-box;
+          box-sizing:border-box;
+  }
+
+#ia-widget *::-webkit-scrollbar {
+  background:#fff;
+  width:15px;
+  }
+#ia-widget *::-webkit-scrollbar-thumb {
+  background:#e0e0e0;
+  border:5px #fff solid;
+  -webkit-border-radius:15px;
+          border-radius:15px;
+  }
+
+#ia-widget select,
+#ia-widget textarea,
+#ia-widget input[type=text]  {
+  font-size: 13px;
+  line-height: 18px;
+  display: inline-block;
+  width: 100%;
+  padding: 4px 8px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
 /* Layout
 ------------------------------------------------------- */
-.limiter {
+#ia-widget .limiter {
   width:960px;
   margin:30px auto;
   }
-.inner {
+#ia-widget .inner {
   padding:0 15px;
   }
 
-.section {
+#ia-widget .section {
   width:239px;
   float:left;
   padding:10px 0 15px;
@@ -53,14 +83,14 @@
   -webkit-border-radius:4px;
           border-radius:4px;
   }
-.tip {
+#ia-widget .tip {
   font:bold 10px/16px 'OpenSansRegular','Helvetica Neue', Helvetica, Arial, sans-serif;
   position:relative;
   display:inline-block;
   position:relative;
   top:-3px;
   }
-.popup {
+#ia-widget .popup {
   font:11px/18px 'OpenSansRegular','Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform:none;
   -webkit-font-smoothing:subpixel-antialiased;
@@ -78,17 +108,17 @@
   -webkit-border-radius:4px;
           border-radius:4px;
   }
-  .popup:after {
+  #ia-widget .popup:after {
     top:5px;
     }
-  .tip:hover .popup {
+  #ia-widget .tip:hover .popup {
     display:block;
     }
 
-.sizes li {
+#ia-widget .sizes li {
   float:left;
   }
-  .sizes li a {
+  #ia-widget .sizes li a {
     background-color:#fff;
     background-image:-webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
     background-image:-webkit-linear-gradient(top, #fff, #eee);
@@ -105,7 +135,7 @@
     font-weight:normal;
     white-space:nowrap;
     }
-    .sizes li a.active {
+    #ia-widget .sizes li a.active {
       background-color:#f8f8f8;
       background-image:-webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#fff));
       background-image:-webkit-linear-gradient(top, #f8f8f8, #fff);
@@ -116,7 +146,7 @@
 
 /* Loading
 ------------------------------------------------------- */
-#loading {
+#ia-widget #loading {
   background:transparent url(img/overlay.png) repeat 0 0;
   position:absolute;
   width:100%;
@@ -126,7 +156,7 @@
   -webkit-border-radius:4px;
           border-radius:4px;
   }
-  #loading .load {
+  #ia-widget #loading .load {
     background:transparent url(img/loader.gif) no-repeat 0 0;
     display:block;
     text-indent:-999em;
