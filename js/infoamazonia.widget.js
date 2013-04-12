@@ -1,4 +1,4 @@
-var BASEURL = 'http://infoamazonia.org/en/embed/?';
+var BASEURL = infoamazonia_widget.baseurl + '?';
 
 // indexOf shim via
 // developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf
@@ -133,12 +133,14 @@ if (!Array.prototype.indexOf) {
         }
 
         function updateOutput() {
-            $output.html('<iframe src="' + BASEURL + serialize() + '" width="' + embed.width + 'px" height="' + embed.height + 'px"></iframe>');
+            $output.html('<iframe src="' + BASEURL + serialize() + '" width="' + embed.width + '" height="' + embed.height + '" frameborder="0"></iframe>');
         }
 
         function updateIframe() {
             //location.href = '#/' + serialize();
-            iframe.src = BASEURL + serialize();
+            //iframe.src = BASEURL + serialize();
+            $('#widget-content').html($('<iframe id="iframe" src="' + BASEURL + serialize() + '" frameborder="0"></iframe>'));
+            iframe = document.getElementById('iframe');
         }
 
         $('#widget-content').css({
@@ -183,7 +185,7 @@ if (!Array.prototype.indexOf) {
                 updateIframe();
 
                 // Force the iframe to reload
-                iframe.contentWindow.location.reload(true);
+                //iframe.contentWindow.location.reload(true);
             });
         });
 

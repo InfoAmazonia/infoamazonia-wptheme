@@ -32,7 +32,10 @@ class InfoAmazonia_Widget {
 	}
 
 	function template() {
-		wp_enqueue_script('infoamazonia-widget', get_stylesheet_directory_uri() . '/js/infoamazonia.widget.js', array('jquery', 'underscore', 'chosen'), '1.3.0');
+		wp_enqueue_script('infoamazonia-widget', get_stylesheet_directory_uri() . '/js/infoamazonia.widget.js', array('jquery', 'underscore', 'chosen'), '1.3.14');
+		wp_localize_script('infoamazonia-widget', 'infoamazonia_widget', array(
+			'baseurl' => home_url('/' . qtrans_getLanguage() . '/embed/')
+		));
 		wp_enqueue_style('infoamazonia-widget', get_stylesheet_directory_uri() . '/css/infoamazonia.widget.css', array(), '1.0');
 		get_template_part('content', 'share');
 		exit;

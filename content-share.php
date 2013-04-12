@@ -90,22 +90,12 @@
           <textarea id='output'></textarea>
         </div>
       </div>
-
-      <script data-template='storyOptions' type='text/html'>
-        <optgroup label='<%= label %>'>
-          <% _(data).each(function(d) { %>
-             <option
-                value='<%= prefix %><%= d.id %>'>
-                <%= d.title %>
-            </option>
-          <% }); %>
-        </optgroup>
-      </script>
     </div>
 
     <div class='content' id='widget-content'>
-      <iframe id='iframe'></iframe>
+    	<!-- iframe goes here -->
     </div>
+
   </div>
 </div></div>
 

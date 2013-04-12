@@ -27,21 +27,21 @@
 
 <section id="embed-map">
 	<?php
-		$conf = array();
-		$conf['containerID'] = 'map_embed';
-		$conf['disableHash'] = true;
-		if(isset($_GET['map_id'])) {
-			$conf['postID'] = $_GET['map_id'];
-		}
-		if(isset($_GET['no_stories']) && $_GET['no_stories'] == 1) {
-			$conf['disableMarkers'] = true;
-		}
-		if(isset($_GET['layers'])) {
-			if(isset($conf['postID']))
-				unset($conf['postID']);
-			$conf['layers'] = explode(',', $_GET['layers']);
-		}
-		$conf = json_encode($conf);
+	$conf = array();
+	$conf['containerID'] = 'map_embed';
+	$conf['disableHash'] = true;
+	if(isset($_GET['map_id'])) {
+		$conf['postID'] = $_GET['map_id'];
+	}
+	if(isset($_GET['no_stories'])) {
+		$conf['disableMarkers'] = true;
+	}
+	if(isset($_GET['layers'])) {
+		if(isset($conf['postID']))
+			unset($conf['postID']);
+		$conf['layers'] = explode(',', $_GET['layers']);
+	}
+	$conf = json_encode($conf);
 	?>
 	<div class="map-container"><div id="map_embed" class="map"></div></div>
 	<script type="text/javascript">mappress(<?php echo $conf; ?>);</script>
