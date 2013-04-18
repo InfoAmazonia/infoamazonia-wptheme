@@ -12,7 +12,7 @@ foreach($data['maps'] as $map) {
 }
 ?>
 <div class="mapgroup-container">
-	<div id="mapgroup-<?php echo $mappress_mapgroup_id; ?>" class="mapgroup">
+	<div id="mapgroup_<?php echo $mappress_mapgroup_id; ?>" class="mapgroup">
 		<ul class="map-nav">
 			<?php
 			$i = 0;
