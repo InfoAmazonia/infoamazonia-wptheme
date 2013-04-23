@@ -32,36 +32,10 @@ function infoamazonia_scripts() {
 
 	// custom marker system
 	wp_deregister_script('mappress.markers');
-	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.7.10', true);
-
-	// styles
-	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
-	wp_register_style('reset', get_stylesheet_directory_uri() . '/css/reset.css', array(), '2.0');
-	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.0');
-
-	/*
-	 * Enqueue scripts & styles
-	 */
-	// scripts
-	wp_enqueue_script('html5');
-	wp_enqueue_script('submit-story');
-	wp_enqueue_script('infoamazonia.markers');
-	// styles
-	wp_enqueue_style('site');
-	wp_enqueue_style('reset');
-	wp_enqueue_style('main');
-	wp_enqueue_style('shadowbox');
-
-	wp_localize_script('submit-story', 'infoamazonia_submit', array(
-		'ajaxurl' => admin_url('admin-ajax.php'),
-		'success_label' => __('Success! Thank you, your story will be reviewed by one of our editors and soon will be online.', 'infoamazonia'),
-		'error_label' => __('Oops, please try again in a few minutes.', 'infoamazonia')
-	));
-
-	global $marker_query;
+	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox'), '0.0.7.11', true);
 	wp_localize_script('infoamazonia.markers', 'infoamazonia_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
-		'query' => mappress_marker_get_query_vars(),
+		'query' => mappress_marker_query(),
 		'stories_label' => __('stories', 'infoamazonia'),
 		'home' => is_front_page(),
 		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
@@ -80,8 +54,36 @@ function infoamazonia_scripts() {
 		)
 	));
 
+	// styles
+	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
+	wp_register_style('reset', get_stylesheet_directory_uri() . '/css/reset.css', array(), '2.0');
+	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.0');
+
+	/*
+	 * Enqueue scripts & styles
+	 */
+	// scripts
+	wp_enqueue_script('html5');
+	wp_enqueue_script('submit-story');
+	// styles
+	wp_enqueue_style('site');
+	wp_enqueue_style('reset');
+	wp_enqueue_style('main');
+	wp_enqueue_style('shadowbox');
+
+	wp_localize_script('submit-story', 'infoamazonia_submit', array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
+		'success_label' => __('Success! Thank you, your story will be reviewed by one of our editors and soon will be online.', 'infoamazonia'),
+		'error_label' => __('Oops, please try again in a few minutes.', 'infoamazonia')
+	));
+
 }
 add_action('wp_enqueue_scripts', 'infoamazonia_scripts', 11);
+
+function infoamazonia_enqueue_marker_script() {
+	wp_enqueue_script('infoamazonia.markers');
+}
+add_action('wp_footer', 'infoamazonia_enqueue_marker_script');
 
 // infoamazonia setup
 
@@ -231,7 +233,6 @@ add_filter('mappress_markers_limit', 'infoamazonia_markers_limit');
 function infoamazonia_flush_w3tc() {
 	if(function_exists('flush_pgcache')) {
 		flush_pgcache();
-		error_log('test');
 	}
 }
 add_action('save_post', 'infoamazonia_flush_w3tc');

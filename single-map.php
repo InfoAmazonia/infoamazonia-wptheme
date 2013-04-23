@@ -11,7 +11,7 @@
 	<div class="limiter">
 
 		<?php
-		query_posts(mappress_marker_get_query_vars());
+		query_posts('');
 		if(have_posts()) : ?>
 		
 			<?php get_search_form(); ?>

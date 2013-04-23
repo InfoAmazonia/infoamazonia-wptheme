@@ -22,7 +22,6 @@ foreach($data['maps'] as $map) {
 				?>
 				<li><a href="<?php the_permalink(); ?>" data-map="<?php the_ID(); ?>"><?php the_title(); ?></a></li>
 				<?php
-				mappress_reset_mapdata();
 				$i++;
 			endforeach; ?>
 			<?php if($more_maps) : ?>
@@ -35,7 +34,6 @@ foreach($data['maps'] as $map) {
 							?>
 							<li class="more-item"><a href="<?php the_permalink(); ?>" data-map="<?php the_ID(); ?>"><?php the_title(); ?></a></li>
 							<?php
-							mappress_reset_mapdata();
 						endforeach; ?>
 						<li><a href="<?php echo qtrans_convertURL(get_post_type_archive_link('map')); ?>"><?php _e('View all maps', 'infoamazonia'); ?></a></li>
 					</ul>
