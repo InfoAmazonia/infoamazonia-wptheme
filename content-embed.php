@@ -37,9 +37,9 @@
 		$conf['disableMarkers'] = true;
 	}
 	if(isset($_GET['layers'])) {
+		$conf['layers'] = explode(',', $_GET['layers']);
 		if(isset($conf['postID']))
 			unset($conf['postID']);
-		$conf['layers'] = explode(',', $_GET['layers']);
 	}
 	$conf = json_encode($conf);
 	?>

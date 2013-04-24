@@ -1,11 +1,9 @@
 (function($) {
 
-	mappress.mapReady('all', function(map, conf) {
-		if(!conf.disableMarkers && !conf.admin)
-			mappress.markers(map);
-	});
-
 	mappress.markers = function(map) {
+
+		if(map.conf.disableMarkers || map.conf.admin)
+			return false;
 
 		var markers = mappress.markers;
 		var markersLayer = mapbox.markers.layer();
@@ -169,6 +167,17 @@
 					return e;
 
 				});
+
+			if(!mappress.fragment().get('loc') && !map.conf.center) {
+				var extent = markersLayer.extent();
+				if(extent[0].lat !== 0 && extent[0].lon !== 0) {
+					if(extent[1].lat !== 0 && extent[1].lon !== 0) {
+						map.setExtent(extent);
+					} else {
+						map.center(extent[0]);
+					}
+				}
+			}
 
 			if(map.conf.sidebar === false)
 				return;
@@ -572,5 +581,7 @@
 			});
 		};
 	}
+
+	mappress.mapReady(mappress.markers);
 
 })(jQuery);
