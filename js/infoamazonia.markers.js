@@ -1,11 +1,12 @@
 (function($) {
 
-	mappress.markers = function(map) {
+	var markers = function(map) {
 
 		if(map.conf.disableMarkers || map.conf.admin)
 			return false;
 
-		var markers = mappress.markers;
+		map.markers = markers;
+
 		var markersLayer = mapbox.markers.layer();
 		var features;
 		var fragment = false;
@@ -29,10 +30,10 @@
 		function(geojson) {
 			if(geojson === 0)
 				return;
-			markers.build(geojson);
+			_build(geojson);
 		});
 
-		mappress.markers.build = function(geojson) {
+		var _build = function(geojson) {
 
 			Shadowbox.init({
 				skipSetup: true
@@ -236,11 +237,11 @@
 
 		};
 
-		mappress.markers.getMarker = function(id) {
+		markers.getMarker = function(id) {
 			return _.find(features, function(m) { return m.properties.id === id; });
 		}
 
-		mappress.markers.open = function(marker, silent) {
+		markers.open = function(marker, silent) {
 
 			if(map.conf.sidebar === false) {
 				window.location = marker.properties.url;
@@ -457,14 +458,14 @@
 			}
 		};
 
-		mappress.markers.hasLocation = function(marker) {
+		markers.hasLocation = function(marker) {
 			if(marker.geometry.coordinates[0] ===  0 || !marker.geometry.coordinates[0])
 				return false;
 			else
 				return true;
 		}
 
-		mappress.markers.fromMap = function(x) {
+		markers.fromMap = function(x) {
 			// if marker is string, get object
 			if(typeof x === 'string') {
 				x = _.find(features, function(m) { return m.properties.id === x; });
@@ -479,7 +480,7 @@
 			return _.find(x.properties.maps, function(markerMap) { return 'map_' + markerMap == map.currentMapID; });
 		}
 
-		mappress.markers.doClustering = function(features) {
+		markers.doClustering = function(features) {
 
 			// determine if p1 is close to p2
 			var close = function(p1, p2) {
@@ -537,7 +538,7 @@
 		}
 
 		// Close all open clusters.
-		mappress.markers.collapseClusters = function() {
+		markers.collapseClusters = function() {
 			var open = [];
 			map.$.find('.story-points.open').each(function(i, el) {
 				// Remove open class and kill popup, which has different content
@@ -560,7 +561,7 @@
 			return open;
 		};
 
-		mappress.markers.openClusters = function(m) {
+		markers.openClusters = function(m) {
 			var radius = 0.1;
 			map.$.find('.cluster:not(.open)').each(function(i, el) {
 
@@ -582,6 +583,6 @@
 		};
 	}
 
-	mappress.mapReady(mappress.markers);
+	mappress.mapReady(markers);
 
 })(jQuery);
