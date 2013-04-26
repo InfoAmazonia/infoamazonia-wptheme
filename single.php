@@ -4,7 +4,7 @@
 	<div class="limiter clearfix">
 		<?php get_template_part('section', 'subheader'); ?>
 		<div id="main-map" class="stage-map">
-			<?php mappress_get_map_featured(); ?>
+			<?php mappress_featured(); ?>
 		</div>
 	</div>
 </section>
