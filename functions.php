@@ -250,6 +250,17 @@ function infoamazonia_search_placeholder() {
 	return $placeholder;
 }
 
+// marker icon
+function infoamazonia_marker_icon($marker) {
+	$marker = array(
+		'url' => get_template_directory_uri() . '/img/marker.png',
+		'width' => 26,
+		'height' => 30
+	);
+	return $marker;
+}
+add_filter('mappress_marker_icon', 'infoamazonia_marker_icon', 20);
+
 // embed custom stuff 
 
 function infoamazonia_before_embed() {
