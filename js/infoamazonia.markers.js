@@ -71,8 +71,8 @@
 						'background': 'url(' + x.properties.marker.url + ')',
 						'width': x.properties.marker.width,
 						'height': x.properties.marker.height,
-						'margin-top': -x.properties.marker.height,
-						'margin-left': -(x.properties.marker.width/2)
+						'margin-top': -parseInt(x.properties.marker.height),
+						'margin-left': -(parseInt(x.properties.marker.width)/2)
 					});
 
 					/* soon
