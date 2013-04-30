@@ -178,7 +178,7 @@
 
 			// FIRST STORY
 			var story = geojson.features[0];
-			var silent = true;
+			var silent = false;
 
 			// if not home, navigate to post
 			if(!infoamazonia_markers.home) 
@@ -218,9 +218,6 @@
 				if(!fStoryID)
 					story = listPosts.find('li:nth-child(1)').attr('id');
 			}
-
-			// always zoom story
-			silent = false;
 
 			markers.open(story, silent);
 
