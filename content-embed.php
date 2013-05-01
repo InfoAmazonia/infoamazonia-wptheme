@@ -22,8 +22,13 @@
 <link rel="shortcut icon" href="<?php bloginfo('stylesheet_directory'); ?>/img/favicon.ico" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <?php wp_head(); ?>
+<link rel="stylesheet" type="text/css" media="print" href="<?php echo get_stylesheet_directory_uri(); ?>/css/print.css" />
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
+
+<header id="embed-header">
+	<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
+</header>
 
 <section id="embed-map">
 	<?php
@@ -46,10 +51,6 @@
 	<div class="map-container"><div id="map_embed" class="map"></div></div>
 	<script type="text/javascript">mappress(<?php echo $conf; ?>);</script>
 </section>
-
-<header id="embed-header">
-	<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
-</header>
 
 <?php wp_footer(); ?>
 </body>

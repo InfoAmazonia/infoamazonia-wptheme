@@ -1,0 +1,52 @@
+* {
+	background: transparent !important;
+	color:black!important;
+ }
+
+ html#embedded body {
+ 	overflow: auto;
+ }
+
+ #embed-map {
+ 	width: 100%;
+ 	height: 600px !important;
+ }
+
+ #embed-header {
+ 	position: static !important;
+ }
+
+ #embed-header h1 {
+ 	margin: 15px !important;
+ 	float: none !important;
+ }
+
+.map-sidebar {
+	width: auto !important;
+	float: none !important;
+ 	height: auto !important;
+}
+
+.map-sidebar .media-limit {
+	width: 200px;
+	height: 100px;
+	float: left;
+	margin: 0 20px 20px 0;
+}
+
+.map-sidebar a:after {
+	content:' [' attr(href) '] ';
+  }
+
+ .map-container .map .map-legends {
+ 	background: #fff !important;
+ }
+
+/* Disable from the print view */
+.close,
+.map-details-link,
+.map-widgets,
+.sharing,
+.zoomer {
+  display:none !important;
+  }
