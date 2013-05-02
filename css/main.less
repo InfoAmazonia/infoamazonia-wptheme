@@ -370,12 +370,38 @@ header#masthead {
 	}
 }
 
+.single-post {
+	.post-content {
+		margin: 20px 0;
+		.thumbnail {
+			width: 400px;
+			margin: 0 0 40px 40px;
+			float: right;
+			img {
+				width: 100%;
+				height: auto;
+				margin-bottom: 20px;
+			}
+		}
+		.post-description {
+			font-size: 14px;
+			img,
+			iframe,
+			object {
+				max-width: 100% !important;
+				margin: 20px 0;
+			}
+		}
+	}
+}
 #stage {
 	background: #f0f0f0;
 	position: relative;
 	padding: 35px 0;
 	z-index: 1;
 	.title {
+		line-height: 26px;
+		max-width: 400px;
 		margin: 0 0 35px;
 	}
 	.share {

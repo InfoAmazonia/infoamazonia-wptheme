@@ -177,12 +177,7 @@ function infoamazonia_marker_data($data) {
 		$data['source'] = apply_filters('single_cat_title', $publisher->name);
 	}
 	// thumbnail
-	$thumb_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post-thumb');
-	if($thumb_src)
-		$data['thumbnail'] = $thumb_src[0];
-	else {
-		$data['thumbnail'] = get_post_meta($post->ID, 'picture', true);
-	}
+	$data['thumbnail'] = infoamazonia_get_thumbnail();
 	// maps
 	/* under construction
 	$maps = get_post_meta($post->ID, 'maps');
@@ -196,6 +191,16 @@ function infoamazonia_marker_data($data) {
 	return $data;
 }
 add_filter('mappress_marker_data', 'infoamazonia_marker_data');
+
+function infoamazonia_get_thumbnail($post_id) {
+	global $post;
+	$post_id = $post_id ? $post_id : $post->ID;
+	$thumb_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post-thumb');
+	if($thumb_src)
+		return $thumb_src[0];
+	else
+		return get_post_meta($post->ID, 'picture', true);
+}
 
 // geocode box
 include(STYLESHEETPATH . '/inc/geocode-box.php');
