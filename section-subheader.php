@@ -56,8 +56,16 @@
 
 	<h1 class="title">Tag: <?php single_tag_title(); ?></h1>
 
-<?php
-elseif(is_archive()) :
+<?php elseif(is_singular('post')) : ?>
+
+	<div class="single-post">
+		<h1 class="title"><?php the_title(); ?></h1>
+		<div class="post-content">
+			<?php the_content(); ?>
+		</div>
+	</div>
+
+<?php elseif(is_archive()) :
 	if (is_day()) :
 		printf('<h1 class="title">' . __('Daily Archives: %s', 'infoamazonia' ), get_the_date() . '</h1>' );
 	elseif (is_month()) :

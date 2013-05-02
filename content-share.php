@@ -69,13 +69,24 @@
           <?php $publishers = get_terms('publisher'); ?>
           <div id='stories'>
           	<select id="stories-select" data-placeholder="<?php _e('Select stories', 'infoamazonia'); ?>" class="chzn-select">
-				<option value="latest"><?php if(!isset($_GET['map_id'])) _e('Stories from the map', 'infoamazonia'); else _e('Latest stories', 'infoamazonia'); ?></option>
-				<option value="no-story"><?php _e('No stories', 'infoamazonia'); ?></option>
-				<optgroup label="<?php _e('By publishers', 'infoamazonia'); ?>">
-					<?php foreach($publishers as $publisher) : ?>
-						<option value="publisher&<?php echo $publisher->slug; ?>"><?php echo $publisher->name; ?></option>
-					<?php endforeach; ?>
-				</optgroup>
+              <?php
+              if(isset($_GET['p'])) :
+                $story = get_post($_GET['p']);
+                if($story) : ?>
+                  <optgroup label="<?php _e('Selected story', 'infoamazonia'); ?>">
+                    <option value="story&<?php echo $story->ID; ?>" selected><?php echo get_the_title($story->ID); ?></option>
+                  </optgroup>
+                <?php endif; ?>
+              <?php endif; ?>
+              <optgroup label="<?php _e('General stories', 'infoamazonia'); ?>">
+        				<option value="latest"><?php if(!isset($_GET['map_id'])) _e('Stories from the map', 'infoamazonia'); else _e('Latest stories', 'infoamazonia'); ?></option>
+        				<option value="no-story"><?php _e('No stories', 'infoamazonia'); ?></option>
+              </optgroup>
+      				<optgroup label="<?php _e('By publishers', 'infoamazonia'); ?>">
+      					<?php foreach($publishers as $publisher) : ?>
+      						<option value="publisher&<?php echo $publisher->slug; ?>"><?php echo $publisher->name; ?></option>
+      					<?php endforeach; ?>
+      				</optgroup>
           	</select>
           </div>
         </div>
