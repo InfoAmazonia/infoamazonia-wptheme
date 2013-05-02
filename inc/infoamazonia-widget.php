@@ -10,9 +10,10 @@ class InfoAmazonia_Widget {
 	var $slug = 'share';
 
 	function __construct() {
-		add_filter('query_vars', array(&$this, 'query_var'));
-		add_action('generate_rewrite_rules', array(&$this, 'generate_rewrite_rule'));
-		add_action('template_redirect', array(&$this, 'template_redirect'));
+		add_filter('query_vars', array($this, 'query_var'));
+		add_action('generate_rewrite_rules', array($this, 'generate_rewrite_rule'));
+		add_action('template_redirect', array($this, 'template_redirect'));
+		add_filter('wp_nav_menu_items', array($this, 'nav'), 10, 2);
 	}
 
 	function query_var($vars) {
@@ -46,6 +47,11 @@ class InfoAmazonia_Widget {
 		wp_enqueue_style('infoamazonia-widget', get_stylesheet_directory_uri() . '/css/infoamazonia.widget.css', array(), '1.0');
 		get_template_part('content', 'share');
 		exit;
+	}
+
+	function nav($items, $args) {
+		$share = '<li class="share' . ((get_query_var($this->query_var)) ? ' current_page_item' : '') . '"><a href="' . $this->get_share_url() . '">' . __('Share a map', 'infoamazonia') . '</a></li>';
+		return $items . $share;
 	}
 
 	// functions
