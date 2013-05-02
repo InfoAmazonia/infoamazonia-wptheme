@@ -1,30 +1,56 @@
 <?php get_header(); ?>
 
-<?php
-$default_map = array_shift(get_posts(array('name' => 'deforestation', 'post_type' => 'map')));
-?>
 <section id="content"><div class="gray-page">
   <div id='ia-widget' class='limiter'>
     <div id='configuration' class='clearfix'>
       <div class='section layer'>
         <div class='inner'>
-          <h4>
-            Choose a Map
-            <a class='tip' href='#'>
-              ?
-              <div class='popup arrow-left'>
-                Choose any map from the list.
+          <?php if(!isset($_GET['map_id'])) : ?>
+            <h4>
+              <?php _e('Choose a map', 'infoamazonia'); ?>
+              <a class='tip' href='#'>
+                ?
+                <div class='popup arrow-left'>
+                  Choose any map from the list.
+                </div>
+              </a>
+            </h4>
+            <div id='maps'>
+              <?php $maps = get_posts(array('post_type' => 'map', 'posts_per_page' => -1)); ?>
+              <select id="map-select" data-placeholder="<?php _e('Select a map', 'infoamazonia'); ?>" class="chzn-select">
+                <?php foreach($maps as $map) : ?>
+                  <option value="<?php echo $map->ID; ?>"><?php echo get_the_title($map->ID); ?></option>
+                <?php endforeach; ?>
+              </select>
+              <a href="#" class="select-map-layers" style="display:block;margin-top:5px;"><?php _e('Select layers from this map', 'infoamazonia'); ?></a>
+            </div>
+          <?php else : ?>
+            <?php 
+            $map_id = $_GET['map_id'];
+            $map = get_post($map_id);
+            if($map) : ?>
+              <h4>
+                <?php echo __('Select layers from ', 'infoamazonia') . get_the_title($map_id); ?>
+                <a class='tip' href='#'>
+                  ?
+                  <div class='popup arrow-left'>
+                    Choose layers from the list.
+                  </div>
+                </a>
+              </h4>
+              <div id='maps'>
+                <?php
+                $layers = mappress_get_map_layers($map_id);
+                if($layers) : ?>
+                  <select id="layers-select" data-placeholder="<?php _e('Select layers', 'infoamazonia'); ?>" data-mapid="<?php echo $map_id; ?>" class="chzn-select" multiple>
+                    <?php foreach($layers as $layer) : ?>
+                      <option value="<?php echo $layer['id']; ?>" selected><?php if($layer['title']) : echo $layer['title']; else : echo $layer['id']; endif; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                <?php endif; ?>
               </div>
-            </a>
-          </h4>
-          <div id='maps'>
-          	<?php $maps = get_posts(array('post_type' => 'map', 'posts_per_page' => -1)); ?>
-          	<select id="map-select" data-placeholder="<?php _e('Select a map', 'infoamazonia'); ?>" class="chzn-select">
-				<?php foreach($maps as $map) : ?>
-					<option value="<?php echo $map->ID; ?>" <?php if($map->ID === $default_map->ID) echo 'selected'; ?>><?php echo get_the_title($map->ID); ?></option>
-				<?php endforeach; ?>
-			</select>
-          </div>
+            <?php endif; ?>
+          <?php endif; ?>
         </div>
       </div>
 
@@ -43,7 +69,7 @@ $default_map = array_shift(get_posts(array('name' => 'deforestation', 'post_type
           <?php $publishers = get_terms('publisher'); ?>
           <div id='stories'>
           	<select id="stories-select" data-placeholder="<?php _e('Select stories', 'infoamazonia'); ?>" class="chzn-select">
-				<option value="latest"><?php _e('Map stories', 'infoamazonia'); ?></option>
+				<option value="latest"><?php if(!isset($_GET['map_id'])) _e('Stories from the map', 'infoamazonia'); else _e('Latest stories', 'infoamazonia'); ?></option>
 				<option value="no-story"><?php _e('No stories', 'infoamazonia'); ?></option>
 				<optgroup label="<?php _e('By publishers', 'infoamazonia'); ?>">
 					<?php foreach($publishers as $publisher) : ?>

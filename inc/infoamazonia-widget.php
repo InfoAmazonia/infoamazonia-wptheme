@@ -35,7 +35,7 @@ class InfoAmazonia_Widget {
 
 		$default_map = array_shift(get_posts(array('name' => 'deforestation', 'post_type' => 'map')));
 
-		wp_enqueue_script('infoamazonia-widget', get_stylesheet_directory_uri() . '/js/infoamazonia.widget.js', array('jquery', 'underscore', 'chosen'), '1.3.15');
+		wp_enqueue_script('infoamazonia-widget', get_stylesheet_directory_uri() . '/js/infoamazonia.widget.js', array('jquery', 'underscore', 'chosen'), '1.3.18');
 		wp_localize_script('infoamazonia-widget', 'infoamazonia_widget', array(
 			'baseurl' => home_url('/' . qtrans_getLanguage() . '/embed/'),
 			'defaultmap' => $default_map->ID

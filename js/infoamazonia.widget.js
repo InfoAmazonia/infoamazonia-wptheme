@@ -85,51 +85,59 @@ if (!Array.prototype.indexOf) {
         // autoselect the contents of the textarea
         autoSelect($output);
 
-        function unserialize(hash) {
-            if (!hash) {
-                return {
-                    map: DEFAULTMAP
-                };
-            }
-
-            var query = hash.split('&');
-            var story, map, publisher, noStory;
-
-            for (var i = 0; i < query.length; i++) {
-                var fragment = query[i].split('=');
-                if (fragment[0] === 'p') story = value(query[i]);
-                if (startsWith(query[i], 'map_id')) map = value(query[i]);
-                if (startsWith(query[i], 'publisher')) publisher = value(query[i]);
-                if (startsWith(query[i], 'no_stories')) noStory = value(query[i]);
-            }
-
-            return {
-                story: story,
-                publisher: publisher,
-                noStory: noStory,
-                map: map
-            };
-        }
-
-        var state = unserialize(hash);
         var embed = {
-            story: state.story || undefined,
-            publisher: state.publisher || undefined,
-            noStory: state.noStory || undefined,
-            map: state.map || DEFAULTMAP,
+            story: undefined,
+            publisher: undefined,
+            noStory: undefined,
+            map: DEFAULTMAP,
             width: 960,
             height: 480
         };
 
+        updateLayers();
+
+        if($('#map-select').length) {
+            $('#map-select').find('option[value="' + DEFAULTMAP + '"]').attr('selected', 'selected');
+            $('a.select-map-layers').attr('href', '?map_id=' + DEFAULTMAP);
+        }
+
+        function updateLayers() {
+            if($('#layers-select').length) {
+                embed.map = undefined;
+                embed.layers = undefined;
+                if($('#layers-select').val()) {
+                    if($('#layers-select').val().length === $('#layers-select option').length) {
+                        embed.map = $('#layers-select').data('mapid');
+                    } else {
+                        embed.layers = $('#layers-select').val().join();
+                    }
+                } else {
+                    embed.map = $('#layers-select').data('mapid');
+                }
+            }
+        }
+
         function serialize() {
-            if (embed.story) {
-                return 'p=' + embed.story + '&map_id=' + embed.map;
-            } else if (embed.publisher) {
-                return 'publisher=' + embed.publisher + '&map_id=' + embed.map;
-            } else if (embed.noStory) {
-                return 'no_stories=1&map_id=' + embed.map;
-            } else {
-                return 'map_id=' + embed.map;
+            if(embed.map) {
+                if (embed.story) {
+                    return 'p=' + embed.story + '&map_id=' + embed.map;
+                } else if (embed.publisher) {
+                    return 'publisher=' + embed.publisher + '&map_id=' + embed.map;
+                } else if (embed.noStory) {
+                    return 'no_stories=1&map_id=' + embed.map;
+                } else {
+                    return 'map_id=' + embed.map;
+                }
+            } else if(embed.layers) {
+                if (embed.story) {
+                    return 'p=' + embed.story + '&layers=' + embed.layers;
+                } else if (embed.publisher) {
+                    return 'publisher=' + embed.publisher + '&layers=' + embed.layers;
+                } else if (embed.noStory) {
+                    return 'no_stories=1&layers=' + embed.layers;
+                } else {
+                    return 'layers=' + embed.layers;
+                }
             }
         }
 
@@ -177,6 +185,9 @@ if (!Array.prototype.indexOf) {
 
             } else if (this.id === 'map-select') {
                 embed.map = val;
+                $('a.select-map-layers').attr('href', '?map_id=' + val);
+            } else if (this.id === 'layers-select') {
+                updateLayers();
             }
 
             // Defer these next actions until the
