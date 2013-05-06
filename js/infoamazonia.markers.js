@@ -430,6 +430,19 @@
 						map.$.sidebar.share.find('.embed-button').attr('href', embed_url);
 						map.$.sidebar.share.find('.print-button').attr('href', print_url);
 
+						var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
+						if(window != window.top)
+							share_url = marker.properties.permalink;
+						
+						// fb
+						map.$.sidebar.share.find('.fb-like').data('href', share_url);
+						map.$.sidebar.share.find('.twitter-button').empty();
+						twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
+							lang: infoamazonia_markers.language,
+							via: 'InfoAmazonia',
+							text: marker.properties.title
+						});
+
 					});
 
 				}
