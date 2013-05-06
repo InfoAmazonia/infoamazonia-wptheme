@@ -301,31 +301,67 @@ add_filter('mappress_featured_map_type', 'infoamazonia_embed_type');
 
 function infoamazonia_share_meta() {
 
-	if(is_singular('post') || is_singular('map')) {
+	if(is_singular('post')) {
+		$image = mappress_get_mapbox_image(false, 435, 375, mappress_get_marker_latitude(), mappress_get_marker_longitude(), 7);
+	} elseif(is_singular('map')) {
+		$image = mappress_get_mapbox_image(false, 435, 375);
+	} elseif(isset($_GET['_escaped_fragment_'])) {
 
-		if(is_singular('post'))
-			$image = mappress_get_mapbox_image(false, 435, 375, mappress_get_marker_latitude(), mappress_get_marker_longitude(), 7);
-		else
-			$image = mappress_get_mapbox_image(false, 435, 375);
+		$fragment = $_GET['_escaped_fragment_'];
 
-		?>
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name='twitter:site' content="@InfoAmazonia" />
-		<meta name="twitter:url" content="<?php the_permalink(); ?>" />
-		<meta name="twitter:title" content="<?php the_title(); ?>" />
-		<meta name="twitter:description" content="<?php the_excerpt(); ?>" />
+		$vars = explode('|||', $_GET['_escaped_fragment_']);
 
-		<meta property="og:title" content="<?php the_title(); ?>" />
-		<meta property="og:description" content="<?php the_excerpt(); ?>" />
-		<meta property="og:image" content="<?php echo $image; ?>" />
+		$query = array();
+		foreach($vars as $var) {
+			$keyval = explode('=', $var);
+			if($keyval[0] == 'story') {
+				$query[$keyval[0]] = explode('post-', $keyval[1])[1];
+				continue;
+			}
+			if($keyval[0] == 'loc') {
+				$loc = explode(',', $keyval[1]);
+				$query['lat'] = $loc[0];
+				$query['lng'] = $loc[1];
+				$query['zoom'] = $loc[2];
+				continue;
+			}
+			$query[$keyval[0]] = $keyval[1];
+		}
 
-		<?php
+		if($query['story']) {
+			global $post;
+			setup_postdata(get_post($query['story']));
+		}
 
-	} elseif($_GET['_escaped_fragment_']) {
+		if(isset($query['map'])) {
+			$map_id = $query['map'];
+		}
 
+		if($query['lat'] && $query['lng'] && $query['zoom']) {
+			$lat = $query['lat'];
+			$lng = $query['lng'];
+			$zoom = $query['zoom'];
+		}
 
+		$image = mappress_get_mapbox_image($map_id, 435, 375, $lat, $lng, $zoom);
 
 	}
 
+	?>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name='twitter:site' content="@InfoAmazonia" />
+	<meta name="twitter:url" content="<?php the_permalink(); ?>" />
+	<meta name="twitter:title" content="<?php the_title(); ?>" />
+	<meta name="twitter:description" content="<?php the_excerpt(); ?>" />
+
+	<meta property="og:title" content="<?php the_title(); ?>" />
+	<meta property="og:description" content="<?php the_excerpt(); ?>" />
+	<meta property="og:image" content="<?php echo $image; ?>" />
+
+	<?php
+
+	if($query['story'])
+		wp_reset_postdata();
+	
 }
 add_action('wp_head', 'infoamazonia_share_meta');
