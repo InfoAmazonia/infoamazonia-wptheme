@@ -315,7 +315,8 @@ function infoamazonia_share_meta() {
 		foreach($vars as $var) {
 			$keyval = explode('=', $var);
 			if($keyval[0] == 'story') {
-				$query[$keyval[0]] = explode('post-', $keyval[1])[1];
+				$post_id = explode('post-', $keyval[1]);
+				$query[$keyval[0]] = $post_id[1];
 				continue;
 			}
 			if($keyval[0] == 'loc') {
@@ -362,6 +363,6 @@ function infoamazonia_share_meta() {
 
 	if($query['story'])
 		wp_reset_postdata();
-	
+
 }
 add_action('wp_head', 'infoamazonia_share_meta');
