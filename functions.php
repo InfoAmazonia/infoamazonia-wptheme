@@ -322,7 +322,7 @@ function infoamazonia_share_meta() {
 
 		<meta property="og:title" content="<?php the_title(); ?>" />
 		<meta property="og:description" content="<?php the_excerpt(); ?>" />
-		<meta property="og:image" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo mappress_get_marker_latitude(); ?>,<?php echo mappress_get_marker_longitude(); ?>,7/435x375.png" />
+		<meta property="og:image" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo mappress_get_marker_longitude(); ?>,<?php echo mappress_get_marker_latitude(); ?>,7/435x375.png" />
 		<?php
 
 	} elseif(is_singular('map')) {
