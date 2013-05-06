@@ -59,7 +59,7 @@ class InfoAmazonia_Widget {
 
 	function get_share_url($vars = array()) {
 		$query = http_build_query($vars);
-		return home_url('/' . $this->slug . '/?' . $query);
+		return home_url('/' . qtrans_getLanguage() . '/' . $this->slug . '/?' . $query);
 	}
 }
 
