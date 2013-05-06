@@ -299,7 +299,7 @@ add_filter('mappress_featured_map_type', 'infoamazonia_embed_type');
 
 // twitter card
 
-function infoamazonia_twitter_card() {
+function infoamazonia_share_meta() {
 
 	if(is_singular('post')) {
 
@@ -315,11 +315,14 @@ function infoamazonia_twitter_card() {
 
 		?>
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image:src" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo mappress_get_marker_latitude(); ?>,<?php echo mappress_get_marker_longitude(); ?>,7/280x180.png" />
 		<meta name='twitter:site' content="@InfoAmazonia" />
 		<meta name="twitter:url" content="<?php the_permalink(); ?>" />
 		<meta name="twitter:title" content="<?php the_title(); ?>" />
 		<meta name="twitter:description" content="<?php the_excerpt(); ?>" />
+
+		<meta property="og:title" content="<?php the_title(); ?>" />
+		<meta property="og:description" content="<?php the_excerpt(); ?>" />
+		<meta property="og:image" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo mappress_get_marker_latitude(); ?>,<?php echo mappress_get_marker_longitude(); ?>,7/435x375.png" />
 		<?php
 
 	} elseif(is_singular('map')) {
@@ -333,4 +336,4 @@ function infoamazonia_twitter_card() {
 	}
 
 }
-add_action('wp_head', 'infoamazonia_twitter_card');
+add_action('wp_head', 'infoamazonia_share_meta');
