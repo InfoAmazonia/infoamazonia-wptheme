@@ -305,7 +305,7 @@ function infoamazonia_twitter_card() {
 
 		global $post;
 		$layers = mappress_get_map_layers();
-		$layers_ids = [];
+		$layers_ids = array();
 
 		foreach($layers as $layer) {
 			if($layer['opts']['filtering'] == 'fixed') {
