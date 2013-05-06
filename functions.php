@@ -301,7 +301,7 @@ add_filter('mappress_featured_map_type', 'infoamazonia_embed_type');
 
 function infoamazonia_share_meta() {
 
-	if(is_singular('post')) {
+	if(is_singular('post') || is_singular('map')) {
 
 		global $post;
 		$layers = mappress_get_map_layers();
@@ -322,12 +322,22 @@ function infoamazonia_share_meta() {
 
 		<meta property="og:title" content="<?php the_title(); ?>" />
 		<meta property="og:description" content="<?php the_excerpt(); ?>" />
-		<meta property="og:image" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo mappress_get_marker_longitude(); ?>,<?php echo mappress_get_marker_latitude(); ?>,7/435x375.png" />
+		<?php if(is_singular('post')) : ?>
+
+			<meta property="og:image" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo mappress_get_marker_longitude(); ?>,<?php echo mappress_get_marker_latitude(); ?>,7/435x375.png" />
+
+		<?php else : ?>
+			
+			<?php
+			$center = mappress_get_map_center();
+			$lat = $center['lat'];
+			$lng = $center['lon'];
+			?>
+			<meta property="og:image" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo $lng; ?>,<?php echo $lat; ?>,7/435x375.png" />
+
+		<?php endif; ?>
+
 		<?php
-
-	} elseif(is_singular('map')) {
-
-
 
 	} elseif($_GET['_escaped_fragment_']) {
 
