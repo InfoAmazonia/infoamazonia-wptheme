@@ -201,6 +201,36 @@ if (!Array.prototype.indexOf) {
             return false;
         });
 
+        $('.grab-centerzoom').click(function() {
+
+            embed.lat = parseFloat($('iframe').contents().find('#latitude').val())
+            embed.lon = parseFloat($('iframe').contents().find('#longitude').val());
+            embed.zoom = parseInt($('iframe').contents().find('#zoom').val());
+
+            $('.zoom .val').text(embed.zoom);
+            $('.latitude .val').text(embed.lat);
+            $('.longitude .val').text(embed.lon);
+
+            updateOutput();
+            updateIframe();
+
+            return false;
+
+        });
+
+        $('.default-centerzoom').click(function() {
+
+            embed.lat = embed.lon = embed.zoom = undefined;
+
+            $('.zoom .val, .latitude .val, .longitude .val').text(infoamazonia_widget.default_label);
+
+            updateOutput();
+            updateIframe();
+
+            return false;
+
+        });
+
         $('#widget-content').css({
             'width': '960px',
             'height': '480px'

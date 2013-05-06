@@ -143,6 +143,31 @@
 	  </div>
 	</div>
 
+	<?php /*
+	<div class="section centerzoom">
+		<div class="inner">
+		  <h4 style="margin-top:10px;">
+			<div class='popup arrow-right'>
+			</div>
+			<?php _e('Use map center & zoom', 'infoamazonia'); ?>
+			<a class='tip' href='#'>
+			  ?
+			  <div class='popup arrow-left'>
+				<?php _e('Get the current center & zoom from the preview below and use as default for the embed', 'infoamazonia'); ?>
+			  </div>
+			</a>
+		  </h4>
+			<div class="centerzoom">
+				<p class="latitude">Latitude: <span class="val"><?php _e('default', 'infoamazonia'); ?></span></p>
+				<p class="longitude">Longitude: <span class="val"><?php _e('default', 'infoamazonia'); ?></span></p>
+				<p class="zoom">Zoom: <span class="val"><?php _e('default', 'infoamazonia'); ?></span></p>
+				<a class="grab-centerzoom button" href="#"><?php _e('Grab center & zoom', 'infoamazonia'); ?></a>
+				<a class="default-centerzoom button" href="#"><?php _e('Use default', 'infoamazonia'); ?></a>
+			</div>
+		</div>
+	</div>
+	*/ ?>
+
 	<div class='content' id='widget-content'>
 		<!-- iframe goes here -->
 	</div>

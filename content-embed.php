@@ -35,6 +35,7 @@
 	$conf = array();
 	$conf['containerID'] = 'map_embed';
 	$conf['disableHash'] = true;
+	$conf['mainMap'] = true;
 	if(isset($_GET['map_id'])) {
 		$conf['postID'] = $_GET['map_id'];
 	}
@@ -46,10 +47,42 @@
 		if(isset($conf['postID']))
 			unset($conf['postID']);
 	}
+	if(isset($_GET['zoom'])) {
+		$conf['zoom'] = $_GET['zoom'];
+	}
+	if(isset($_GET['lat']) && isset($_GET['lon'])) {
+		$conf['center'] = array();
+		$conf['center']['lat'] = $_GET['lat'];
+		$conf['center']['lon'] = $_GET['lon'];
+		$conf['forceCenter'] = true;
+	}
 	$conf = json_encode($conf);
 	?>
 	<div class="map-container"><div id="map_embed" class="map"></div></div>
-	<script type="text/javascript">mappress(<?php echo $conf; ?>);</script>
+	<script type="text/javascript">
+		(function($) {
+
+			mappress(<?php echo $conf; ?>, function(map) {
+
+				var track = function(m) {
+					var c = m.center();
+					$('#latitude').val(c.lat);
+					$('#longitude').val(c.lon);
+					$('#zoom').val(m.zoom());
+				}
+
+				map.addCallback('zoomed', track);
+				map.addCallback('panned', track);
+
+			});
+
+		})(jQuery);
+	</script>
+
+	<input type="hidden" id="latitude" />
+	<input type="hidden" id="longitude" />
+	<input type="hidden" id="zoom" />
+
 </section>
 
 <script type="text/javascript">

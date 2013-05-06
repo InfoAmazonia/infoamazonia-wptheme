@@ -205,6 +205,9 @@
 				}
 			}
 
+			if(map.conf.forceCenter)
+				silent = true;
+
 			// bind list post events
 			listPosts = $('.list-posts');
 			if(listPosts.length) {
