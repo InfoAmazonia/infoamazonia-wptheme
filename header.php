@@ -77,7 +77,7 @@
 				<nav id="social">
 					<ul>
 						<li class="twitter">
-							<a href="https://twitter.com/infoamazonia" class="twitter-follow-button" rel="external" target="_blank"><span><?php _e('Follow us', 'infoamazonia'); ?></span></a>
+							<a href="https://twitter.com/infoamazonia" rel="external" target="_blank"><span><?php _e('Follow us', 'infoamazonia'); ?></span></a>
 						</li>
 					</ul>
 				</nav>

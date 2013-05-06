@@ -396,6 +396,7 @@
 					shareContent += '<a class="button embed-button" href="#" target="_blank">' + infoamazonia_markers.embed_label + '</a>';
 					shareContent += '<a class="button print-button" href="#" target="_blank">' + infoamazonia_markers.print_label + '</a>';
 					shareContent += '<div class="social">';
+					shareContent += '<div class="twitter-button"></div>';
 					shareContent += '<div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>';
 					shareContent += '</div>';
 
@@ -433,10 +434,18 @@
 
 				}
 
-				var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname;
-				share_url += '#!/' + 'story=' + marker.properties.id;
+				var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
+				if(window != window.top)
+					share_url = marker.properties.permalink;
+				
 				// fb
 				map.$.sidebar.share.find('.fb-like').data('href', share_url);
+				map.$.sidebar.share.find('.twitter-button').empty();
+				twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
+					lang: infoamazonia_markers.language,
+					via: 'InfoAmazonia',
+					text: marker.properties.title
+				});
 
 			}
 

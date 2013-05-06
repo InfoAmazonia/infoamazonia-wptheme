@@ -29,6 +29,9 @@
 								<a class="button print-button" href="<?php echo mappress_get_embed_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Print', 'infoamazonia'); ?></a>
 							</p>
 							<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>
+							<div class="twitter-button">
+								<a href="https://twitter.com/share" class="twitter-share-button" data-via="InfoAmazonia" data-lang="<?php echo qtrans_getLanguage(); ?>">Tweet</a>
+							</div>
 						</div>
 					<div class="post-description">
 						<?php the_content(); ?>

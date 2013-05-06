@@ -382,6 +382,9 @@ header#masthead {
 				height: auto;
 				margin-bottom: 20px;
 			}
+			.fb-like {
+				margin-bottom: 10px;
+			}
 		}
 		.post-description {
 			font-size: 14px;
@@ -406,9 +409,13 @@ header#masthead {
 	}
 	.share {
 		float: right;
-		.button {
-			margin: 0 0 0 10px;
+		li {
 			float: left;
+			margin: 0 0 0 10px;
+			&.twitter,
+			&.facebook {
+				margin-top: 10px;
+			}
 		}
 	}
 	.choose-filter {
@@ -986,6 +993,11 @@ header#masthead {
 		}
 		.social {
 			margin: 15px 0 0;
+			.twitter-button,
+			.fb-like {
+				float: left;
+				margin: 0 10px 10px 0;
+			}
 		}
 	}
 }
