@@ -410,7 +410,12 @@
 				var map_id = map.postID;
 				if(map.currentMapID)
 					map_id = map.currentMapID;
-				share_vars += '&map_id=' + map_id;
+
+				if(typeof map_id === 'undefined') {
+					share_vars += '&layers=' + map.conf.layers;
+				} else {
+					share_vars += '&map_id=' + map_id;
+				}
 
 				var embed_url = infoamazonia_markers.share_base_url + share_vars;
 				var print_url = infoamazonia_markers.embed_base_url + share_vars + '#print';
@@ -450,7 +455,7 @@
 				var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
 				if(window != window.top)
 					share_url = marker.properties.permalink;
-				
+
 				// fb
 				map.$.sidebar.share.find('.fb-like').data('href', share_url);
 				map.$.sidebar.share.find('.twitter-button').empty();

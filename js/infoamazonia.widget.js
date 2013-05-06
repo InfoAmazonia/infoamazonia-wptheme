@@ -86,51 +86,35 @@ if (!Array.prototype.indexOf) {
         autoSelect($output);
 
         var embed = {
-            story: undefined,
+            p: undefined,
             publisher: undefined,
-            noStory: undefined,
-            map: DEFAULTMAP,
+            no_stories: undefined,
+            map_id: DEFAULTMAP,
             width: 960,
             height: 480
         };
 
         if($('#map-select').length) {
             $('#map-select').find('option[value="' + DEFAULTMAP + '"]').attr('selected', 'selected');
-            $('a.select-map-layers').attr('href', '?map_id=' + DEFAULTMAP);
+            $('a.select-map-lapers').attr('href', '?map_id=' + DEFAULTMAP);
         }
 
-        function serialize() {
-            if(embed.map) {
-                if (embed.story) {
-                    return 'p=' + embed.story + '&map_id=' + embed.map;
-                } else if (embed.publisher) {
-                    return 'publisher=' + embed.publisher + '&map_id=' + embed.map;
-                } else if (embed.noStory) {
-                    return 'no_stories=1&map_id=' + embed.map;
-                } else {
-                    return 'map_id=' + embed.map;
-                }
-            } else if(embed.layers) {
-                if (embed.story) {
-                    return 'p=' + embed.story + '&layers=' + embed.layers;
-                } else if (embed.publisher) {
-                    return 'publisher=' + embed.publisher + '&layers=' + embed.layers;
-                } else if (embed.noStory) {
-                    return 'no_stories=1&layers=' + embed.layers;
-                } else {
-                    return 'layers=' + embed.layers;
-                }
+        function serialize(obj) {
+            var str = [];
+            for(var p in obj) {
+                if(obj[p] && typeof obj[p] !== 'undefined') str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
             }
+            return str.join("&");
         }
 
         function updateOutput() {
-            $output.html('<iframe src="' + BASEURL + serialize() + '" width="' + embed.width + '" height="' + embed.height + '" frameborder="0"></iframe>');
+            $output.html('<iframe src="' + BASEURL + serialize(embed) + '" width="' + embed.width + '" height="' + embed.height + '" frameborder="0"></iframe>');
         }
 
         function updateIframe() {
             //location.href = '#/' + serialize();
             //iframe.src = BASEURL + serialize();
-            $('#widget-content').html($('<iframe id="iframe" src="' + BASEURL + serialize() + '" frameborder="0"></iframe>'));
+            $('#widget-content').html($('<iframe id="iframe" src="' + BASEURL + serialize(embed) + '" frameborder="0"></iframe>'));
             iframe = document.getElementById('iframe');
         }
 
@@ -141,50 +125,60 @@ if (!Array.prototype.indexOf) {
             if (this.id === 'stories-select') {
 
                 if (val.split('&')[0] === 'publisher') {
-                    embed.story = undefined;
+                    embed.p = undefined;
                     embed.publisher = val.split('&')[1];
-                    embed.noStory = false;
+                    embed.no_stories = false;
 
                 } else if (val.split('&')[0] === 'story') {
-                    embed.story = val.split('&')[1];
+                    embed.p = val.split('&')[1];
                     embed.publisher = undefined;
-                    embed.noStory = false;
+                    embed.no_stories = false;
 
                 } else if (val === 'no-story') {
-                    embed.story = undefined;
+                    embed.p = undefined;
                     embed.publisher = undefined;
-                    embed.noStory = true;
+                    embed.no_stories = 1;
 
                 } else if (val === 'latest') {
-                    embed.story = undefined;
+                    embed.p = undefined;
                     embed.publisher = undefined;
-                    embed.noStory = false;
+                    embed.no_stories = false;
 
                 } else {
-                    embed.story = val;
+                    embed.p = val;
                     embed.publisher = undefined;
-                    embed.noStory = false;
+                    embed.no_stories = false;
                 }
 
             } else if (this.id === 'map-select') {
 
-                embed.map = val;
+                embed.map_id = val;
                 $('a.select-map-layers').attr('href', '?map_id=' + val);
 
             } else if (this.id === 'layers-select') {
 
-                embed.map = undefined;
+                if($('#layers-select').data('mapid'))
+                    embed.map_id = $('#layers-select').data('mapid');
+                else
+                    embed.map_id = undefined;
+
                 embed.layers = undefined;
+
                 if($('#layers-select').val()) {
+                    
                     if($('#layers-select').val().length === $('#layers-select option').length) {
-                        embed.map = $('#layers-select').data('mapid');
+
+                        if(!embed.map_id)
+                            embed.layers = $('#layers-select').val().join();
                         $('.clear-layers').hide();
+
                     } else {
+
                         embed.layers = $('#layers-select').val().join();
                         $('.clear-layers').show();
+
                     }
-                } else {
-                    embed.map = $('#layers-select').data('mapid');
+
                 }
 
             }

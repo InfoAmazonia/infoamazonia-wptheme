@@ -5,7 +5,7 @@
 	<div id='configuration' class='clearfix'>
 	  <div class='section layer'>
 		<div class='inner'>
-		  <?php if(!isset($_GET['map_id'])) : ?>
+		  <?php if(!isset($_GET['map_id']) && !isset($_GET['layers'])) : ?>
 			<h4>
 			  <?php _e('Choose a map', 'infoamazonia'); ?>
 			  <a class='tip' href='#'>
@@ -28,9 +28,13 @@
 			<?php 
 			$map_id = $_GET['map_id'];
 			$map = get_post($map_id);
-			if($map) : ?>
+			if($map || isset($_GET['layers'])) : ?>
 			  <h4>
-				<?php echo __('Select layers from ', 'infoamazonia') . get_the_title($map_id); ?>
+			  	<?php if(!isset($_GET['layers'])) : ?>
+					<?php echo __('Select layers from ', 'infoamazonia') . get_the_title($map_id); ?>
+				<?php else : ?>
+					<?php _e('Select layers', 'infoamazonia'); ?>
+				<?php endif; ?>
 				<a class='tip' href='#'>
 				  ?
 				  <div class='popup arrow-left'>
@@ -40,10 +44,20 @@
 			  </h4>
 			  <div id='maps'>
 				<?php
-				$layers = mappress_get_map_layers($map_id);
+				if(!isset($_GET['layers'])) {
+					$layers = mappress_get_map_layers($map_id);
+				} else {
+					$layers = explode(',', $_GET['layers']);
+				}
 				if($layers) : ?>
 				  <select id="layers-select" data-placeholder="<?php _e('Select layers', 'infoamazonia'); ?>" data-mapid="<?php echo $map_id; ?>" class="chzn-select" multiple>
 					<?php foreach($layers as $layer) : ?>
+						<?php
+						if(!is_array($layer)) :
+							$l = array('id' => $layer, 'title' => $layer);
+							$layer = $l;
+						endif;
+						?>
 					  <option value="<?php echo $layer['id']; ?>" selected><?php if($layer['title']) : echo $layer['title']; else : echo $layer['id']; endif; ?></option>
 					<?php endforeach; ?>
 				  </select>
