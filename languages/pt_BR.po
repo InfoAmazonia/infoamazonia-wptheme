@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InfoAmazonia 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-06 20:04-0300\n"
-"PO-Revision-Date: 2013-05-06 20:05-0300\n"
+"POT-Creation-Date: 2013-05-06 20:06-0300\n"
+"PO-Revision-Date: 2013-05-06 20:06-0300\n"
 "Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
 "Language-Team: Cardume\n"
 "Language: \n"
@@ -238,7 +238,6 @@ msgid "Select layers from this map"
 msgstr "Selecione camadas deste mapa"
 
 #: ../content-share.php:34
-#, fuzzy
 msgid "Select layers from"
 msgstr "Selecione camadas de"
 
