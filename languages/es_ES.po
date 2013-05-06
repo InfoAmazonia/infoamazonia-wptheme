@@ -1,36 +1,39 @@
-# Copyright (C) 2013 memeLab
-# This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: InfoAmazonia 0.0.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-18 12:31-0300\n"
-"PO-Revision-Date: 2013-03-18 12:31-0300\n"
-"Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
-"Language-Team: Cardume\n"
-"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
-"X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.5\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Infoamazonia\n"
+"Language: es\n"
 
 #: ../loop-maps.php:16
 msgid "View this map"
 msgstr "Vea este mapa"
 
-#: ../content-map-group.php:30
+#: ../single.php:26
+msgid "Go to the original article"
+msgstr "Ir al artículo original"
+
+#: ../single.php:28
+msgid "Embed this story"
+msgstr "Insertar esta historia"
+
+#: ../single.php:29
+#: ../functions.php:49
+msgid "Print"
+msgstr "Imprimir"
+
+#: ../content-map-group.php:26
 msgid "More..."
 msgstr "Más..."
 
-#: ../content-map-group.php:40
+#: ../content-map-group.php:36
 msgid "View all maps"
 msgstr "Vea todos los mapas"
 
 #: ../header.php:16
+#: ../content-embed.php:16
 msgid "Page"
 msgstr "Página"
 
@@ -55,59 +58,87 @@ msgstr "Envíe un reportaje"
 msgid "Follow us"
 msgstr "Siguenos"
 
-#: ../functions.php:54
-msgid "Success! Thank you, your story will be reviewed by one of our editors and soon will be online."
-msgstr "¡Gracias! Tu artículo será revisado por uno de nuestros editores y luego online"
-
-#: ../functions.php:55
-msgid "Oops, please try again in a few minutes."
-msgstr "Por favor, vuelve a intentarlo en unos minutos."
-
-#: ../functions.php:62
+#: ../functions.php:44
 msgid "stories"
 msgstr "artículos"
 
-#: ../functions.php:64
+#: ../functions.php:46
 msgid "Copy the embed code"
 msgstr "Copie el código para incrustar"
 
-#: ../functions.php:65
+#: ../functions.php:47
 msgid "Share this"
 msgstr "Compartir"
 
-#: ../functions.php:67
+#: ../functions.php:48
+msgid "Embed"
+msgstr "Incrustar"
+
+#: ../functions.php:54
 msgid "Read"
 msgstr "Leer"
 
-#: ../functions.php:69
+#: ../functions.php:56
 msgid "Open slideshow"
 msgstr "Abrir slideshow"
 
-#: ../functions.php:70
+#: ../functions.php:57
 msgid "Watch video gallery"
 msgstr "Ver galería de videos"
 
-#: ../functions.php:71
+#: ../functions.php:58
 msgid "Watch video"
 msgstr "Ver video"
 
-#: ../functions.php:72
+#: ../functions.php:59
 msgid "View image gallery"
 msgstr "Ver galería de imágenes"
 
-#: ../functions.php:73
+#: ../functions.php:60
 msgid "View fullscreen image"
 msgstr "Ver la imagen en pantalla completa"
 
-#: ../functions.php:98
+#: ../functions.php:61
+msgid "View infographic"
+msgstr "Ver infografía"
+
+#: ../functions.php:62
+msgid "View infographics"
+msgstr "Ver infografía"
+
+#: ../functions.php:85
+msgid "Success! Thank you, your story will be reviewed by one of our editors and soon will be online."
+msgstr "¡Gracias! Tu artículo será revisado por uno de nuestros editores y luego online"
+
+#: ../functions.php:86
+msgid "Oops, please try again in a few minutes."
+msgstr "Por favor, vuelve a intentarlo en unos minutos."
+
+#: ../functions.php:115
 msgid "Main widgets"
 msgstr "Widgets principales"
 
-#: ../functions.php:100
+#: ../functions.php:117
 msgid "Widgets used on front and inside pages."
 msgstr "Widgets utilizados en la página principal e internas."
 
-#: ../single-map.php:18
+#: ../functions.php:268
+msgid "Search for stories"
+msgstr "Buscar noticias"
+
+#: ../functions.php:270
+msgid "Search for stories on this map"
+msgstr "Buscar historias en este mapa"
+
+#: ../functions.php:272
+msgid "Search for stories on this publisher"
+msgstr "Buscar historias en este editor"
+
+#: ../single-map.php:13
+msgid "Embed this map"
+msgstr "Insertar este mapa"
+
+#: ../single-map.php:31
 msgid "Stories on"
 msgstr "Noticias en"
 
@@ -132,32 +163,29 @@ msgstr "No hay noticias por la búsqueda:"
 msgid "Search results for: "
 msgstr "Resultados de la búsqueda para:"
 
-#: ../section-subheader.php:62
-#, php-format
+#: ../section-subheader.php:61
 msgid "Daily Archives: %s"
 msgstr "Archivo para el día: %s"
 
-#: ../section-subheader.php:64
-#, php-format
+#: ../section-subheader.php:63
 msgid "Monthly Archives: %s"
 msgstr "Archivos por mes: %s"
 
-#: ../section-subheader.php:64
+#: ../section-subheader.php:63
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F,  Y"
 
-#: ../section-subheader.php:66
-#, php-format
+#: ../section-subheader.php:65
 msgid "Yearly Archives: %s"
 msgstr "Archivos del año: %s"
 
-#: ../section-subheader.php:66
+#: ../section-subheader.php:65
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
-#: ../section-subheader.php:68
+#: ../section-subheader.php:67
 msgid "Archives"
 msgstr "Archivos"
 
@@ -178,13 +206,106 @@ msgctxt "map bubble date format"
 msgid "m/d/Y"
 msgstr "d/m/Y"
 
-#: ../archive-map.php:13
+#: ../content-share.php:10
+msgid "Choose a map"
+msgstr "Elija un mapa"
+
+#: ../content-share.php:14
+msgid "Choose any map from the list"
+msgstr "Elija cualquier mapa de la lista"
+
+#: ../content-share.php:20
+msgid "Select a map"
+msgstr "Seleccione un mapa"
+
+#: ../content-share.php:25
+msgid "Select layers from this map"
+msgstr "Selección de capas a partir de este mapa"
+
+#: ../content-share.php:34
+msgid "Select layers from"
+msgstr "Selección de capas de"
+
+#: ../content-share.php:36
+#: ../content-share.php:53
+msgid "Select layers"
+msgstr "Selección de capas"
+
+#: ../content-share.php:41
+msgid "Choose any layers from the list"
+msgstr "Elija cualquiera de las capas de la lista"
+
+#: ../content-share.php:65
+msgid "Back to default layer configuration"
+msgstr "Volver a la configuración de la capa por defecto"
+
+#: ../content-share.php:75
+msgid "Select a story"
+msgstr "Seleccionar una historia"
+
+#: ../content-share.php:79
+msgid "Choose a story from a variety of different sources"
+msgstr "Elegir una historia a partir de una variedad de diferentes fuentes"
+
+#: ../content-share.php:85
+msgid "Select stories"
+msgstr "Seleccione historias"
+
+#: ../content-share.php:90
+msgid "Selected story"
+msgstr "Historia seleccionada"
+
+#: ../content-share.php:95
+msgid "General stories"
+msgstr "Historias generales"
+
+#: ../content-share.php:96
+msgid "Stories from the map"
+msgstr "Historias desde el mapa"
+
+#: ../content-share.php:96
+msgid "Latest stories"
+msgstr "Últimas noticias"
+
+#: ../content-share.php:97
+msgid "No stories"
+msgstr "No hay historias"
+
+#: ../content-share.php:99
+msgid "By publishers"
+msgstr "Por editoriales"
+
+#: ../content-share.php:112
+msgid "Width & Height"
+msgstr "Anchura y altura"
+
+#: ../content-share.php:116
+msgid "Select the width and height proportions you would like to embed to be."
+msgstr "Seleccione la anchura y la altura de las proporciones que le gustaría incorporar a ser."
+
+#: ../content-share.php:121
+msgid "Small"
+msgstr "Pequeño"
+
+#: ../content-share.php:122
+msgid "Medium"
+msgstr "Medio"
+
+#: ../content-share.php:123
+msgid "Large"
+msgstr "Grande"
+
+#: ../content-share.php:133
+msgid "HTML Output"
+msgstr "Salida HTML"
+
+#: ../content-share.php:137
+msgid "Copy and paste this code into an HTML page"
+msgstr "Copia y pega este código en una página HTML"
+
+#: ../archive-map.php:11
 msgid "Maps"
 msgstr "Mapas"
-
-#: ../searchform.php:3
-msgid "Search for stories"
-msgstr "Buscar noticias"
 
 #: ../searchform.php:4
 msgid "Search"
@@ -271,6 +392,14 @@ msgstr "Añadir o eliminar editores"
 msgid "Choose from most used publishers"
 msgstr "Elija entre los editores más utilizados"
 
+#: ../inc/infoamazonia-widget.php:46
+msgid "default"
+msgstr "defecto"
+
+#: ../inc/infoamazonia-widget.php:54
+msgid "Share a map"
+msgstr "Comparte un mapa"
+
 #: ../inc/geocode-box.php:18
 msgid "Write an address"
 msgstr "Escriba una dirección"
@@ -326,7 +455,6 @@ msgid "E-mail"
 msgstr "Email"
 
 #: ../inc/submit-story.php:35
-#: ../inc/metaboxes/story/story-meta.php:36
 msgid "Reporter"
 msgstr "Reportero"
 
@@ -340,12 +468,10 @@ msgstr "Texto de la noticia"
 
 #: ../inc/submit-story.php:47
 #: ../inc/submit-story.php:93
-#: ../inc/metaboxes/story/story-meta.php:40
 msgid "Story url"
 msgstr "Link para la noticia"
 
 #: ../inc/submit-story.php:51
-#: ../inc/metaboxes/story/story-meta.php:44
 msgid "Lead picture"
 msgstr "Imagen principal"
 
@@ -370,12 +496,10 @@ msgid "Longitude:"
 msgstr "Longitud:"
 
 #: ../inc/submit-story.php:73
-#: ../inc/metaboxes/story/story-meta.php:48
 msgid "Publishing date"
 msgstr "Fecha de publicação"
 
 #: ../inc/submit-story.php:77
-#: ../inc/metaboxes/story/story-meta.php:52
 msgid "Notes to the InfoAmazonia editor"
 msgstr "Notas para el editor del InfoAmazonia"
 
@@ -392,16 +516,40 @@ msgstr "Completa todos los campos obligatorios"
 msgid "Could not save submission"
 msgstr "No es posible guardar el envío"
 
+#: ../inc/category-feeds-widget.php:5
+msgid "RSS Feeds by selected categories"
+msgstr "Fuentes RSS por categorías seleccionadas"
+
+#: ../inc/category-feeds-widget.php:6
+msgid "Category Feed Links"
+msgstr "Categoría Alimentación Links"
+
+#: ../inc/category-feeds-widget.php:10
+msgid "RSS Feeds"
+msgstr "RSS Feeds"
+
+#: ../inc/category-feeds-widget.php:14
+msgid "Title"
+msgstr "Título"
+
+#: ../inc/category-feeds-widget.php:15
+msgid "Categories separated by comma"
+msgstr "Categorías separadas por comas"
+
+#: ../inc/category-feeds-widget.php:43
+msgid "RSS Feed"
+msgstr "RSS RSS"
+
 #: ../inc/ajax-calendar.php:15
 msgid "AJAX Powered Calendar"
-msgstr ""
+msgstr "AJAX Powered Calendario"
 
 #: ../inc/ajax-calendar.php:18
 #: ../inc/ajax-calendar.php:28
 #: ../inc/ajax-calendar.php:46
 #: ../inc/ajax-calendar.php:113
 msgid "AJAX Calendar"
-msgstr ""
+msgstr "AJAX Calendar"
 
 #: ../inc/ajax-calendar.php:75
 msgid "Stories calendar"
@@ -409,7 +557,7 @@ msgstr "Noticias en"
 
 #: ../inc/ajax-calendar.php:118
 msgid "Category IDs:"
-msgstr ""
+msgstr "Categoría IDs:"
 
 #: ../inc/metaboxes/story/story-meta.php:9
 msgid "Story data"
@@ -442,7 +590,7 @@ msgstr "Borrar"
 
 #: ../inc/tax-meta-class/tax-meta-class.php:357
 msgid "Cannot delete file. Something's wrong."
-msgstr ""
+msgstr "No se puede eliminar el archivo. Algo está mal."
 
 #: ../inc/tax-meta-class/tax-meta-class.php:582
 #: ../inc/tax-meta-class/tax-meta-class.php:629
@@ -455,218 +603,17 @@ msgstr "Añadir"
 
 #: ../inc/tax-meta-class/tax-meta-class.php:878
 msgid "Uploaded files"
-msgstr ""
+msgstr "Archivos cargados"
 
 #: ../inc/tax-meta-class/tax-meta-class.php:889
 msgid "Upload new files"
-msgstr ""
+msgstr "Subir nuevos archivos"
 
 #: ../inc/tax-meta-class/tax-meta-class.php:895
 msgid "Add more files"
-msgstr ""
+msgstr "Añadir más archivos"
 
 #: ../inc/tax-meta-class/tax-meta-class.php:947
 msgid "Select a color"
-msgstr ""
+msgstr "Elige un color"
 
-#~ msgid "More"
-#~ msgstr "Más"
-
-#~ msgid "Results"
-#~ msgstr "Resultados"
-
-#~ msgid "Clear search"
-#~ msgstr "Borrar búsqueda"
-
-#~ msgid "Map"
-#~ msgstr "Mapa"
-
-#~ msgid "Add new map"
-#~ msgstr "Añadir nuevo mapa"
-
-#~ msgid "Edit map"
-#~ msgstr "Editar mapa"
-
-#~ msgid "New map"
-#~ msgstr "Nuevo mapa"
-
-#~ msgid "Search maps"
-#~ msgstr "Buscar mapas"
-
-#~ msgid "No map found"
-#~ msgstr "Ningún mapa encontrado "
-
-#~ msgid "No map found in the trash"
-#~ msgstr "Ningún mapa encontrado en la basura"
-
-#~ msgid "MapBox Maps"
-#~ msgstr "Mapas de MapBox"
-
-#~ msgid "Map groups"
-#~ msgstr "Grupos de mapa"
-
-#~ msgid "Map group"
-#~ msgstr "Grupo de mapa"
-
-#~ msgid "Add new map group"
-#~ msgstr "Añadir nuevo grupo de mapa"
-
-#~ msgid "Edit map group"
-#~ msgstr "Editar grupo de mapa"
-
-#~ msgid "New map group"
-#~ msgstr "Nuevo grupo de mapa"
-
-#~ msgid "Search map group"
-#~ msgstr "Buscar grupo de mapa"
-
-#~ msgid "No map group found"
-#~ msgstr "Ningún grupo de mapa ha sido encontrado"
-
-#~ msgid "No map group found in the trash"
-#~ msgstr "Ningún grupo de mapa ha sido encontrado en la basura"
-
-#~ msgid "MapBox maps agroupment"
-#~ msgstr "Agrupación de  mapas do MapBox"
-
-#~ msgid "Add new group"
-#~ msgstr "Agrupación nuevo grupo"
-
-#~ msgid "Address and geolocation"
-#~ msgstr "Dirección y geolocalización"
-
-#~ msgid "Drag the marker for a more precise result"
-#~ msgstr "Arrastre el marcador para obtener un resultado más preciso"
-
-#~ msgid "Set maps for this post"
-#~ msgstr "Seleccione los mapas para esta entrada"
-
-#~ msgid ""
-#~ "Select which maps this post belongs to. If you don't mark any they will "
-#~ "appear in all maps."
-#~ msgstr ""
-#~ "Seleccione los mapas correspondientes a esta entrada. Si no selecciona "
-#~ "ningún mapa, este mensaje aparecerá en todos los mapas."
-
-#~ msgid "You haven't created any map, yet!"
-#~ msgstr "Usted no ha creado mapas todavía!"
-
-#~ msgid "Map legend"
-#~ msgstr "Leyenda del mapa"
-
-#~ msgid "Enter your HTML code to use as legend on the map"
-#~ msgstr "Introduzca su código de HTML para utilizar la leyenda en el mapa"
-
-#~ msgid "Layer options"
-#~ msgstr "Opciones de capa"
-
-#~ msgid "Fixed"
-#~ msgstr "Fijo"
-
-#~ msgid "Layer title"
-#~ msgstr "Título de la capa"
-
-#~ msgid "Hidden"
-#~ msgstr "Escondida"
-
-#~ msgid "MapBox Setup"
-#~ msgstr "Configuración del MapBox"
-
-#~ msgid ""
-#~ "First, define your map server. Most likely you will be using the MapBox "
-#~ "default servers. If not and you know what you are doing, feel free to "
-#~ "type your own TileStream server url below."
-#~ msgstr ""
-#~ "En primer lugar, definir el servidor del mapa. Lo más probable es que va "
-#~ "a utilizar servidores MapBox. Si no es así y usted sabe lo que está "
-#~ "haciendo, no dude en configurar su propio servidor TileStream abajo."
-
-#~ msgid "Use MapBox servers"
-#~ msgstr "Utilice servidores MapBox"
-
-#~ msgid "(default)"
-#~ msgstr "(predeterminado)"
-
-#~ msgid "Use custom TileStream server"
-#~ msgstr "Utilice un servidor TileStream personalizado "
-
-#~ msgid ""
-#~ "Edit the default layer and fill the IDs of the maps to overlay layers of "
-#~ "your map, in order of appearance"
-#~ msgstr ""
-#~ "Cambiar la capa predeterminada y llenarlo con los ID de los mapas para "
-#~ "superponer capas en el mapa en orden de presentación."
-
-#~ msgid "Add new layer"
-#~ msgstr "Añadir nueva capa"
-
-#~ msgid "Update preview"
-#~ msgstr "Actualizar previsualización"
-
-#~ msgid "Preview map"
-#~ msgstr "Pre vista del mapa"
-
-#~ msgid "Map settings"
-#~ msgstr "Configuración del mapa"
-
-#~ msgid "Currently viewing"
-#~ msgstr "Actualmente viendo"
-
-#~ msgid "Center"
-#~ msgstr "Centro"
-
-#~ msgid "Zoom"
-#~ msgstr "Zoom"
-
-#~ msgid "East"
-#~ msgstr "Este"
-
-#~ msgid "North"
-#~ msgstr "Norte"
-
-#~ msgid "South"
-#~ msgstr "Sur"
-
-#~ msgid "West"
-#~ msgstr "Oeste"
-
-#~ msgid "Map center & zoom"
-#~ msgstr "Centro e zoom del mapa"
-
-#~ msgid "Set current as map center & zoom"
-#~ msgstr "Fijar actual como el centro y ampliar el mapa"
-
-#~ msgid "Min zoom"
-#~ msgstr "Zoom mín."
-
-#~ msgid "Current"
-#~ msgstr "Actual"
-
-#~ msgid "Max zoom"
-#~ msgstr "Zoom máx."
-
-#~ msgid "Pan limits"
-#~ msgstr "Límites de margen"
-
-#~ msgid "Set current as map panning limits"
-#~ msgstr "Fijar actual como el limite de margen del mapa"
-
-#~ msgid "Enable geocoding service"
-#~ msgstr "Habilitar el servicio de geocodificación"
-
-#~ msgid "Enable geocode search service"
-#~ msgstr "Habilitar el servicio de búsqueda de localización"
-
-#~ msgid "Preview mode"
-#~ msgstr "Modo Previsualizar"
-
-#~ msgid "(preview mode doesn't apply zoom range nor pan limits setup)"
-#~ msgstr ""
-#~ "(En el modo de previsualización no se aplican límites de zoom y margen "
-#~ "para ampliar el mapa)"
-
-#~ msgid "Add to \"more\" tab"
-#~ msgstr "Añadir la solapa \"más\""
-
-#~ msgid "Select a map to add to your map group"
-#~ msgstr "Seleccione un mapa para agregar a su grup de mapas"
