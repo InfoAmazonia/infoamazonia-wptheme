@@ -309,7 +309,7 @@ function infoamazonia_share_meta() {
 
 		$fragment = $_GET['_escaped_fragment_'];
 
-		$vars = explode('|||', $_GET['_escaped_fragment_']);
+		$vars = explode('%26', $_GET['_escaped_fragment_']);
 
 		$query = array();
 		foreach($vars as $var) {
