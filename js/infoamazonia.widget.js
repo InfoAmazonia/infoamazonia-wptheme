@@ -178,8 +178,10 @@ if (!Array.prototype.indexOf) {
                 if($('#layers-select').val()) {
                     if($('#layers-select').val().length === $('#layers-select option').length) {
                         embed.map = $('#layers-select').data('mapid');
+                        $('.clear-layers').hide();
                     } else {
                         embed.layers = $('#layers-select').val().join();
+                        $('.clear-layers').show();
                     }
                 } else {
                     embed.map = $('#layers-select').data('mapid');
@@ -198,6 +200,12 @@ if (!Array.prototype.indexOf) {
 
         $('.chzn-select').each(updateInputs);
         $('.chzn-select').chosen().change(updateInputs);
+
+        $('.clear-layers').click(function() {
+            $('#layers-select option').attr('selected', 'selected').trigger('liszt:updated');
+            $('.chzn-select').change();
+            return false;
+        });
 
         $('#widget-content').css({
             'width': '960px',
