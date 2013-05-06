@@ -31,7 +31,7 @@
 			if($map || isset($_GET['layers'])) : ?>
 			  <h4>
 			  	<?php if(!isset($_GET['layers'])) : ?>
-					<?php echo __('Select layers from ', 'infoamazonia') . get_the_title($map_id); ?>
+					<?php echo __('Select layers from', 'infoamazonia') . ' ' . get_the_title($map_id); ?>
 				<?php else : ?>
 					<?php _e('Select layers', 'infoamazonia'); ?>
 				<?php endif; ?>
@@ -118,9 +118,9 @@
 			</a>
 		  </h4>
 		  <ul id='sizes' class='sizes clearfix'>
-			<li><a href='#' data-size='small' data-width='480' data-height='300'>Small</a></li>
-			<li><a href='#' data-size='medium' data-width='600' data-height='400'>Medium</a></li>
-			<li><a href='#' data-size='large' data-width='960' data-height='480' class='active'>Large</a></li>
+			<li><a href='#' data-size='small' data-width='480' data-height='300'><?php _e('Small', 'infoamazonia'); ?></a></li>
+			<li><a href='#' data-size='medium' data-width='600' data-height='400'><?php _e('Medium', 'infoamazonia'); ?></a></li>
+			<li><a href='#' data-size='large' data-width='960' data-height='480' class='active'><?php _e('Large', 'infoamazonia'); ?></a></li>
 		  </ul>
 		</div>
 	  </div>

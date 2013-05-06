@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: InfoAmazonia 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-06 19:58-0300\n"
-"PO-Revision-Date: 2013-05-06 20:03-0300\n"
+"POT-Creation-Date: 2013-05-06 20:04-0300\n"
+"PO-Revision-Date: 2013-05-06 20:05-0300\n"
 "Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
 "Language-Team: Cardume\n"
 "Language: \n"
@@ -238,7 +238,8 @@ msgid "Select layers from this map"
 msgstr "Selecione camadas deste mapa"
 
 #: ../content-share.php:34
-msgid "Select layers from "
+#, fuzzy
+msgid "Select layers from"
 msgstr "Selecione camadas de"
 
 #: ../content-share.php:36
@@ -297,6 +298,18 @@ msgstr "Altura e largura"
 #: ../content-share.php:116
 msgid "Select the width and height proportions you would like to embed to be."
 msgstr "Selecione a altura e largura para o seu mapa incorporado"
+
+#: ../content-share.php:121
+msgid "Small"
+msgstr "Pequeno"
+
+#: ../content-share.php:122
+msgid "Medium"
+msgstr "Médio"
+
+#: ../content-share.php:123
+msgid "Large"
+msgstr "Grande"
 
 #: ../content-share.php:133
 msgid "HTML Output"
