@@ -314,7 +314,8 @@ function infoamazonia_twitter_card() {
 		}
 
 		?>
-		<meta name="twitter:card" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo mappress_get_marker_latitude(); ?>,<?php echo mappress_get_marker_longitude(); ?>,7/435x375.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image:src" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo mappress_get_marker_latitude(); ?>,<?php echo mappress_get_marker_longitude(); ?>,7/435x375.png" />
 		<meta name='twitter:site' content="@InfoAmazonia" />
 		<meta name="twitter:url" content="<?php the_permalink(); ?>" />
 		<meta name="twitter:title" content="<?php the_title(); ?>" />
