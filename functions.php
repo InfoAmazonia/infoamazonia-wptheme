@@ -330,10 +330,11 @@ function infoamazonia_share_meta() {
 			
 			<?php
 			$center = mappress_get_map_center();
+			$zoom = mappress_get_map_zoom();
 			$lat = $center['lat'];
 			$lng = $center['lon'];
 			?>
-			<meta property="og:image" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo $lng; ?>,<?php echo $lat; ?>,7/435x375.png" />
+			<meta property="og:image" content="http://api.tiles.mapbox.com/v3/<?php echo implode(',', $layers_ids); ?>/<?php echo $lng; ?>,<?php echo $lat; ?>,<?php echo $zoom; ?>/435x375.png" />
 
 		<?php endif; ?>
 
