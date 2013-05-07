@@ -203,16 +203,16 @@ if (!Array.prototype.indexOf) {
 
         $('#output').focus(function() {
 
-            embed.lat = parseFloat($('iframe').contents().find('#latitude').val())
-            embed.lon = parseFloat($('iframe').contents().find('#longitude').val());
-            embed.zoom = parseInt($('iframe').contents().find('#zoom').val());
+            embed.lat = parseFloat($('#iframe').contents().find('#latitude').val())
+            embed.lon = parseFloat($('#iframe').contents().find('#longitude').val());
+            embed.zoom = parseInt($('#iframe').contents().find('#zoom').val());
 
             $('.zoom .val').text(embed.zoom);
             $('.latitude .val').text(embed.lat);
             $('.longitude .val').text(embed.lon);
 
             updateOutput();
-            
+
             $(this).select();
             // Unbind the mouseup event for chrome
             $(this).mouseup(function() {
