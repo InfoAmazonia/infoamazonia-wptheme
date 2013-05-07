@@ -58,7 +58,6 @@
 	}
 	$conf = json_encode($conf);
 	?>
-	<div class="map-container"><div id="map_embed" class="map"></div></div>
 	<script type="text/javascript">
 		(function($) {
 
@@ -82,7 +81,7 @@
 	<input type="hidden" id="latitude" />
 	<input type="hidden" id="longitude" />
 	<input type="hidden" id="zoom" />
-
+	<div class="map-container"><div id="map_embed" class="map"></div></div>
 </section>
 
 <script type="text/javascript">
