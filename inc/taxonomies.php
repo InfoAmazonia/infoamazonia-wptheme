@@ -4,8 +4,6 @@
 	REGISTER TAXONOMIES
 */
 
-// Cachaça
-
 add_action( 'init', 'register_taxonomy_publisher' );
 
 function register_taxonomy_publisher() {

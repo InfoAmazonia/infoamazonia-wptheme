@@ -30,7 +30,7 @@ function infoamazonia_scripts() {
 
 	// scripts
 	wp_register_script('html5', get_stylesheet_directory_uri() . '/js/html5shiv.js', array(), '3.6.2');
-	wp_register_script('submit-story', get_stylesheet_directory_uri() . '/js/submit-story.js', array('jquery'), '0.0.3.14');
+	wp_register_script('submit-story', get_stylesheet_directory_uri() . '/js/submit-story.js', array('jquery'), '0.1.1');
 
 	wp_register_script('twttr', 'http://platform.twitter.com/widgets.js');
 
@@ -83,6 +83,8 @@ function infoamazonia_scripts() {
 	wp_localize_script('submit-story', 'infoamazonia_submit', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
 		'success_label' => __('Success! Thank you, your story will be reviewed by one of our editors and soon will be online.', 'infoamazonia'),
+		'redirect_label' => __('You\'re being redirect to the home page in 4 seconds.', 'infoamazonia'),
+		'home' => home_url('/'),
 		'error_label' => __('Oops, please try again in a few minutes.', 'infoamazonia')
 	));
 

@@ -24,7 +24,10 @@
 			$.getJSON(infoamazonia_submit.ajaxurl, submission, function(data) {
 				if(data.post_id) {
 					$submit.find('.submit-content').empty();
-					$submit.find('.description').text(infoamazonia_submit.success_label);
+					$submit.find('.description').html('<span>' + infoamazonia_submit.success_label + '<br/><br/>' + infoamazonia_submit.redirect_label + '</span>');
+					setTimeout(function() {
+						document.location.href = infoamazonia_submit.home;
+					}, 4000);
 				} else if(data.error)
 					$submit.find('.error').empty().append('<p>' + data.error + '</p>');
 				else
