@@ -170,11 +170,13 @@ p {
 	margin: 0 0 15px;
 }
 
+html,
 body {
 	font: normal 12px/20px 'OpenSansRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
 	color: #404040;
 	margin: 0;
 	padding: 0;
+	width: 100%;
 }
 
 .clearfix:before,
@@ -302,6 +304,7 @@ header#masthead {
 			line-height: 18px;
 			padding: 0 5px;
 			margin: 0 0 0 5px;
+			display: inline;
 			&.active {
 				background-color: #8ec63d;
 				background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
@@ -487,6 +490,7 @@ header#masthead {
 		}
 		ul {
 			position: absolute;
+			display: none;
 			top: 53px;
 			width: 100%;
 			background: #fff;
@@ -494,7 +498,6 @@ header#masthead {
 			border-left: 1px solid #ccc;
 			border-right: 1px solid #ccc;
 			.border-radius(4px);
-			display: none;
 			.box-sizing(border-box);
 			li {
 				a {

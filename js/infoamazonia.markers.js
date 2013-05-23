@@ -63,9 +63,11 @@
 
 					var e = document.createElement('div');
 
+					var classKey = 'class';
+
 					$(e).addClass('story-points')
 						.addClass(x.properties.id)
-						.addClass(x.properties.class)
+						.addClass(x.properties[classKey])
 						.attr('data-publisher', x.properties.source);
 
 					$(e).data('feature', x);
