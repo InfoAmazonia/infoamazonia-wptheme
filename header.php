@@ -46,7 +46,9 @@
 				?>
 			</em>
 			<h1><a href="<?php echo home_url('/' . qtrans_getLanguage() . '/'); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
+			<?php /*
 			<h2 class="project-by"><?php _e('by', 'infoamazonia'); ?> <a class="oeco" href="http://www.oecoamazonia.com" target="_blank" rel="external">((o)) eco</a> <?php _e('and', 'infoamazonia'); ?> <a class="internews" href="http://www.internews.org" target="_blank" rel="external">Internews</a></h2>
+			*/ ?>
 		</div>
 		<section id="mastnav" class="clearfix">
 			<div class="limiter">
