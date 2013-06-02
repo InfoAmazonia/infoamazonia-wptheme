@@ -288,6 +288,9 @@
 			// populate sidebar
 			if(map.$.sidebar && map.$.sidebar.length) {
 
+				var permalink_slug = marker.properties.permalink.replace(infoamazonia_markers.site_url, '');
+				marker.properties.permalink = infoamazonia_markers.site_url + infoamazonia_markers.language + '/' + permalink_slug;
+
 				if(!map.$.sidebar.story) {
 					map.$.sidebar.append('<div class="story" />');
 					map.$.sidebar.story = map.$.sidebar.find('.story');
