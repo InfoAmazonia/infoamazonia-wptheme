@@ -22,14 +22,15 @@
 	<div class="limiter">
 
 		<?php
-		query_posts('');
+		$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+		query_posts(array('paged' => $paged));
 		if(have_posts()) : ?>
 		
 			<?php get_search_form(); ?>
 
 			<section id="last-stories" class="loop-section">
 				<h3><?php _e('Stories on', 'infoamazonia'); ?> &ldquo;<?php the_title(); ?>&ldquo;</h3>
-				<?php get_template_part('loop'); ?>
+				<?php // get_template_part('loop'); ?>
 			</section>
 
 		<?php

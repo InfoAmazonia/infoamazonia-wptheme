@@ -60,7 +60,6 @@
 	?>
 	<script type="text/javascript">
 		(function($) {
-
 			mappress(<?php echo $conf; ?>, function(map) {
 
 				var track = function(m) {
