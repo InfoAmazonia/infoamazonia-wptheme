@@ -364,6 +364,29 @@
 
 				map.$.sidebar.story.empty().append($story);
 
+				// adjust thumbnail image
+				map.$.sidebar.imagesLoaded(function() {
+
+					var $sidebar = map.$.sidebar;
+
+					if(!$sidebar.find('.media-limit'))
+						return;
+
+					var containerHeight = $sidebar.find('.media-limit').height();
+					var imageHeight = $sidebar.find('.media-limit img').height();
+
+					var topOffset = (containerHeight - imageHeight) / 2;
+
+					console.log(containerHeight, imageHeight, topOffset);
+
+					if(topOffset < 0) {
+						$sidebar.find('.media-limit img').css({
+							'margin-top': topOffset
+						});
+					}
+
+				});
+
 				if(media) {
 
 					var shadowboxMedia = [];
