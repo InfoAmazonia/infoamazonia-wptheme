@@ -27,4 +27,30 @@
 		<?php endwhile; ?>
 	</ul>
 	<?php if(function_exists('wp_paginate')) wp_paginate(); ?>
+	<script type="text/javascript">
+		(function($) {
+			$(document).ready(function() {
+				$('.list-posts').imagesLoaded(function() {
+
+					var $media = $('.list-posts .media-limit img');
+
+					$media.each(function() {
+
+						var containerHeight = $(this).parents('.media-limit').height();
+						var imageHeight = $(this).height();
+
+						var topOffset = (containerHeight - imageHeight) / 2;
+
+						if(topOffset < 0) {
+							$(this).css({
+								'margin-top': topOffset
+							});
+						}
+
+					});
+
+				});
+			});
+		})(jQuery);
+	</script>
 </div>

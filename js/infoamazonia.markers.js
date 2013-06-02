@@ -377,8 +377,6 @@
 
 					var topOffset = (containerHeight - imageHeight) / 2;
 
-					console.log(containerHeight, imageHeight, topOffset);
-
 					if(topOffset < 0) {
 						$sidebar.find('.media-limit img').css({
 							'margin-top': topOffset
