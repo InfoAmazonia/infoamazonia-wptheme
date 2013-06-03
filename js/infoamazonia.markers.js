@@ -426,7 +426,7 @@
 					shareContent += '<a class="button print-button" href="#" target="_blank">' + infoamazonia_markers.print_label + '</a>';
 					shareContent += '<div class="social">';
 					shareContent += '<div class="twitter-button"></div>';
-					shareContent += '<div class="fb-like" data-href="" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>';
+					shareContent += '<div class="fb-like"></div>';
 					shareContent += '</div>';
 
 					map.$.sidebar.share.append(shareContent);
@@ -467,9 +467,19 @@
 						var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
 						if(window != window.top)
 							share_url = marker.properties.permalink;
+
+						var fb_vars = {
+							href: share_url,
+							show_faces: false,
+							colorscheme: 'light',
+							action: 'recommend',
+							appId: '459964104075857',
+							height: 20,
+							layout: 'button_count'
+						}
 						
 						// fb
-						map.$.sidebar.share.find('.fb-like').data('href', share_url);
+						map.$.sidebar.share.find('.fb-like').html('<iframe src="//www.facebook.com/plugins/like.php?' + $.param(fb_vars) + '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:20px;" allowTransparency="true"></iframe>');
 						map.$.sidebar.share.find('.twitter-button').empty();
 						twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
 							lang: infoamazonia_markers.language,
@@ -481,12 +491,24 @@
 
 				}
 
+				
+
 				var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
 				if(window != window.top)
 					share_url = marker.properties.permalink;
 
+				var fb_vars = {
+					href: share_url,
+					show_faces: false,
+					colorscheme: 'light',
+					action: 'recommend',
+					appId: '459964104075857',
+					height: 20,
+					layout: 'button_count'
+				}
+
 				// fb
-				map.$.sidebar.share.find('.fb-like').data('href', share_url);
+				map.$.sidebar.share.find('.fb-like').html('<iframe src="//www.facebook.com/plugins/like.php?' + $.param(fb_vars) + '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:20px;" allowTransparency="true"></iframe>');
 				map.$.sidebar.share.find('.twitter-button').empty();
 				twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
 					lang: infoamazonia_markers.language,
