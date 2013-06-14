@@ -535,3 +535,33 @@
     -webkit-border-radius:15px;
             border-radius:15px;
     }
+
+#ia-widget .chzn-container-multi .chzn-choices .search-choice {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+#ia-widget .chzn-container-multi .chzn-choices .search-choice span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+
+#ia-widget .chzn-container-multi .chzn-choices .search-choice .search-tip {
+  position: absolute;
+  left: -5px;
+  bottom: 10px;
+  line-height: 16px;
+  font-size: 10px;
+  background: #333;
+  color: #f0f0f0;
+  padding: 5px;
+}
+
+.chzn-container-multi .chzn-choices {
+  overflow: visible;
+  z-index: 100;
+}

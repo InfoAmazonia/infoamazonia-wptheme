@@ -198,8 +198,23 @@ if (!Array.prototype.indexOf) {
         $('.clear-layers').click(function() {
             $('#layers-select option').attr('selected', 'selected').trigger('liszt:updated');
             $('.chzn-select').change();
+            selectorsTooltip();
             return false;
         });
+        selectorsTooltip();
+
+        /*
+         * Chosen selectors tooltip
+         */
+        function selectorsTooltip() {
+            $('.search-choice').on('mouseover', 'span', function() {
+                $(this).parent().append('<p class="search-tip">' + $(this).text() + '</p>');
+            });
+
+            $('.search-choice').on('mouseout', 'span', function() {
+                $(this).parent().find('.search-tip').remove();
+            });
+        }
 
         $('#output').focus(function() {
 
