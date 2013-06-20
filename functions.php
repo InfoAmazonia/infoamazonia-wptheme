@@ -378,3 +378,30 @@ function infoamazonia_share_meta() {
 
 }
 add_action('wp_head', 'infoamazonia_share_meta');
+
+function infoamazonia_posts_clauses_join($join, $clauses, $query) {
+
+	if(($query->get('embed') || $query->get('share')) && $query->get('p'))
+		$join = '';
+
+	return $join;
+}
+add_filter('mappress_posts_clauses_join', 'infoamazonia_posts_clauses_join', 10, 3);
+
+function infoamazonia_posts_clauses_where($where, $clauses, $query) {
+
+	if(($query->get('embed') || $query->get('share')) && $query->get('p'))
+		$where = '';
+
+	return $where;
+}
+add_filter('mappress_posts_clauses_where', 'infoamazonia_posts_clauses_where', 10, 3);
+
+function infoamazonia_posts_clauses_groupby($groupby, $clauses, $query) {
+
+	if(($query->get('embed') || $query->get('share')) && $query->get('p'))
+		$groupby = '';
+
+	return $groupby;
+}
+add_filter('mappress_posts_clauses_groupby', 'infoamazonia_posts_clauses_groupby', 10, 3);
