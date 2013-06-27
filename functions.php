@@ -405,3 +405,21 @@ function infoamazonia_posts_clauses_groupby($groupby, $clauses, $query) {
 	return $groupby;
 }
 add_filter('mappress_posts_clauses_groupby', 'infoamazonia_posts_clauses_groupby', 10, 3);
+
+/*
+ * Geojson keys according to language (qTranslate fix)
+ */
+
+function infoamazonia_geojson_key($key) {
+	return '_ia_geojson_' . qtrans_getLanguage();
+}
+add_filter('mappress_markers_geojson_key', 'infoamazonia_geojson_key');
+
+function infoamazonia_geojson_keys($keys) {
+	global $q_config;
+	$keys = array();
+	foreach($q_config['enabled_languages'] as $lang) {
+		$keys[] = '_ia_geojson_' . $lang;
+	}
+	return $keys;
+}
