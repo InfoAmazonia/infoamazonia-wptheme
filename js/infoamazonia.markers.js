@@ -144,8 +144,6 @@
 				skipSetup: true
 			});
 
-			console.log(map.conf);
-
 			if(map.conf.forceCenter)
 				silent = true;
 

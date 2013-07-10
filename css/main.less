@@ -936,16 +936,11 @@ header#masthead {
 				display: none !important;
 			}
 		}
-		.zoomer,
 		.map-fullscreen {
 			.border-radius(0);
 			border: 0;
 			text-indent: 0;
 			display: block;
-			position: absolute;
-			top: 15px;
-			left: 15px;
-			z-index: 1000;
 			width: 24px;
 			height: 24px;
 			line-height: 24px;
@@ -953,21 +948,15 @@ header#masthead {
 			color: white;
 			background: #303030;
 			text-align: center;
+			background-position: 2px -33px;
+			background-image: url(../img/sprite.png);
+			background-repeat: no-repeat;
 			&:hover {
 				color: #fff;
 			}
 			&:active {
 				background-color: #333;
 				.box-shadow(inset rgba(0,0,0,0.1) 0px 1px 3px);
-			}
-			&.zoomin {
-				left: 40px;
-			}
-			&.map-fullscreen {
-				left: 67px;
-				background-position: 2px -33px;
-				background-image: url(../img/sprite.png);
-				background-repeat: no-repeat;
 			}
 		}
 		/* Legends */
