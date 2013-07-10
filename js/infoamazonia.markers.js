@@ -20,6 +20,7 @@
 			map.$.parents('.map-container').wrapAll('<div class="content-map" />');
 			map.$.parents('.content-map').prepend('<div class="map-sidebar"><div class="sidebar-inner"></div></div>');
 			map.$.sidebar = map.$.parents('.content-map').find('.sidebar-inner');
+			map.invalidateSize(true)
 		}
 
 		if(typeof mappress.fragment === 'function' && !map.conf.disableHash)
@@ -37,8 +38,6 @@
 		});
 
 		var _build = function(geojson) {
-
-			$('.map').trigger('resize');
 
 			var icon = L.Icon.extend({});
 			var icons = {};
@@ -104,7 +103,7 @@
 
 			// FIRST STORY
 			var story = features[0];
-			var silent = false;
+			var silent = true;
 
 			// if not home, navigate to post
 			if(!infoamazonia_markers.home) 
@@ -126,9 +125,6 @@
 					}
 				}
 			}
-
-			if(map.conf.forceCenter)
-				silent = true;
 
 			// bind list post events
 			listPosts = $('.list-posts');
@@ -188,18 +184,13 @@
 					zoom = map.getZoom();
 				}
 
-				/*
-				map.ease.location(center).zoom(zoom).optimal(0.9, 1.42, function() {
-					if(fragment) {
-						fragment.rm('loc');
-					}
-					mappress.runCallbacks('markerCentered', [map]);
-				});
-				*/
 				map.setView(center, zoom);
-			} else {
-				mappress.runCallbacks('markerCentered', [map]);
+				if(fragment) {
+					fragment.rm('loc');
+				}
 			}
+
+			mappress.runCallbacks('markerCentered', [map]);
 
 			// populate sidebar
 			if(map.$.sidebar && map.$.sidebar.length) {
