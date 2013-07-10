@@ -62,15 +62,15 @@
 		(function($) {
 			mappress(<?php echo $conf; ?>, function(map) {
 
-				var track = function(m) {
-					var c = m.center();
+				var track = function() {
+					var c = map.getCenter();
 					$('#latitude').val(c.lat);
-					$('#longitude').val(c.lon);
-					$('#zoom').val(m.zoom());
+					$('#longitude').val(c.lng);
+					$('#zoom').val(map.getZoom());
 				}
 
-				map.addCallback('zoomed', track);
-				map.addCallback('panned', track);
+				map.on('zoomend', track);
+				map.on('dragend', track);
 
 			});
 

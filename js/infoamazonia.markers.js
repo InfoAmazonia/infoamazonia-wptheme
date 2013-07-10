@@ -103,7 +103,7 @@
 
 			// FIRST STORY
 			var story = features[0];
-			var silent = true;
+			var silent = false;
 
 			// if not home, navigate to post
 			if(!infoamazonia_markers.home) 
@@ -143,6 +143,11 @@
 			Shadowbox.init({
 				skipSetup: true
 			});
+
+			console.log(map.conf);
+
+			if(map.conf.forceCenter)
+				silent = true;
 
 			markers.open(story, silent);
 
@@ -184,7 +189,7 @@
 					zoom = map.getZoom();
 				}
 
-				map.setView(center, zoom);
+				map.setView(center, zoom, { animate: true, duration: 1, pan: { animate: true, duration: 1 }, zoom: { animate: true } } );
 				if(fragment) {
 					fragment.rm('loc');
 				}
