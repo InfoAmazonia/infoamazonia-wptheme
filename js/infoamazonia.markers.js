@@ -9,18 +9,17 @@
 
 		map.markers = markers;
 
-		var markersLayer = mapbox.markers.layer();
-		var features;
-		var fragment = false;
-		var listPost;
+		var	layer,
+			features = [],
+			geojson,
+			fragment = false,
+			listPost;
 
 		// setup sidebar
 		if(!map.conf.disableSidebar) {
 			map.$.parents('.map-container').wrapAll('<div class="content-map" />');
 			map.$.parents('.content-map').prepend('<div class="map-sidebar"><div class="sidebar-inner"></div></div>');
 			map.$.sidebar = map.$.parents('.content-map').find('.sidebar-inner');
-			map.dimensions = new MM.Point(map.parent.offsetWidth, map.parent.offsetHeight);
-			map.draw();
 		}
 
 		if(typeof mappress.fragment === 'function' && !map.conf.disableHash)
@@ -39,141 +38,62 @@
 
 		var _build = function(geojson) {
 
-			Shadowbox.init({
-				skipSetup: true
-			});
+			$('.map').trigger('resize');
 
-			map.addLayer(markersLayer);
+			var icon = L.Icon.extend({});
+			var icons = {};
 
-			// do clustering
-			features = markers.doClustering(geojson.features);
+			var parentLayer;
+			if(infoamazonia_markers.enable_clustering)
+				parentLayer = new L.MarkerClusterGroup();
+			else
+				parentLayer = new L.layerGroup();
 
-			map.features = features;
-			map.markersLayer = markersLayer;
+			map.addLayer(parentLayer);
 
-			markersLayer
-				.features(features)
-				.key(function(f) {
-					return f.properties.id;
-				})
-				.factory(function(x) {
+			layer = L.geoJson(geojson, {
+				pointToLayer: function(f, latLng) {
 
-					if(!markers.hasLocation(x))
-						return;
+					var marker = new L.marker(latLng);
+					features.push(marker);
+					return marker;
 
-					var e = document.createElement('div');
+				},
+				onEachFeature: function(f, l) {
 
-					var classKey = 'class';
+					if(f.properties.marker.markerId) {
 
-					$(e).addClass('story-points')
-						.addClass(x.properties.id)
-						.addClass(x.properties[classKey])
-						.attr('data-publisher', x.properties.source);
-
-					$(e).data('feature', x);
-
-					// styles
-					$(e).css({
-						'background': 'url(' + x.properties.marker.url + ')',
-						'width': x.properties.marker.width,
-						'height': x.properties.marker.height,
-						'margin-top': -parseInt(x.properties.marker.height),
-						'margin-left': -(parseInt(x.properties.marker.width)/2)
-					});
-
-					/* soon
-					if(!markers.fromMap(x))
-						$(e).addClass('hide');
-					else
-						$(e).removeClass('hide');
-					*/
-
-					// POPUP
-
-					var o = document.createElement('div');
-					o.className = 'popup clearfix';
-					$(o).css({
-						'bottom': parseInt(x.properties.marker.height) + 11
-					});
-					e.appendChild(o);
-					var content = document.createElement('div');
-					content.className = 'story';
-					content.innerHTML = x.properties.bubble;
-					o.appendChild(content);
-
-					// cluster stuff
-					if(x.properties.cluster) {
-
-						var cluster = x.properties.cluster;
-						var coords = x.geometry.coordinates;
-
-						$(e).addClass(cluster);
-						$(e).addClass('cluster');
-
-						if(!x.properties.activeCluster) {
-
-							x.properties.origLat = parseFloat(coords[1]);
-							x.properties.origLon = parseFloat(coords[0]);
-
-							// Story count popup
-							var content = document.createElement('div');
-							content.className = 'count';
-							content.innerHTML = '<span class="arrow">&nbsp;</span><h4></h4>';
-							o.appendChild(content);
-
-							$(e).hover(function() {
-								var len = $('.' + cluster + ':not(.hide)').length;
-								if (len > 1) {
-									$('.count h4', this).text(len + ' ' + infoamazonia_markers.stories_label);
-								} else {
-									$(e).addClass('open');
-								}
-							});
-
+						if(icons[f.properties.marker.markerId]) {
+							var fIcon = icons[f.properties.marker.markerId];
+						} else {
+							var fIcon = new icon(f.properties.marker);
+							icons[f.properties.marker.markerId] = fIcon;
 						}
+
+						l.setIcon(fIcon);
 
 					}
 
-					$(e).click(function() {
+					l.bindPopup(f.properties.bubble);
 
-						var radius = 0.1;
-						var zoom = map.getZoom();
-						if(zoom == 8)
-							radius = 0.05;
-
-						var open = markers.collapseClusters();
-
-						if (cluster && _.indexOf(open, cluster) == -1) {
-
-							var cl = $('.' + cluster + ':not(.hide)');
-							var step = 2 * Math.PI / cl.length;
-							cl.each(function(i, el) {
-
-								var feature = $(el).data('feature');
-								var coords = feature.geometry.coordinates;
-
-								$(el).addClass('open');
-
-								feature.properties.activeCluster = true;
-
-								coords[1] = parseFloat(coords[1]) + (Math.sin(step * i) * cl.length * radius);
-								coords[0] = parseFloat(coords[0]) + (Math.cos(step * i) * cl.length * radius);
-
-							});
-
-							markersLayer.features(features);
-							return;
-
-						}
-
-						if(!$(this).hasClass('active'))
-							markers.open(x, false);
-
+					l.on('mouseover', function(e) {
+						e.target.openPopup();
+					});
+					l.on('mouseout', function(e) {
+						e.target.closePopup();
+					});
+					l.on('click', function(e) {
+						markers.open(e.target, false);
+						return false;
 					});
 
-					return e;
+				}
 
-				});
+			});
+
+			map._markerLayer = layer;
+
+			layer.addTo(parentLayer);
 
 			if(map.conf.sidebar === false)
 				return;
@@ -183,7 +103,7 @@
 			 */
 
 			// FIRST STORY
-			var story = geojson.features[0];
+			var story = features[0];
 			var silent = false;
 
 			// if not home, navigate to post
@@ -193,8 +113,8 @@
 			if(fragment) {
 				var fStoryID = fragment.get('story');
 				if(fStoryID) {
-					var found = _.any(geojson.features, function(c) {
-						if(c.properties.id == fStoryID) {
+					var found = _.any(features, function(c) {
+						if(c.toGeoJSON().properties.id == fStoryID) {
 							story = c;
 							if(fragment.get('loc'))
 								silent = true;
@@ -216,10 +136,6 @@
 				listPosts.find('li').click(function() {
 					var markerID = $(this).attr('id');
 					document.body.scrollTop = 0;
-					var markerMap = markers.fromMap(markerID);
-					if(!markerMap) {
-						// to do, update map group map nav through map (only one) from post	
-					}
 					markers.open(markerID, false);
 					return false;
 				});
@@ -228,13 +144,13 @@
 					story = listPosts.find('li:nth-child(1)').attr('id');
 			}
 
+			Shadowbox.init({
+				skipSetup: true
+			});
+
 			markers.open(story, silent);
 
 		};
-
-		markers.getMarker = function(id) {
-			return _.find(features, function(m) { return m.properties.id === id; });
-		}
 
 		markers.open = function(marker, silent) {
 
@@ -243,13 +159,12 @@
 				return false;
 			}
 
-			if(!markers.fromMap(marker))
-				return;
-
 			// if marker is string, get object
 			if(typeof marker === 'string') {
-				marker = _.find(features, function(m) { return m.properties.id === marker; });
+				marker = _.find(features, function(m) { return m.toGeoJSON().properties.id === marker; });
 			}
+
+			marker = marker.toGeoJSON();
 
 			if(fragment) {
 				if(!silent)
@@ -261,26 +176,27 @@
 			}
 
 			if(!silent) {
-				var zoom;
-				var center;
-				if(markers.hasLocation(marker)) { 
-					center = {
-						lat: marker.geometry.coordinates[1],
-						lon: marker.geometry.coordinates[0]
-					}
-					zoom = 7;
+				var center = [
+					marker.geometry.coordinates[1],
+					marker.geometry.coordinates[0]
+				];
+				if(map.getZoom() < 7) {
+					var zoom = 7;
 					if(map.conf.maxZoom < 7)
 						zoom = map.conf.maxZoom;
 				} else {
-					center = map.conf.center;
-					zoom = map.conf.zoom;
+					zoom = map.getZoom();
 				}
+
+				/*
 				map.ease.location(center).zoom(zoom).optimal(0.9, 1.42, function() {
 					if(fragment) {
 						fragment.rm('loc');
 					}
 					mappress.runCallbacks('markerCentered', [map]);
 				});
+				*/
+				map.setView(center, zoom);
 			} else {
 				mappress.runCallbacks('markerCentered', [map]);
 			}
@@ -527,130 +443,6 @@
 					item.addClass('active');
 				}
 			}
-		};
-
-		markers.hasLocation = function(marker) {
-			if(marker.geometry.coordinates[0] ===  0 || !marker.geometry.coordinates[0])
-				return false;
-			else
-				return true;
-		}
-
-		markers.fromMap = function(x) {
-			// if marker is string, get object
-			if(typeof x === 'string') {
-				x = _.find(features, function(m) { return m.properties.id === x; });
-			}
-
-			if(!x)
-				return false;
-
-			if(!x.properties.maps)
-				return true;
-
-			return _.find(x.properties.maps, function(markerMap) { return 'map_' + markerMap == map.currentMapID; });
-		}
-
-		markers.doClustering = function(features) {
-
-			// determine if p1 is close to p2
-			var close = function(p1, p2) {
-
-				if(!p1 || !p2)
-					return false;
-
-				var x1 = p1[1];
-				var y1 = p1[0];
-				var x2 = p2[1];
-				var y2 = p2[0];
-				d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-				return d < 0.1;
-			}
-
-			var tested = [];
-			var clusters = {};
-
-			_.each(features, function(current, i) {
-
-				tested.push(current);
-
-				clusters[current.properties.id] = 0;
-
-				// test each marker
-				_.each(tested, function(f) {
-
-					var id = f.properties.id;
-
-					if(current.properties.id === id)
-						return;
-
-					if(close(current.geometry.coordinates, f.geometry.coordinates)) {
-
-						var clusterID = tested.length;
-						if(clusters[id] !== 0)
-							clusterID = clusters[id];
-
-						clusters[current.properties.id] = clusterID;
-						clusters[id] = clusterID;
-
-					}
-
-				});
-
-			});
-
-			// save cluster to feature
-			_.each(features, function(f, i) {
-				if(clusters[f.properties.id] !== 0)
-					features[i].properties.cluster = 'cluster-' + clusters[f.properties.id];
-			});
-
-			return features;
-		}
-
-		// Close all open clusters.
-		markers.collapseClusters = function() {
-			var open = [];
-			map.$.find('.story-points.open').each(function(i, el) {
-				// Remove open class and kill popup, which has different content
-				// depending on open class.
-				$(el).removeClass('open');
-				//$(el).find('.popup').stop().animate({opacity: 'hide'}, 0);
-				var cluster = $(el).attr('class').match(/(cluster-\d+)/);
-
-				open.push(cluster[1]);
-
-				var feature = $(el).data('feature');
-				var coords = feature.geometry.coordinates;
-
-				feature.properties.activeCluster = false;
-				coords[1] = feature.properties.origLat;
-				coords[0] = feature.properties.origLon;
-
-			});
-			markersLayer.features(features);
-			return open;
-		};
-
-		markers.openClusters = function(m) {
-			var radius = 0.1;
-			map.$.find('.cluster:not(.open)').each(function(i, el) {
-
-				var cluster = $(el).attr('class').match(/(cluster-\d+)/);
-				var cl = $('.' + cluster[1] + ':not(.open)');
-
-				if(cl.length) {
-					var step = 2 * Math.PI / cl.length;
-					cl.each(function(i, el) {
-						delete el.coord; // Clear mmg internal coordinate cache.
-						$(el).addClass('open');
-						$(el).data('original_lat', el.location.lat);
-						$(el).data('original_lon', el.location.lon);
-						el.location.lat += Math.sin(step * i) * cl.length * radius;
-						el.location.lon += Math.cos(step * i) * cl.length * radius;
-					});
-				}
-			});
 		};
 	}
 

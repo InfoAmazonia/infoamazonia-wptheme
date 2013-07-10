@@ -8,6 +8,5 @@ if($publishers) {
 	$publisher = $publisher->name;
 }
 ?>
-<span class="arrow">&nbsp;</span>
 <small><?php echo get_the_date(_x('m/d/Y', 'map bubble date format', 'mappress')); ?> - <?php echo $publisher; ?></small>
 <h4><?php the_title(); ?></h4>
