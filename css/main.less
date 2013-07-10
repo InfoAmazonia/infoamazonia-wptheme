@@ -692,14 +692,60 @@ header#masthead {
 }
 
 .map-container {
-	.map-widgets {
-		position: static;
-		.map-widget {
-			margin: 0 0 3px;
+	.leaflet-control-container {
+		.leaflet-bar {
 			border: 0;
+		}
+		.leaflet-top {
+			.leaflet-control {
+				float: left;
+				clear: none;
+			}
+		}
+		.leaflet-control-zoom a {
+			.border-radius(0);
+			border: 0;
+			text-indent: 0;
+			display: block;
+			float: left;
+			margin: 0 1px 0 0;
+			width: 24px;
+			height: 24px;
+			line-height: 24px;
+			font-weight: bold;
+			color: white;
+			background: #303030;
+			text-align: center;
+			&:hover {
+				color: #fff;
+			}
+			&:active {
+				background-color: #333;
+				.box-shadow(inset rgba(0,0,0,0.1) 0px 1px 3px);
+			}
+		}
+		.mappress-filter-layers {
+			width: 200px;
 			background: transparent;
-			position: static;
+			.switch-layers,
+			.swap-layers {
+				li {
+					background: #303030;
+					border: 0;
+					.border-radius(0);
+					color: #fff;
+					font-size: 11px;
+					font-weight: bold;
+					margin: 1px 0 0;
+				}
+			}
+		}
+		.mappress-geocode {
+			width: 200px;
+			background:transparent;
+			position: relative;
 			.map-search {
+				border: 0;
 				input {
 					width: 24px;
 					padding: 0 0 0 24px;
@@ -716,6 +762,67 @@ header#masthead {
 						padding: 5px;
 					}
 				}
+			}
+			.clear-search {
+				font-size: 10px;
+				line-height: 14px;
+				display: block;
+				background: #222;
+				padding: 7px 5px;
+				float: none;
+				color: #fff;
+				text-transform: uppercase;
+				font-weight: 800;
+				text-shadow: 0 0 3px #000;
+				&:after {
+					font-size: 11px;
+					line-height: 14px;
+					content: '×';
+					dispaly: block;
+					float: right;
+					margin-left: 2px;
+					padding: 0 5px;
+					background: #111;
+					.border-radius(2px);
+				}
+			}
+			.geocode-results {
+				font-size: 90%;
+				width: 100%;
+				background: #303030;
+				margin-top: 10px;
+				margin-left: -60px;
+				.widget-title {
+					border-color: #111;
+					color: #999;
+				}
+				a {
+					color: #999;
+					&:hover {
+						color: #fff;
+					}
+				}
+				ul {
+					li {
+						border-color: #111;
+						color: #999;
+						&:hover {
+							color: #fff;
+							background: transparent;
+						}
+					}
+				}
+			}
+		}
+	}
+	.map-widgets {
+		position: static;
+		.map-widget {
+			margin: 0 0 3px;
+			border: 0;
+			background: transparent;
+			position: static;
+			.map-search {
 			}
 			.geocode-results {
 				font-size: 90%;
@@ -825,6 +932,9 @@ header#masthead {
 				margin: 0 0 5px;
 				line-height: 20px;
 			}
+			.close {
+				display: none !important;
+			}
 		}
 		.zoomer,
 		.map-fullscreen {
@@ -866,8 +976,6 @@ header#masthead {
 			.border-radius(0);
 			.box-shadow(0 0 0 0);
 			border: 0;
-			bottom: 15px;
-			right: 15px;
 			.map-legend {
 				max-width: 220px;
 				padding: 0;
