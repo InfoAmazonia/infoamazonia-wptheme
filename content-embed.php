@@ -51,9 +51,7 @@
 		$conf['zoom'] = $_GET['zoom'];
 	}
 	if(isset($_GET['lat']) && isset($_GET['lon'])) {
-		$conf['center'] = array();
-		$conf['center']['lat'] = $_GET['lat'];
-		$conf['center']['lon'] = $_GET['lon'];
+		$conf['center'] = array($_GET['lat'], $_GET['lon']);
 		$conf['forceCenter'] = true;
 	}
 	$conf = json_encode($conf);
