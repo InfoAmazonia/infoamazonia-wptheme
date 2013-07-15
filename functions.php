@@ -37,7 +37,7 @@ function infoamazonia_scripts() {
 	// custom marker system
 	global $mappress_markers;
 	wp_deregister_script('mappress.markers');
-	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox', 'twttr'), '0.2.7', true);
+	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox', 'twttr'), '0.2.8', true);
 	wp_localize_script('infoamazonia.markers', 'infoamazonia_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
 		'query' => $mappress_markers->query(),
@@ -67,7 +67,7 @@ function infoamazonia_scripts() {
 	// styles
 	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
 	wp_register_style('reset', get_stylesheet_directory_uri() . '/css/reset.css', array(), '2.0');
-	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.2.1');
+	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.2.3');
 
 	/*
 	 * Enqueue scripts & styles
