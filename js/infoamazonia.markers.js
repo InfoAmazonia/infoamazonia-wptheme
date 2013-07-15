@@ -44,7 +44,14 @@
 
 			var parentLayer;
 			if(infoamazonia_markers.enable_clustering)
-				parentLayer = new L.MarkerClusterGroup();
+				parentLayer = new L.MarkerClusterGroup({
+					maxClusterRadius: 20,
+					animateAddingMarkers: true,
+					spiderfyOnMaxZoom: true,
+					iconCreateFunction: function(cluster) {
+        				return new L.DivIcon({ html: '<b class="story-points">' + cluster.getChildCount() + '</b>' });
+   					}
+				});
 			else
 				parentLayer = new L.layerGroup();
 

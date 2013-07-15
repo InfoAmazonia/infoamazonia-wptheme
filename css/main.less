@@ -33,9 +33,9 @@
 	transform: @arguments;
 }
 .box-sizing(@arguments) {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	-webkit-box-sizing: @arguments;
+	-moz-box-sizing: @arguments;
+	box-sizing: @arguments;
 }
 .font-smoothing(@arguments) {
 	-webkit-font-smoothing: @arguments;
@@ -1001,38 +1001,23 @@ header#masthead {
 			}
 		}
 		/* Markers custom for zoom */
-		.story-points {
+		.leaflet-div-icon {
 			background: url(../img/sprite.png) no-repeat !important;
 			background-position: 0px -209px !important;
 			width: 25px !important;
 			height: 30px !important;
+			margin-top: -30px;
+			margin-left: -12px;
+			border: 0;
+			.box-sizing(border-box);
+			text-align: center;
+			padding-top: 5px;
+			padding-left: 1px;
+			font-weight: 800;
+			font-size: 10px;
+			line-height: 10px;
 			&.active {
 				background-position: -35px -209px !important;
-			}
-		}
-		&.zoom-1,
-		&.zoom-2,
-		&.zoom-3,
-		&.zoom-4,
-		&.zoom-5 {
-			.story-points {
-				background: url(../img/sprite.png) no-repeat !important;
-				background-position: -80px -224px !important;
-				width: 12px !important;
-				height: 15px !important;
-				margin-top: -7px !important;
-				margin-left: -6px !important;
-				&.active {
-					background-position: -105px -224px !important;
-				}
-				.popup {
-					bottom: 36px !important;
-				}
-				&:hover {
-					.popup {
-						bottom: 26px !important;
-					}
-				}
 			}
 		}
 	}
