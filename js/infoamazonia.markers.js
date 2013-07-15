@@ -43,16 +43,19 @@
 			var icons = {};
 
 			var parentLayer;
-			if(infoamazonia_markers.enable_clustering)
+			if(infoamazonia_markers.enable_clustering) {
+
 				parentLayer = new L.MarkerClusterGroup({
 					maxClusterRadius: 20,
-					animateAddingMarkers: true,
 					iconCreateFunction: function(cluster) {
-        				return new L.DivIcon({ html: '<b class="story-points">' + cluster.getChildCount() + '</b>' });
+						var icon = new L.DivIcon({ html: '<b class="story-points">' + cluster.getChildCount() + '</b>' });
+        				return icon;
    					}
 				});
-			else
+
+			} else {
 				parentLayer = new L.layerGroup();
+			}
 
 			map.addLayer(parentLayer);
 
