@@ -23,7 +23,11 @@
 
 		<?php
 		$paged = get_query_var('paged') ? get_query_var('paged') : 1;
-		query_posts(array('paged' => $paged));
+		$query = array(
+			'paged' => $paged,
+			's' => isset($_GET['s']) ? $_GET['s'] : null
+		);
+		query_posts($query);
 		if(have_posts()) : ?>
 		
 			<?php get_search_form(); ?>
