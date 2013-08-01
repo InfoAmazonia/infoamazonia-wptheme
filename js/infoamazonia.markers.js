@@ -20,7 +20,7 @@
 			map.$.parents('.map-container').wrapAll('<div class="content-map" />');
 			map.$.parents('.content-map').prepend('<div class="map-sidebar"><div class="sidebar-inner"></div></div>');
 			map.$.sidebar = map.$.parents('.content-map').find('.sidebar-inner');
-			map.invalidateSize(true)
+			map.invalidateSize(true);
 		}
 
 		if(typeof mappress.fragment === 'function' && !map.conf.disableHash)
@@ -156,6 +156,7 @@
 				silent = true;
 
 			markers.open(story, silent);
+			mappress.runCallbacks('markersReady', [map]);
 
 		};
 
@@ -471,5 +472,6 @@
 	}
 
 	mappress.mapReady(markers);
+	mappress.createCallback('markersReady');
 
 })(jQuery);
