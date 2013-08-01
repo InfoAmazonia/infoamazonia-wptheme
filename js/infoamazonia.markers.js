@@ -195,7 +195,29 @@
 					zoom = map.getZoom();
 				}
 
-				map.setView(center, zoom, { animate: true, duration: 1, pan: { animate: true, duration: 1 }, zoom: { animate: true } } );
+				var viewOptions = {
+					animate: true,
+					duration: 1,
+					pan: {
+						animate: true,
+						duration: 1
+					},
+					zoom: { animate: true }
+				};
+
+				if(window.location.hash == '#print') {
+					viewOptions = {
+						animate: false,
+						duration: 0,
+						pan: {
+							naimate: false,
+							duration: 0
+						},
+						zoom: { animate: false }
+					};
+				}
+
+				map.setView(center, zoom, viewOptions);
 				if(fragment) {
 					fragment.rm('loc');
 				}
