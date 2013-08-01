@@ -48,8 +48,7 @@
 				parentLayer = new L.MarkerClusterGroup({
 					maxClusterRadius: 20,
 					iconCreateFunction: function(cluster) {
-						var icon = new L.DivIcon({ html: '<b class="story-points">' + cluster.getChildCount() + '</b>' });
-        				return icon;
+        				return new L.DivIcon({ html: '<b class="story-points">' + cluster.getChildCount() + '</b>' });
    					}
 				});
 

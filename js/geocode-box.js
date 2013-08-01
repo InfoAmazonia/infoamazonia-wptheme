@@ -16,7 +16,7 @@ jQuery(function($) {
 
 		$(this).find('.open-geocode-box').click(function() {
 			$('#geocode-box').addClass('active');
-			$('#geocode-box #geolocate_canvas').geolocate();
+			geocodeBox();
 		});
 
 		$('#geocode-box .finish-geocode-box').click(function() {
