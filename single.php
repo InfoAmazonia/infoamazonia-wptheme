@@ -9,9 +9,11 @@
 					<?php echo get_the_term_list($post->ID, 'publisher', '', ', ', ''); ?>
 					<h1 class="title"><?php the_title(); ?></h1>
 				</header>
-				<div id="main-map" class="stage-map">
-					<?php mappress_map(); ?>
-				</div>
+				<?php if(mappress_has_marker_location()) : ?>
+					<div id="main-map" class="stage-map">
+						<?php mappress_map(); ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</section>
 

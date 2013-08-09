@@ -31,7 +31,8 @@
 			action: 'markers_geojson',
 			query: infoamazonia_markers.query
 		},
-		function(geojson) {
+		function(data) {
+			geojson = data;
 			if(geojson === 0)
 				return;
 			_build(geojson);
@@ -168,11 +169,21 @@
 			}
 
 			// if marker is string, get object
+			var markerID = false;
 			if(typeof marker === 'string') {
-				marker = _.find(features, function(m) { return m.toGeoJSON().properties.id === marker; });
+				markerID = marker;
+				marker = _.find(features, function(m) { return m.toGeoJSON().properties.id === markerID; });
 			}
 
-			marker = marker.toGeoJSON();
+			console.log(geojson);
+
+			if(markerID && !marker)
+				marker = _.find(geojson.features, function(f) { return f.properties.id === markerID; });
+
+			if(marker instanceof L.Marker) {
+				console.log('is marker');
+				marker = marker.toGeoJSON();
+			}
 
 			if(fragment) {
 				if(!silent)
@@ -184,16 +195,25 @@
 			}
 
 			if(!silent) {
-				var center = [
-					marker.geometry.coordinates[1],
-					marker.geometry.coordinates[0]
-				];
-				if(map.getZoom() < 7) {
-					var zoom = 7;
-					if(map.conf.maxZoom < 7)
-						zoom = map.conf.maxZoom;
+
+				var center,
+					zoom;
+
+				if(marker.geometry) {
+					center = [
+						marker.geometry.coordinates[1],
+						marker.geometry.coordinates[0]
+					];
+					if(map.getZoom() < 7) {
+						zoom = 7;
+						if(map.conf.maxZoom < 7)
+							zoom = map.conf.maxZoom;
+					} else {
+						zoom = map.getZoom();
+					}
 				} else {
-					zoom = map.getZoom();
+					center = map.conf.center;
+					zoom = map.conf.zoom;
 				}
 
 				var viewOptions = {
