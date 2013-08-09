@@ -9,7 +9,8 @@
 
  #embed-map {
  	width: 100%;
- 	height: 600px !important;
+ 	height: auto !important;
+ 	padding: 0 !important;
  }
 
  #embed-header {
@@ -40,6 +41,10 @@
 
  .map-container .map .map-legends {
  	background: #fff !important;
+ }
+
+ #print-legend {
+ 	margin: 20px;
  }
 
 /* Disable from the print view */

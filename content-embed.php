@@ -54,11 +54,11 @@
 		$conf['center'] = array($_GET['lat'], $_GET['lon']);
 		$conf['forceCenter'] = true;
 	}
-	$conf = json_encode($conf);
+	$json_conf = json_encode($conf);
 	?>
 	<script type="text/javascript">
 		(function($) {
-			mappress(<?php echo $conf; ?>, function(map) {
+			mappress(<?php echo $json_conf; ?>, function(map) {
 
 				var track = function() {
 					var c = map.getCenter();
@@ -81,16 +81,56 @@
 	<div class="map-container"><div id="map_embed" class="map"></div></div>
 </section>
 
-<script type="text/javascript">
-	if(window.location.hash == '#print') {
-		jQuery(document).ready(function($) {
-			$('#print-css').attr('media', 'all');
-			mappress.markerCentered(function() {
-				window.print();
-			});
-		});
+<?php
+if(isset($_GET['print'])) {
+
+	// print image url
+	$print_settings = array(
+		'map_id_or_layers' => false,
+		'lat' => null,
+		'lon' => null,
+		'zoom' => null
+	);
+
+	if(isset($conf['postID'])) {
+		$legend = mappress_get_map_legend($conf['postID']);
+		if($legend)
+			echo '<div id="print-legend">' . mappress_get_map_legend($conf['postID']) . '</div>';
+		
+		$print_settings['map_id_or_layers'] = $conf['postID'];
+	} else {
+		$print_settings['map_id_or_layers'] = $conf['layers'];
 	}
-</script>
+
+	if(isset($conf['center'])) {
+		$print_settings['lat'] = $conf['center'][0];
+		$print_settings['lon'] = $conf['center'][1];
+	} elseif(isset($_GET['p'])) {
+		$coordinates = mappress_get_marker_coordinates($_GET['p']);
+		$print_settings['lat'] = $coordinates[1];
+		$print_settings['lon'] = $coordinates[0];
+		$print_settings['zoom'] = 7;
+	}
+
+	if(isset($conf['zoom'])) {
+		$print_settings['zoom'] = 'zoom';
+	}
+
+	$image_url = mappress_get_mapbox_image($print_settings['map_id_or_layers'], 640, 400, $print_settings['lat'], $print_settings['lon'], $print_settings['zoom']);
+
+	?>
+	<script type="text/javascript">
+
+		if(window.location.hash == '#print') {
+			jQuery(document).ready(function($) {
+				$('#print-css').attr('media', 'all');
+				infoamazoniaPrint({}, '<?php echo $image_url; ?>');
+			});
+		}
+
+	</script>
+<?php
+} ?>
 
 <?php wp_footer(); ?>
 </body>

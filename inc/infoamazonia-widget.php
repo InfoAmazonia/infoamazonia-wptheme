@@ -15,6 +15,7 @@ class InfoAmazonia_Widget {
 		add_action('template_redirect', array($this, 'template_redirect'));
 		add_action('init', array($this, 'embed_map_query'), 1);
 		add_filter('wp_nav_menu_items', array($this, 'nav'), 10, 2);
+		add_action('mappress_before_embed', array($this, 'print_scripts'));
 	}
 
 	function query_var($vars) {
@@ -67,6 +68,15 @@ class InfoAmazonia_Widget {
 	function get_share_url($vars = array()) {
 		$query = http_build_query($vars);
 		return home_url('/' . qtrans_getLanguage() . '/' . $this->slug . '/?' . $query);
+	}
+
+	/*
+	 * Print
+	 */
+	function print_scripts() {
+
+		wp_enqueue_script('infoamazonia-print', get_stylesheet_directory_uri() . '/js/infoamazonia.print.js', array('jquery', 'imagesloaded'));
+
 	}
 }
 
