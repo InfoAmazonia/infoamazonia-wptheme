@@ -175,13 +175,10 @@
 				marker = _.find(features, function(m) { return m.toGeoJSON().properties.id === markerID; });
 			}
 
-			console.log(geojson);
-
 			if(markerID && !marker)
 				marker = _.find(geojson.features, function(f) { return f.properties.id === markerID; });
 
 			if(marker instanceof L.Marker) {
-				console.log('is marker');
 				marker = marker.toGeoJSON();
 			}
 
