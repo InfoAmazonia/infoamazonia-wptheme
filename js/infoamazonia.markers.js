@@ -89,9 +89,12 @@
 					l.bindPopup(f.properties.bubble);
 
 					l.on('mouseover', function(e) {
+						e.target.previousOffset = e.target.options.zIndexOffset;
+						e.target.setZIndexOffset(1500);
 						e.target.openPopup();
 					});
 					l.on('mouseout', function(e) {
+						e.target.setZIndexOffset(e.target.previousOffset);
 						e.target.closePopup();
 					});
 					l.on('click', function(e) {
@@ -166,7 +169,7 @@
 		};
 
 		markers.open = function(marker, silent) {
-			
+
 			if(activeMarker instanceof L.Marker) {
 				activeMarker.setIcon(activeMarker.markerIcon);
 				activeMarker.setZIndexOffset(0);
@@ -185,7 +188,7 @@
 			if(marker instanceof L.Marker) {
 				activeMarker = marker;
 				marker.setIcon(activeIcon);
-				marker.setZIndexOffset(1);
+				marker.setZIndexOffset(1000);
 				marker = marker.toGeoJSON();
 			}
 
