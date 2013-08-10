@@ -13,7 +13,10 @@
 			features = [],
 			geojson,
 			fragment = false,
-			listPost;
+			listPost,
+			icon = L.Icon.extend({}),
+			activeIcon = new icon(infoamazonia_markers.marker_active),
+			activeMarker;
 
 		// setup sidebar
 		if(!map.conf.disableSidebar) {
@@ -40,7 +43,6 @@
 
 		var _build = function(geojson) {
 
-			var icon = L.Icon.extend({});
 			var icons = {};
 
 			var parentLayer;
@@ -77,6 +79,8 @@
 							var fIcon = new icon(f.properties.marker);
 							icons[f.properties.marker.markerId] = fIcon;
 						}
+
+						l.markerIcon = fIcon;
 
 						l.setIcon(fIcon);
 
@@ -162,10 +166,10 @@
 		};
 
 		markers.open = function(marker, silent) {
-
-			if(map.conf.sidebar === false) {
-				window.location = marker.properties.url;
-				return false;
+			
+			if(activeMarker instanceof L.Marker) {
+				activeMarker.setIcon(activeMarker.markerIcon);
+				activeMarker.setZIndexOffset(0);
 			}
 
 			// if marker is string, get object
@@ -179,7 +183,15 @@
 				marker = _.find(geojson.features, function(f) { return f.properties.id === markerID; });
 
 			if(marker instanceof L.Marker) {
+				activeMarker = marker;
+				marker.setIcon(activeIcon);
+				marker.setZIndexOffset(1);
 				marker = marker.toGeoJSON();
+			}
+
+			if(map.conf.sidebar === false) {
+				window.location = marker.properties.url;
+				return false;
 			}
 
 			if(fragment) {
