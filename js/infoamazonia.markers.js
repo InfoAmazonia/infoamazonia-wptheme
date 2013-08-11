@@ -189,6 +189,7 @@
 				activeMarker = marker;
 				marker.setIcon(activeIcon);
 				marker.setZIndexOffset(1000);
+				marker.previousOffset = 1000;
 				marker = marker.toGeoJSON();
 			}
 
