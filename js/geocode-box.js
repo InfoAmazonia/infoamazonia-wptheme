@@ -16,7 +16,13 @@ jQuery(function($) {
 
 		$(this).find('.open-geocode-box').click(function() {
 			$('#geocode-box').addClass('active');
+			$('#geocode-box #geocode_address').val(config.addressInput.val());
 			geocodeBox();
+		});
+
+		$('#geocode-box .close-geocode').click(function() {
+			$('#geocode-box').removeClass('active');
+			return false;
 		});
 
 		$('#geocode-box .finish-geocode-box').click(function() {
