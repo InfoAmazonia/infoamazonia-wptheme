@@ -128,9 +128,9 @@
 			if(fragment) {
 				var fStoryID = fragment.get('story');
 				if(fStoryID) {
-					var found = _.any(features, function(c) {
-						if(c.toGeoJSON().properties.id == fStoryID) {
-							story = c;
+					var found = _.any(geojson.features, function(f) {
+						if(f.properties.id == fStoryID) {
+							story = fStoryID;
 							if(fragment.get('loc'))
 								silent = true;
 							return true;
@@ -228,6 +228,12 @@
 					center = map.conf.center;
 					zoom = map.conf.zoom;
 				}
+
+				if(!center || isNaN(center[0]))
+					center = [0,0];
+
+				if(!zoom)
+					zoom = 1;
 
 				var viewOptions = {
 					animate: true,
