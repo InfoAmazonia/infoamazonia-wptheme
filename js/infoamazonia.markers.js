@@ -1,6 +1,6 @@
 (function($) {
 
-	mappress.createCallback('markerCentered');
+	jeo.createCallback('markerCentered');
 
 	var markers = function(map) {
 
@@ -26,8 +26,8 @@
 			map.invalidateSize(true);
 		}
 
-		if(typeof mappress.fragment === 'function' && !map.conf.disableHash)
-			fragment = mappress.fragment();
+		if(typeof jeo.fragment === 'function' && !map.conf.disableHash)
+			fragment = jeo.fragment();
 
 		$.getJSON(infoamazonia_markers.ajaxurl,
 		{
@@ -164,7 +164,7 @@
 				silent = true;
 
 			markers.open(story, silent);
-			mappress.runCallbacks('markersReady', [map]);
+			jeo.runCallbacks('markersReady', [map]);
 
 		};
 
@@ -263,7 +263,7 @@
 				}
 			}
 
-			mappress.runCallbacks('markerCentered', [map]);
+			jeo.runCallbacks('markerCentered', [map]);
 
 			// populate sidebar
 			if(map.$.sidebar && map.$.sidebar.length) {
@@ -434,7 +434,7 @@
 
 				if(map.currentMapID) {
 
-					mappress.groupChanged(function(mapID, group) {
+					jeo.groupChanged(function(mapID, group) {
 
 						share_vars = '?p=' + marker.properties.postID + '&map_id=' + mapID;
 
@@ -510,7 +510,7 @@
 		};
 	}
 
-	mappress.mapReady(markers);
-	mappress.createCallback('markersReady');
+	jeo.mapReady(markers);
+	jeo.createCallback('markersReady');
 
 })(jQuery);

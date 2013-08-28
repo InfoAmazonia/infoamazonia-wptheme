@@ -58,7 +58,7 @@
 	?>
 	<script type="text/javascript">
 		(function($) {
-			mappress(<?php echo $json_conf; ?>, function(map) {
+			jeo(<?php echo $json_conf; ?>, function(map) {
 
 				var track = function() {
 					var c = map.getCenter();
@@ -93,9 +93,9 @@ if(isset($_GET['print'])) {
 	);
 
 	if(isset($conf['postID'])) {
-		$legend = mappress_get_map_legend($conf['postID']);
+		$legend = jeo_get_map_legend($conf['postID']);
 		if($legend)
-			echo '<div id="print-legend">' . mappress_get_map_legend($conf['postID']) . '</div>';
+			echo '<div id="print-legend">' . jeo_get_map_legend($conf['postID']) . '</div>';
 		
 		$print_settings['map_id_or_layers'] = $conf['postID'];
 	} else {
@@ -106,7 +106,7 @@ if(isset($_GET['print'])) {
 		$print_settings['lat'] = $conf['center'][0];
 		$print_settings['lon'] = $conf['center'][1];
 	} elseif(isset($_GET['p'])) {
-		$coordinates = mappress_get_marker_coordinates($_GET['p']);
+		$coordinates = jeo_get_marker_coordinates($_GET['p']);
 		$print_settings['lat'] = $coordinates[1];
 		$print_settings['lon'] = $coordinates[0];
 		$print_settings['zoom'] = 7;
@@ -116,7 +116,7 @@ if(isset($_GET['print'])) {
 		$print_settings['zoom'] = 'zoom';
 	}
 
-	$image_url = mappress_get_mapbox_image($print_settings['map_id_or_layers'], 640, 400, $print_settings['lat'], $print_settings['lon'], $print_settings['zoom']);
+	$image_url = jeo_get_mapbox_image($print_settings['map_id_or_layers'], 640, 400, $print_settings['lat'], $print_settings['lon'], $print_settings['zoom']);
 
 	?>
 	<script type="text/javascript">

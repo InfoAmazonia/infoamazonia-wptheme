@@ -1,5 +1,5 @@
 <?php
-$mapgroup = mappress_get_mapgroup_data();
+$mapgroup = jeo_get_mapgroup_data();
 $main_maps = $more_maps = array();
 // separate main maps from "more" maps
 foreach($mapgroup['maps'] as $map) {
@@ -10,7 +10,7 @@ foreach($mapgroup['maps'] as $map) {
 }
 ?>
 <div class="mapgroup-container">
-	<div id="mapgroup_<?php echo mappress_get_the_ID(); ?>" class="mapgroup">
+	<div id="mapgroup_<?php echo jeo_get_the_ID(); ?>" class="mapgroup">
 		<ul class="map-nav">
 			<?php
 			foreach($main_maps as $map) :
@@ -39,11 +39,11 @@ foreach($mapgroup['maps'] as $map) {
 			<?php endif; ?>
 		</ul>
 		<div class="map-container">
-			<div id="mapgroup_<?php echo mappress_get_the_ID(); ?>_map" class="map">
+			<div id="mapgroup_<?php echo jeo_get_the_ID(); ?>_map" class="map">
 			</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-	var group = mappress.group(<?php echo mappress_mapgroup_conf(); ?>);
+	var group = jeo.group(<?php echo jeo_mapgroup_conf(); ?>);
 </script>

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * MapPress embed tool
+ * InfoAmazonia Widget
  */
 
 class InfoAmazonia_Widget {
@@ -16,7 +16,7 @@ class InfoAmazonia_Widget {
 		add_action('init', array($this, 'embed_map_query'), 1);
 		add_action('pre_get_posts', array($this, 'embed_query'));
 		add_filter('wp_nav_menu_items', array($this, 'nav'), 10, 2);
-		add_action('mappress_before_embed', array($this, 'print_scripts'));
+		add_action('jeo_before_embed', array($this, 'print_scripts'));
 	}
 
 	function query_var($vars) {
@@ -55,7 +55,7 @@ class InfoAmazonia_Widget {
 
 	function embed_map_query() {
 		if(isset($_GET['map_id'])) {
-			mappress_set_map(get_post($_GET['map_id']));
+			jeo_set_map(get_post($_GET['map_id']));
 		}
 	}
 

@@ -9,9 +9,9 @@
 					<?php echo get_the_term_list($post->ID, 'publisher', '', ', ', ''); ?>
 					<h1 class="title"><?php the_title(); ?></h1>
 				</header>
-				<?php if(mappress_has_marker_location()) : ?>
+				<?php if(jeo_has_marker_location()) : ?>
 					<div id="main-map" class="stage-map">
-						<?php mappress_map(); ?>
+						<?php jeo_map(); ?>
 					</div>
 				<?php endif; ?>
 			</div>
@@ -28,7 +28,7 @@
 							<a class="button" href="<?php echo get_post_meta($post->ID, 'url', true); ?>" target="_blank"><?php _e('Go to the original article', 'infoamazonia'); ?></a>
 							<p class="buttons">
 								<a class="button embed-button" href="<?php echo infoamazonia_get_share_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Embed this story', 'infoamazonia'); ?></a>
-								<a class="button print-button" href="<?php echo mappress_get_embed_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Print', 'infoamazonia'); ?></a>
+								<a class="button print-button" href="<?php echo jeo_get_embed_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Print', 'infoamazonia'); ?></a>
 							</p>
 							<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>
 							<div class="twitter-button">
@@ -44,15 +44,15 @@
 				<script type="text/javascript">
 					var embedUrl = jQuery('.embed-button').attr('href');
 					var printUrl = jQuery('.print-button').attr('href');
-					mappress.mapReady(function(map) {
+					jeo.mapReady(function(map) {
 						if(map.conf.postID) {
 							jQuery('.print-button').attr('href', printUrl + '&map_id=' + map.conf.postID + '#print');
 							jQuery('.embed-button').attr('href', embedUrl + '&map_id=' + map.conf.postID);
 						}
 					});
-					mappress.groupReady(function(group) {
+					jeo.groupReady(function(group) {
 						jQuery('.print-button').attr('href', printUrl + '&map_id=' + group.currentMapID + '#print');
-						mappress.groupChanged(function(mapID) {
+						jeo.groupChanged(function(mapID) {
 							jQuery('.print-button').attr('href', printUrl + '&map_id=' + mapID + '#print');
 						});
 					});

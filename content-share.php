@@ -45,7 +45,7 @@
 			  <div id='maps'>
 				<?php
 				if(!isset($_GET['layers'])) {
-					$layers = mappress_get_map_layers($map_id);
+					$layers = jeo_get_map_layers($map_id);
 				} else {
 					$layers = explode(',', $_GET['layers']);
 				}

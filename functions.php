@@ -9,17 +9,17 @@ include(STYLESHEETPATH . '/inc/category-feeds-widget.php');
 function infoamazonia_geocode_service() {
 	return 'osm';
 }
-add_filter('mappress_geocode_service', 'infoamazonia_geocode_service');
+add_filter('jeo_geocode_service', 'infoamazonia_geocode_service');
 
 function infoamazonia_scripts() {
 	/*
 	 * Register scripts & styles
 	 */
 
-	// deregister mappress styles
-	wp_deregister_style('mappress-base');
-	wp_deregister_style('mappress-skeleton');
-	wp_deregister_style('mappress-main');
+	// deregister jeo styles
+	wp_deregister_style('jeo-base');
+	wp_deregister_style('jeo-skeleton');
+	wp_deregister_style('jeo-main');
 
 	/* Shadowbox */
 	wp_register_script('shadowbox', get_stylesheet_directory_uri() . '/lib/shadowbox/shadowbox.js', array('jquery'), '3.0.3');
@@ -35,12 +35,12 @@ function infoamazonia_scripts() {
 	wp_register_script('twttr', 'http://platform.twitter.com/widgets.js');
 
 	// custom marker system
-	global $mappress_markers;
-	wp_deregister_script('mappress.markers');
-	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('mappress', 'underscore', 'shadowbox', 'twttr'), '0.3.1', true);
+	global $jeo_markers;
+	wp_deregister_script('jeo.markers');
+	wp_register_script('infoamazonia.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.1', true);
 	wp_localize_script('infoamazonia.markers', 'infoamazonia_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
-		'query' => $mappress_markers->query(),
+		'query' => $jeo_markers->query(),
 		'stories_label' => __('stories', 'infoamazonia'),
 		'home' => is_front_page(),
 		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
@@ -68,8 +68,8 @@ function infoamazonia_scripts() {
 			'infographic' => __('View infographic', 'infoamazonia'),
 			'infographics' => __('View infographics', 'infoamazonia')
 		),
-		'enable_clustering' => mappress_use_clustering() ? true : false,
-		'default_icon' => mappress_formatted_default_marker()
+		'enable_clustering' => jeo_use_clustering() ? true : false,
+		'default_icon' => jeo_formatted_default_marker()
 	));
 
 	// styles
@@ -142,7 +142,7 @@ function infoamazonia_map_data($data, $map) {
 	$data['layers'] = $layers;
 	return $data;
 }
-add_filter('mappress_map_data', 'infoamazonia_map_data', 10, 2);
+add_filter('jeo_map_data', 'infoamazonia_map_data', 10, 2);
 
 // slideshow
 include(STYLESHEETPATH . '/inc/slideshow.php');
@@ -157,7 +157,7 @@ include(STYLESHEETPATH . '/inc/infoamazonia-widget.php');
 function infoamazonia_featured_map_type() {
 	return 'map-group';
 }
-add_filter('mappress_featured_map_type', 'infoamazonia_featured_map_type');
+add_filter('jeo_featured_map_type', 'infoamazonia_featured_map_type');
 
 // story fragment title
 add_filter('wp_title', 'infoamazonia_story_fragment_title', 10, 2);
@@ -178,7 +178,7 @@ function infoamazonia_geojson_api_query($query) {
 	$query['posts_per_page'] = 20;
 	return $query;
 }
-add_filter('mappress_geojson_api_query', 'infoamazonia_geojson_api_query');
+add_filter('jeo_geojson_api_query', 'infoamazonia_geojson_api_query');
 
 // add qtrans filter to get_permalink
 add_filter('post_type_link', 'qtrans_convertURL');
@@ -200,7 +200,7 @@ function infoamazonia_marker_data($data) {
 	$data['thumbnail'] = infoamazonia_get_thumbnail();
 	return $data;
 }
-add_filter('mappress_marker_data', 'infoamazonia_marker_data');
+add_filter('jeo_marker_data', 'infoamazonia_marker_data');
 
 function infoamazonia_get_thumbnail($post_id = false) {
 	global $post;
@@ -236,7 +236,7 @@ function infoamazonia_all_markers_if_none($posts, $query) {
 		$posts = get_posts(array('post_type' => 'post', 'posts_per_page' => -1));
 	return $posts;
 }
-add_filter('mappress_the_markers', 'infoamazonia_all_markers_if_none', 10, 2);
+add_filter('jeo_the_markers', 'infoamazonia_all_markers_if_none', 10, 2);
 
 // multilanguage publishers
 add_action('publisher_add_form', 'qtrans_modifyTermFormFor');
@@ -246,7 +246,7 @@ add_action('publisher_edit_form', 'qtrans_modifyTermFormFor');
 function infoamazonia_markers_limit() {
 	return 100;
 }
-add_filter('mappress_markers_limit', 'infoamazonia_markers_limit');
+add_filter('jeo_markers_limit', 'infoamazonia_markers_limit');
 
 // flush w3tc on save_post
 function infoamazonia_flush_w3tc() {
@@ -263,8 +263,8 @@ function infoamazonia_story_sidebar($conf) {
 	}
 	return $conf;
 }
-add_filter('mappress_map_conf', 'infoamazonia_story_sidebar');
-add_filter('mappress_mapgroup_conf', 'infoamazonia_story_sidebar');
+add_filter('jeo_map_conf', 'infoamazonia_story_sidebar');
+add_filter('jeo_mapgroup_conf', 'infoamazonia_story_sidebar');
 
 // search placeholder
 function infoamazonia_search_placeholder() {
@@ -284,7 +284,7 @@ function infoamazonia_before_embed() {
 	remove_action('wp_footer', 'infoamazonia_submit');
 	remove_action('wp_footer', 'infoamazonia_geocode_box');
 }
-add_action('mappress_before_embed', 'infoamazonia_before_embed');
+add_action('jeo_before_embed', 'infoamazonia_before_embed');
 
 function infoamazonia_embed_type($post_types) {
 	if(get_query_var('embed')) {
@@ -292,7 +292,7 @@ function infoamazonia_embed_type($post_types) {
 	}
 	return $post_types;
 }
-add_filter('mappress_featured_map_type', 'infoamazonia_embed_type');
+add_filter('jeo_featured_map_type', 'infoamazonia_embed_type');
 
 
 
@@ -301,9 +301,9 @@ add_filter('mappress_featured_map_type', 'infoamazonia_embed_type');
 function infoamazonia_share_meta() {
 
 	if(is_singular('post')) {
-		$image = mappress_get_mapbox_image(false, 435, 375, mappress_get_marker_latitude(), mappress_get_marker_longitude(), 7);
+		$image = jeo_get_mapbox_image(false, 435, 375, jeo_get_marker_latitude(), jeo_get_marker_longitude(), 7);
 	} elseif(is_singular('map')) {
-		$image = mappress_get_mapbox_image(false, 435, 375);
+		$image = jeo_get_mapbox_image(false, 435, 375);
 	} elseif(isset($_GET['_escaped_fragment_'])) {
 
 		$fragment = $_GET['_escaped_fragment_'];
@@ -344,7 +344,7 @@ function infoamazonia_share_meta() {
 			$zoom = $query['zoom'];
 		}
 
-		$image = mappress_get_mapbox_image($map_id, 435, 375, $lat, $lng, $zoom);
+		$image = jeo_get_mapbox_image($map_id, 435, 375, $lat, $lng, $zoom);
 
 	}
 
@@ -374,7 +374,7 @@ function infoamazonia_posts_clauses_join($join, $clauses, $query) {
 
 	return $join;
 }
-add_filter('mappress_posts_clauses_join', 'infoamazonia_posts_clauses_join', 10, 3);
+add_filter('jeo_posts_clauses_join', 'infoamazonia_posts_clauses_join', 10, 3);
 
 function infoamazonia_posts_clauses_where($where, $clauses, $query) {
 
@@ -383,7 +383,7 @@ function infoamazonia_posts_clauses_where($where, $clauses, $query) {
 
 	return $where;
 }
-add_filter('mappress_posts_clauses_where', 'infoamazonia_posts_clauses_where', 10, 3);
+add_filter('jeo_posts_clauses_where', 'infoamazonia_posts_clauses_where', 10, 3);
 
 function infoamazonia_posts_clauses_groupby($groupby, $clauses, $query) {
 
@@ -392,7 +392,7 @@ function infoamazonia_posts_clauses_groupby($groupby, $clauses, $query) {
 
 	return $groupby;
 }
-add_filter('mappress_posts_clauses_groupby', 'infoamazonia_posts_clauses_groupby', 10, 3);
+add_filter('jeo_posts_clauses_groupby', 'infoamazonia_posts_clauses_groupby', 10, 3);
 
 /*
  * Geojson keys according to language (qTranslate fix)
@@ -401,7 +401,7 @@ add_filter('mappress_posts_clauses_groupby', 'infoamazonia_posts_clauses_groupby
 function infoamazonia_geojson_key($key) {
 	return '_ia_geojson_' . qtrans_getLanguage();
 }
-add_filter('mappress_markers_geojson_key', 'infoamazonia_geojson_key');
+add_filter('jeo_markers_geojson_key', 'infoamazonia_geojson_key');
 
 function infoamazonia_geojson_keys($keys) {
 	global $q_config;
@@ -411,4 +411,4 @@ function infoamazonia_geojson_keys($keys) {
 	}
 	return $keys;
 }
-add_filter('mappress_markers_geojson_keys', 'infoamazonia_geojson_keys');
+add_filter('jeo_markers_geojson_keys', 'infoamazonia_geojson_keys');
