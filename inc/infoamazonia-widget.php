@@ -40,11 +40,15 @@ class InfoAmazonia_Widget {
 
 	function template() {
 
+		$lang = '/';
+		if(function_exists('qtrans_getLanguage'))
+			$lang = qtrans_getLanguage() . '/';
+
 		$default_map = array_shift(get_posts(array('name' => 'deforestation', 'post_type' => 'map')));
 
 		wp_enqueue_script('infoamazonia-widget', get_stylesheet_directory_uri() . '/js/infoamazonia.widget.js', array('jquery', 'underscore', 'chosen'), '1.5.3');
 		wp_localize_script('infoamazonia-widget', 'infoamazonia_widget', array(
-			'baseurl' => home_url('/' . qtrans_getLanguage() . '/embed/'),
+			'baseurl' => home_url('/' . $lang . 'embed/'),
 			'defaultmap' => $default_map->ID,
 			'default_label' => __('default', 'infoamazonia')
 		));
@@ -74,8 +78,12 @@ class InfoAmazonia_Widget {
 	// functions
 
 	function get_share_url($vars = array()) {
+		$lang = '/';
+		if(function_exists('qtrans_getLanguage'))
+			$lang = qtrans_getLanguage() . '/';
+
 		$query = http_build_query($vars);
-		return home_url('/' . qtrans_getLanguage() . '/' . $this->slug . '/?' . $query);
+		return home_url('/' . $lang . $this->slug . '/?' . $query);
 	}
 
 	/*

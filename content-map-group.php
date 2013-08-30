@@ -33,7 +33,12 @@ foreach($mapgroup['maps'] as $map) {
 							<?php
 							wp_reset_postdata();
 						endforeach; ?>
-						<li><a href="<?php echo qtrans_convertURL(get_post_type_archive_link('map')); ?>"><?php _e('View all maps', 'infoamazonia'); ?></a></li>
+						<?php
+						$link = get_post_type_archive_link('map');
+						if(function_exists('qtrans_convertURL'))
+							$link = qtrans_convertURL(get_post_type_archive_link('map'));
+						?>
+						<li><a href="<?php echo $link; ?>"><?php _e('View all maps', 'infoamazonia'); ?></a></li>
 					</ul>
 				</li>
 			<?php endif; ?>

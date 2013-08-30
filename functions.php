@@ -34,6 +34,11 @@ function infoamazonia_scripts() {
 
 	wp_register_script('twttr', 'http://platform.twitter.com/widgets.js');
 
+	$lang = '';
+	if(function_exists('qtrans_getLanguage')) {
+		$lang = qtrans_getLanguage();
+	}
+
 	// custom marker system
 	global $jeo_markers;
 	wp_deregister_script('jeo.markers');
@@ -47,8 +52,8 @@ function infoamazonia_scripts() {
 		'share_label' => __('Share this', 'infoamazonia'),
 		'embed_label' => __('Embed', 'infoamazonia'),
 		'print_label' => __('Print', 'infoamazonia'),
-		'embed_base_url' => home_url('/' . qtrans_getLanguage() . '/embed/'),
-		'share_base_url' => home_url('/' . qtrans_getLanguage() . '/share/'),
+		'embed_base_url' => home_url('/' . $lang . '/embed/'),
+		'share_base_url' => home_url('/' . $lang . '/share/'),
 		'marker_active' => array(
 			'iconUrl' => get_stylesheet_directory_uri() . '/img/marker_active.png',
 			'iconSize' => array(26, 30),
@@ -56,7 +61,7 @@ function infoamazonia_scripts() {
 			'popupAnchor' => array(0, -40),
 			'markerId' => 'none'
 		),
-		'language' => qtrans_getLanguage(),
+		'language' => $lang,
 		'site_url' => home_url('/'),
 		'read_more_label' => __('Read', 'infoamazonia'),
 		'lightbox_label' => array(
@@ -186,7 +191,12 @@ add_filter('post_type_link', 'qtrans_convertURL');
 // custom marker data
 function infoamazonia_marker_data($data) {
 	global $post;
-	$data['permalink'] = qtrans_convertURL($data['url'], qtrans_getLanguage());
+
+	$permalink = $data['url'];
+	if(function_exists('qtrans_getLanguage'))
+		$permalink = qtrans_convertURL($data['url'], qtrans_getLanguage());
+
+	$data['permalink'] = $permalink;
 	$data['url'] = get_post_meta($post->ID, 'url', true);
 	$data['content'] = infoamazonia_strip_content_media();
 	$data['slideshow'] = infoamazonia_get_content_media();
@@ -399,15 +409,20 @@ add_filter('jeo_posts_clauses_groupby', 'infoamazonia_posts_clauses_groupby', 10
  */
 
 function infoamazonia_geojson_key($key) {
-	return '_ia_geojson_' . qtrans_getLanguage();
+	if(function_exists('qtrans_getLanguage'))
+		$key = '_ia_geojson_' . qtrans_getLanguage();
+
+	return $key;
 }
 add_filter('jeo_markers_geojson_key', 'infoamazonia_geojson_key');
 
 function infoamazonia_geojson_keys($keys) {
-	global $q_config;
-	$keys = array();
-	foreach($q_config['enabled_languages'] as $lang) {
-		$keys[] = '_ia_geojson_' . $lang;
+	if(function_exists('qtrans_getLanguage')) {
+		global $q_config;
+		$keys = array();
+		foreach($q_config['enabled_languages'] as $lang) {
+			$keys[] = '_ia_geojson_' . $lang;
+		}
 	}
 	return $keys;
 }
