@@ -106,9 +106,12 @@
 
 			});
 
+			map._markers = features;
 			map._markerLayer = layer;
 
 			layer.addTo(parentLayer);
+			
+			jeo.runCallbacks('markersReady', [map]);
 
 			if(map.conf.sidebar === false)
 				return;
@@ -164,7 +167,6 @@
 				silent = true;
 
 			markers.open(story, silent);
-			jeo.runCallbacks('markersReady', [map]);
 
 		};
 
@@ -434,9 +436,9 @@
 
 				if(map.currentMapID) {
 
-					jeo.groupChanged(function(mapID, group) {
+					jeo.groupChanged(function(group, prevMap) {
 
-						share_vars = '?p=' + marker.properties.postID + '&map_id=' + mapID;
+						share_vars = '?p=' + marker.properties.postID + '&map_id=' + group.currentMapID;
 
 						embed_url = infoamazonia_markers.share_base_url + share_vars;
 						print_url = infoamazonia_markers.embed_base_url + share_vars + '&print=1' + '#print';
@@ -461,11 +463,13 @@
 						// fb
 						map.$.sidebar.share.find('.fb-like').html('<iframe src="//www.facebook.com/plugins/like.php?' + $.param(fb_vars) + '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:20px;" allowTransparency="true"></iframe>');
 						map.$.sidebar.share.find('.twitter-button').empty();
-						twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
-							lang: infoamazonia_markers.language,
-							via: 'InfoAmazonia',
-							text: marker.properties.title
-						});
+						if(twttr) {
+							twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
+								lang: infoamazonia_markers.language,
+								via: 'InfoAmazonia',
+								text: marker.properties.title
+							});
+						}
 
 					});
 
@@ -490,11 +494,13 @@
 				// fb
 				map.$.sidebar.share.find('.fb-like').html('<iframe src="//www.facebook.com/plugins/like.php?' + $.param(fb_vars) + '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:20px;" allowTransparency="true"></iframe>');
 				map.$.sidebar.share.find('.twitter-button').empty();
-				twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
-					lang: infoamazonia_markers.language,
-					via: 'InfoAmazonia',
-					text: marker.properties.title
-				});
+				if(twttr) {
+					twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
+						lang: infoamazonia_markers.language,
+						via: 'InfoAmazonia',
+						text: marker.properties.title
+					});
+				}
 
 			}
 

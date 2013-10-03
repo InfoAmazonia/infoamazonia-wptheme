@@ -52,8 +52,8 @@
 					});
 					jeo.groupReady(function(group) {
 						jQuery('.print-button').attr('href', printUrl + '&map_id=' + group.currentMapID + '#print');
-						jeo.groupChanged(function(mapID) {
-							jQuery('.print-button').attr('href', printUrl + '&map_id=' + mapID + '#print');
+						jeo.groupChanged(function(group, prevMap) {
+							jQuery('.print-button').attr('href', printUrl + '&map_id=' + group.currentMapID + '#print');
 						});
 					});
 				</script>

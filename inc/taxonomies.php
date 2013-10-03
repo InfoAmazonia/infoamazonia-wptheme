@@ -4,7 +4,7 @@
 	REGISTER TAXONOMIES
 */
 
-add_action( 'init', 'register_taxonomy_publisher' );
+add_action( 'jeo_init', 'register_taxonomy_publisher' );
 
 function register_taxonomy_publisher() {
 
