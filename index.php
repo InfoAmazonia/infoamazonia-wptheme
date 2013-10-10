@@ -13,8 +13,6 @@
 
 <section id="content">
 
-	<?php print_r(get_taxonomies(array('_builtin' => true, 'public' => true))); ?>
-
 	<?php get_template_part('section', 'publisher-description'); ?>
 
 	<div class="container">

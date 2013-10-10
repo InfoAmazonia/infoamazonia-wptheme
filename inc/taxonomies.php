@@ -26,11 +26,10 @@ function register_taxonomy_publisher() {
     $args = array( 
         'labels' => $labels,
         'public' => true,
-        'show_in_nav_menus' => false,
+        'show_in_nav_menus' => true,
         'show_ui' => true,
         'show_tagcloud' => true,
         'hierarchical' => true,
-
         'rewrite' => array('slug' => 'publisher', 'with_front' => false),
         'query_var' => 'publisher'
     );
