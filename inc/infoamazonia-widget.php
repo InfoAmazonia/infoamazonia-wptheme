@@ -96,7 +96,7 @@ class InfoAmazonia_Widget {
 	}
 }
 
-$infoamazonia_widget = new InfoAmazonia_Widget();
+//$infoamazonia_widget = new InfoAmazonia_Widget();
 
 function infoamazonia_get_share_url($vars = array()) {
 	global $infoamazonia_widget;

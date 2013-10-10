@@ -5,6 +5,34 @@ include(STYLESHEETPATH . '/inc/metaboxes/metaboxes.php');
 
 include(STYLESHEETPATH . '/inc/category-feeds-widget.php');
 
+// infoamazonia setup
+
+// register taxonomies
+include(STYLESHEETPATH . '/inc/taxonomies.php');
+// taxonomy meta
+include(STYLESHEETPATH . '/inc/taxonomies-meta.php');
+
+function infoamazonia_setup() {
+
+	add_theme_support('post-thumbnails');
+	add_image_size('post-thumb', 245, 90, true);
+	add_image_size('map-thumb', 200, 200, true);
+
+	// text domain
+	load_child_theme_textdomain('infoamazonia', get_stylesheet_directory() . '/languages');
+
+	//sidebars
+	register_sidebar(array(
+		'name' => __('Main widgets', 'infoamazonia'),
+		'id' => 'main-sidebar',
+		'description' => __('Widgets used on front and inside pages.', 'infoamazonia'),
+		'before_title' => '<h3>',
+		'after_title' => '</h3>'
+	));
+
+}
+add_action('after_setup_theme', 'infoamazonia_setup');
+
 // set OSM geocode
 function infoamazonia_geocode_service() {
 	return 'osm';
@@ -17,8 +45,6 @@ function infoamazonia_scripts() {
 	 */
 
 	// deregister jeo styles
-	wp_deregister_style('jeo-base');
-	wp_deregister_style('jeo-skeleton');
 	wp_deregister_style('jeo-main');
 
 	/* Shadowbox */
@@ -42,7 +68,7 @@ function infoamazonia_scripts() {
 	// custom marker system
 	global $jeo_markers;
 	wp_deregister_script('jeo.markers');
-	wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.5', true);
+	wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.6', true);
 	wp_localize_script('jeo.markers', 'infoamazonia_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
 		'query' => $jeo_markers->query(),
@@ -77,12 +103,10 @@ function infoamazonia_scripts() {
 		'default_icon' => jeo_formatted_default_marker()
 	));
 
-	do_action('jeo_childtheme_custom_scripts');
-
 	// styles
 	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
 	wp_register_style('reset', get_stylesheet_directory_uri() . '/css/reset.css', array(), '2.0');
-	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.2.4');
+	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array('jeo-skeleton', 'jeo-base', 'jeo-lsf'), '1.2.5');
 
 	/*
 	 * Enqueue scripts & styles
@@ -92,7 +116,7 @@ function infoamazonia_scripts() {
 	wp_enqueue_script('submit-story');
 	// styles
 	wp_enqueue_style('site');
-	wp_enqueue_style('reset');
+	//wp_enqueue_style('reset');
 	wp_enqueue_style('main');
 	wp_enqueue_style('shadowbox');
 
@@ -104,41 +128,16 @@ function infoamazonia_scripts() {
 		'error_label' => __('Oops, please try again in a few minutes.', 'infoamazonia')
 	));
 
+	wp_enqueue_script('infoamazonia-print', get_stylesheet_directory_uri() . '/js/infoamazonia.print.js', array('jquery', 'imagesloaded'));
+
+
 }
-add_action('wp_enqueue_scripts', 'infoamazonia_scripts', 11);
+add_action('wp_enqueue_scripts', 'infoamazonia_scripts');
 
 function infoamazonia_enqueue_marker_script() {
 	wp_enqueue_script('infoamazonia.markers');
 }
 add_action('wp_footer', 'infoamazonia_enqueue_marker_script');
-
-// infoamazonia setup
-
-function infoamazonia_setup() {
-
-	// register taxonomies
-	include(STYLESHEETPATH . '/inc/taxonomies.php');
-	// taxonomy meta
-	include(STYLESHEETPATH . '/inc/taxonomies-meta.php');
-
-	add_theme_support('post-thumbnails');
-	add_image_size('post-thumb', 245, 90, true);
-	add_image_size('map-thumb', 200, 200, true);
-
-	// text domain
-	load_child_theme_textdomain('infoamazonia', get_stylesheet_directory() . '/languages');
-
-	//sidebars
-	register_sidebar(array(
-		'name' => __('Main widgets', 'infoamazonia'),
-		'id' => 'main-sidebar',
-		'description' => __('Widgets used on front and inside pages.', 'infoamazonia'),
-		'before_title' => '<h3>',
-		'after_title' => '</h3>'
-	));
-
-}
-add_action('after_setup_theme', 'infoamazonia_setup');
 
 function infoamazonia_map_data($data, $map) {
 	$map_data = get_post_meta($map->ID, 'map_data', true);
@@ -158,7 +157,7 @@ include(STYLESHEETPATH . '/inc/slideshow.php');
 include(STYLESHEETPATH . '/inc/ajax-calendar.php');
 
 // share feature
-include(STYLESHEETPATH . '/inc/infoamazonia-widget.php');
+//include(STYLESHEETPATH . '/inc/infoamazonia-widget.php');
 
 // featured map type
 function infoamazonia_featured_map_type() {

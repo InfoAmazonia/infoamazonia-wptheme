@@ -32,62 +32,65 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<header id="masthead">
-		<div class="limiter clearfix">
-			<em class="revision">
+		<div class="container">
+			<div class="twelve columns">
+				<em class="revision">
+					<?php
+					// get last post date
+					$last_post = get_posts('post_type=post&posts_per_page=1');
+					if($last_post) {
+						$post = array_shift($last_post);
+						setup_postdata($post);
+						echo __('Last updated:', 'infoamazonia') . ' ' . get_the_date();
+						wp_reset_postdata();
+					}
+					?>
+				</em>
 				<?php
-				// get last post date
-				$last_post = get_posts('post_type=post&posts_per_page=1');
-				if($last_post) {
-					$post = array_shift($last_post);
-					setup_postdata($post);
-					echo __('Last updated:', 'infoamazonia') . ' ' . get_the_date();
-					wp_reset_postdata();
-				}
+				$lang = '';
+				if(function_exists('qtrans_getLanguage'))
+					$lang = qtrans_getLanguage();
 				?>
-			</em>
-			<?php
-			$lang = '';
-			if(function_exists('qtrans_getLanguage'))
-				$lang = qtrans_getLanguage();
-			?>
-			<h1><a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
-			<?php /*
-			<h2 class="project-by"><?php _e('by', 'infoamazonia'); ?> <a class="oeco" href="http://www.oecoamazonia.com" target="_blank" rel="external">((o)) eco</a> <?php _e('and', 'infoamazonia'); ?> <a class="internews" href="http://www.internews.org" target="_blank" rel="external">Internews</a></h2>
-			*/ ?>
+				<h1><a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
+			</div>
 		</div>
 		<section id="mastnav" class="clearfix">
-			<div class="limiter">
-				<nav>
-					<ul>
-						<?php wp_nav_menu(array(
-							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li></ul>'
-						)); ?>
-					</ul>
-				</nav>
-				<?php if(function_exists('qtrans_getLanguage')) : ?>
-					<nav id="langnav">
+			<div class="container">
+				<div class="six columns">
+					<nav>
 						<ul>
-							<?php
-							global $q_config;
-							if(is_404()) $url = get_option('home'); else $url = '';
-							$current = qtrans_getLanguage();
-							foreach($q_config['enabled_languages'] as $language) {
-								$attrs = '';
-								if($language == $current)
-									$attrs = 'class="active"';
-								echo '<li><a href="' . qtrans_convertURL($url, $language) . '" ' . $attrs . '>' . $language . '</a></li>';
-							}
-							?>
+							<?php wp_nav_menu(array(
+								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li></ul>'
+							)); ?>
 						</ul>
 					</nav>
-				<?php endif; ?>
-				<nav id="social">
-					<ul>
-						<li class="twitter">
-							<a href="https://twitter.com/infoamazonia" rel="external" target="_blank"><span><?php _e('Follow us', 'infoamazonia'); ?></span></a>
-						</li>
-					</ul>
-				</nav>
+				</div>
+				<div class="six columns">
+					<?php if(function_exists('qtrans_getLanguage')) : ?>
+						<nav id="langnav">
+							<ul>
+								<?php
+								global $q_config;
+								if(is_404()) $url = get_option('home'); else $url = '';
+								$current = qtrans_getLanguage();
+								foreach($q_config['enabled_languages'] as $language) {
+									$attrs = '';
+									if($language == $current)
+										$attrs = 'class="active"';
+									echo '<li><a href="' . qtrans_convertURL($url, $language) . '" ' . $attrs . '>' . $language . '</a></li>';
+								}
+								?>
+							</ul>
+						</nav>
+					<?php endif; ?>
+					<nav id="social">
+						<ul>
+							<li class="twitter">
+								<a href="https://twitter.com/infoamazonia" rel="external" target="_blank"><span><?php _e('Follow us', 'infoamazonia'); ?></span></a>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</section>
 	</header>

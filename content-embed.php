@@ -54,7 +54,9 @@
 		$conf['center'] = array($_GET['lat'], $_GET['lon']);
 		$conf['forceCenter'] = true;
 	}
-	$json_conf = json_encode($conf);
+	//$json_conf = json_encode($conf);
+
+	$json_conf = jeo_get_map_embed_conf();
 	?>
 	<script type="text/javascript">
 		(function($) {

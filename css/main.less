@@ -121,7 +121,8 @@ input {
 strong {
 	font-weight: bold;
 }
-.button {
+.button,
+a.button {
 	background: #77a832;
 	border: 1px solid #77a832;
 	color: #fff;
@@ -221,6 +222,7 @@ header#masthead {
 		font-size: 11px;
 		float: right;
 		line-height: 14px;
+		margin-top: 20px;
 	}
 	h1 {
 		font-weight: normal;
@@ -271,6 +273,7 @@ header#masthead {
 			float: left;
 			li {
 				float: left;
+				margin: 0;
 				a {
 					display: block;
 					text-transform: uppercase;
@@ -350,12 +353,14 @@ header#masthead {
 }
 
 #searchform {
-	margin: 15px;
+	margin: 15px 15px -50px 15px;
 	padding: 0;
 	float: right;
 	display: block;
 	opacity: .8;
 	.transition(opacity .3s linear);
+	position: relative;
+	z-index: 2;
 	input[type=text] {
 		padding: 8px;
 		border-color: #e0e0e0;
@@ -363,6 +368,9 @@ header#masthead {
 		outline: none;
 		.border-radius(3px);
 		width: 300px;
+		margin: 0;
+		display: inline;
+
 	}
 	.button {
 		margin-left: 5px;
@@ -380,9 +388,6 @@ header#masthead {
 	.post-content {
 		margin: 20px 0;
 		.thumbnail {
-			width: 400px;
-			margin: 0 0 40px 40px;
-			float: right;
 			img {
 				width: 100%;
 				height: auto;
@@ -503,6 +508,8 @@ header#masthead {
 			.border-radius(4px);
 			.box-sizing(border-box);
 			li {
+				margin: 0;
+				padding: 0;
 				a {
 					display: block;
 					padding: 10px;
@@ -626,6 +633,8 @@ header#masthead {
 					}
 				}
 				ul {
+					margin: 0;
+					padding: 0;
 					display: none;
 					position: absolute;
 					top: 35px;
@@ -633,6 +642,8 @@ header#masthead {
 					z-index: 9999999;
 					border-bottom: 1px solid #ccc;
 					li {
+						margin: 0;
+						padding: 0;
 						display: block;
 						float: none;
 						a.active:after {
@@ -739,6 +750,11 @@ header#masthead {
 					margin: 1px 0 0;
 				}
 			}
+		}
+		.jeo-date-range-slider {
+			position: absolute;
+			bottom: 0;
+			right: 180px;
 		}
 		.jeo-geocode {
 			width: 200px;
@@ -1286,51 +1302,51 @@ html#embedded body {
 }
 
 .list-posts {
-	margin: 0 0 30px;
 	.transition(all 25s ease);
 	li {
-		cursor: pointer;
-		width: 25%;
-		height: 229px;
-		border-bottom: 1px solid #f0f0f0;
-		.box-sizing(border-box);
-		padding: 15px;
-		margin: 0;
-		float: left;
-		overflow: hidden;
-		.transition(opacity 0.1s linear);
-		&:hover {
-			opacity: .7;
-		}
-		img {
-			max-width: 100%;
-			height: auto;
-		}
-		h2 {
-			font-size: 16px;
-			line-height: 18px;
-		}
-		p.meta {
-			color: #96979C;
-			font: 12px/16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-			margin-bottom: 5px;
+		article {
+			cursor: pointer;
+			height: 229px;
+			border-bottom: 1px solid #f0f0f0;
+			padding: 15px;
+			margin: 0;
+			overflow: hidden;
+			.transition(opacity 0.1s linear);
+			&:hover {
+				opacity: .7;
+			}
+			img {
+				width: 100%;
+				height: auto;
+			}
+			h2 {
+				font-size: 16px;
+				line-height: 18px;
+			}
+			p.meta {
+				color: #96979C;
+				font: 12px/16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				margin-bottom: 5px;
+			}
 		}
 		&.active {
-			border-color: #77a832;
-			background-color: #8EC63D;
-			background-image: -webkit-gradient(linear, left top, left bottom, from(#8EC63D), to(#77A832));
-			background-image: -webkit-linear-gradient(top, #8EC63D, #77A832);
-			background-image: -moz-linear-gradient(top, #8EC63D, #77A832);
-			background-image: -ms-linear-gradient(top, #8EC63D, #77A832);
-			background-image: -o-linear-gradient(top, #8EC63D, #77A832);
-			background-image: linear-gradient(to bottom, #8EC63D, #77A832);
-			h2,
-			h2 a,
-			p.meta {
-				color: #fff;
-			}
-			&:hover {
-				opacity: 1;
+			article {
+				border-color: #77a832;
+				background-color: #8EC63D;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#8EC63D), to(#77A832));
+				background-image: -webkit-linear-gradient(top, #8EC63D, #77A832);
+				background-image: -moz-linear-gradient(top, #8EC63D, #77A832);
+				background-image: -ms-linear-gradient(top, #8EC63D, #77A832);
+				background-image: -o-linear-gradient(top, #8EC63D, #77A832);
+				background-image: linear-gradient(to bottom, #8EC63D, #77A832);
+				h2,
+				h2 a,
+				p.meta {
+					color: #fff;
+				}
+				&:hover {
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -1342,8 +1358,6 @@ html#embedded body {
 	background: #f0f0f0;
 	article.main,
 	.archive-list {
-		width: 66%;
-		float: left;
 		h1 {
 			margin: 0 0 30px;
 		}
@@ -1385,13 +1399,14 @@ html#embedded body {
 #map-archive {
 	.list-maps {
 		> li {
-			margin: 0 0 20px;
-			.map-container,
-			.wp-post-image {
-				width: 200px;
-				height: 200px;
-				float: left;
-				margin: 0 20px 20px 0;
+			article {
+				margin-bottom: 20px;
+				.wp-post-image {
+					width: 200px;
+					height: 200px;
+					float: left;
+					margin: 0 20px 20px 0;
+				}
 			}
 		}
 	}
@@ -1436,6 +1451,9 @@ aside#main-widgets {
 	padding: 15px 0;
 	margin: 0 0 15px;
 	color: #f0f0f0;
+	h3 {
+		color: #f0f0f0;
+	}
 	a {
 		color: #aaa;
 		&:hover {
@@ -1764,5 +1782,16 @@ footer#colophon {
 		height: 80px;
 		background: url(../img/shadowbox-previous.png);
 		margin-top: -25px;
+	}
+}
+
+/*
+ * JEO Stuff
+ */
+
+.page-header {
+	padding: 20px 0;
+	h1 {
+		margin: 0;
 	}
 }

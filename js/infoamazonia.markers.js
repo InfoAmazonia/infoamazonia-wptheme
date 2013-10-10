@@ -66,6 +66,7 @@
 
 					var marker = new L.marker(latLng);
 					features.push(marker);
+					marker.addTo(parentLayer);
 					return marker;
 
 				},
@@ -107,10 +108,10 @@
 			});
 
 			map._markers = features;
-			map._markerLayer = layer;
+			map._markerLayer = parentLayer;
 
-			layer.addTo(parentLayer);
-			
+			layer = parentLayer;
+
 			jeo.runCallbacks('markersReady', [map]);
 
 			if(map.conf.sidebar === false)

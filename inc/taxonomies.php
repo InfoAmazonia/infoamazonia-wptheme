@@ -3,9 +3,6 @@
 /* 
 	REGISTER TAXONOMIES
 */
-
-add_action( 'jeo_init', 'register_taxonomy_publisher' );
-
 function register_taxonomy_publisher() {
 
     $labels = array( 
@@ -35,8 +32,9 @@ function register_taxonomy_publisher() {
         'hierarchical' => true,
 
         'rewrite' => array('slug' => 'publisher', 'with_front' => false),
-        'query_var' => true,
+        'query_var' => 'publisher'
     );
 
     register_taxonomy('publisher', array('post'), $args);
 }
+add_action( 'jeo_init', 'register_taxonomy_publisher' );

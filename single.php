@@ -4,30 +4,39 @@
 
 	<article class="single-post">
 		<section id="stage">
-			<div class="limiter clearfix">
-				<header class="post-header">
-					<?php echo get_the_term_list($post->ID, 'publisher', '', ', ', ''); ?>
-					<h1 class="title"><?php the_title(); ?></h1>
-				</header>
-				<?php if(jeo_has_marker_location()) : ?>
-					<div id="main-map" class="stage-map">
-						<?php jeo_map(); ?>
-					</div>
-				<?php endif; ?>
+			<div class="container">
+				<div class="twelve columns">
+					<header class="post-header">
+						<?php echo get_the_term_list($post->ID, 'publisher', '', ', ', ''); ?>
+						<h1 class="title"><?php the_title(); ?></h1>
+					</header>
+					<?php if(jeo_has_marker_location()) : ?>
+						<div id="main-map" class="stage-map">
+							<?php jeo_map(); ?>
+						</div>
+					<?php endif; ?>
+				</div>
 			</div>
 		</section>
 
 		<section id="content">
-			<div class="limiter">
-				<div class="post-content clearfix">
-					<?php $thumbnail = infoamazonia_get_thumbnail(); ?>
+			<div class="container row">
+				<div class="post-content">
+					<div class="seven columns">
+						<div class="post-description">
+							<p class="date"><strong><?php echo get_the_date(); ?></strong></p>
+							<?php the_content(); ?>
+						</div>
+					</div>
+					<div class="five columns">
+						<?php $thumbnail = infoamazonia_get_thumbnail(); ?>
 						<div class="thumbnail">
 							<?php if($thumbnail) : ?>
 								<img src="<?php echo $thumbnail; ?>" />
 							<?php endif; ?>
 							<a class="button" href="<?php echo get_post_meta($post->ID, 'url', true); ?>" target="_blank"><?php _e('Go to the original article', 'infoamazonia'); ?></a>
 							<p class="buttons">
-								<a class="button embed-button" href="<?php echo infoamazonia_get_share_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Embed this story', 'infoamazonia'); ?></a>
+								<a class="button embed-button" href="<?php echo jeo_get_share_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Embed this story', 'infoamazonia'); ?></a>
 								<a class="button print-button" href="<?php echo jeo_get_embed_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Print', 'infoamazonia'); ?></a>
 							</p>
 							<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>
@@ -35,9 +44,6 @@
 								<a href="https://twitter.com/share" class="twitter-share-button" data-via="InfoAmazonia" data-lang="<?php echo qtrans_getLanguage(); ?>">Tweet</a>
 							</div>
 						</div>
-					<div class="post-description">
-						<p class="date"><strong><?php echo get_the_date(); ?></strong></p>
-						<?php the_content(); ?>
 					</div>
 				</div>
 
