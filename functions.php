@@ -68,7 +68,7 @@ function infoamazonia_scripts() {
 	// custom marker system
 	global $jeo_markers;
 	wp_deregister_script('jeo.markers');
-	wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.6', true);
+	wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.7', true);
 	wp_localize_script('jeo.markers', 'infoamazonia_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
 		'query' => $jeo_markers->query(),
@@ -76,7 +76,6 @@ function infoamazonia_scripts() {
 		'home' => is_front_page(),
 		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
 		'share_label' => __('Share this', 'infoamazonia'),
-		'embed_label' => __('Embed', 'infoamazonia'),
 		'print_label' => __('Print', 'infoamazonia'),
 		'embed_base_url' => home_url('/' . $lang . '/embed/'),
 		'share_base_url' => home_url('/' . $lang . '/share/'),
@@ -444,3 +443,12 @@ function infoamazonia_convert_url($url) {
 }
 add_filter('jeo_embed_url', 'infoamazonia_convert_url');
 add_filter('jeo_share_url', 'infoamazonia_convert_url');
+
+function infoamazonia_embed_query($query) {
+	if($query->is_main_query() && $query->get('jeo_map_embed')) {
+		if($query->get('p') || $query->get('tax_query')) {
+			$query->set('without_map_query', 1);
+		}
+	}
+}
+add_action('pre_get_posts', 'infoamazonia_embed_query');

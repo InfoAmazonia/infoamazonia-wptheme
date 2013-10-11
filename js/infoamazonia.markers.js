@@ -29,6 +29,8 @@
 		if(typeof jeo.fragment === 'function' && !map.conf.disableHash)
 			fragment = jeo.fragment();
 
+		console.log(infoamazonia_markers.query);
+
 		$.getJSON(infoamazonia_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
@@ -405,7 +407,7 @@
 					map.$.sidebar.share = map.$.sidebar.find('.sharing');
 
 					var shareContent = '';
-					shareContent += '<a class="button embed-button" href="#" target="_blank">' + infoamazonia_markers.embed_label + '</a>';
+					shareContent += '<a class="button share-button" href="#" target="_blank">' + infoamazonia_markers.share_label + '</a>';
 					shareContent += '<a class="button print-button" href="#" target="_blank">' + infoamazonia_markers.print_label + '</a>';
 					shareContent += '<div class="social">';
 					shareContent += '<div class="twitter-button"></div>';
@@ -432,20 +434,22 @@
 				var embed_url = infoamazonia_markers.share_base_url + share_vars;
 				var print_url = infoamazonia_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
-				map.$.sidebar.share.find('.embed-button').attr('href', embed_url);
+				map.$.sidebar.share.find('.share-button').attr('href', embed_url);
 				map.$.sidebar.share.find('.print-button').attr('href', print_url);
 
 				if(map.currentMapID) {
 
 					jeo.groupChanged(function(group, prevMap) {
 
-						share_vars = '?p=' + marker.properties.postID + '&map_id=' + group.currentMapID;
-
 						embed_url = infoamazonia_markers.share_base_url + share_vars;
 						print_url = infoamazonia_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
 						map.$.sidebar.share.find('.embed-button').attr('href', embed_url);
 						map.$.sidebar.share.find('.print-button').attr('href', print_url);
+						
+						/*
+
+						share_vars = '?p=' + marker.properties.postID + '&map_id=' + group.currentMapID;
 
 						var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
 						if(window != window.top)
@@ -471,13 +475,13 @@
 								text: marker.properties.title
 							});
 						}
+						*/
 
 					});
 
 				}
 
-				
-
+				/*
 				var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
 				if(window != window.top)
 					share_url = marker.properties.permalink;
@@ -502,6 +506,7 @@
 						text: marker.properties.title
 					});
 				}
+				*/
 
 			}
 
