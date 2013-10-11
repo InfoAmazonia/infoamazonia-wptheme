@@ -438,3 +438,9 @@ function infoamazonia_flush_rewrite() {
 	}
 }
 add_action('jeo_init', 'infoamazonia_flush_rewrite');
+
+function infoamazonia_convert_url($url) {
+	return qtrans_convertURL($url);
+}
+add_filter('jeo_embed_url', 'infoamazonia_convert_url');
+add_filter('jeo_share_url', 'infoamazonia_convert_url');
