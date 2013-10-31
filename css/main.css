@@ -62,6 +62,7 @@ header#masthead .project-by{font-family:'OpenSansSemiboldRegular','Helvetica Neu
 .content-map.fullscreen{z-index:9999999;position:fixed;top:0;left:0;right:0;bottom:0;}.content-map.fullscreen .map-container{z-index:100;}.content-map.fullscreen .map-container .map-fullscreen-map{position:absolute !important;}
 .content-map.fullscreen .map-container .map-widgets{position:static !important;}.content-map.fullscreen .map-container .map-widgets .map-widget{z-index:99999999 !important;}.content-map.fullscreen .map-container .map-widgets .map-widget>*{z-index:99999999 !important;}
 .map-fullscreen-view .map-fullscreen{background-position:-23px -33px !important;}
+.map-fullscreen #stage,.map-fullscreen .stage-map,.map-fullscreen .map{position:relative;z-index:200;}
 .iframe .map-fullscreen{display:none !important;}
 .map-container .leaflet-control-container .leaflet-bar{border:0;}
 .map-container .leaflet-control-container .leaflet-top .leaflet-control{float:left;clear:none;}

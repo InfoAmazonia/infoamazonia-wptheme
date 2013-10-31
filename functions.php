@@ -105,7 +105,7 @@ function infoamazonia_scripts() {
 	// styles
 	wp_register_style('site', get_stylesheet_directory_uri() . '/css/site.css', array(), '1.1'); // old styles
 	wp_register_style('reset', get_stylesheet_directory_uri() . '/css/reset.css', array(), '2.0');
-	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array('jeo-skeleton', 'jeo-base', 'jeo-lsf'), '1.2.5');
+	wp_register_style('main', get_stylesheet_directory_uri() . '/css/main.css', array('jeo-skeleton', 'jeo-base', 'jeo-lsf'), '1.2.6');
 
 	/*
 	 * Enqueue scripts & styles
@@ -131,7 +131,7 @@ function infoamazonia_scripts() {
 
 
 }
-add_action('wp_enqueue_scripts', 'infoamazonia_scripts');
+add_action('jeo_enqueue_scripts', 'infoamazonia_scripts');
 
 function infoamazonia_enqueue_marker_script() {
 	wp_enqueue_script('infoamazonia.markers');
