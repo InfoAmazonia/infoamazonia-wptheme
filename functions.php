@@ -155,9 +155,6 @@ include(STYLESHEETPATH . '/inc/slideshow.php');
 // ajax calendar
 include(STYLESHEETPATH . '/inc/ajax-calendar.php');
 
-// share feature
-//include(STYLESHEETPATH . '/inc/infoamazonia-widget.php');
-
 // featured map type
 function infoamazonia_featured_map_type() {
 	return 'map-group';
@@ -439,14 +436,17 @@ function infoamazonia_flush_rewrite() {
 add_action('jeo_init', 'infoamazonia_flush_rewrite');
 
 function infoamazonia_convert_url($url) {
-	return qtrans_convertURL($url);
+	if(function_exists('qtrans_convertURL'))
+		$url = qtrans_convertURL($url);
+	return $url;
 }
 add_filter('jeo_embed_url', 'infoamazonia_convert_url');
 add_filter('jeo_share_url', 'infoamazonia_convert_url');
 
 function infoamazonia_embed_query($query) {
-	if($query->is_main_query() && $query->get('jeo_map_embed')) {
+	if(get_query_var('jeo_map_embed')) {
 		if($query->get('p') || $query->get('tax_query')) {
+			error_log($query->get('p'));
 			$query->set('without_map_query', 1);
 		}
 	}
