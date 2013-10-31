@@ -29,8 +29,6 @@
 		if(typeof jeo.fragment === 'function' && !map.conf.disableHash)
 			fragment = jeo.fragment();
 
-		console.log(infoamazonia_markers.query);
-
 		$.getJSON(infoamazonia_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
