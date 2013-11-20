@@ -457,3 +457,12 @@ function infoamazonia_embed_query($query) {
 	}
 }
 add_action('pre_get_posts', 'infoamazonia_embed_query');
+
+function rss_noiframe($content) {
+    $content = preg_replace( '/<iframe(.*)\/iframe>/is', '', $content );
+
+    return $content;
+}
+
+add_filter('the_excerpt_rss', 'rss_noiframe');
+add_filter('the_content_feed', 'rss_noiframe');
