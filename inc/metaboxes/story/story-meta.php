@@ -6,7 +6,7 @@ add_action('save_post', 'story_meta_save_postdata');
 function story_meta_add_meta_box() {
 	add_meta_box(
 		'story_meta',
-		__('Story data', 'infoamazonia'),
+		__('Story data', 'ekuatorial'),
 		'story_meta_inner_custom_box',
 		'post',
 		'advanced',
@@ -25,31 +25,31 @@ function story_meta_inner_custom_box($post) {
 	?>
 	<div id="story-metabox">
 		<p>
-			<label for="story_author_full_name"><?php _e('Author name', 'infoamazonia'); ?></label><br/>
+			<label for="story_author_full_name"><?php _e('Author name', 'ekuatorial'); ?></label><br/>
 			<input type="text" name="author_name" value="<?php echo $author_name; ?>" id="story_author_full_name" size="30" />
 		</p>
 		<p>
-			<label for="story_author_email"><?php _e('Author email', 'infoamazonia'); ?></label><br/>
+			<label for="story_author_email"><?php _e('Author email', 'ekuatorial'); ?></label><br/>
 			<input type="text" name="author_email" value="<?php echo $author_email; ?>" id="story_author_email" size="35" />
 		</p>
 		<p>
-			<label for="story_reporter"><?php _e('Reporter', 'infoamazonia'); ?></label><br/>
+			<label for="story_reporter"><?php _e('Reporter', 'ekuatorial'); ?></label><br/>
 			<input type="text" name="reporter" value="<?php echo $reporter; ?>" id="story_reporter" size="30" />
 		</p>
 		<p>
-			<label for="story_url"><?php _e('Story url', 'infoamazonia'); ?></label><br/>
+			<label for="story_url"><?php _e('Story url', 'ekuatorial'); ?></label><br/>
 			<input type="text" name="story_url" value="<?php echo $url; ?>" id="story_url" size="60" />
 		</p>
 		<p>
-			<label for="story_picture"><?php _e('Lead picture', 'infoamazonia'); ?></label><br/>
+			<label for="story_picture"><?php _e('Lead picture', 'ekuatorial'); ?></label><br/>
 			<input type="text" name="picture" value="<?php echo $picture; ?>" id="story_picture" size="60" />
 		</p>
 		<p>
-			<label for="story_date"><?php _e('Publishing date', 'infoamazonia'); ?></label><br/>
+			<label for="story_date"><?php _e('Publishing date', 'ekuatorial'); ?></label><br/>
 			<input type="text" name="publish_date" value="<?php echo $publish_date; ?>" id="story_date" size="20" />
 		</p>
 		<p>
-			<label for="story_notes"><?php _e('Notes to the InfoAmazonia editor', 'infoamazonia'); ?></label><br/>
+			<label for="story_notes"><?php _e('Notes to the ekuatorial editor', 'ekuatorial'); ?></label><br/>
 			<textarea name="notes" id="story_notes" rows="7" cols="50"><?php echo $notes; ?></textarea>
 		</p>
 	</div>

@@ -2,11 +2,13 @@
 $mapgroup = jeo_get_mapgroup_data();
 $main_maps = $more_maps = array();
 // separate main maps from "more" maps
-foreach($mapgroup['maps'] as $map) {
-	if(!isset($map['more']))
-		$main_maps[] = $map;
-	else
-		$more_maps[] = $map;
+if(is_array($mapgroup['maps'])) {
+	foreach($mapgroup['maps'] as $map) {
+		if(!isset($map['more']))
+			$main_maps[] = $map;
+		else
+			$more_maps[] = $map;
+	}
 }
 ?>
 <div class="mapgroup-container">
@@ -23,7 +25,7 @@ foreach($mapgroup['maps'] as $map) {
 			endforeach; ?>
 			<?php if($more_maps) : ?>
 				<li class="more-tab">
-					<a href="#" class="toggle-more"><?php _e('More...', 'infoamazonia'); ?></a>
+					<a href="#" class="toggle-more"><?php _e('More...', 'ekuatorial'); ?></a>
 					<ul class="more-maps-list">
 						<?php foreach($more_maps as $map) :
 							$post = get_post($map['id']);
@@ -38,11 +40,21 @@ foreach($mapgroup['maps'] as $map) {
 						if(function_exists('qtrans_convertURL'))
 							$link = qtrans_convertURL(get_post_type_archive_link('map'));
 						?>
-						<li><a href="<?php echo $link; ?>"><?php _e('View all maps', 'infoamazonia'); ?></a></li>
+						<li><a href="<?php echo $link; ?>"><?php _e('View all maps', 'ekuatorial'); ?></a></li>
 					</ul>
 				</li>
 			<?php endif; ?>
 		</ul>
+		<?php if(!is_single()) : ?>
+			<div class="map-sidebar">
+				<div class="viewing-post">
+				</div>
+				<?php
+				if(is_front_page() && !is_paged())
+					get_template_part('section', 'sticky-posts');
+				?>
+			</div>
+		<?php endif; ?>
 		<div class="map-container">
 			<div id="mapgroup_<?php echo jeo_get_the_ID(); ?>_map" class="map">
 			</div>

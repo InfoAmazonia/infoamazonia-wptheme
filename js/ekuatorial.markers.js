@@ -15,24 +15,28 @@
 			fragment = false,
 			listPost,
 			icon = L.Icon.extend({}),
-			activeIcon = new icon(infoamazonia_markers.marker_active),
+			activeIcon = new icon(ekuatorial_markers.marker_active),
 			activeMarker;
 
 		// setup sidebar
 		if(!map.conf.disableSidebar) {
-			map.$.parents('.map-container').wrapAll('<div class="content-map" />');
-			map.$.parents('.content-map').prepend('<div class="map-sidebar"><div class="sidebar-inner"></div></div>');
-			map.$.sidebar = map.$.parents('.content-map').find('.sidebar-inner');
+			if($('.viewing-post').length) {
+				map.$.sidebar = $('.viewing-post');
+			} else {
+				map.$.parents('.map-container').wrapAll('<div class="content-map" />');
+				map.$.parents('.content-map').prepend('<div class="map-sidebar"><div class="sidebar-inner"></div></div>');
+				map.$.sidebar = map.$.parents('.content-map').find('.sidebar-inner');
+			}
 			map.invalidateSize(true);
 		}
 
 		if(typeof jeo.fragment === 'function' && !map.conf.disableHash)
 			fragment = jeo.fragment();
 
-		$.getJSON(infoamazonia_markers.ajaxurl,
+		$.getJSON(ekuatorial_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
-			query: infoamazonia_markers.query
+			query: ekuatorial_markers.query
 		},
 		function(data) {
 			geojson = data;
@@ -46,7 +50,7 @@
 			var icons = {};
 
 			var parentLayer;
-			if(infoamazonia_markers.enable_clustering) {
+			if(ekuatorial_markers.enable_clustering) {
 
 				parentLayer = new L.MarkerClusterGroup({
 					maxClusterRadius: 20,
@@ -99,7 +103,7 @@
 						e.target.closePopup();
 					});
 					l.on('click', function(e) {
-						markers.open(e.target, false);
+						markers.openMarker(e.target, false);
 						return false;
 					});
 
@@ -118,7 +122,7 @@
 				return;
 
 			/*
-			 * SIDEBAR STUFF (INFOAMAZONIA)
+			 * SIDEBAR STUFF (ekuatorial)
 			 */
 
 			// FIRST STORY
@@ -126,7 +130,7 @@
 			var silent = false;
 
 			// if not home, navigate to post
-			if(!infoamazonia_markers.home) 
+			if(!ekuatorial_markers.home) 
 				silent = false;
 
 			if(fragment) {
@@ -149,15 +153,8 @@
 			// bind list post events
 			listPosts = $('.list-posts');
 			if(listPosts.length) {
-				listPosts.find('li').click(function() {
-					var markerID = $(this).attr('id');
-					document.body.scrollTop = 0;
-					markers.open(markerID, false);
-					return false;
-				});
-
 				if(!fStoryID)
-					story = listPosts.find('li:nth-child(1)').attr('id');
+					story = listPosts.find('li:first-child').attr('id');
 			}
 
 			Shadowbox.init({
@@ -167,26 +164,41 @@
 			if(map.conf.forceCenter)
 				silent = true;
 
-			markers.open(story, silent);
+			if(fStoryID) {
+
+				markers.openMarker(story, silent);
+
+			} else if(!ekuatorial_markers.home || $('html#embedded').length) {
+
+				markers.openMarker(story, silent);
+
+			}
 
 		};
 
-		markers.open = function(marker, silent) {
+		markers.getMarker = function(markerID) {
 
-			if(activeMarker instanceof L.Marker) {
-				activeMarker.setIcon(activeMarker.markerIcon);
-				activeMarker.setZIndexOffset(0);
-			}
+			if(markerID instanceof L.Marker)
+				return markerID;
 
 			// if marker is string, get object
-			var markerID = false;
-			if(typeof marker === 'string') {
-				markerID = marker;
+			if(typeof markerID === 'string') {
 				marker = _.find(features, function(m) { return m.toGeoJSON().properties.id === markerID; });
 			}
 
 			if(markerID && !marker)
 				marker = _.find(geojson.features, function(f) { return f.properties.id === markerID; });
+
+			return marker;
+
+		};
+
+		markers.activateMarker = function(marker) {
+
+			if(activeMarker instanceof L.Marker) {
+				activeMarker.setIcon(activeMarker.markerIcon);
+				activeMarker.setZIndexOffset(0);
+			}
 
 			if(marker instanceof L.Marker) {
 				activeMarker = marker;
@@ -194,6 +206,88 @@
 				marker.setZIndexOffset(1000);
 				marker.previousOffset = 1000;
 				marker = marker.toGeoJSON();
+			}
+
+			return marker;
+
+		};
+
+		markers.focusMarker = function(marker) {
+
+			marker = markers.activateMarker(markers.getMarker(marker));
+
+			var center,
+				zoom;
+
+			if(marker.geometry) {
+				center = [
+					marker.geometry.coordinates[1],
+					marker.geometry.coordinates[0]
+				];
+				if(map.getZoom() < 7) {
+					zoom = 7;
+					if(map.conf.maxZoom < 7)
+						zoom = map.conf.maxZoom;
+				} else {
+					zoom = map.getZoom();
+				}
+			} else {
+				center = map.conf.center;
+				zoom = map.conf.zoom;
+			}
+
+			if(typeof marker.properties.zoom !== 'undefined')
+				zoom = marker.properties.zoom;
+
+			if(!center || isNaN(center[0]))
+				center = [0,0];
+
+			if(!zoom)
+				zoom = 1;
+
+			var viewOptions = {
+				animate: true,
+				duration: 1,
+				pan: {
+					animate: true,
+					duration: 1
+				},
+				zoom: { animate: true }
+			};
+
+			if(window.location.hash == '#print') {
+				viewOptions = {
+					animate: false,
+					duration: 0,
+					pan: {
+						naimate: false,
+						duration: 0
+					},
+					zoom: { animate: false }
+				};
+			}
+
+			map.setView(center, zoom, viewOptions);
+			if(fragment) {
+				fragment.rm('loc');
+			}
+
+			return marker;
+
+		};
+
+		markers.openMarker = function(marker, silent) {
+
+			marker = markers.getMarker(marker);
+
+			if(!silent) {
+
+				marker = markers.focusMarker(marker);
+
+			} else {
+
+				marker = markers.activateMarker(marker);
+
 			}
 
 			if(map.conf.sidebar === false) {
@@ -210,69 +304,13 @@
 				_gaq.push(['_trackPageView', location.pathname + location.search + '#!/story=' + marker.properties.id]);
 			}
 
-			if(!silent) {
-
-				var center,
-					zoom;
-
-				if(marker.geometry) {
-					center = [
-						marker.geometry.coordinates[1],
-						marker.geometry.coordinates[0]
-					];
-					if(map.getZoom() < 7) {
-						zoom = 7;
-						if(map.conf.maxZoom < 7)
-							zoom = map.conf.maxZoom;
-					} else {
-						zoom = map.getZoom();
-					}
-				} else {
-					center = map.conf.center;
-					zoom = map.conf.zoom;
-				}
-
-				if(!center || isNaN(center[0]))
-					center = [0,0];
-
-				if(!zoom)
-					zoom = 1;
-
-				var viewOptions = {
-					animate: true,
-					duration: 1,
-					pan: {
-						animate: true,
-						duration: 1
-					},
-					zoom: { animate: true }
-				};
-
-				if(window.location.hash == '#print') {
-					viewOptions = {
-						animate: false,
-						duration: 0,
-						pan: {
-							naimate: false,
-							duration: 0
-						},
-						zoom: { animate: false }
-					};
-				}
-
-				map.setView(center, zoom, viewOptions);
-				if(fragment) {
-					fragment.rm('loc');
-				}
-			}
-
 			jeo.runCallbacks('markerCentered', [map]);
 
 			// populate sidebar
 			if(map.$.sidebar && map.$.sidebar.length) {
 
-				var permalink_slug = marker.properties.permalink.replace(infoamazonia_markers.site_url, '');
-				marker.properties.permalink = infoamazonia_markers.site_url + infoamazonia_markers.language + '/' + permalink_slug;
+				var permalink_slug = marker.properties.permalink.replace(ekuatorial_markers.site_url, '');
+				marker.properties.permalink = ekuatorial_markers.site_url + ekuatorial_markers.language + '/' + permalink_slug;
 
 				if(!map.$.sidebar.story) {
 					map.$.sidebar.append('<div class="story" />');
@@ -291,7 +329,7 @@
 
 					media = storyData.slideshow;
 
-					var lightbox_label = infoamazonia_markers.lightbox_label.slideshow;
+					var lightbox_label = ekuatorial_markers.lightbox_label.slideshow;
 
 					if(!media.images && media.iframes) {
 						// iframes can be video, infographic or image gallery
@@ -303,33 +341,33 @@
 
 						if((videos.length && galleries.length) || (videos.length && infographics.length) || (galleries.length && infographics.length)) {
 
-							lightbox_label = infoamazonia_markers.lightbox_label.slideshow;
+							lightbox_label = ekuatorial_markers.lightbox_label.slideshow;
 
 						} else {
 
 							if(videos.length) {
 								if(videos.length >= 2)
-									lightbox_label = infoamazonia_markers.lightbox_label.videos;
+									lightbox_label = ekuatorial_markers.lightbox_label.videos;
 								else
-									lightbox_label = infoamazonia_markers.lightbox_label.video;
+									lightbox_label = ekuatorial_markers.lightbox_label.video;
 							}
 							if(galleries.length) {
-								lightbox_label = infoamazonia_markers.lightbox_label.images;
+								lightbox_label = ekuatorial_markers.lightbox_label.images;
 							}
 							if(infographics.length) {
 								if(infographics.length >= 2)
-									lightbox_label = infoamazonia_markers.lightbox_label.infographics;
+									lightbox_label = ekuatorial_markers.lightbox_label.infographics;
 								else
-									lightbox_label = infoamazonia_markers.lightbox_label.infographic;
+									lightbox_label = ekuatorial_markers.lightbox_label.infographic;
 							}
 
 						}
 
 					} else if(media.images && !media.iframes) {
 						if(media.images.length >= 2)
-							lightbox_label = infoamazonia_markers.lightbox_label.images;
+							lightbox_label = ekuatorial_markers.lightbox_label.images;
 						else
-							lightbox_label = infoamazonia_markers.lightbox_label.image;
+							lightbox_label = ekuatorial_markers.lightbox_label.image;
 					}
 				}
 
@@ -340,8 +378,7 @@
 					story += '<div class="media-limit"><img class="thumbnail" src="' + storyData.thumbnail + '" /></div>';
 				if(media)
 					story += '<a class="button open-slideshow" href="#">' + lightbox_label + '</a>';
-				story += '<div class="story-content">' + storyData.content + '</div>';
-				story += ' <a href="' + storyData.url + '" target="_blank" rel="external">' + infoamazonia_markers.read_more_label + '</a>';
+				story += '<div class="story-content"><p>' + storyData.content + '</p></div>';
 
 				var $story = $(story);
 
@@ -401,12 +438,13 @@
 				// add share button
 				if(!map.$.sidebar.share) {
 
-					map.$.sidebar.append('<div class="sharing" />');
-					map.$.sidebar.share = map.$.sidebar.find('.sharing');
+					map.$.sidebar.append('<div class="buttons" />');
+					map.$.sidebar.share = map.$.sidebar.find('.buttons');
 
 					var shareContent = '';
-					shareContent += '<a class="button share-button" href="#" target="_blank">' + infoamazonia_markers.share_label + '</a>';
-					shareContent += '<a class="button print-button" href="#" target="_blank">' + infoamazonia_markers.print_label + '</a>';
+					shareContent += '<a class="button read-button" href="' + storyData.url + '">' + ekuatorial_markers.read_more_label + '</a>';
+					shareContent += '<a class="button share-button" href="#">' + ekuatorial_markers.share_label + '</a>';
+					shareContent += '<a class="button print-button" href="#" target="_blank">' + ekuatorial_markers.print_label + '</a>';
 
 					map.$.sidebar.share.append(shareContent);
 
@@ -425,8 +463,8 @@
 					share_vars += '&map_id=' + map_id;
 				}
 
-				var embed_url = infoamazonia_markers.share_base_url + share_vars;
-				var print_url = infoamazonia_markers.embed_base_url + share_vars + '&print=1' + '#print';
+				var embed_url = ekuatorial_markers.share_base_url + share_vars;
+				var print_url = ekuatorial_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
 				map.$.sidebar.share.find('.share-button').attr('href', embed_url);
 				map.$.sidebar.share.find('.print-button').attr('href', print_url);
@@ -435,76 +473,29 @@
 
 					jeo.groupChanged(function(group, prevMap) {
 
-						embed_url = infoamazonia_markers.share_base_url + share_vars;
-						print_url = infoamazonia_markers.embed_base_url + share_vars + '&print=1' + '#print';
+						embed_url = ekuatorial_markers.share_base_url + share_vars;
+						print_url = ekuatorial_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
 						map.$.sidebar.share.find('.embed-button').attr('href', embed_url);
 						map.$.sidebar.share.find('.print-button').attr('href', print_url);
-						
-						/*
-
-						share_vars = '?p=' + marker.properties.postID + '&map_id=' + group.currentMapID;
-
-						var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
-						if(window != window.top)
-							share_url = marker.properties.permalink;
-
-						var fb_vars = {
-							href: share_url,
-							show_faces: false,
-							colorscheme: 'light',
-							action: 'recommend',
-							appId: '459964104075857',
-							height: 20,
-							layout: 'button_count'
-						}
-						
-						// fb
-						map.$.sidebar.share.find('.fb-like').html('<iframe src="//www.facebook.com/plugins/like.php?' + $.param(fb_vars) + '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:20px;" allowTransparency="true"></iframe>');
-						map.$.sidebar.share.find('.twitter-button').empty();
-						if(twttr) {
-							twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
-								lang: infoamazonia_markers.language,
-								via: 'InfoAmazonia',
-								text: marker.properties.title
-							});
-						}
-						*/
 
 					});
 
 				}
 
-				/*
-				var share_url = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
-				if(window != window.top)
-					share_url = marker.properties.permalink;
+				// add close button
+				if(!map.$.sidebar.find('.close-story').length && !$('html#embedded').length && ekuatorial_markers.home) {
 
-				var fb_vars = {
-					href: share_url,
-					show_faces: false,
-					colorscheme: 'light',
-					action: 'recommend',
-					appId: '459964104075857',
-					height: 20,
-					layout: 'button_count'
-				}
+					map.$.sidebar.append('<a class="close-story" href="#">x</a>');
 
-				// fb
-				map.$.sidebar.share.find('.fb-like').html('<iframe src="//www.facebook.com/plugins/like.php?' + $.param(fb_vars) + '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:20px;" allowTransparency="true"></iframe>');
-				map.$.sidebar.share.find('.twitter-button').empty();
-				if(twttr) {
-					twttr.widgets.createShareButton(share_url, $('.twitter-button').get(0), null, {
-						lang: infoamazonia_markers.language,
-						via: 'InfoAmazonia',
-						text: marker.properties.title
+					map.$.sidebar.find('.close-story').click(function() {
+						markers.closeMarker();
+						return false;
 					});
+
 				}
-				*/
 
 			}
-
-			// activate post in post list
 			var postList = $('.list-posts');
 			if(postList.length) {
 				postList.find('li').removeClass('active');
@@ -513,10 +504,39 @@
 					item.addClass('active');
 				}
 			}
-		};
-	}
 
+			map.$.sidebar.addClass('active');
+
+			jeo.runCallbacks('markerOpened', [map]);
+
+			return marker;
+
+		};
+
+		markers.closeMarker = function() {
+
+			if(activeMarker instanceof L.Marker) {
+				activeMarker.setIcon(activeMarker.markerIcon);
+				activeMarker.setZIndexOffset(0);
+			}
+
+			if(fragment)
+				fragment.rm('story');
+
+			$('.list-posts li').removeClass('active');
+			
+			map.$.find('.story-points').removeClass('active');
+
+			map.$.sidebar.removeClass('active').find('.story').empty();
+			map.setView(map.conf.center, map.conf.zoom);
+
+		};
+
+		return markers;
+
+	}
 	jeo.mapReady(markers);
 	jeo.createCallback('markersReady');
+	jeo.createCallback('markerOpened');
 
 })(jQuery);

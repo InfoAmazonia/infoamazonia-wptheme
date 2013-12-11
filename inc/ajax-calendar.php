@@ -55,7 +55,7 @@ class AJAX_Calendar_Widget extends WP_Widget {
 		// MicroAJAX: http://www.blackmac.de/index.php?/archives/31-Smallest-JavaScript-AJAX-library-ever!.html
 ?>
 <script type="text/javascript">
-function show_micro_ajax(response){document.getElementById('infoamazonia-calendar').parentNode.innerHTML=response;}
+function show_micro_ajax(response){document.getElementById('ekuatorial-calendar').parentNode.innerHTML=response;}
 function microAjax(url,cF){this.bF=function(caller,object){return function(){return caller.apply(object,new Array(object));}};
 this.sC=function(object){if(this.r.readyState==4){this.cF(this.r.responseText);}};
 this.gR=function(){if(window.ActiveXObject)
@@ -72,7 +72,7 @@ this.r.send(this.pb);}}
 	function get_calendar() {
 		global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
-		$text = '<div id="infoamazonia-calendar"><h3>' . __('Stories calendar', 'infoamazonia') . '</h3>';
+		$text = '<div id="ekuatorial-calendar"><h3>' . __('Stories calendar', 'ekuatorial') . '</h3>';
 
 
 		add_filter( 'query', array( &$this, 'modify_calendar_query' ) );

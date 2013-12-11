@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo('charset'); ?>" />
@@ -13,7 +14,7 @@
 		echo " | $site_description";
 
 	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . __('Page', 'infoamazonia') . max($paged, $page);
+		echo ' | ' . __('Page', 'ekuatorial') . max($paged, $page);
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -34,38 +35,29 @@
 	<header id="masthead">
 		<div class="container">
 			<div class="twelve columns">
-				<em class="revision">
-					<?php
-					// get last post date
-					$last_post = get_posts('post_type=post&posts_per_page=1');
-					if($last_post) {
-						$post = array_shift($last_post);
-						setup_postdata($post);
-						echo __('Last updated:', 'infoamazonia') . ' ' . get_the_date();
-						wp_reset_postdata();
-					}
-					?>
-				</em>
 				<?php
 				$lang = '';
 				if(function_exists('qtrans_getLanguage'))
 					$lang = qtrans_getLanguage();
 				?>
-				<h1><a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?><span class="icon logo">&nbsp;</span></a></h1>
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" class="logo" />
+				<h1><a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><?php bloginfo('name'); ?></a></h1>
+				<p class="slogan"><?php bloginfo('description'); ?></p>
+				<?php get_search_form(); ?>
 			</div>
 		</div>
 		<section id="mastnav" class="clearfix">
 			<div class="container">
-				<div class="six columns">
+				<div class="eight columns">
 					<nav>
 						<ul>
 							<?php wp_nav_menu(array(
-								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li></ul>'
+								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#submit" class="submit-story">' . __('Submit a story', 'ekuatorial') . '</a></li></ul>'
 							)); ?>
 						</ul>
 					</nav>
 				</div>
-				<div class="six columns">
+				<div class="four columns">
 					<?php if(function_exists('qtrans_getLanguage')) : ?>
 						<nav id="langnav">
 							<ul>
@@ -86,7 +78,17 @@
 					<nav id="social">
 						<ul>
 							<li class="twitter">
-								<a href="https://twitter.com/infoamazonia" rel="external" target="_blank"><span><?php _e('Follow us', 'infoamazonia'); ?></span></a>
+								<a href="https://twitter.com/EkuatorialMap" rel="external" target="_blank" title="Twitter"></a>
+							</li>
+							<li class="fb">
+								<a href="https://facebook.com/ekuatorial" rel="external" target="_blank" title="Facebook"></a>
+							</li>
+						</ul>
+					</nav>
+					<nav id="feedback">
+						<ul>
+							<li>
+								<a href="<?php echo ekuatorial_home_url('/mail-us/'); ?>" title="<?php _e('Feedback', 'ekuatorial'); ?>"><?php _e('Contact', 'ekuatorial'); ?></a>
 							</li>
 						</ul>
 					</nav>

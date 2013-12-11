@@ -21,17 +21,17 @@
 		// submit
 		$submit.find('form').submit(function() {
 			var submission = $submit.find('#' + choice).serialize();
-			$.getJSON(infoamazonia_submit.ajaxurl, submission, function(data) {
+			$.getJSON(ekuatorial_submit.ajaxurl, submission, function(data) {
 				if(data.post_id) {
 					$submit.find('.submit-content').empty();
-					$submit.find('.description').html('<span>' + infoamazonia_submit.success_label + '<br/><br/>' + infoamazonia_submit.redirect_label + '</span>');
+					$submit.find('.description').html('<span>' + ekuatorial_submit.success_label + '<br/><br/>' + ekuatorial_submit.redirect_label + '</span>');
 					setTimeout(function() {
-						document.location.href = infoamazonia_submit.home;
+						document.location.href = ekuatorial_submit.home;
 					}, 4000);
 				} else if(data.error)
 					$submit.find('.error').empty().append('<p>' + data.error + '</p>');
 				else
-					$submit.find('.error').empty().append('<p>' + infoamazonia_submit.error_label + '</p>');
+					$submit.find('.error').empty().append('<p>' + ekuatorial_submit.error_label + '</p>');
 			});
 			return false;
 		});

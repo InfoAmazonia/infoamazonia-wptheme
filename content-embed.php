@@ -13,7 +13,7 @@
 		echo " | $site_description";
 
 	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . __('Page', 'infoamazonia') . max($paged, $page);
+		echo ' | ' . __('Page', 'ekuatorial') . max($paged, $page);
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -27,8 +27,7 @@
 <body <?php body_class(get_bloginfo('language')); ?>>
 
 <header id="embed-header">
-	<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
-	<h2 id="embed-title" style="display:none;"><?php wp_title('', true, 'right'); ?></h2>
+	<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?></a></h1>
 </header>
 
 <section id="embed-map">
@@ -127,7 +126,7 @@ if(isset($_GET['print'])) {
 		if(window.location.hash == '#print') {
 			jQuery(document).ready(function($) {
 				$('#print-css').attr('media', 'all');
-				infoamazoniaPrint({}, '<?php echo $image_url; ?>');
+				ekuatorialPrint({}, '<?php echo $image_url; ?>');
 			});
 		}
 

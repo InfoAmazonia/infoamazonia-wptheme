@@ -1,11 +1,11 @@
 <?php
 
 /*
- * Infoamazonia slideshow
+ * ekuatorial slideshow
  */
 
 // get content media
-function infoamazonia_get_content_media($post_id = false, $force_update = false) {
+function ekuatorial_get_content_media($post_id = false, $force_update = false) {
 	global $post;
 	if($post_id)
 		$post = get_post($post_id);
@@ -66,7 +66,7 @@ function infoamazonia_get_content_media($post_id = false, $force_update = false)
 }
 
 // get content without media
-function infoamazonia_strip_content_media($post_id = false) {
+function ekuatorial_strip_content_media($post_id = false) {
 	global $post;
 	if($post_id)
 		$post = get_post($post_id);
@@ -75,9 +75,9 @@ function infoamazonia_strip_content_media($post_id = false) {
 	return strip_tags($content, '<p><a><span><strong><i>');
 }
 
-function infoamazonia_update_content_media($post_id) {
+function ekuatorial_update_content_media($post_id) {
 	if(get_post_type($post_id) == 'post')
-		infoamazonia_get_content_media($post_id, true);
+		ekuatorial_get_content_media($post_id, true);
 }
-add_action('save_post', 'infoamazonia_update_content_media');
+add_action('save_post', 'ekuatorial_update_content_media');
 ?>

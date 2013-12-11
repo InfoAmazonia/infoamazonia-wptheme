@@ -297,7 +297,6 @@ textarea {
         }
 
 .media-limit {
-  height: 90px;
   margin: 0 0 15px;
   overflow: hidden;
   /*background-color: #f5f5f5;*/
@@ -308,7 +307,10 @@ textarea {
 #sidebar img,
 #sidebar video,
 #sidebar iframe {
-  max-width: 100%;
+  width: auto;
+  height: auto;
+  min-height: 100%;
+  min-width: 100%;
   }
 #sidebar h2.title {
   color: #fff;
@@ -580,44 +582,6 @@ textarea {
     }
     .map-details-page .ramp span.first {
       margin-left: 5px;
-    }
-
-/*  -------------------------------------------------------
- *  Get the data
- *  ------------------------------------------------------- */
-
-.dataset {
-  clear: left;
-  padding: 20px 0;
-  }
-  .dataset h4 {
-    line-height: 32px;
-    padding: 5px 0;
-    margin: 0;
-    }
-  .dataset .button.download {
-    float: right;
-    }
-  .dataset .license {
-    padding: 0 0 10px 0;
-    }
-  .dataset .button.download {
-    width: 100px;
-    }
-  .dataset .button.download .dl-info {
-    display: none;
-    }
-  .dataset .button.download:hover .dl-label {
-    display: none;
-    }
-  .dataset .button.download:hover .dl-info {
-    display: inline;
-    }
-  .dataset .thumbnail {
-    float: left;
-    }
-  .dataset .details {
-    margin-left: 210px;
     }
 
 /* --------------------------------------------------------

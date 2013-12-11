@@ -7,14 +7,14 @@ require_once(STYLESHEETPATH . '/inc/tax-meta-class/tax-meta-class.php');
 
 $publisher_meta = new Tax_Meta_Class(array(
 	'id' => 'publisher_meta',
-	'title' => __('Publisher information', 'infoamazonia'),
+	'title' => __('Publisher information', 'ekuatorial'),
 	'pages' => array('publisher'),
 	'context' => 'normal',
 	'fields' => array()
 ));
 
 $publisher_meta->addText('publisher_url', array(
-	'name' => __('Publisher url', 'infoamazonia')
+	'name' => __('Publisher url', 'ekuatorial')
 ));
 
 $publisher_meta->Finish();
