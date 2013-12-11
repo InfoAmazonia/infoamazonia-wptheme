@@ -106,12 +106,12 @@
  * Typography
  */
 
-h1,h2,h3,h4,h5,h6 {
-	font-family: 'Lato';
-	font-weight: 900;
-	.font-smoothing(antialiased);
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'OpenSansCondensedBold';
+	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 }
+
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a
 h1 a:visited,h2 a:visited,h3 a:visited,h4 a:visited,h5 a:visited,h6 a:visited {
 	color: #404040;
@@ -152,8 +152,8 @@ strong {
 .button,
 a.button,
 a.button:visited {
-	background: #ce1126;
-	border: 1px solid #ce1126;
+	background: #77a832;
+	border: 1px solid #77a832;
 	color: #fff;
 	width: auto;
 	display: inline-block;
@@ -168,7 +168,7 @@ a.button:visited {
 	font-size: 90%;
 	&:hover {
 		color: #fff;
-		background-color: #e5263b;
+		background-color: #8ec63d;
 	}
 }
 #sidebar .button:hover,
@@ -178,11 +178,11 @@ a.button:visited {
 
 a.more {
 	background: transparent url(../img/sprite.png) no-repeat 30px -63px;
-	color: #ce1126;
+	color: #77a832;
 	padding-right: 15px;
 }
 a.more:hover {
-	color: #ce1126;
+	color: #77a832;
 }
 a.button.centered {
 	display: block;
@@ -242,7 +242,7 @@ body {
 }
 
 header#masthead {
-	background: #ce1126 url(../img/batik_pattern.png) center;
+	background: lighten(#77a832, 0);
 	.box-shadow(0 2px 5px rgba(0,0,0,0.05));
 	position: relative;
 	a {
@@ -257,29 +257,28 @@ header#masthead {
 		line-height: 14px;
 		margin-top: 20px;
 	}
-	.logo {
-		float: left;
-		width: auto;
-		max-height: 82px;
-		margin-right: 20px;
-		margin-top: 40px;
-	}
 	h1 {
 		font-weight: 900;
 		margin: 60px 0;
 		float: left;
 		a {
-			font-family: 'Lato';
+			font-family: 'OpenSansCondensedBold';
+			-webkit-font-smoothing: antialiased;
+			text-rendering: optimizeLegibility;
 			text-transform: uppercase;
 			display: block;
 			line-height: 28px;
 			font-size: 28px;
-			color: #fff
+			color: #fff;
+			img {
+				display: inline-block;
+				margin-left: 5px;
+			}
 		}
 	}
 	.slogan {
 		float: left;
-		color: #fff;
+		color: #f9f9f9;
 		font-style: italic;
 		margin: 60px 40px;
 		line-height: 32px;
@@ -317,8 +316,8 @@ header#masthead {
 			&:hover,
 			&:focus {
 				width: 300px;
-				border-bottom: 1px solid rgba(255,255,255,0.3);
-				//.gradient(transparent, rgba(0,0,0,0.2), transparent);
+				border-bottom: 1px solid rgba(255,255,255,.3);
+				//.gradient(transparent, rgba(255,255,255,.2), transparent);
 			}
 			&::-webkit-input-placeholder {
 				color: #fff;
@@ -363,13 +362,13 @@ header#masthead {
 						background: rgba(0,0,0,0.3);
 					}
 					&.submit-story {
-						background-color: #e5263b;
-						background-image: -webkit-gradient(linear, left top, left bottom, from(#e5263b), to(#ce1126));
-						background-image: -webkit-linear-gradient(top, #e5263b, #ce1126);
-						background-image:    -moz-linear-gradient(top, #e5263b, #ce1126);
-						background-image:     -ms-linear-gradient(top, #e5263b, #ce1126);
-						background-image:      -o-linear-gradient(top, #e5263b, #ce1126);
-						background-image:         linear-gradient(to bottom, #e5263b, #ce1126);
+						background-color: #8ec63d;
+						background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+						background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+						background-image:    -moz-linear-gradient(top, #8ec63d, #77a832);
+						background-image:     -ms-linear-gradient(top, #8ec63d, #77a832);
+						background-image:      -o-linear-gradient(top, #8ec63d, #77a832);
+						background-image:         linear-gradient(to bottom, #8ec63d, #77a832);
 						color: #fff;
 					}
 				}
@@ -393,13 +392,13 @@ header#masthead {
 			margin: 0 0 0 5px;
 			display: inline;
 			&.active {
-				background-color: #e5263b;
-				background-image: -webkit-gradient(linear, left top, left bottom, from(#e5263b), to(#ce1126));
-				background-image: -webkit-linear-gradient(top, #e5263b, #ce1126);
-				background-image:    -moz-linear-gradient(top, #e5263b, #ce1126);
-				background-image:     -ms-linear-gradient(top, #e5263b, #ce1126);
-				background-image:      -o-linear-gradient(top, #e5263b, #ce1126);
-				background-image:         linear-gradient(to bottom, #e5263b, #ce1126);
+				background-color: #8ec63d;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+				background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+				background-image:    -moz-linear-gradient(top, #8ec63d, #77a832);
+				background-image:     -ms-linear-gradient(top, #8ec63d, #77a832);
+				background-image:      -o-linear-gradient(top, #8ec63d, #77a832);
+				background-image:         linear-gradient(to bottom, #8ec63d, #77a832);
 				color: #fff;
 			}
 		}
@@ -622,7 +621,7 @@ header#masthead {
 					border-bottom: 1px solid #ccc;
 					color: #404040;
 					&:hover {
-						background-color: #e5263b;
+						background-color: #8ec63d;
 						color: #fff;
 					}
 				}
@@ -734,15 +733,15 @@ header#masthead {
 					color: #fff;
 				}
 				&.active {
-					background-color: #ce1126;
-					background-image: -webkit-gradient(linear, left top, left bottom, from(#e5263b), to(#ce1126));
-					background-image: -webkit-linear-gradient(top, #e5263b, #ce1126);
-					background-image: -moz-linear-gradient(top, #e5263b, #ce1126);
-					background-image: -ms-linear-gradient(top, #e5263b, #ce1126);
-					background-image: -o-linear-gradient(top, #e5263b, #ce1126);
-					background-image: linear-gradient(to bottom, #e5263b, #ce1126);
+					background-color: #77a832;
+					background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+					background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+					background-image: -moz-linear-gradient(top, #8ec63d, #77a832);
+					background-image: -ms-linear-gradient(top, #8ec63d, #77a832);
+					background-image: -o-linear-gradient(top, #8ec63d, #77a832);
+					background-image: linear-gradient(to bottom, #8ec63d, #77a832);
 					color: white !important;
-					border-color: #ce1126;
+					border-color: #77a832;
 					z-index: 9999999;
 					&:after {
 						content: '';
@@ -750,7 +749,7 @@ header#masthead {
 						height: 0;
 						border-left: 10px solid transparent;
 						border-right: 10px solid transparent;
-						border-top: 10px solid #ce1126;
+						border-top: 10px solid #77a832;
 						position: absolute;
 						bottom: -10px;
 						left: 15px;
@@ -801,13 +800,13 @@ header#masthead {
 							.box-shadow(0 0 0);
 							border-bottom: 1px solid #303030;
 							&.active {
-								background-color: #ce1126;
-								background-image: -webkit-gradient(linear, left top, left bottom, from(#e5263b), to(#ce1126));
-								background-image: -webkit-linear-gradient(top, #e5263b, #ce1126);
-								background-image: -moz-linear-gradient(top, #e5263b, #ce1126);
-								background-image: -ms-linear-gradient(top, #e5263b, #ce1126);
-								background-image: -o-linear-gradient(top, #e5263b, #ce1126);
-								background-image: linear-gradient(to bottom, #e5263b, #ce1126);
+								background-color: #77a832;
+								background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+								background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+								background-image: -moz-linear-gradient(top, #8ec63d, #77a832);
+								background-image: -ms-linear-gradient(top, #8ec63d, #77a832);
+								background-image: -o-linear-gradient(top, #8ec63d, #77a832);
+								background-image: linear-gradient(to bottom, #8ec63d, #77a832);
 								&:after {
 									display: none;
 								}
@@ -1402,7 +1401,7 @@ body.map-fullscreen .fullscreen-map, body.map-fullscreen .fullscreen-map.map-con
 			font-size: 14px;
 			line-height: 26px;
 			padding: 0 9px 0 8px;
-			background: #ce1126;
+			background: #77a832;
 			color: #f0f0f0;
 			font-weight: 800;
 		}
@@ -1617,7 +1616,7 @@ aside#home-call {
 	color: #f0f0f0;
 	padding: 40px 0;
 	.lsf {
-		color: #ce1126;
+		color: #77a832;
 		opacity: .6;
 		float: left;
 		font-size: 80px;
@@ -1625,7 +1624,7 @@ aside#home-call {
 		margin-right: 40px;
 		.transition(opacity .2s ease-in-out);
 		a {
-			color: #ce1126;
+			color: #77a832;
 		}
 	}
 	h3 {
@@ -1652,9 +1651,9 @@ aside#home-call {
 	position: relative;
 	height: 410px;
 	background: #f0f0f0;
-	border-bottom: 10px solid #ce1126;
+	border-bottom: 10px solid #77a832;
 	.highlights-title {
-		//background: #ce1126 url(../img/indonesia_bounds_10.png) center no-repeat;
+		//background: #77a832 url(../img/indonesia_bounds_10.png) center no-repeat;
 		background: #fff;
 		border-top: 3px solid #2f2f2f;
 		h2 {
@@ -1674,7 +1673,7 @@ aside#home-call {
 		.transition(opacity .2s ease-in-out);
 		a {
 			margin-left: 20px;
-			color: #ce1126;
+			color: #77a832;
 			opacity: .5;
 			.transition(opacity .2s ease-in-out);
 			&:hover {
@@ -1705,7 +1704,7 @@ aside#home-call {
 					width: 100%;
 					height: auto;
 					margin-top: -60px;
-					border-right: 10px solid #ce1126;
+					border-right: 10px solid #77a832;
 				}
 			}
 			.post-content {
@@ -1779,8 +1778,8 @@ body {
 		float: right;
 		margin: 0 0 30px;
 		.current {
-			background: #e5263b;
-			border: 1px solid #ce1126;
+			background: #8ec63d;
+			border: 1px solid #77a832;
 			padding: 7px 12px;
 			//.border-radius(3px);
 		}
@@ -1864,14 +1863,14 @@ body {
 		&.active {
 			article {
 				padding: 15px;
-				border-color: #ce1126;
-				background-color: #ce1126;
-				background-image: -webkit-gradient(linear, left top, left bottom, from(#E5263B), to(#ce1126));
-				background-image: -webkit-linear-gradient(top, #E5263B, #ce1126);
-				background-image: -moz-linear-gradient(top, #E5263B, #ce1126);
-				background-image: -ms-linear-gradient(top, #E5263B, #ce1126);
-				background-image: -o-linear-gradient(top, #E5263B, #ce1126);
-				background-image: linear-gradient(to bottom, #E5263B, #ce1126);
+				border-color: #77a832;
+				background-color: #77a832;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+				background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+				background-image: -moz-linear-gradient(top, #8ec63d, #77a832);
+				background-image: -ms-linear-gradient(top, #8ec63d, #77a832);
+				background-image: -o-linear-gradient(top, #8ec63d, #77a832);
+				background-image: linear-gradient(to bottom, #8ec63d, #77a832);
 				h2,
 				h2 a,
 				p {
@@ -1887,7 +1886,7 @@ body {
 					background: #f0f0f0;
 					color: #333;
 					text-shadow: 1px 1px 1px #fff;
-					border-color: #e5263b !important;
+					border-color: #8ec63d !important;
 				}
 			}
 		}
@@ -1998,7 +1997,7 @@ aside#main-widgets {
 	a {
 		color: #aaa;
 		&:hover {
-			color: #e5263b;
+			color: #8ec63d;
 		}
 	}
 	.button {
@@ -2456,14 +2455,14 @@ footer#colophon {
 					margin-left: 0;
 					border-right: 1px solid #fff;
 					&.active {
-						background-color: #ce1126;
-						background-image: -webkit-gradient(linear, left top, left bottom, from(#e5263b), to(#ce1126));
-						background-image: -webkit-linear-gradient(top, #e5263b, #ce1126);
-						background-image: -moz-linear-gradient(top, #e5263b, #ce1126);
-						background-image: -ms-linear-gradient(top, #e5263b, #ce1126);
-						background-image: -o-linear-gradient(top, #e5263b, #ce1126);
-						background-image: linear-gradient(to bottom, #e5263b, #ce1126);
-						border-color: #ce1126 !important;
+						background-color: #77a832;
+						background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
+						background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
+						background-image: -moz-linear-gradient(top, #8ec63d, #77a832);
+						background-image: -ms-linear-gradient(top, #8ec63d, #77a832);
+						background-image: -o-linear-gradient(top, #8ec63d, #77a832);
+						background-image: linear-gradient(to bottom, #8ec63d, #77a832);
+						border-color: #77a832 !important;
 					}
 					&:hover {
 						color: #333;
