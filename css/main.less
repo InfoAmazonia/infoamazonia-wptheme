@@ -242,7 +242,7 @@ body {
 }
 
 header#masthead {
-	background: #77a832;
+	background: #f0f0f0;
 	.box-shadow(0 2px 5px rgba(0,0,0,0.05));
 	position: relative;
 	a {	
@@ -269,7 +269,7 @@ header#masthead {
 			display: block;
 			line-height: 28px;
 			font-size: 28px;
-			color: #fff;
+			color: #111;
 			img {
 				display: inline-block;
 				margin-left: 5px;
@@ -278,7 +278,7 @@ header#masthead {
 	}
 	.slogan {
 		float: left;
-		color: #f9f9f9;
+		color: #999;
 		font-style: italic;
 		margin: 40px 40px;
 		line-height: 32px;
@@ -303,7 +303,7 @@ header#masthead {
 			border: 0;
 			border-bottom: 1px solid transparent;
 			background: transparent;
-			color: #fff;
+			color: #666;
 			.border-radius(0);
 			.box-shadow(0 0 0);
 			background: url(../img/search-big.png) top right no-repeat;
@@ -316,20 +316,20 @@ header#masthead {
 			&:hover,
 			&:focus {
 				width: 300px;
-				border-bottom: 1px solid rgba(255,255,255,.3);
-				//.gradient(transparent, rgba(255,255,255,.2), transparent);
+				border-bottom: 1px solid rgba(0,0,0,.3);
+				//.gradient(transparent, rgba(0,0,0,.2), transparent);
 			}
 			&::-webkit-input-placeholder {
-				color: #fff;
+				color: #666;
 			}
 			&:-moz-placeholder {
-				color: #fff;
+				color: #666;
 			}
 			&::-moz-placeholder {
-				color: #fff;
+				color: #666;
 			}
 			&:-ms-input-placeholder {
-				color: #fff;
+				color: #666;
 			}
 		}
 		input[type="submit"] {
@@ -340,7 +340,8 @@ header#masthead {
 #mastnav {
 	width: 100%;
 	display: block;
-	background: rgba(0,0,0,0.7);
+	background: #e0e0e0;
+	border-bottom: 1px solid #c0c0c0;
 	nav {
 		margin: 0;
 		padding: 0;
@@ -357,9 +358,9 @@ header#masthead {
 					display: block;
 					text-transform: uppercase;
 					padding: 10px 20px;
-					color: #f0f0f0;
+					color: #444;
 					&:hover {
-						background: rgba(0,0,0,0.3);
+						background: rgba(255,255,255,0.3);
 					}
 					&.submit-story {
 						background-color: #8ec63d;
@@ -374,7 +375,7 @@ header#masthead {
 				}
 				&.current_page_item {
 					a {
-						background: rgba(0,0,0,0.3);
+						background: rgba(255,255,255,0.3);
 					}
 				}
 			}
@@ -507,7 +508,7 @@ header#masthead {
 	}
 }
 #stage {
-	background: #333;
+	background: #d0d0d0;
 	position: relative;
 	padding: 40px 0 0;
 	z-index: 10;
@@ -519,7 +520,7 @@ header#masthead {
 		line-height: 46px;
 		max-width: 400px;
 		margin: 0;
-		color: #fff;
+		color: #333;
 	}
 	.share {
 		float: right;
@@ -533,121 +534,111 @@ header#masthead {
 		}
 	}
 	.choose-filter {
-		margin: -17px 0 18px;
-		z-index: 200;
-		position: relative;
-		.title {
-			font-family: 'OpenSansRegular';
-			.font-smoothing(antialiased);
-			text-rendering: optimizeLegibility;
-			font-size: 18px;
-			line-height: 22px;
-			margin: 0;
-			padding: 15px 0;
-			border-left: 1px solid transparent;
-			list-style: none;
-			display: block;
-			float: left;
-			.transition(all .2s ease-in-out);
-			position: absolute;
-			top: 22px;
-		}
-		.box {
-			max-width: 100%;
-			width: 350px;
-			padding: 0 15px;
-			.box-sizing(border-box);
-			border: 1px solid transparent;
-			background: transparent;
-			//.border-radius(4px);
-			.transition(all .2s ease-in-out);
-			cursor: pointer;
-			position: relative;
-			z-index: 2;
-			.arrow {
-				background-image: url(../img/sprite.png);
-				background-position: 0 0;
-				background-repeat: no-repeat;
-				display: block;
-				width: 25px;
-				height: 25px;
-				float: left;
-				margin-top: 11px;
-				margin-right: 7px;
-				margin-left: -10px;
-				opacity: 0.5;
-				.transition(opacity .2s ease-in-out);
-			}
-			.title {
-				padding: 15px 0 15px 12px;
-				position: static;
-				top: auto;
-				color: #f0f0f0;
-			}
-			&:hover {
-				background: #444;
-				border: 1px solid #303030;
-				.box-shadow(0 2px 5px rgba(0, 0, 0, 0.05));
-				.arrow {
-					opacity: 1;
-				}
-				.title {
-					border-left: 1px solid #303030;
-					color: #fff;
-				}
-			}
-			&:active {
-				.box-shadow(inset 0 2px 4px rgba(0, 0, 0, 0.05));
-			}
-		}
-		ul {
-			position: absolute;
-			display: none;
-			top: 53px;
-			width: 100%;
-			background: #fff;
-			border-top: 1px solid #ccc;
-			border-left: 1px solid #ccc;
-			border-right: 1px solid #ccc;
-			.box-sizing(border-box);
-			li {
-				margin: 0;
-				padding: 0;
-				width: 50%;
-				float: left;
-				a {
-					display: block;
-					padding: 10px;
-					border-bottom: 1px solid #ccc;
-					color: #404040;
-					&:hover {
-						background-color: #8ec63d;
-						color: #fff;
-					}
-				}
-			}
-		}
-		&.active {
-			.box {
-				background: #fff;
-				border: 1px solid #ccc;
-				//.border-radius(3px 3px 0 0);
-				.arrow {
-					opacity: 1;
-				}
-				.title {
-					border-left: 1px solid #e0e0e0;
-					color: #333;
-				}
-			}
-			ul {
-				display: block;
-				.border-radius(0 0 3px 3px);
-			}
-		}
-	}
+            margin: -17px 0 18px;
+            z-index: 200;
+            position: relative;
+            float: left;
+            .title {
+                    font-family: 'OpenSansRegular';
+                    .font-smoothing(antialiased);
+                    text-rendering: optimizeLegibility;
+                    font-size: 18px;
+                    line-height: 22px;
+                    margin: 0;
+                    padding: 15px 0;
+                    border-left: 1px solid transparent;
+                    list-style: none;
+                    display: block;
+                    float: left;
+                    .transition(all .2s ease-in-out);
+                    position: absolute;
+                    top: 22px;
+            }
+            .box {
+                    min-width: 200px;
+                    padding: 0 15px;
+                    .box-sizing(border-box);
+                    border: 1px solid transparent;
+                    background: transparent;
+                    .transition(all .2s ease-in-out);
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 2;
+                    float: left;
+                    .arrow {
+                            background-image: url(../img/sprite.png);
+                            background-position: 0 0;
+                            background-repeat: no-repeat;
+                            display: block;
+                            width: 25px;
+                            height: 25px;
+                            float: left;
+                            margin-top: 11px;
+                            margin-right: 7px;
+                            margin-left: -10px;
+                            opacity: 0.5;
+                            .transition(opacity .2s ease-in-out);
+                    }
+                    .title {
+                            padding: 15px 0 15px 12px;
+                            position: static;
+                            top: auto;
+                    }
+                    &:hover {
+                            background: rgba(255,255,255,0.2);
+                            border: 1px solid rgba(0,0,0,0.1);
+                            .box-shadow(0 2px 5px rgba(0, 0, 0, 0.05));
+                            .arrow {
+                                    opacity: 1;
+                            }
+                            .title {
+                                    border-left: 1px solid #e0e0e0;
+                            }
+                    }
+                    &:active {
+                            .box-shadow(inset 0 2px 4px rgba(0, 0, 0, 0.05));
+                    }
+            }
+            ul {
+                    position: absolute;
+                    display: none;
+                    top: 53px;
+                    width: 100%;
+                    background: #fff;
+                    border-top: 1px solid #ccc;
+                    border-left: 1px solid #ccc;
+                    border-right: 1px solid #ccc;
+                    .box-sizing(border-box);
+                    li {
+                            margin: 0;
+                            padding: 0;
+                            a {
+                                    display: block;
+                                    padding: 10px;
+                                    border-bottom: 1px solid #ccc;
+                                    color: #404040;
+                                    &:hover {
+                                            background-color: #8ec63d;
+                                            color: #fff;
+                                    }
+                            }
+                    }
+            }
+            &.active {
+                    .box {
+                            background: #fff;
+                            border: 1px solid #ccc;
+                            .arrow {
+                                    opacity: 1;
+                            }
+                    }
+                    ul {
+                            display: block;
+                    }
+            }
+    }
 	.stage-map {
-		width: 100%;
+		margin: 0 40px;
 		height: 480px;
 		.box-shadow(0 10px 40px rgba(0,0,0,0.2));
 		position: relative;
