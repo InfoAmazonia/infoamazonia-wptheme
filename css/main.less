@@ -242,7 +242,7 @@ body {
 }
 
 header#masthead {
-	background: #fefefe;
+	background: #f9f9f9;
 	.box-shadow(0 2px 5px rgba(0,0,0,0.05));
 	position: relative;
 	a {	
@@ -303,7 +303,7 @@ header#masthead {
 			border: 0;
 			border-bottom: 1px solid transparent;
 			background: transparent;
-			color: #666;
+			color: #444;
 			.border-radius(0);
 			.box-shadow(0 0 0);
 			background: url(../img/search-big.png) top right no-repeat;
@@ -313,23 +313,25 @@ header#masthead {
 			.transition(width .2s ease-in-out);
 			font-size: 12px;
 			font-family: "OpenSansSemiboldRegular";
+			opacity: .5;
 			&:hover,
 			&:focus {
 				width: 300px;
-				border-bottom: 1px solid rgba(0,0,0,.3);
+				border-bottom: 1px solid rgba(0,0,0,.1);
 				//.gradient(transparent, rgba(0,0,0,.2), transparent);
+				opacity: .9;
 			}
 			&::-webkit-input-placeholder {
-				color: #666;
+				color: #999;
 			}
 			&:-moz-placeholder {
-				color: #666;
+				color: #999;
 			}
 			&::-moz-placeholder {
-				color: #666;
+				color: #999;
 			}
 			&:-ms-input-placeholder {
-				color: #666;
+				color: #999;
 			}
 		}
 		input[type="submit"] {
@@ -341,7 +343,7 @@ header#masthead {
 	width: 100%;
 	display: block;
 	background: #f0f0f0;
-	border-bottom: 1px solid #c0c0c0;
+	border-bottom: 1px solid #e0e0e0;
 	nav {
 		margin: 0;
 		padding: 0;
@@ -360,7 +362,7 @@ header#masthead {
 					padding: 10px 20px;
 					color: #444;
 					&:hover {
-						background: rgba(255,255,255,0.3);
+						background: rgba(255,255,255,0.4);
 					}
 					&.submit-story {
 						background-color: #8ec63d;
@@ -407,15 +409,19 @@ header#masthead {
 	nav#feedback {
 		float: right;
 		margin-right: 5px;
-		border-right: 1px solid rgba(0,0,0,0.8);		
+		border-right: 1px solid #e0e0e0;		
 	}
 	nav#social {
 		float: right;
-		border-right: 1px solid rgba(0,0,0,0.8);
+		border-right: 1px solid #e0e0e0;
 		padding-right: 15px;
 		margin-right: 5px;
 		a {
 			padding: 10px 15px;
+			opacity: .6;
+			&:hover {
+				opacity: .8;
+			}
 		}
 		.twitter {
 			a {
@@ -508,7 +514,7 @@ header#masthead {
 	}
 }
 #stage {
-	background: #d0d0d0;
+	background: #eee;
 	position: relative;
 	padding: 40px 0 0;
 	z-index: 10;
@@ -639,7 +645,6 @@ header#masthead {
     }
 	.stage-map {
 		margin: 0 40px;
-		border-bottom: 20px solid #222;
 		height: 480px;
 		.box-shadow(0 10px 40px rgba(0,0,0,0.2));
 		position: relative;
@@ -693,122 +698,103 @@ header#masthead {
 	height: 100%;
 	position: relative;
 	z-index: 1;
-	.map-nav {
-		position: absolute;
-		top: -41px;
-		right: 0;
-		margin: 0;
-		padding: 0;
-		li {
-			float: left;
-			position: relative;
-			a {
-				font-family: 'OpenSansRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
-				.transition(none);
-				background-color: #444;
-				.box-shadow(inset 0 10px 10px rgba(0,0,0,0.1));
-				border: 1px solid transparent;
-				border-bottom: none;
-				display: block;
-				color: #96979C;
-				padding: 0 20px;
-				height: 40px;
-				line-height: 40px;
-				margin-left: 1px;
-				position: relative;
-				font-size: 12px;
-				text-transform: uppercase;
-				&:active {
-					.box-shadow(inset 0 2px 4px rgba(0, 0, 0, 0.10));
-				}
-				&:hover {
-					color: #fff;
-				}
-				&.active {
-					background-color: #77a832;
-					background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
-					background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
-					background-image: -moz-linear-gradient(top, #8ec63d, #77a832);
-					background-image: -ms-linear-gradient(top, #8ec63d, #77a832);
-					background-image: -o-linear-gradient(top, #8ec63d, #77a832);
-					background-image: linear-gradient(to bottom, #8ec63d, #77a832);
-					color: white !important;
-					border-color: #77a832;
-					z-index: 9999999;
-					&:after {
-						content: '';
-						width: 0;
-						height: 0;
-						border-left: 10px solid transparent;
-						border-right: 10px solid transparent;
-						border-top: 10px solid #77a832;
-						position: absolute;
-						bottom: -10px;
-						left: 15px;
-						z-index: 1000;
-					}
-				}
-			}
-			&.more-tab {
-				> a {
-					&:before {
-						content: '';
-						float: right;
-						width: 5px;
-						height: 4px;
-						margin-top: 18px;
-						margin-left: 10px;
-						background: url(../img/down-arrow.png);
-						opacity: .5;
-					}
-				}
-				&:hover {
-					> a {
-						color: #fff;
-					}
-					ul {
-						display: block;
-					}
-				}
-				ul {
-					margin: 0;
-					padding: 0;
-					display: none;
-					position: absolute;
-					top: 41px;
-					right: 0;
-					z-index: 9999999;
-					background-color: #444;
-					.box-shadow(inset 0 10px 10px rgba(0,0,0,0.1));
-					min-width: 200px;
-					border-top: 1px solid #303030;
-					li {
-						margin: 0;
-						padding: 0;
-						display: block;
-						float: none;
-						a {
-							background: transparent;
-							.box-shadow(0 0 0);
-							border-bottom: 1px solid #303030;
-							&.active {
-								background-color: #77a832;
-								background-image: -webkit-gradient(linear, left top, left bottom, from(#8ec63d), to(#77a832));
-								background-image: -webkit-linear-gradient(top, #8ec63d, #77a832);
-								background-image: -moz-linear-gradient(top, #8ec63d, #77a832);
-								background-image: -ms-linear-gradient(top, #8ec63d, #77a832);
-								background-image: -o-linear-gradient(top, #8ec63d, #77a832);
-								background-image: linear-gradient(to bottom, #8ec63d, #77a832);
-								&:after {
-									display: none;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+        .map-nav {
+                position: absolute;
+                top: -35px;
+                right: 0;
+                margin: 0;
+                padding: 0;
+                li {
+                        float: left;
+                        a {
+                                font-family: 'OpenSansRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
+                                .transition(none);
+                                background-color: white;
+                                border: 1px solid #CCC;
+                                border-bottom: none;
+                                display: block;
+                                color: #96979C;
+                                padding: 0 15px;
+                                height: 34px;
+                                line-height: 35px;
+                                margin-left: 1px;
+                                position: relative;
+                                font-size: 11px;
+                                text-transform: uppercase;
+                                &:active {
+                                        .box-shadow(inset 0 2px 4px rgba(0, 0, 0, 0.10));
+                                }
+                                &:hover {
+                                        color: #404040;
+                                }
+                                &.active {
+                                        background-color: #77A832;
+                                        background-image: -webkit-gradient(linear, left top, left bottom, from(#8EC63D), to(#77A832));
+                                        background-image: -webkit-linear-gradient(top, #8EC63D, #77A832);
+                                        background-image: -moz-linear-gradient(top, #8EC63D, #77A832);
+                                        background-image: -ms-linear-gradient(top, #8EC63D, #77A832);
+                                        background-image: -o-linear-gradient(top, #8EC63D, #77A832);
+                                        background-image: linear-gradient(to bottom, #8EC63D, #77A832);
+                                        color: white;
+                                        border-color: #77A832;
+                                        z-index: 9999999;
+                                        &:after {
+                                                content: '';
+                                                width: 0;
+                                                height: 0;
+                                                border-left: 10px solid transparent;
+                                                border-right: 10px solid transparent;
+                                                border-top: 10px solid #77A832;
+                                                position: absolute;
+                                                bottom: -10px;
+                                                left: 15px;
+                                                z-index: 1000;
+                                        }
+                                }
+                        }
+                        &.more-tab {
+                                > a {
+                                        &:before {
+                                                content: '';
+                                                float: right;
+                                                width: 5px;
+                                                height: 4px;
+                                                margin-top: 15px;
+                                                margin-left: 10px;
+                                                background: url(../img/down-arrow.png);
+                                                opacity: .3;
+                                        }
+                                }
+                                &:hover {
+                                        > a {
+                                                color: #404040;
+                                        }
+                                        ul {
+                                                display: block;
+                                        }
+                                }
+                                ul {
+                                        margin: 0;
+                                        padding: 0;
+                                        display: none;
+                                        position: absolute;
+                                        top: 35px;
+                                        right: 0;
+                                        z-index: 9999999;
+                                        border-bottom: 1px solid #ccc;
+                                        li {
+                                                margin: 0;
+                                                padding: 0;
+                                                display: block;
+                                                float: none;
+                                                a.active:after {
+                                                        display: none;
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
 }
 
 /*
