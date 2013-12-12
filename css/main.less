@@ -700,24 +700,25 @@ header#masthead {
 	z-index: 1;
         .map-nav {
                 position: absolute;
-                top: -35px;
+                top: -46px;
                 right: 0;
                 margin: 0;
                 padding: 0;
+                background: #f6f6f6;
+                padding: 5px 5px 0 0;
                 li {
                         float: left;
                         a {
                                 font-family: 'OpenSansRegular','Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
                                 .transition(none);
-                                background-color: white;
-                                border: 1px solid #CCC;
+                                border: 1px solid transparent;
                                 border-bottom: none;
                                 display: block;
                                 color: #96979C;
                                 padding: 0 15px;
-                                height: 34px;
-                                line-height: 35px;
-                                margin-left: 1px;
+                                height: 40px;
+                                line-height: 38px;
+                                margin-left: 5px;
                                 position: relative;
                                 font-size: 11px;
                                 text-transform: uppercase;
@@ -768,17 +769,20 @@ header#masthead {
                                 &:hover {
                                         > a {
                                                 color: #404040;
+                                                background: transparent;
+                                                border-color: transparent;
                                         }
                                         ul {
                                                 display: block;
                                         }
                                 }
                                 ul {
+                                		background: #f6f6f6;
                                         margin: 0;
                                         padding: 0;
                                         display: none;
                                         position: absolute;
-                                        top: 35px;
+                                        top: 45px;
                                         right: 0;
                                         z-index: 9999999;
                                         border-bottom: 1px solid #ccc;
@@ -787,6 +791,9 @@ header#masthead {
                                                 padding: 0;
                                                 display: block;
                                                 float: none;
+                                                a {
+                                                	margin: 0;
+                                                }
                                                 a.active:after {
                                                         display: none;
                                                 }
@@ -1591,7 +1598,7 @@ html#embedded body {
 aside#home-call {
 	background: #222;
 	color: #f0f0f0;
-	padding: 40px 0;
+	padding: 60px 0;
 	.lsf {
 		color: #77a832;
 		opacity: .6;
