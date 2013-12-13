@@ -7,7 +7,7 @@
 			<div class="container">
 				<div class="twelve columns">
 					<header class="post-header">
-						<h2><a href="<?php echo get_post_type_archive_link('dataset'); ?>"><?php _e('Datasets', 'ekuatorial'); ?></a></h2>
+						<h2><a href="<?php echo get_post_type_archive_link('dataset'); ?>"><?php _e('Datasets', 'infoamazonia'); ?></a></h2>
 						<h1 class="title"><?php the_title(); ?></h1>
 					</header>
 				</div>
@@ -25,7 +25,7 @@
 							if($preview) :
 								?>
 								<div class="preview-container">
-									<h3><?php _e('Preview data', 'ekuatorial'); ?></h3>
+									<h3><?php _e('Preview data', 'infoamazonia'); ?></h3>
 									<iframe class="data-preview" src="<?php echo $preview; ?>"></iframe>
 								</div>
 								<?php
@@ -39,7 +39,7 @@
 						if($data) :
 							?>
 							<div class="row">
-								<a href="<?php echo $data; ?>" class="button download"><?php _e('Download this data', 'ekuatorial'); ?></a>
+								<a href="<?php echo $data; ?>" class="button download"><?php _e('Download this data', 'infoamazonia'); ?></a>
 							</div>
 							<?php
 						endif;
@@ -47,7 +47,7 @@
                         if($source_url) :
                             ?>
                             <div class="row">
-                                <a href="<?php echo $source_url; ?>" class="button download" rel="external" target="_blank"><?php _e('Download from source', 'ekuatorial'); ?></a>
+                                <a href="<?php echo $source_url; ?>" class="button download" rel="external" target="_blank"><?php _e('Download from source', 'infoamazonia'); ?></a>
                             </div>
                             <?php
                         endif;
@@ -58,9 +58,9 @@
 							$license = array_shift($license);
 							?>
 							<div class="row">
-								<h3><?php _e('License', 'ekuatorial'); ?></h3>
+								<h3><?php _e('License', 'infoamazonia'); ?></h3>
 								<p class="license-name"><a target="_blank" href="<?php echo get_field('url', 'license_' . $license->term_id); ?>"><?php echo $license->name; ?></a></p>
-								<p><a class="small" href="<?php echo get_term_link($license); ?>"><?php _e('More data on this license', 'ekuatorial'); ?></a></p>
+								<p><a class="small" href="<?php echo get_term_link($license); ?>"><?php _e('More data on this license', 'infoamazonia'); ?></a></p>
 							</div>
 							<?php
 						endif;
@@ -71,9 +71,9 @@
 							$source = array_shift($source);
 							?>
 							<div class="row">
-								<h3><?php _e('Source', 'ekuatorial'); ?></h3>
+								<h3><?php _e('Source', 'infoamazonia'); ?></h3>
 								<p class="source-name"><a target="_blank" href="<?php echo get_field('url', 'source_' . $source->term_id); ?>"><?php echo $source->name; ?></a></p>
-								<p><a class="small" href="<?php echo get_term_link($source); ?>"><?php _e('More data from this source', 'ekuatorial'); ?></a></p>
+								<p><a class="small" href="<?php echo get_term_link($source); ?>"><?php _e('More data from this source', 'infoamazonia'); ?></a></p>
 							</div>
 							<?php
 						endif;

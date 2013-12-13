@@ -9,9 +9,9 @@ function import_geojson() {
 		if(!$geojson) {
 
 			$json_urls = array(
-				'en' => 'http://dev.cardume.art.br/ekuatorial/geojson/stories-en.geojson',
-				'pt' => 'http://dev.cardume.art.br/ekuatorial/geojson/stories-pt.geojson',
-				'es' => 'http://dev.cardume.art.br/ekuatorial/geojson/stories-es.geojson'
+				'en' => 'http://dev.cardume.art.br/infoamazonia/geojson/stories-en.geojson',
+				'pt' => 'http://dev.cardume.art.br/infoamazonia/geojson/stories-pt.geojson',
+				'es' => 'http://dev.cardume.art.br/infoamazonia/geojson/stories-es.geojson'
 			);
 
 			$options = array(

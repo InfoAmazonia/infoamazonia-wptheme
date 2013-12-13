@@ -1,5 +1,5 @@
-var BASEURL = ekuatorial_widget.baseurl + '?';
-var DEFAULTMAP = ekuatorial_widget.defaultmap;
+var BASEURL = infoamazonia_widget.baseurl + '?';
+var DEFAULTMAP = infoamazonia_widget.defaultmap;
 
 // indexOf shim via
 // developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf
@@ -258,7 +258,7 @@ if (!Array.prototype.indexOf) {
 
             embed.lat = embed.lon = embed.zoom = undefined;
 
-            $('.zoom .val, .latitude .val, .longitude .val').text(ekuatorial_widget.default_label);
+            $('.zoom .val, .latitude .val, .longitude .val').text(infoamazonia_widget.default_label);
 
             updateOutput();
             updateIframe();

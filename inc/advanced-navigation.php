@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Ekuatorial
+ * infoamazonia
  * Advanced navigation
  */
 
 
-class Ekuatorial_AdvancedNav {
+class infoamazonia_AdvancedNav {
 
-	var $prefix = 'ekuatorial_filter_';
+	var $prefix = 'infoamazonia_filter_';
 	var $slug = 'explore';
 
 	function __construct() {
@@ -21,26 +21,26 @@ class Ekuatorial_AdvancedNav {
 	}
 
 	function query_vars($vars) {
-		$vars[] = 'ekuatorial_advanced_nav';
+		$vars[] = 'infoamazonia_advanced_nav';
 		return $vars;
 	}
 
 	function body_class($class) {
-		if(get_query_var('ekuatorial_advanced_nav'))
+		if(get_query_var('infoamazonia_advanced_nav'))
 			$class[] = 'advanced-nav';
 		return $class;
 	}
 
 	function generate_rewrite_rules($wp_rewrite) {
 		$widgets_rule = array(
-			$this->slug . '$' => 'index.php?ekuatorial_advanced_nav=1'
+			$this->slug . '$' => 'index.php?infoamazonia_advanced_nav=1'
 		);
 		$wp_rewrite->rules = $widgets_rule + $wp_rewrite->rules;
 	}
 
 	function pre_get_posts($query) {
 
-		if($query->is_main_query() && $query->get('ekuatorial_advanced_nav')) {
+		if($query->is_main_query() && $query->get('infoamazonia_advanced_nav')) {
 
 			$query->is_home = false;
 
@@ -95,8 +95,8 @@ class Ekuatorial_AdvancedNav {
 		<form class="advanced-nav-filters row">
 			<div class="three columns alpha">
 				<div class="search-input adv-nav-input">
-					<p class="label"><label for="<?php echo $this->prefix; ?>s"><?php _e('Text search', 'ekuatorial'); ?></label></p>
-					<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'ekuatorial'); ?>" value="<?php echo (isset($_GET[$this->prefix . 's'])) ? $_GET[$this->prefix . 's'] : ''; ?>" />
+					<p class="label"><label for="<?php echo $this->prefix; ?>s"><?php _e('Text search', 'infoamazonia'); ?></label></p>
+					<input type="text" id="<?php echo $this->prefix; ?>s" name="<?php echo $this->prefix; ?>s" placeholder="<?php _e('Type your search here', 'infoamazonia'); ?>" value="<?php echo (isset($_GET[$this->prefix . 's'])) ? $_GET[$this->prefix . 's'] : ''; ?>" />
 				</div>
 			</div>
 			<?php
@@ -106,7 +106,7 @@ class Ekuatorial_AdvancedNav {
 				?>
 				<div class="three columns">
 					<div class="category-input adv-nav-input">
-						<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Categories', 'ekuatorial'); ?></label></p>
+						<p class="label"><label for="<?php echo $this->prefix; ?>category"><?php _e('Categories', 'infoamazonia'); ?></label></p>
 						<select id="<?php echo $this->prefix; ?>category" name="<?php echo $this->prefix; ?>category[]" multiple>
 							<?php foreach($categories as $category) : ?>
 								<option value="<?php echo $category->term_id; ?>" <?php if(in_array($category->term_id, $active_cats)) echo 'selected'; ?>><?php echo $category->name; ?></option>
@@ -124,21 +124,21 @@ class Ekuatorial_AdvancedNav {
 			?>
 			<div class="five columns omega">
 				<div class="date-input adv-nav-input">
-					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'ekuatorial'); ?></label></p>
+					<p class="label"><label for="<?php echo $this->prefix; ?>date_start"><?php _e('Date range', 'infoamazonia'); ?></label></p>
 					<div class="date-range-inputs">
 						<div class="date-from-container">
-							<label class="sublabel" for="<?php echo $this->prefix; ?>date_start"><?php _e('From', 'ekuatorial'); ?></label>
+							<label class="sublabel" for="<?php echo $this->prefix; ?>date_start"><?php _e('From', 'infoamazonia'); ?></label>
 							<input type="text" class="date-from" id="<?php echo $this->prefix; ?>date_start" name="<?php echo $this->prefix; ?>date_start" value="<?php echo (isset($_GET[$this->prefix . 'date_start'])) ? $_GET[$this->prefix . 'date_start'] : ''; ?>" />
 						</div>
 						<div class="date-to-container">
-							<label class="sublabel" for="<?php echo $this->prefix; ?>date_end"><?php _e('To', 'ekuatorial'); ?></label>
+							<label class="sublabel" for="<?php echo $this->prefix; ?>date_end"><?php _e('To', 'infoamazonia'); ?></label>
 							<input type="text" class="date-to" id="<?php echo $this->prefix; ?>date_end" name="<?php echo $this->prefix; ?>date_end" value="<?php echo (isset($_GET[$this->prefix . 'date_end'])) ? $_GET[$this->prefix . 'date_end'] : ''; ?>" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="one column">
-				<input type="submit" class="button" value="<?php _e('Filter', 'ekuatorial'); ?>" />
+				<input type="submit" class="button" value="<?php _e('Filter', 'infoamazonia'); ?>" />
 			</div>
 		</form>
 		<script type="text/javascript">
@@ -178,10 +178,10 @@ class Ekuatorial_AdvancedNav {
 
 }
 
-$GLOBALS['ekuatorial_adv_nav'] = new Ekuatorial_AdvancedNav();
+$GLOBALS['infoamazonia_adv_nav'] = new infoamazonia_AdvancedNav();
 
-function ekuatorial_adv_nav_filters() {
-	return $GLOBALS['ekuatorial_adv_nav']->form();
+function infoamazonia_adv_nav_filters() {
+	return $GLOBALS['infoamazonia_adv_nav']->form();
 }
 
 ?>

@@ -15,7 +15,7 @@
 			fragment = false,
 			listPost,
 			icon = L.Icon.extend({}),
-			activeIcon = new icon(ekuatorial_markers.marker_active),
+			activeIcon = new icon(infoamazonia_markers.marker_active),
 			activeMarker;
 
 		// setup sidebar
@@ -33,10 +33,10 @@
 		if(typeof jeo.fragment === 'function' && !map.conf.disableHash)
 			fragment = jeo.fragment();
 
-		$.getJSON(ekuatorial_markers.ajaxurl,
+		$.getJSON(infoamazonia_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
-			query: ekuatorial_markers.query
+			query: infoamazonia_markers.query
 		},
 		function(data) {
 			geojson = data;
@@ -50,7 +50,7 @@
 			var icons = {};
 
 			var parentLayer;
-			if(ekuatorial_markers.enable_clustering) {
+			if(infoamazonia_markers.enable_clustering) {
 
 				parentLayer = new L.MarkerClusterGroup({
 					maxClusterRadius: 20,
@@ -122,7 +122,7 @@
 				return;
 
 			/*
-			 * SIDEBAR STUFF (ekuatorial)
+			 * SIDEBAR STUFF (infoamazonia)
 			 */
 
 			// FIRST STORY
@@ -130,7 +130,7 @@
 			var silent = false;
 
 			// if not home, navigate to post
-			if(!ekuatorial_markers.home) 
+			if(!infoamazonia_markers.home) 
 				silent = false;
 
 			if(fragment) {
@@ -168,7 +168,7 @@
 
 				markers.openMarker(story, silent);
 
-			} else if(!ekuatorial_markers.home || $('html#embedded').length) {
+			} else if(!infoamazonia_markers.home || $('html#embedded').length) {
 
 				markers.openMarker(story, silent);
 
@@ -309,8 +309,8 @@
 			// populate sidebar
 			if(map.$.sidebar && map.$.sidebar.length) {
 
-				var permalink_slug = marker.properties.permalink.replace(ekuatorial_markers.site_url, '');
-				marker.properties.permalink = ekuatorial_markers.site_url + ekuatorial_markers.language + '/' + permalink_slug;
+				var permalink_slug = marker.properties.permalink.replace(infoamazonia_markers.site_url, '');
+				marker.properties.permalink = infoamazonia_markers.site_url + infoamazonia_markers.language + '/' + permalink_slug;
 
 				if(!map.$.sidebar.story) {
 					map.$.sidebar.append('<div class="story" />');
@@ -329,7 +329,7 @@
 
 					media = storyData.slideshow;
 
-					var lightbox_label = ekuatorial_markers.lightbox_label.slideshow;
+					var lightbox_label = infoamazonia_markers.lightbox_label.slideshow;
 
 					if(!media.images && media.iframes) {
 						// iframes can be video, infographic or image gallery
@@ -341,33 +341,33 @@
 
 						if((videos.length && galleries.length) || (videos.length && infographics.length) || (galleries.length && infographics.length)) {
 
-							lightbox_label = ekuatorial_markers.lightbox_label.slideshow;
+							lightbox_label = infoamazonia_markers.lightbox_label.slideshow;
 
 						} else {
 
 							if(videos.length) {
 								if(videos.length >= 2)
-									lightbox_label = ekuatorial_markers.lightbox_label.videos;
+									lightbox_label = infoamazonia_markers.lightbox_label.videos;
 								else
-									lightbox_label = ekuatorial_markers.lightbox_label.video;
+									lightbox_label = infoamazonia_markers.lightbox_label.video;
 							}
 							if(galleries.length) {
-								lightbox_label = ekuatorial_markers.lightbox_label.images;
+								lightbox_label = infoamazonia_markers.lightbox_label.images;
 							}
 							if(infographics.length) {
 								if(infographics.length >= 2)
-									lightbox_label = ekuatorial_markers.lightbox_label.infographics;
+									lightbox_label = infoamazonia_markers.lightbox_label.infographics;
 								else
-									lightbox_label = ekuatorial_markers.lightbox_label.infographic;
+									lightbox_label = infoamazonia_markers.lightbox_label.infographic;
 							}
 
 						}
 
 					} else if(media.images && !media.iframes) {
 						if(media.images.length >= 2)
-							lightbox_label = ekuatorial_markers.lightbox_label.images;
+							lightbox_label = infoamazonia_markers.lightbox_label.images;
 						else
-							lightbox_label = ekuatorial_markers.lightbox_label.image;
+							lightbox_label = infoamazonia_markers.lightbox_label.image;
 					}
 				}
 
@@ -442,9 +442,9 @@
 					map.$.sidebar.share = map.$.sidebar.find('.buttons');
 
 					var shareContent = '';
-					shareContent += '<a class="button read-button" href="' + storyData.url + '">' + ekuatorial_markers.read_more_label + '</a>';
-					shareContent += '<a class="button share-button" href="#">' + ekuatorial_markers.share_label + '</a>';
-					shareContent += '<a class="button print-button" href="#" target="_blank">' + ekuatorial_markers.print_label + '</a>';
+					shareContent += '<a class="button read-button" href="' + storyData.url + '">' + infoamazonia_markers.read_more_label + '</a>';
+					shareContent += '<a class="button share-button" href="#">' + infoamazonia_markers.share_label + '</a>';
+					shareContent += '<a class="button print-button" href="#" target="_blank">' + infoamazonia_markers.print_label + '</a>';
 
 					map.$.sidebar.share.append(shareContent);
 
@@ -463,8 +463,8 @@
 					share_vars += '&map_id=' + map_id;
 				}
 
-				var embed_url = ekuatorial_markers.share_base_url + share_vars;
-				var print_url = ekuatorial_markers.embed_base_url + share_vars + '&print=1' + '#print';
+				var embed_url = infoamazonia_markers.share_base_url + share_vars;
+				var print_url = infoamazonia_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
 				map.$.sidebar.share.find('.share-button').attr('href', embed_url);
 				map.$.sidebar.share.find('.print-button').attr('href', print_url);
@@ -473,8 +473,8 @@
 
 					jeo.groupChanged(function(group, prevMap) {
 
-						embed_url = ekuatorial_markers.share_base_url + share_vars;
-						print_url = ekuatorial_markers.embed_base_url + share_vars + '&print=1' + '#print';
+						embed_url = infoamazonia_markers.share_base_url + share_vars;
+						print_url = infoamazonia_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
 						map.$.sidebar.share.find('.embed-button').attr('href', embed_url);
 						map.$.sidebar.share.find('.print-button').attr('href', print_url);
@@ -484,7 +484,7 @@
 				}
 
 				// add close button
-				if(!map.$.sidebar.find('.close-story').length && !$('html#embedded').length && ekuatorial_markers.home) {
+				if(!map.$.sidebar.find('.close-story').length && !$('html#embedded').length && infoamazonia_markers.home) {
 
 					map.$.sidebar.append('<a class="close-story" href="#">x</a>');
 

@@ -2,8 +2,8 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ekuatorial 0.0.1\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tags/ekuatorial-wptheme\n"
+"Project-Id-Version: infoamazonia 0.0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/infoamazonia-wptheme\n"
 "POT-Creation-Date: 2013-12-05 18:18:06+00:00\n"
 "PO-Revision-Date: 2013-12-05 16:23-0300\n"
 "Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
@@ -2420,7 +2420,7 @@ msgid "No dataset found in the trash"
 msgstr ""
 
 #: inc/datasets.php:38
-msgid "Ekuatorial Datasets"
+msgid "infoamazonia Datasets"
 msgstr ""
 
 #: inc/datasets.php:55
@@ -2605,8 +2605,8 @@ msgid "Publishing date"
 msgstr "Data de publicação"
 
 #: inc/metaboxes/story/story-meta.php:52 inc/submit-story.php:77
-msgid "Notes to the ekuatorial editor"
-msgstr "Notas para o editor do ekuatorial"
+msgid "Notes to the infoamazonia editor"
+msgstr "Notas para o editor do infoamazonia"
 
 #: inc/submit-story.php:15 section-submit-call.php:4
 msgid ""
@@ -2923,11 +2923,11 @@ msgid "Embed this story"
 msgstr "Incorporar notícia"
 
 #. Theme Name of the plugin/theme
-msgid "Ekuatorial"
-msgstr "Ekuatorial"
+msgid "infoamazonia"
+msgstr "infoamazonia"
 
 #. Theme URI of the plugin/theme
-msgid "http://ekuatorial.com/"
+msgid "http://infoamazonia.com/"
 msgstr ""
 
 #. Description of the plugin/theme

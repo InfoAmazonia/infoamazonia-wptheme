@@ -8,7 +8,7 @@
 				<div class="page-title row">
 					<div class="container">
 						<div class="twelve columns">
-							<h1><?php _e('Datasets', 'ekuatorial'); ?></h1>
+							<h1><?php _e('Datasets', 'infoamazonia'); ?></h1>
 						</div>
 					</div>
 				</div>
@@ -19,7 +19,7 @@
 					<div class="four columns">
 
 						<div class="row sources">
-							<h3><?php _e('Sources', 'ekuatorial'); ?></h3>
+							<h3><?php _e('Sources', 'infoamazonia'); ?></h3>
 							<ul>
 								<?php wp_list_categories(array(
 									'taxonomy' => 'source',
@@ -29,7 +29,7 @@
 						</div>
 
 						<div class="row sources">
-							<h3><?php _e('Licenses', 'ekuatorial'); ?></h3>
+							<h3><?php _e('Licenses', 'infoamazonia'); ?></h3>
 							<ul>
 								<?php wp_list_categories(array(
 									'taxonomy' => 'license',

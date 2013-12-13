@@ -14,7 +14,7 @@
 		echo " | $site_description";
 
 	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . __('Page', 'ekuatorial') . max($paged, $page);
+		echo ' | ' . __('Page', 'infoamazonia') . max($paged, $page);
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -53,7 +53,7 @@
 					<nav>
 						<ul>
 							<?php wp_nav_menu(array(
-								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#submit" class="submit-story">' . __('Submit a story', 'ekuatorial') . '</a></li></ul>'
+								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li></ul>'
 							)); ?>
 						</ul>
 					</nav>
@@ -79,17 +79,17 @@
 					<nav id="social">
 						<ul>
 							<li class="twitter">
-								<a href="https://twitter.com/EkuatorialMap" rel="external" target="_blank" title="Twitter"></a>
+								<a href="https://twitter.com/infoamazoniaMap" rel="external" target="_blank" title="Twitter"></a>
 							</li>
 							<li class="fb">
-								<a href="https://facebook.com/ekuatorial" rel="external" target="_blank" title="Facebook"></a>
+								<a href="https://facebook.com/infoamazonia" rel="external" target="_blank" title="Facebook"></a>
 							</li>
 						</ul>
 					</nav>
 					<nav id="feedback">
 						<ul>
 							<li>
-								<a href="<?php echo ekuatorial_home_url('/mail-us/'); ?>" title="<?php _e('Feedback', 'ekuatorial'); ?>"><?php _e('Contact', 'ekuatorial'); ?></a>
+								<a href="<?php echo infoamazonia_home_url('/about/'); ?>" title="<?php _e('About', 'infoamazonia'); ?>"><?php _e('About', 'infoamazonia'); ?></a>
 							</li>
 						</ul>
 					</nav>

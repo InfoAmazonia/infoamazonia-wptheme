@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: ekuatorial\n"
+"Project-Id-Version: infoamazonia\n"
 "Language: es\n"
 
 #: ../loop-maps.php:16
@@ -392,11 +392,11 @@ msgstr "Añadir o eliminar editores"
 msgid "Choose from most used publishers"
 msgstr "Elija entre los editores más utilizados"
 
-#: ../inc/ekuatorial-widget.php:46
+#: ../inc/infoamazonia-widget.php:46
 msgid "default"
 msgstr "defecto"
 
-#: ../inc/ekuatorial-widget.php:54
+#: ../inc/infoamazonia-widget.php:54
 msgid "Share a map"
 msgstr "Comparte un mapa"
 
@@ -500,8 +500,8 @@ msgid "Publishing date"
 msgstr "Fecha de publicação"
 
 #: ../inc/submit-story.php:77
-msgid "Notes to the ekuatorial editor"
-msgstr "Notas para el editor del ekuatorial"
+msgid "Notes to the infoamazonia editor"
+msgstr "Notas para el editor del infoamazonia"
 
 #: ../inc/submit-story.php:80
 #: ../inc/submit-story.php:114

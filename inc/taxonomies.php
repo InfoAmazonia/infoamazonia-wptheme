@@ -6,21 +6,21 @@
 function register_taxonomy_publisher() {
 
     $labels = array( 
-        'name' => __('Publishers', 'ekuatorial'),
-        'singular_name' => __('Publisher', 'ekuatorial'),
-        'search_items' => __('Search publishers', 'ekuatorial'),
-        'popular_items' => __('Popular publishers', 'ekuatorial'),
-        'all_items' => __('All publishers', 'ekuatorial'),
-        'parent_item' => __('Parent publisher', 'ekuatorial'),
-        'parent_item_colon' => __('Parent publisher:', 'ekuatorial'),
-        'edit_item' => __('Edit publisher', 'ekuatorial'),
-        'update_item' => __('Update publisher', 'ekuatorial'),
-        'add_new_item' => __('Add new publisher', 'ekuatorial'),
-        'new_item_name' => __('New publisher name', 'ekuatorial'),
-        'separate_items_with_commas' => __('Separate publishers with commas', 'ekuatorial'),
-        'add_or_remove_items' => __('Add or remove publishers', 'ekuatorial'),
-        'choose_from_most_used' => __('Choose from most used publishers', 'ekuatorial'),
-        'menu_name' => __('Publishers', 'ekuatorial')
+        'name' => __('Publishers', 'infoamazonia'),
+        'singular_name' => __('Publisher', 'infoamazonia'),
+        'search_items' => __('Search publishers', 'infoamazonia'),
+        'popular_items' => __('Popular publishers', 'infoamazonia'),
+        'all_items' => __('All publishers', 'infoamazonia'),
+        'parent_item' => __('Parent publisher', 'infoamazonia'),
+        'parent_item_colon' => __('Parent publisher:', 'infoamazonia'),
+        'edit_item' => __('Edit publisher', 'infoamazonia'),
+        'update_item' => __('Update publisher', 'infoamazonia'),
+        'add_new_item' => __('Add new publisher', 'infoamazonia'),
+        'new_item_name' => __('New publisher name', 'infoamazonia'),
+        'separate_items_with_commas' => __('Separate publishers with commas', 'infoamazonia'),
+        'add_or_remove_items' => __('Add or remove publishers', 'infoamazonia'),
+        'choose_from_most_used' => __('Choose from most used publishers', 'infoamazonia'),
+        'menu_name' => __('Publishers', 'infoamazonia')
     );
 
     $args = array( 

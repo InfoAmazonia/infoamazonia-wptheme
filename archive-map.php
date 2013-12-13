@@ -7,7 +7,7 @@
 
 					<section id="maps" class="map-loop-section archive-list">
 						<div class="twelve columns">
-							<h1><?php _e('Maps', 'ekuatorial'); ?></h1>
+							<h1><?php _e('Maps', 'infoamazonia'); ?></h1>
 						</div>
 						<?php get_template_part('loop', 'maps'); ?>
 					</section>

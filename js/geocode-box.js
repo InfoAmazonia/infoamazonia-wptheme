@@ -1,6 +1,6 @@
 jQuery(function($) {
 
-	$.fn.ekuatorialGeocodeBox = function(settings) {
+	$.fn.infoamazoniaGeocodeBox = function(settings) {
 
 
 		var config = {

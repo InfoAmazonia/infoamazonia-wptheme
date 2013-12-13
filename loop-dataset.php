@@ -13,12 +13,12 @@
 					</header>
 					<section>
 						<?php the_excerpt(); ?>
-						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button"><?php _e('View this data', 'ekuatorial'); ?></a>
+						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button"><?php _e('View this data', 'infoamazonia'); ?></a>
 						<?php
 						$data = get_field('full_download');
 						if($data) :
 							?>
-							<a href="<?php echo $data; ?>" class="button download"><?php _e('Download', 'ekuatorial'); ?></a>
+							<a href="<?php echo $data; ?>" class="button download"><?php _e('Download', 'infoamazonia'); ?></a>
 							<?php
 						endif;
 						?>
@@ -26,7 +26,7 @@
 						$data = get_field('source_url');
 						if($data) :
 							?>
-							<a href="<?php echo $data; ?>" class="button download"><?php _e('Download from source', 'ekuatorial'); ?></a>
+							<a href="<?php echo $data; ?>" class="button download"><?php _e('Download from source', 'infoamazonia'); ?></a>
 							<?php
 						endif;
 						?>

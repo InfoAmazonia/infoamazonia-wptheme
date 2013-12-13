@@ -1,11 +1,11 @@
 <?php
 
 /*
- * Ekuatorial
+ * infoamazonia
  * Data sets
  */
 
-class Ekuatorial_DataSets {
+class infoamazonia_DataSets {
 
 	function __construct() {
 
@@ -19,23 +19,23 @@ class Ekuatorial_DataSets {
 	function register_post_type() {
 
 		$labels = array( 
-			'name' => __('Datasets', 'ekuatorial'),
-			'singular_name' => __('Dataset', 'ekuatorial'),
-			'add_new' => __('Add dataset', 'ekuatorial'),
-			'add_new_item' => __('Add new dataset', 'ekuatorial'),
-			'edit_item' => __('Edit dataset', 'ekuatorial'),
-			'new_item' => __('New dataset', 'ekuatorial'),
-			'view_item' => __('View dataset', 'ekuatorial'),
-			'search_items' => __('Search dataset', 'ekuatorial'),
-			'not_found' => __('No dataset found', 'ekuatorial'),
-			'not_found_in_trash' => __('No dataset found in the trash', 'ekuatorial'),
-			'menu_name' => __('Datasets', 'ekuatorial')
+			'name' => __('Datasets', 'infoamazonia'),
+			'singular_name' => __('Dataset', 'infoamazonia'),
+			'add_new' => __('Add dataset', 'infoamazonia'),
+			'add_new_item' => __('Add new dataset', 'infoamazonia'),
+			'edit_item' => __('Edit dataset', 'infoamazonia'),
+			'new_item' => __('New dataset', 'infoamazonia'),
+			'view_item' => __('View dataset', 'infoamazonia'),
+			'search_items' => __('Search dataset', 'infoamazonia'),
+			'not_found' => __('No dataset found', 'infoamazonia'),
+			'not_found_in_trash' => __('No dataset found in the trash', 'infoamazonia'),
+			'menu_name' => __('Datasets', 'infoamazonia')
 		);
 
 		$args = array( 
 			'labels' => $labels,
 			'hierarchical' => false,
-			'description' => __('Ekuatorial Datasets', 'ekuatorial'),
+			'description' => __('infoamazonia Datasets', 'infoamazonia'),
 			'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'comments'),
 			'public' => true,
 			'show_ui' => true,
@@ -52,22 +52,22 @@ class Ekuatorial_DataSets {
 	function register_taxonomies() {
 
 		$labels = array(
-			'name' => _x('Licenses', 'License general name', 'ekuatorial'),
-			'singular_name' => _x('License', 'License singular name', 'ekuatorial'),
-			'all_items' => __('All licenses', 'ekuatorial'),
-			'edit_item' => __('Edit license', 'ekuatorial'),
-			'view_item' => __('View license', 'ekuatorial'),
-			'update_item' => __('Update license', 'ekuatorial'),
-			'add_new_item' => __('Add new license', 'ekuatorial'),
-			'new_item_name' => __('New license name', 'ekuatorial'),
-			'parent_item' => __('Parent license', 'ekuatorial'),
-			'parent_item_colon' => __('Parent license:', 'ekuatorial'),
-			'search_items' => __('Search licenses', 'ekuatorial'),
-			'popular_items' => __('Popular licenses', 'ekuatorial'),
-			'separate_items_with_commas' => __('Separate licenses with commas', 'ekuatorial'),
-			'add_or_remove_items' => __('Add or remove licenses', 'ekuatorial'),
-			'choose_from_most_used' => __('Choose from most used licenses', 'ekuatorial'),
-			'not_found' => __('No licenses found', 'ekuatorial')
+			'name' => _x('Licenses', 'License general name', 'infoamazonia'),
+			'singular_name' => _x('License', 'License singular name', 'infoamazonia'),
+			'all_items' => __('All licenses', 'infoamazonia'),
+			'edit_item' => __('Edit license', 'infoamazonia'),
+			'view_item' => __('View license', 'infoamazonia'),
+			'update_item' => __('Update license', 'infoamazonia'),
+			'add_new_item' => __('Add new license', 'infoamazonia'),
+			'new_item_name' => __('New license name', 'infoamazonia'),
+			'parent_item' => __('Parent license', 'infoamazonia'),
+			'parent_item_colon' => __('Parent license:', 'infoamazonia'),
+			'search_items' => __('Search licenses', 'infoamazonia'),
+			'popular_items' => __('Popular licenses', 'infoamazonia'),
+			'separate_items_with_commas' => __('Separate licenses with commas', 'infoamazonia'),
+			'add_or_remove_items' => __('Add or remove licenses', 'infoamazonia'),
+			'choose_from_most_used' => __('Choose from most used licenses', 'infoamazonia'),
+			'not_found' => __('No licenses found', 'infoamazonia')
 		);
 
 		$args = array(
@@ -82,22 +82,22 @@ class Ekuatorial_DataSets {
 		register_taxonomy('license', 'dataset', $args);
 
 		$labels = array(
-			'name' => _x('Sources', 'Source general name', 'ekuatorial'),
-			'singular_name' => _x('Source', 'Source singular name', 'ekuatorial'),
-			'all_items' => __('All sources', 'ekuatorial'),
-			'edit_item' => __('Edit source', 'ekuatorial'),
-			'view_item' => __('View source', 'ekuatorial'),
-			'update_item' => __('Update source', 'ekuatorial'),
-			'add_new_item' => __('Add new source', 'ekuatorial'),
-			'new_item_name' => __('New source name', 'ekuatorial'),
-			'parent_item' => __('Parent source', 'ekuatorial'),
-			'parent_item_colon' => __('Parent source:', 'ekuatorial'),
-			'search_items' => __('Search sources', 'ekuatorial'),
-			'popular_items' => __('Popular sources', 'ekuatorial'),
-			'separate_items_with_commas' => __('Separate sources with commas', 'ekuatorial'),
-			'add_or_remove_items' => __('Add or remove sources', 'ekuatorial'),
-			'choose_from_most_used' => __('Choose from most used sources', 'ekuatorial'),
-			'not_found' => __('No sources found', 'ekuatorial')
+			'name' => _x('Sources', 'Source general name', 'infoamazonia'),
+			'singular_name' => _x('Source', 'Source singular name', 'infoamazonia'),
+			'all_items' => __('All sources', 'infoamazonia'),
+			'edit_item' => __('Edit source', 'infoamazonia'),
+			'view_item' => __('View source', 'infoamazonia'),
+			'update_item' => __('Update source', 'infoamazonia'),
+			'add_new_item' => __('Add new source', 'infoamazonia'),
+			'new_item_name' => __('New source name', 'infoamazonia'),
+			'parent_item' => __('Parent source', 'infoamazonia'),
+			'parent_item_colon' => __('Parent source:', 'infoamazonia'),
+			'search_items' => __('Search sources', 'infoamazonia'),
+			'popular_items' => __('Popular sources', 'infoamazonia'),
+			'separate_items_with_commas' => __('Separate sources with commas', 'infoamazonia'),
+			'add_or_remove_items' => __('Add or remove sources', 'infoamazonia'),
+			'choose_from_most_used' => __('Choose from most used sources', 'infoamazonia'),
+			'not_found' => __('No sources found', 'infoamazonia')
 		);
 
 		$args = array(
@@ -236,4 +236,4 @@ class Ekuatorial_DataSets {
 
 }
 
-$GLOBALS['ekuatorial_datasets'] = new Ekuatorial_DataSets();
+$GLOBALS['infoamazonia_datasets'] = new infoamazonia_DataSets();

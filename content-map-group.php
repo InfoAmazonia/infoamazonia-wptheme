@@ -25,7 +25,7 @@ if(is_array($mapgroup['maps'])) {
 			endforeach; ?>
 			<?php if($more_maps) : ?>
 				<li class="more-tab">
-					<a href="#" class="toggle-more"><?php _e('More...', 'ekuatorial'); ?></a>
+					<a href="#" class="toggle-more"><?php _e('More...', 'infoamazonia'); ?></a>
 					<ul class="more-maps-list">
 						<?php foreach($more_maps as $map) :
 							$post = get_post($map['id']);
@@ -40,7 +40,7 @@ if(is_array($mapgroup['maps'])) {
 						if(function_exists('qtrans_convertURL'))
 							$link = qtrans_convertURL(get_post_type_archive_link('map'));
 						?>
-						<li><a href="<?php echo $link; ?>"><?php _e('View all maps', 'ekuatorial'); ?></a></li>
+						<li><a href="<?php echo $link; ?>"><?php _e('View all maps', 'infoamazonia'); ?></a></li>
 					</ul>
 				</li>
 			<?php endif; ?>

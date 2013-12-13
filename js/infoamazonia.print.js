@@ -1,8 +1,8 @@
-var ekuatorialPrint;
+var infoamazoniaPrint;
 
 (function($) {
 
-	ekuatorialPrint = function(options, url) {
+	infoamazoniaPrint = function(options, url) {
 
 		settings = {
 			layers: [],

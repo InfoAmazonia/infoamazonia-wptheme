@@ -6,7 +6,7 @@ add_action('save_post', 'featured_save_postdata');
 function featured_add_meta_box() {
 	add_meta_box(
 		'featured',
-		__('Featured post', 'ekuatorial'),
+		__('Featured post', 'infoamazonia'),
 		'featured_inner_custom_box',
 		'post',
 		'advanced',
@@ -18,7 +18,7 @@ function featured_inner_custom_box($post) {
 	$featured = get_post_meta($post->ID, 'featured', true);
 	?>
 	<div id="featured-metabox">
-		<input type="checkbox" name="featured_post" value="1" id="featured_post_input" <?php if($featured) echo 'checked'; ?> /> <label for="featured_post_input"><?php _e('This post is featured', 'ekuatorial'); ?></label>
+		<input type="checkbox" name="featured_post" value="1" id="featured_post_input" <?php if($featured) echo 'checked'; ?> /> <label for="featured_post_input"><?php _e('This post is featured', 'infoamazonia'); ?></label>
 	</div>
 	<?php
 }

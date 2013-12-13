@@ -26,7 +26,7 @@ wp_enqueue_script('lockfixed', get_stylesheet_directory_uri() . '/js/jquery.lock
 							<p class="meta clearfix">
 								<span class="date">
 									<span class="lsf">&#xE15e;</span>
-									<span class="date-content"><?php echo get_the_date(_x('m/d/Y', 'reduced date format', 'ekuatorial')); ?></span>
+									<span class="date-content"><?php echo get_the_date(_x('m/d/Y', 'reduced date format', 'infoamazonia')); ?></span>
 								</span>
 								<?php
 								if(get_the_terms($post->ID, 'publisher')) :
@@ -49,8 +49,8 @@ wp_enqueue_script('lockfixed', get_stylesheet_directory_uri() . '/js/jquery.lock
 						</section>
 						<footer class="post-actions">
 							<div class="buttons">
-								<a class="button" href="<?php the_permalink(); ?>"><?php _e('Read more', 'ekuatorial'); ?></a>
-								<a class="button" href="<?php echo jeo_get_share_url(array('p' => $post->ID)); ?>"><?php _e('Share', 'ekuatorial'); ?></a>
+								<a class="button" href="<?php the_permalink(); ?>"><?php _e('Read more', 'infoamazonia'); ?></a>
+								<a class="button" href="<?php echo jeo_get_share_url(array('p' => $post->ID)); ?>"><?php _e('Share', 'infoamazonia'); ?></a>
 							</div>
 						</footer>
 					</article>

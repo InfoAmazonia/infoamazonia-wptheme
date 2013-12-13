@@ -8,7 +8,7 @@
 				<div class="page-title row">
 					<div class="container">
 						<div class="twelve columns">
-							<h2><a href="<?php echo get_post_type_archive_link('dataset'); ?>"><?php _e('Datasets', 'ekuatorial'); ?></a></h2>
+							<h2><a href="<?php echo get_post_type_archive_link('dataset'); ?>"><?php _e('Datasets', 'infoamazonia'); ?></a></h2>
 							<h1><?php single_term_title(); ?></h1>
 							<?php
 							$term = get_queried_object();
@@ -33,7 +33,7 @@
 
 					<div class="four columns">
 						<div class="row sources">
-							<h3><?php _e('Sources', 'ekuatorial'); ?></h3>
+							<h3><?php _e('Sources', 'infoamazonia'); ?></h3>
 							<ul>
 								<?php wp_list_categories(array(
 									'taxonomy' => 'source',
@@ -43,7 +43,7 @@
 						</div>
 
 						<div class="row sources">
-							<h3><?php _e('Licenses', 'ekuatorial'); ?></h3>
+							<h3><?php _e('Licenses', 'infoamazonia'); ?></h3>
 							<ul>
 								<?php wp_list_categories(array(
 									'taxonomy' => 'license',

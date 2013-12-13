@@ -13,7 +13,7 @@
 		echo " | $site_description";
 
 	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . __('Page', 'ekuatorial') . max($paged, $page);
+		echo ' | ' . __('Page', 'infoamazonia') . max($paged, $page);
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -126,7 +126,7 @@ if(isset($_GET['print'])) {
 		if(window.location.hash == '#print') {
 			jQuery(document).ready(function($) {
 				$('#print-css').attr('media', 'all');
-				ekuatorialPrint({}, '<?php echo $image_url; ?>');
+				infoamazoniaPrint({}, '<?php echo $image_url; ?>');
 			});
 		}
 

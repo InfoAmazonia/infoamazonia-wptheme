@@ -29,19 +29,19 @@
 						</div>
 					</div>
 					<div class="five columns">
-						<?php $thumbnail = ekuatorial_get_thumbnail(); ?>
+						<?php $thumbnail = infoamazonia_get_thumbnail(); ?>
 						<div class="thumbnail">
 							<?php if($thumbnail) : ?>
 								<img src="<?php echo $thumbnail; ?>" />
 							<?php endif; ?>
-							<a class="button" href="<?php echo get_post_meta($post->ID, 'url', true); ?>" target="_blank"><?php _e('Go to the original article', 'ekuatorial'); ?></a>
+							<a class="button" href="<?php echo get_post_meta($post->ID, 'url', true); ?>" target="_blank"><?php _e('Go to the original article', 'infoamazonia'); ?></a>
 							<p class="buttons">
-								<a class="button embed-button" href="<?php echo jeo_get_share_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Embed this story', 'ekuatorial'); ?></a>
-								<a class="button print-button" href="<?php echo jeo_get_embed_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Print', 'ekuatorial'); ?></a>
+								<a class="button embed-button" href="<?php echo jeo_get_share_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Embed this story', 'infoamazonia'); ?></a>
+								<a class="button print-button" href="<?php echo jeo_get_embed_url(array('p' => $post->ID)); ?>" target="_blank"><?php _e('Print', 'infoamazonia'); ?></a>
 							</p>
 							<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>
 							<div class="twitter-button">
-								<a href="https://twitter.com/share" class="twitter-share-button" data-via="ekuatorial" <?php if(function_exists('qtrans_getLanguage')) : ?>data-lang="<?php echo qtrans_getLanguage(); ?>"<?php endif; ?>>Tweet</a>
+								<a href="https://twitter.com/share" class="twitter-share-button" data-via="infoamazonia" <?php if(function_exists('qtrans_getLanguage')) : ?>data-lang="<?php echo qtrans_getLanguage(); ?>"<?php endif; ?>>Tweet</a>
 							</div>
 						</div>
 					</div>

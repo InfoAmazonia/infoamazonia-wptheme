@@ -17,7 +17,7 @@ class JEO_Post_Zoom {
 		$geocode_zoom = get_post_meta($post->ID, 'geocode_zoom', true);
 		?>
 		<p>
-		<?php _e('Zoom', 'ekuatorial'); ?>:
+		<?php _e('Zoom', 'infoamazonia'); ?>:
 		<input type="text" id="geocode_zoom" name="geocode_zoom" value="<?php if($geocode_zoom) echo $geocode_zoom; ?>" />
 		</p>
 		<?php
