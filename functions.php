@@ -222,7 +222,7 @@ function infoamazonia_marker_data($data) {
 		$permalink = qtrans_convertURL($data['url'], qtrans_getLanguage());
 
 	$data['permalink'] = $permalink;
-	$data['url'] = get_post_meta($post->ID, 'url', true) ? get_post_meta($post->ID, 'url', true) : $data['permalink'];
+	$data['url'] = $data['permalink'];
 	$data['content'] = get_the_excerpt();
 	$data['slideshow'] = infoamazonia_get_content_media();
 	if(get_post_meta($post->ID, 'geocode_zoom', true))
@@ -445,6 +445,7 @@ function infoamazonia_convert_url($url) {
 	$pos = strpos($url, '?');
 	if($pos === false)
 		$url .= '?';
+
 	return $url;
 }
 add_filter('jeo_embed_url', 'infoamazonia_convert_url');
@@ -499,3 +500,13 @@ function infoamazonia_home_url($path = '') {
 	else
 		return home_url($path);
 }
+
+// convert local URLs in custom menu items
+function qtrans_menuitem( $menu_item ) {
+	if ($menu_item->type == 'custom' && stripos($menu_item->url, get_site_url()) !== false){
+		$menu_item->url = qtrans_convertURL($menu_item->url);
+	}
+	return $menu_item;
+}
+
+ add_filter('wp_setup_nav_menu_item', 'qtrans_menuitem', 0);

@@ -1,4 +1,6 @@
-<?php if(is_active_sidebar('main-sidebar')) : ?>
+<?php
+$active = false;
+if(is_active_sidebar('main-sidebar') && $active) : ?>
 	<aside id="main-widgets">
 		<div class="container">
 			<div class="widgets">

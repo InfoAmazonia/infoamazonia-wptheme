@@ -663,3 +663,41 @@ and (max-device-width : 1024px) {
     }
   }
 
+
+/*  -------------------------------------------------------
+ *  Get the data
+ *  ------------------------------------------------------- */
+
+.dataset {
+  clear: left;
+  padding: 20px 0;
+  }
+  .dataset h4 {
+    line-height: 32px;
+    padding: 5px 0;
+    margin: 0;
+    }
+  .dataset .button.download {
+    float: right;
+    }
+  .dataset .license {
+    padding: 0 0 10px 0;
+    }
+  .dataset .button.download {
+    width: 100px;
+    }
+  .dataset .button.download .dl-info {
+    display: none;
+    }
+  .dataset .button.download:hover .dl-label {
+    display: none;
+    }
+  .dataset .button.download:hover .dl-info {
+    display: inline;
+    }
+  .dataset .thumbnail {
+    float: left;
+    }
+  .dataset .details {
+    margin-left: 210px;
+    }
