@@ -103,6 +103,7 @@
 						e.target.closePopup();
 					});
 					l.on('click', function(e) {
+						jeo.runCallbacks('markerClicked', [e]);
 						markers.openMarker(e.target, false);
 						return false;
 					});
@@ -548,6 +549,7 @@
 	}
 	jeo.mapReady(markers);
 	jeo.createCallback('markersReady');
+	jeo.createCallback('markerClicked');
 	jeo.createCallback('markerOpened');
 
 })(jQuery);

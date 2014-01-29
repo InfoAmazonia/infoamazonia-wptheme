@@ -116,6 +116,11 @@ wp_enqueue_script('lockfixed', get_stylesheet_directory_uri() . '/js/jquery.lock
 			}
 		});
 
+		jeo.markerClicked(function(e) {
+			window.location = e.target.feature.properties.permalink;
+			return false;
+		});
+
 		function mapSize() {
 
 			var map = $('.explore-map');
