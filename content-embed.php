@@ -27,7 +27,7 @@
 <body <?php body_class(get_bloginfo('language')); ?>>
 
 <header id="embed-header">
-	<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?></a></h1>
+	<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
 </header>
 
 <section id="embed-map">

@@ -473,10 +473,21 @@
 
 					jeo.groupChanged(function(group, prevMap) {
 
+						share_vars = '?p=' + marker.properties.postID;
+						map_id = map.postID;
+						if(map.currentMapID)
+							map_id = map.currentMapID;
+
+						if(typeof map_id === 'undefined') {
+							share_vars += '&layers=' + map.conf.layers;
+						} else {
+							share_vars += '&map_id=' + map_id;
+						}
+
 						embed_url = infoamazonia_markers.share_base_url + share_vars;
 						print_url = infoamazonia_markers.embed_base_url + share_vars + '&print=1' + '#print';
 
-						map.$.sidebar.share.find('.embed-button').attr('href', embed_url);
+						map.$.sidebar.share.find('.share-button').attr('href', embed_url);
 						map.$.sidebar.share.find('.print-button').attr('href', print_url);
 
 					});

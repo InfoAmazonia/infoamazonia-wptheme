@@ -25,7 +25,7 @@ if($sticky->have_posts()) :
 					</div>
 					<footer class="post-actions">
 						<a class="button" href="<?php the_permalink(); ?>"><?php _e('Read more', 'infoamazonia'); ?></a>
-						<a class="button" href="<?php echo jeo_get_share_url(array('p' => get_the_ID())); ?>"><?php _e('Share', 'infoamazonia'); ?></a>
+						<a class="button share-button" href="<?php echo jeo_get_share_url(array('p' => get_the_ID())); ?>"><?php _e('Share', 'infoamazonia'); ?></a>
 					</footer>
 				</article>
 			</div>

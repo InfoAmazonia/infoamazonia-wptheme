@@ -50,9 +50,7 @@
 			if(opened.length) {
 				//opened.attr('style', '');
 			}
-			
-			console.log(closed.length);
-			
+
 			closed.each(function() {
 				
 				var img = $(this);
@@ -91,6 +89,23 @@
 			jeo.markerOpened(function() {
 				clearInterval(t);
 				closeSticky();
+			});
+
+			$('.sticky-posts .sticky-item').each(function() {
+
+				var $item = $(this);
+				$item.data('shareUrl', $(this).find('.share-button').attr('href'));
+				$item.find('.share-button').attr('href', $item.data('shareUrl') + '&map_id=' + map.currentMapID);
+
+			});
+
+			jeo.groupChanged(function(group) {
+
+				$('.sticky-posts .sticky-item').each(function() {
+					var $item = $(this);
+					$item.find('.share-button').attr('href', $item.data('shareUrl') + '&map_id=' + group.currentMapID);
+				});
+
 			});
 
 			map.on('click mouseup', function() {
