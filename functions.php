@@ -214,15 +214,16 @@ if(function_exists('qtrans_convertURL'))
 	add_filter('post_type_link', 'qtrans_convertURL');
 
 // custom marker data
-function infoamazonia_marker_data($data) {
+function infoamazonia_marker_data($data, $post) {
 	global $post;
 
 	$permalink = $data['url'];
+
 	if(function_exists('qtrans_getLanguage'))
-		$permalink = qtrans_convertURL($data['url'], qtrans_getLanguage());
+		$permalink = add_query_arg(array('lang' => qtrans_getLanguage()), $permalink);
 
 	$data['permalink'] = $permalink;
-	$data['url'] = $data['permalink'];
+	$data['url'] = $permalink;
 	$data['content'] = get_the_excerpt();
 	$data['slideshow'] = infoamazonia_get_content_media();
 	if(get_post_meta($post->ID, 'geocode_zoom', true))
@@ -237,7 +238,7 @@ function infoamazonia_marker_data($data) {
 	$data['thumbnail'] = infoamazonia_get_thumbnail();
 	return $data;
 }
-add_filter('jeo_marker_data', 'infoamazonia_marker_data');
+add_filter('jeo_marker_data', 'infoamazonia_marker_data', 10, 2);
 
 function infoamazonia_get_thumbnail($post_id = false) {
 	global $post;

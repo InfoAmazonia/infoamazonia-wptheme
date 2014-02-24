@@ -33,6 +33,7 @@
 		if(typeof jeo.fragment === 'function' && !map.conf.disableHash)
 			fragment = jeo.fragment();
 
+
 		$.getJSON(infoamazonia_markers.ajaxurl,
 		{
 			action: 'markers_geojson',
