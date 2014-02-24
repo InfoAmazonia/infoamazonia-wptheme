@@ -101,7 +101,7 @@ function infoamazonia_scripts() {
 	// custom marker system
 	global $jeo_markers;
 	wp_deregister_script('jeo.markers');
-	wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.16', true);
+	wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.17', true);
 	wp_localize_script('jeo.markers', 'infoamazonia_markers', array(
 		'ajaxurl' => admin_url('admin-ajax.php'),
 		'query' => $jeo_markers->query(),

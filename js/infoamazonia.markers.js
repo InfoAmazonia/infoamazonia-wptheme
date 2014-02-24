@@ -450,6 +450,11 @@
 
 					map.$.sidebar.share.append(shareContent);
 
+					// New window if iframe is detected
+					if(window !== window.top) {
+						map.$.sidebar.share.find('a').attr('target', '_blank');
+					}
+
 				}
 
 				map.$.sidebar.share.find('.share-options').hide().addClass('hidden');
