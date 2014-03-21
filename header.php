@@ -79,7 +79,7 @@
 					<nav id="social">
 						<ul>
 							<li class="twitter">
-								<a href="https://twitter.com/infoamazoniaMap" rel="external" target="_blank" title="Twitter"></a>
+								<a href="https://twitter.com/infoamazonia" rel="external" target="_blank" title="Twitter"></a>
 							</li>
 							<li class="fb">
 								<a href="https://www.facebook.com/oecodata" rel="external" target="_blank" title="Facebook"></a>

@@ -11,7 +11,7 @@
 			<p><a href="<?php echo jeo_get_share_url(); ?>"><?php _e('Create a custom map visualization with different news and spread the word.', 'infoamazonia'); ?></a></p>
 		</div>
 		<div class="four columns">
-			<span class="lsf"><a href="<?php echo infoamazonia_home_url('/data/'); ?>">save</a></span>
+			<span class="lsf"><a href="<?php echo infoamazonia_home_url('/datasets/'); ?>">save</a></span>
 			<h3><a href="<?php echo infoamazonia_home_url('/data/'); ?>"><?php _e('Get the data', 'infoamazonia'); ?></a></h3>
 			<p><a href="<?php echo infoamazonia_home_url('/data/'); ?>"><?php _e('Download all the researched data used to design our maps and help us remix it into new visualizations.', 'infoamazonia'); ?></a></p>
 		</div>
