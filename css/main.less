@@ -1264,9 +1264,14 @@ body.map-fullscreen .fullscreen-map, body.map-fullscreen .fullscreen-map.map-con
 		&.active,
 		&:hover {
 			background: #3f3f3f;
+		}
+		&.active {
 			article {
 				h2 {
 					color: #f0f0f0;
+					white-space: normal;
+					overflow: visible;
+					text-overflow: clip;
 				}
 			}
 		}
