@@ -510,4 +510,13 @@ function qtrans_menuitem( $menu_item ) {
 	return $menu_item;
 }
 
- add_filter('wp_setup_nav_menu_item', 'qtrans_menuitem', 0);
+add_filter('wp_setup_nav_menu_item', 'qtrans_menuitem', 0);
+
+// do not use map query on front page
+
+function infoamazonia_home_query($query) {
+	if($query->is_main_query() && $query->is_home) {
+		$query->set('without_map_query', 1);
+	}
+}
+add_action('pre_get_posts', 'infoamazonia_home_query');
