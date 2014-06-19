@@ -213,6 +213,48 @@ function infoamazonia_story_fragment_title($title, $sep) {
 if(function_exists('qtrans_convertURL'))
 	add_filter('post_type_link', 'qtrans_convertURL');
 
+function infoamazonia_gfw_markers_data($data, $query) {
+	if(isset($_GET['gfw'])) {
+
+		$gfw_features = array();
+
+		foreach($data['features'] as $feature) {
+
+			$gfw_feature = $feature;
+			$properties = $feature['properties'];
+
+			$date = explode('/', $properties['date']);
+			$date = $date[2] . '-' . $date[0] . '-' . $date[1];
+
+			$gfw_feature['properties'] = array(
+				'title' => $properties['title'],
+				'description' => $properties['content'],
+				'loc' => $properties['url'],
+				'date' => $date,
+				'thumbnail' => $properties['thumbnail'],
+				'author' => $properties['source']
+			);
+
+			$gfw_features[] = $gfw_feature;
+
+		}
+
+		$data['features'] = $gfw_features;
+
+	}
+	return $data;
+}
+add_filter('jeo_markers_data', 'infoamazonia_gfw_markers_data', 100, 2);
+
+function infoamazonia_gfw_cache_key($cache_key) {
+	if(isset($_GET['gfw'])) {
+		$cache_key .= '_gfw';
+	}
+	return $cache_key;
+}
+add_filter('jeo_markers_cache_key', 'infoamazonia_gfw_cache_key', 100);
+
+
 // custom marker data
 function infoamazonia_marker_data($data, $post) {
 	global $post;
@@ -228,6 +270,7 @@ function infoamazonia_marker_data($data, $post) {
 	$data['slideshow'] = infoamazonia_get_content_media();
 	if(get_post_meta($post->ID, 'geocode_zoom', true))
 		$data['zoom'] = get_post_meta($post->ID, 'geocode_zoom', true);
+
 	// source
 	$publishers = get_the_terms($post->ID, 'publisher');
 	if($publishers) {
@@ -236,6 +279,7 @@ function infoamazonia_marker_data($data, $post) {
 	}
 	// thumbnail
 	$data['thumbnail'] = infoamazonia_get_thumbnail();
+
 	return $data;
 }
 add_filter('jeo_marker_data', 'infoamazonia_marker_data', 10, 2);
