@@ -1,6 +1,22 @@
 (function($) {
 
 	/*
+	 * Header
+	 */
+
+	$(document).ready(function() {
+
+		$(window).scroll(function() {
+			if($(window).scrollTop() > 20) {
+				$('#masthead').addClass('collapsed');
+			} else {
+				$('#masthead').removeClass('collapsed');
+			}
+		});
+
+	});
+
+	/*
 	 * Home slider
 	 */
 	$(document).ready(function() {
