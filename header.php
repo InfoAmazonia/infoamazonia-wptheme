@@ -54,7 +54,7 @@
 					<nav>
 						<ul>
 							<?php wp_nav_menu(array(
-								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li></ul>'
+								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<!--<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li>--></ul>'
 							)); ?>
 						</ul>
 					</nav>

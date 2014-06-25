@@ -570,3 +570,8 @@ function infoamazonia_home_query($query) {
 	}
 }
 add_action('pre_get_posts', 'infoamazonia_home_query');
+
+function infoamazonia_disable_share_a_map_nav() {
+	return true;
+}
+add_filter('jeo_disable_share_map_menu', 'infoamazonia_disable_share_a_map_nav');
