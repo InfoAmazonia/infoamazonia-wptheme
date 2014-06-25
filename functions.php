@@ -236,7 +236,7 @@ function infoamazonia_gfw_markers_data($data, $query) {
 				'title' => $properties['title'],
 				'description' => $properties['content'],
 				'loc' => $properties['url'],
-				'date' => $date,
+				'published' => $date,
 				'thumbnail' => $properties['thumbnail'],
 				'author' => $properties['source']
 			);
