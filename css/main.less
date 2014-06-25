@@ -245,15 +245,20 @@ body {
 	padding: 0 20px;
 }
 
+.admin-bar header#masthead {
+	top: 32px;
+}
+
 header#masthead {
 	background: #f9f9f9;
-	.box-shadow(0 2px 5px rgba(0,0,0,0.05));
+	.box-shadow(0 2px 15px rgba(0,0,0,0.1));
+	border-bottom: 1px solid #ddd;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	padding: 20px 0;
-	z-index: 999999;
+	z-index: 99999;
 	background: #fff;
 	.transition(padding .3s ease-in-out);
 	h1 a span {
@@ -407,12 +412,20 @@ header#masthead {
 #subnav {
 	width: 100%;
 	display: block;
-	background: #f0f0f0;
-	border-bottom: 1px solid #e0e0e0;
+	position: relative;
+	z-index: 100;
+	.subnav-container {
+		position: relative;
+	}
+	.subnav-content {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
 	nav {
 		margin: 0;
 		padding: 0;
-		float: left;
+		float: right;
 		ul {
 			margin: 0;
 			padding: 0;
@@ -440,9 +453,8 @@ header#masthead {
 	}
 	nav#langnav {
 		padding: 10px 0 0 0;
-		float: right;
 		a {
-			color: #808080;
+			color: #333;
 			text-transform: lowercase;
 			height: 18px;
 			line-height: 18px;
@@ -462,13 +474,11 @@ header#masthead {
 		}
 	}
 	nav#feedback {
-		float: right;
 		margin-right: 5px;
 		border-right: 1px solid #e0e0e0;		
 	}
 	nav#social {
-		float: right;
-		border-right: 1px solid #e0e0e0;
+		border-right: 1px solid rgba(0,0,0,0.2);
 		padding-right: 15px;
 		margin-right: 5px;
 		a {
@@ -529,6 +539,66 @@ header#masthead {
 		opacity: 1;
 		input {
 			.box-shadow(0 2px 10px 1px rgba(0, 0, 0, 0.05));
+		}
+	}
+}
+
+section#slider {
+	background-size: cover;
+	height: 600px;
+	position: relative;
+	article {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 60px 0;
+		width: 100%;
+		.box-sizing(border-box);
+		color: #fff;
+		.gradient(rgba(0,0,0,0), #000, rgba(0,0,0,0));
+		h2 {
+			color: #fff;
+			font-size: 40px;
+			line-height: 45px;
+			margin: 0 0 20px;
+			text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
+		}
+		.post-content {
+			font-size: 20px;
+			line-height: 26px;
+			color: rgba(255,255,255,0.8);
+			text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+		}
+	}
+	#participate {
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		pointer-events: none;
+		.participate-content {
+			pointer-events: auto;
+			float: right;
+			width: 25%;
+			margin: 60px 0;
+			padding: 40px;
+			background: rgba(0,0,0,0.6);
+			color: #fff;
+			h2 {
+				color: #77a832;
+				text-transform: uppercase;
+				font-size: 30px;
+				line-height: 30px;
+				margin-bottom: 20px;
+			}
+			h3 {
+				color: #f0f0f0;
+				margin-bottom: 20px;
+			}
+			.button {
+				display: block;
+				font-size: 18px;
+				padding: 20px 0;
+			}
 		}
 	}
 }

@@ -19,7 +19,7 @@
 	/*
 	 * Side content (get data, share map, contribute)
 	 */
-	if(is_front_page() && !is_paged())
+	if(is_home() && !is_paged())
 		get_template_part('section', 'actions');
 	?>
 
@@ -31,7 +31,7 @@
 			<div class="section-title">
 				<div class="container">
 					<div class="twelve columns">
-						<h3><?php if(is_front_page()) : ?>
+						<h3><?php if(is_home()) : ?>
 							<?php _e('Latest stories', 'infoamazonia'); ?>
 						<?php elseif(is_tax('publisher')) : ?>
 							<?php _e('Stories by ', 'infoamazonia'); ?> &ldquo;<?php single_term_title(); ?>&rdquo;
@@ -102,7 +102,7 @@
 	/*
 	 * Side content (get data, share map, contribute)
 	 */
-	if(is_front_page() && is_paged())
+	if(is_home() && is_paged())
 		get_template_part('section', 'actions');
 	?>
 

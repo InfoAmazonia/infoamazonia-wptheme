@@ -7,7 +7,7 @@
 		<?php
 		infoamazonia_adv_nav_filters();
 
-	elseif(is_front_page() || is_tax('publisher')) : ?>
+	elseif(is_home() || is_tax('publisher')) : ?>
 		<div class="choose-filter">
 			<?php
 			$publishers = get_terms('publisher');

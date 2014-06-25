@@ -50,7 +50,7 @@ if(is_array($mapgroup['maps'])) {
 				<div class="viewing-post">
 				</div>
 				<?php
-				if(is_front_page() && !is_paged())
+				if(is_home() && !is_paged())
 					get_template_part('section', 'sticky-posts');
 				?>
 			</div>

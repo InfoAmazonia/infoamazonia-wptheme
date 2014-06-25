@@ -37,6 +37,12 @@ add_filter('acf/add-ons/repeater/get_dir', 'infoamazonia_acf_repeater_dir');
 
 define('ACF_LITE', true);
 require_once(STYLESHEETPATH . '/inc/acf/acf.php');
+include_once(STYLESHEETPATH . '/inc/acf/add-ons/acf-qtranslate/acf-qtranslate.php');
+
+/*
+ * Slider
+ */
+include(STYLESHEETPATH . '/inc/slider.php');
 
 /*
  * Datasets
@@ -106,7 +112,7 @@ function infoamazonia_scripts() {
 		'ajaxurl' => admin_url('admin-ajax.php'),
 		'query' => $jeo_markers->query(),
 		'stories_label' => __('stories', 'infoamazonia'),
-		'home' => (is_front_page() && !is_paged()),
+		'home' => (is_home() && !is_paged()),
 		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
 		'share_label' => __('Share', 'infoamazonia'),
 		'print_label' => __('Print', 'infoamazonia'),

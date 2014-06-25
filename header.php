@@ -34,7 +34,7 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<header id="masthead">
 		<div class="container">
-			<div class="four columns">
+			<div class="three columns">
 				<?php
 				$lang = '';
 				if(function_exists('qtrans_getLanguage'))
@@ -49,7 +49,7 @@
 				<?php get_search_form(); ?>
 			</div>
 			*/ ?>
-			<div class="eight columns">
+			<div class="nine columns">
 				<section id="mastnav" class="clearfix">
 					<nav>
 						<ul>
@@ -62,43 +62,40 @@
 			</div>
 		</div>
 	</header>
-	<section id="subnav" class="clearfix">
+	<section id="subnav">
 		<div class="container">
 			<div class="twelve columns">
-				<?php if(function_exists('qtrans_getLanguage')) : ?>
-					<nav id="langnav">
-						<ul>
-							<?php
-							global $q_config;
-							if(is_404()) $url = get_option('home'); else $url = '';
-							$current = qtrans_getLanguage();
-							foreach($q_config['enabled_languages'] as $language) {
-								$attrs = '';
-								if($language == $current)
-									$attrs = 'class="active"';
-								echo '<li><a href="' . qtrans_convertURL($url, $language) . '" ' . $attrs . '>' . $language . '</a></li>';
-							}
-							?>
-						</ul>
-					</nav>
-				<?php endif; ?>
-				<nav id="social">
-					<ul>
-						<li class="twitter">
-							<a href="https://twitter.com/infoamazonia" rel="external" target="_blank" title="Twitter"></a>
-						</li>
-						<li class="fb">
-							<a href="https://www.facebook.com/oecodata" rel="external" target="_blank" title="Facebook"></a>
-						</li>
-					</ul>
-				</nav>
-				<nav id="feedback">
-					<ul>
-						<li>
-							<a href="<?php echo infoamazonia_home_url('/about/'); ?>" title="<?php _e('About', 'infoamazonia'); ?>"><?php _e('About', 'infoamazonia'); ?></a>
-						</li>
-					</ul>
-				</nav>
+				<div class="subnav-container">
+					<div class="subnav-content">
+						<?php if(function_exists('qtrans_getLanguage')) : ?>
+							<nav id="langnav">
+								<ul>
+									<?php
+									global $q_config;
+									if(is_404()) $url = get_option('home'); else $url = '';
+									$current = qtrans_getLanguage();
+									foreach($q_config['enabled_languages'] as $language) {
+										$attrs = '';
+										if($language == $current)
+											$attrs = 'class="active"';
+										echo '<li><a href="' . qtrans_convertURL($url, $language) . '" ' . $attrs . '>' . $language . '</a></li>';
+									}
+									?>
+								</ul>
+							</nav>
+						<?php endif; ?>
+						<nav id="social">
+							<ul>
+								<li class="twitter">
+									<a href="https://twitter.com/infoamazonia" rel="external" target="_blank" title="Twitter"></a>
+								</li>
+								<li class="fb">
+									<a href="https://www.facebook.com/oecodata" rel="external" target="_blank" title="Facebook"></a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
