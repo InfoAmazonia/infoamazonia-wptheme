@@ -12,8 +12,8 @@ $slider_query = new WP_Query(array('post_type' => 'slider', 'posts_per_page' => 
 if($slider_query->have_posts()) :
 	$first_img = wp_get_attachment_image_src(get_post_thumbnail_id($slider_query->post->ID));
 	?>
-	<section id="slider" style="background-image: url(<?php echo $first_img[0]; ?>);">
-		<div class="slider-content">
+	<section id="slider">
+		<div class="slider-content" style="background-image: url(<?php echo $first_img[0]; ?>);">
 			<?php while($slider_query->have_posts()) :
 				$slider_query->the_post();
 				$image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID));

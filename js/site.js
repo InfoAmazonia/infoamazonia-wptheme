@@ -21,36 +21,41 @@
 	 */
 	$(document).ready(function() {
 
-		if($('.highlights').length) {
+		if($('#slider').length) {
 
-			$(window).resize(fixItemWidth).resize();
+			var container = $('#slider .slider-content');
+			var items = container.find('article');
+			var active = items.first();
 
-			var sly = new Sly('.highlight-content', {
-				horizontal: 1,
-				itemNav: 'basic',
-				itemSelector: '.highlight',
-				smart: 1,
-				startAt: 0,
-				scrollBy: 0,
-				speed: 200,
-				ease: 'easeOutExpo',
-				next: $('.highlights .next'),
-				prev: $('.highlights .prev')
-			});
+			active.addClass('active');
 
-			sly.init();
+			var next = function() {
 
-			$(window).resize(function() {
-				sly.reload();
-			});
+				active.removeClass('active');
 
-		}
+				if(active.is('article:last-child')) {
+					active = items.first();
+				} else {
+					active = active.next('article');
+				}
 
-		function fixItemWidth() {
+				container.addClass('transition');
 
-			$('.highlights li').css({
-				width: $(window).width()
-			});
+				setTimeout(function() {
+
+					container
+						.removeClass('transition')
+						.css({
+							'background-image': 'url(' + active.attr('data-image') + ')'
+						});
+
+					active.addClass('active');
+
+				}, 400);
+
+			}
+
+			var t = setInterval(next, 8200);
 
 		}
 

@@ -544,10 +544,30 @@ header#masthead {
 }
 
 section#slider {
-	background-size: cover;
 	height: 600px;
 	position: relative;
+	background: #fff;
+	.slider-content {
+		width: 100%;
+		height: 600px;
+		background-size: cover;
+		position: relative;
+		opacity: 1;
+		.transition(opacity .4s ease-in-out);
+		&.transition {
+			opacity: 0;
+			.transition(opacity .4s ease-in-out);
+		}
+	}
 	article {
+		&.active {
+			opacity: 1;
+			pointer-events: auto;
+			.transition(opacity .4s ease-in-out);
+		}
+		.transition(opacity .4s ease-in-out);
+		opacity: 0;
+		pointer-events: none;
 		position: absolute;
 		bottom: 0;
 		left: 0;
