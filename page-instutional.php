@@ -49,7 +49,7 @@ endif;
 ?>
 
 <section id="about">
-	<div class="about-block right clearfix">
+	<div id="data_block" class="about-block right clearfix">
 		<div class="container">
 			<div class="four columns">
 				<svg id="svg_data" version="1.1" viewBox="0 0 100 100">
@@ -75,7 +75,7 @@ endif;
 			</div>
 		</div>
 	</div>
-	<div class="about-block bigger-block left clearfix">
+	<div id="map_block" class="about-block bigger-block left clearfix">
 		<div class="container">
 			<div class="five columns">
 				<div class="block-text">
@@ -120,7 +120,7 @@ endif;
 			</div>
 		</div>
 	</div>
-	<div class="about-block right clearfix">
+	<div id="network_block" class="about-block right clearfix">
 		<div class="container">
 			<div class="four columns">
 				<svg version="1.1" viewBox="0 0 100 100">

@@ -44,6 +44,25 @@
 
 		};
 
+		var scrollLocate = function(block, cb) {
+
+			var halfWindow = $(window).height() / 2;
+
+			if(block.is(':visible')) {
+
+				var relTop = block.offset().top - $(window).scrollTop();
+				var relBottom = relTop + block.innerHeight();
+
+				if(relTop <= halfWindow && relBottom >= halfWindow) {
+
+					cb();
+
+				}
+
+			}
+
+		};
+
 		/*
 		 * DATA
 		 */
@@ -80,8 +99,6 @@
 					y: sVVals[i][1] - sVVals[i][0]
 				});
 
-				sVBar.animate({height: sVVals[i][0], y: sVVals[i][1]}, 1000);
-
 			});
 
 			var sHBars = [
@@ -90,39 +107,54 @@
 				Snap('.h-bar-3')
 			];
 
-			_.each(sHBars, function(sHBar, i) {
-
-				sHBar.attr({width: 0});
-
-				var timeBtwn = i * 100;
-
-				var duration = 1000 - timeBtwn;
-
-				setTimeout(function() {
-
-					sHBar.animate({width: 37.807999}, duration);
-
-				}, timeBtwn);
-
-			});
-
 			Snap('.data-container').attr({'fill-opacity': 0});
 			Snap('.chart.part-1').attr({'fill-opacity':0});
 			Snap('.chart.part-2').attr({'fill-opacity':0});
 			Snap('.chart.part-3').attr({'fill-opacity':0});
 
-			setTimeout(function() {
-				animatePath(svg.find('.chart'), 40, function() {
-					Snap('.chart.part-1').animate({'fill-opacity': '1', 'stroke-width': 0}, 500);
-					Snap('.chart.part-2').animate({'fill-opacity': '1', 'stroke-width': 0}, 500);
-					Snap('.chart.part-3').animate({'fill-opacity': '1', 'stroke-width': 0}, 500);
-					animatePath(svg.find('.data-container'), 100, function() {
-						Snap('.data-container').animate({'fill-opacity': '1', 'stroke-width': 0}, 500);
-					});
+			_.each(sHBars, function(sHBar, i) {
+
+				sHBar.attr({width: 0});
+
+			});
+
+			scrollLocate($('#data_block'), _.once(function() {
+
+				_.each(sHBars, function(sHBar, i) {
+
+					var timeBtwn = i * 200;
+
+					var duration = 1000 - timeBtwn;
+
+					setTimeout(function() {
+
+						sHBar.animate({width: 37.807999}, duration);
+
+					}, timeBtwn);
+
 				});
 
-			}, 1000);
-		})(jQuery);
+				_.each(sVBars, function(sVBar, i) {
+
+					sVBar.animate({height: sVVals[i][0], y: sVVals[i][1]}, 1000);
+
+				});
+
+				setTimeout(function() {
+					animatePath(svg.find('.chart'), 40, function() {
+						Snap('.chart.part-1').animate({'fill-opacity': '1', 'stroke-width': 0}, 500);
+						Snap('.chart.part-2').animate({'fill-opacity': '1', 'stroke-width': 0}, 500);
+						Snap('.chart.part-3').animate({'fill-opacity': '1', 'stroke-width': 0}, 500);
+						animatePath(svg.find('.data-container'), 100, function() {
+							Snap('.data-container').animate({'fill-opacity': '1', 'stroke-width': 0}, 500);
+						});
+					});
+
+				}, 1000);
+
+			}));
+
+		})();
 
 		/*
 		 * MAP + DESIGN + DATA
