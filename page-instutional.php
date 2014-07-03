@@ -29,9 +29,18 @@ if($slider_query->have_posts()) :
 							</section>
 						</div>
 					</div>
+					<a class="selector" href="#" data-item="post-<?php the_ID(); ?>">&nbsp;</a>
 				</article>
 			<?php endwhile; ?>
 		</div>
+		<nav id="slider-nav">
+			<div class="container">
+				<div class="five columns">
+					<div class="slider-nav-content">
+					</div>
+				</div>
+			</div>
+		</nav>
 		<aside id="participate">
 			<div class="container">
 				<div class="twelve columns">

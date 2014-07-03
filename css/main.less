@@ -591,6 +591,27 @@ section#slider {
 			text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 		}
 	}
+	#slider-nav {
+		position: absolute;
+		bottom: 40px;
+		width: 100%;
+		z-index: 100;
+		left: 0;
+		.selector {
+			display: block;
+			float: left;
+			width: 15px;
+			height: 15px;
+			background: #fff;
+			margin: 0 10px 0 0;
+			border-radius: 8px;
+			opacity: .4;
+			&:hover,
+			&.active {
+				opacity: 1;
+			}
+		}
+	}
 	#participate {
 		width: 100%;
 		position: absolute;
@@ -1477,7 +1498,9 @@ body.map-fullscreen .fullscreen-map, body.map-fullscreen .fullscreen-map.map-con
 	z-index: 1000;
 	word-wrap: break-word;
 	overflow: hidden;
-	float: left;
+	float: right;
+	position: relative;
+	z-index: 100;
 	a {
 		text-decoration: none;
 		color: #fff;
@@ -2063,6 +2086,29 @@ body {
 					}
 				}
 			}
+		}
+	}
+	.post-content,
+	.post-content p {
+		font-size: 18px;
+		line-height: 28px;
+	}
+	.post-content {
+		h2 {
+			font-size: 28px;
+			margin: 40px 0;
+			line-height: 32px;
+		}
+		p {
+			margin: 0 0 20px;
+		}
+		ul {
+			list-style: disc;
+			margin: 0 0 20px 20px;
+		}
+		li {
+			margin: 0 0 20px;
+			line-height: 28px;
 		}
 	}
 }

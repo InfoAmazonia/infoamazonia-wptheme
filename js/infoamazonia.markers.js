@@ -446,7 +446,7 @@
 					var shareContent = '';
 					shareContent += '<a class="button read-button" href="' + storyData.url + '">' + infoamazonia_markers.read_more_label + '</a>';
 					shareContent += '<a class="button share-button" href="#">' + infoamazonia_markers.share_label + '</a>';
-					shareContent += '<a class="button print-button" href="#" target="_blank">' + infoamazonia_markers.print_label + '</a>';
+					//shareContent += '<a class="button print-button" href="#" target="_blank">' + infoamazonia_markers.print_label + '</a>';
 
 					map.$.sidebar.share.append(shareContent);
 
