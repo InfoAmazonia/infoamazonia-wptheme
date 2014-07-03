@@ -197,7 +197,7 @@
 			scrollLocate($('#map_block'), _.once(function() {
 				animatePath(svg.find('.amazon'), 60, function() {
 					Snap(id + ' .amazon').animate({
-						'fill-opacity': .1
+						'fill-opacity': .08
 					}, 500);
 					Snap(id + ' .data-content').animate({
 						'transform': 'translate(10,0)',
