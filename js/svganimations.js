@@ -48,18 +48,31 @@
 
 			var halfWindow = $(window).height() / 2;
 
-			if(block.is(':visible')) {
+			$(window).scroll(function() {
 
-				var relTop = block.offset().top - $(window).scrollTop();
-				var relBottom = relTop + block.innerHeight();
+				if(block.is(':visible')) {
 
-				if(relTop <= halfWindow && relBottom >= halfWindow) {
+					var relTop = block.offset().top - $(window).scrollTop();
+					var relBottom = relTop + block.innerHeight();
 
-					cb();
+					if(relTop <= (halfWindow - (block.height()/2) + 100) && relBottom >= halfWindow) {
+
+						block.addClass('onscreen');
+
+						setTimeout(function() {
+							block.addClass('appeared');
+						}, 500);
+
+						cb();
+
+					} else {
+
+						block.removeClass('onscreen');
+					}
 
 				}
 
-			}
+			});
 
 		};
 
@@ -161,32 +174,50 @@
 		 */
 
 		(function() {
+
 			var id = '#svg_map_data_design';
 			var svg = $(id);
+
+			svg.find('.amazon').each(function() {
+				var l = $(this)[0].getTotalLength();
+				$(this).css({
+					strokeDasharray: l + ' ' + l,
+					strokeDashoffset: l
+				});
+			});
+
 			Snap(id + ' .amazon').attr({'fill-opacity': 0});
+			//Snap(id + ' .countries').attr({'opacity': 0});
 			Snap(id + ' .data-content').attr({'fill-opacity': 0});
 			Snap(id + ' .data-content').attr({'stroke-opacity': 0});
 			Snap(id + ' .plus tspan').attr({'fill-opacity': 0});
 			Snap(id + ' .design-content').attr({'fill-opacity': 0});
 			Snap(id + ' .design-content').attr({'stroke-opacity': 0});
-			animatePath(svg.find('.amazon'), 100, function() {
-				Snap(id + ' .amazon').animate({
-					'fill-opacity': .1
-				}, 500);
-				Snap(id + ' .data-content').animate({
-					'transform': 'translate(10,0)',
-					'fill-opacity': .7
-				}, 500);
-				Snap(id + ' .design-content').animate({
-					'transform': 'translate(-10,0)',
-					'fill-opacity': .7
-				}, 500);
-				setTimeout(function() {
-					Snap(id + ' .plus tspan').animate({
+
+			scrollLocate($('#map_block'), _.once(function() {
+				animatePath(svg.find('.amazon'), 60, function() {
+					Snap(id + ' .amazon').animate({
+						'fill-opacity': .1
+					}, 500);
+					Snap(id + ' .data-content').animate({
+						'transform': 'translate(10,0)',
 						'fill-opacity': 1
 					}, 500);
-				}, 500);
-			});
+					Snap(id + ' .design-content').animate({
+						'transform': 'translate(-10,0)',
+						'fill-opacity': 1
+					}, 500);
+					setTimeout(function() {
+						Snap(id + ' .countries').animate({
+							'opacity': 1
+						});
+						Snap(id + ' .plus tspan').animate({
+							'fill-opacity': 1
+						}, 500);
+					}, 500);
+				});
+			}));
+
 		})();
 
 
