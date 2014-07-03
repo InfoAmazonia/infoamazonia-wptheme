@@ -645,6 +645,64 @@ section#slider {
 	}
 }
 
+section#about {
+	background: #208333 url(../img/pentagons.png);
+	.about-block {
+		&.left {
+			background: rgba(0,0,0,0.2);
+		}
+		&.right {
+			text-align: right;
+			h2,
+			p {
+				padding: 0 0 20px 20%;
+			}
+		}
+		color: #fff;
+		padding: 60px 0;
+		svg {
+			width: auto;
+			height: 300px;
+			margin: 40px 0;
+			fill: #fff;
+			.transition(fill .2s ease-in-out);
+			path {
+				stroke-linejoin: round;
+				stroke: rgba(255,255,255,0.5);
+				stroke-width: .6;
+			}
+		}
+		h2 {
+			margin: 60px 0 20px;
+			font-size: 58px;
+			line-height: 100%;
+			padding: 0 20% 20px 0;
+			color: #fff;
+			border-bottom: 1px dashed #fff;
+		}
+		p {
+			font-size: 20px;
+			line-height: 150%;
+			padding: 0 20% 20px 0;
+			color: rgba(255,255,255,0.8);
+		}
+		.eight.columns,
+		.seven.columns {
+			svg {
+				height: 500px;
+			}
+			h2 {
+				margin-top: 100px;
+			}
+		}
+		&.bigger-block {
+			h2 {
+				margin-top: 140px;
+			}
+		}
+	}
+}
+
 .single-post {
 	.post-content {
 		margin: 20px 0;
