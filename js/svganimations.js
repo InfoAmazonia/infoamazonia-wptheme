@@ -220,6 +220,19 @@
 
 		})();
 
+		/*
+		 * Network
+		 */
+
+		(function() {
+
+			scrollLocate($('#network_block'), _.once(function() {
+
+				
+
+			}));
+
+		})();
 
 	});
 

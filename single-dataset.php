@@ -57,7 +57,7 @@
 						if($license) :
 							$license = array_shift($license);
 							?>
-							<div class="row">
+							<div class="row sidebar-item">
 								<h3><?php _e('License', 'infoamazonia'); ?></h3>
 								<p class="license-name"><a target="_blank" href="<?php echo get_field('url', 'license_' . $license->term_id); ?>"><?php echo $license->name; ?></a></p>
 								<p><a class="small" href="<?php echo get_term_link($license); ?>"><?php _e('More data on this license', 'infoamazonia'); ?></a></p>
@@ -70,9 +70,9 @@
 						if($source) :
 							$source = array_shift($source);
 							?>
-							<div class="row">
+							<div class="row sidebar-item">
 								<h3><?php _e('Source', 'infoamazonia'); ?></h3>
-								<p class="source-name"><a target="_blank" href="<?php echo get_field('url', 'source_' . $source->term_id); ?>"><?php echo $source->name; ?></a></p>
+								<p class="source-name"><a target="_blank" href="<?php echo get_term_link($source); ?>"><?php echo $source->name; ?></a></p>
 								<p><a class="small" href="<?php echo get_term_link($source); ?>"><?php _e('More data from this source', 'infoamazonia'); ?></a></p>
 							</div>
 							<?php

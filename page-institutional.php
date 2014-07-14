@@ -123,6 +123,10 @@ endif;
 	</div>
 </section>
 
+<section id="map-gallery">
+	
+</section>
+
 
 <?php get_template_part('section', 'main-widget'); ?>
 
