@@ -43,6 +43,15 @@
 				</script>
 			<?php endif; ?>
 		</div>
+		<div class="toggle-more-filters">
+			<a href="javascript:void(0);"><?php _e('More filters', 'infoamazonia'); ?></a>
+		</div>
+		<div class="clearfix"></div>
+		<div class="more-filters">
+			<div class="more-filters-content">
+				<?php infoamazonia_adv_nav_filters(); ?>
+			</div>			
+		</div>
 	<?php elseif(is_search()) : ?>
 
 		<?php

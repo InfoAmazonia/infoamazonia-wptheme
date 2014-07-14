@@ -5,7 +5,7 @@
 		<?php if(have_posts()) : ?>
 
 			<section id="datasets" class="dataset-loop-section archive-list">
-				<div class="page-title row">
+				<div class="page-header">
 					<div class="container">
 						<div class="twelve columns">
 							<h1><?php _e('Datasets', 'infoamazonia'); ?></h1>
@@ -18,7 +18,7 @@
 
 					<div class="four columns">
 
-						<div class="row sources">
+						<div class="row sources sidebar-item">
 							<h3><?php _e('Sources', 'infoamazonia'); ?></h3>
 							<ul>
 								<?php wp_list_categories(array(
@@ -28,7 +28,7 @@
 							</ul> 
 						</div>
 
-						<div class="row sources">
+						<div class="row licenses sidebar-item">
 							<h3><?php _e('Licenses', 'infoamazonia'); ?></h3>
 							<ul>
 								<?php wp_list_categories(array(

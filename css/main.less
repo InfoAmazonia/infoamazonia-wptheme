@@ -643,6 +643,8 @@ section#slider {
 	}
 }
 
+@green: #73a229;
+
 section#about {
 	background: #73a229 url(../img/pentagons.png);
 	.about-block {
@@ -883,6 +885,28 @@ section#about {
                     }
             }
     }
+    .toggle-more-filters {
+		float: left;
+		margin-left: 40px;
+		margin-top: 2px;
+		a {
+			padding: 8px 12px;
+			border: 1px solid transparent;
+			&:hover {
+				background: rgba(255,255,255,0.2);
+				.box-shadow(0 0 5px rgba(0,0,0,0.05));
+				border: 1px solid rgba(0,0,0,0.1);
+			}
+		}
+    }
+	.more-filters {
+		.advanced-nav-filters {
+			display: none;
+			&.active {
+				display: block;
+			}
+		}
+	}
 	.stage-map {
 		margin: 0;
 		height: 480px;
@@ -2126,13 +2150,6 @@ body {
 
 #page,
 .archive-page {
-	padding: 30px 0;
-	article.main,
-	.archive-list {
-		h1 {
-			margin: 0 0 30px;
-		}
-	}
 	#searchform {
 		margin: 0 0 30px;
 	}
@@ -2584,8 +2601,10 @@ footer#colophon {
  */
 
 .page-header {
-	padding: 20px 0;
+	padding: 40px 0;
 	h1 {
+		font-size: 58px;
+		line-height: 100%;
 		margin: 0;
 	}
 }
@@ -2604,6 +2623,16 @@ footer#colophon {
 	}
 	input {
 		width: 100%;
+	}
+	.chosen-container {
+		width: 100% !important;
+	}
+	.chosen-choices {
+		border-color: #ccc !important;
+		background-image: none !important;
+		input[type="text"] {
+			color: #999 !important;
+		}
 	}
 	.date-input {
 		.date-range-inputs {
@@ -2628,35 +2657,61 @@ footer#colophon {
 	}
 	input[type=submit] {
 		margin-top: 35px;
+		padding: 8px 0;
+		text-align: center;
+		display: block;
+		width: 100%;
+		cursor: pointer;
 	}
 }
 
 .dataset-loop-section {
-	.page-title {
-		background: #fff;
-		margin-top: -30px;
-		padding: 40px 0;
+	.page-header {
 		h2 {
 			font-size: 14px;
 			line-height: 16px;
 			margin: 0;
 			text-transform: uppercase;
 			a {
-				color: #666;
+				color: rgba(0,0,0,0.5);
 			}
 		}
 		h1 {
 			float: none;
 			width: auto;
-			font-size: 30px;
-			line-height: 38px;
-			margin: 0;
 		}
 	}
 	.view-all {
 		font-weight: 800;
 		text-transform: uppercase;
 		color: #333;
+	}
+	.list-datasets {
+		.post-item {
+			background: #fff;
+			padding: 20px;
+			img {
+				float: right;
+				margin: 0 0 0 20px;
+			}
+			a.button {
+				padding: 10px 15px;
+			}
+		}
+	}
+	.sidebar-item {
+		padding: 20px;
+		background: #fff;
+		h3 {
+			margin-bottom: 20px;
+		}
+		li {
+			width: 50%;
+			float: left;
+			padding: 0 15px 0 0;
+			margin: 0 0 10px 0;
+			.box-sizing(border-box);
+		}
 	}
 }
 
@@ -2751,4 +2806,8 @@ footer#colophon {
 			}
 		}
 	}
+}
+
+#jeo-share-widget .section {
+	padding-top: 40px;
 }

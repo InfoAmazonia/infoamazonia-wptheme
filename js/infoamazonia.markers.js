@@ -218,6 +218,9 @@
 
 			marker = markers.activateMarker(markers.getMarker(marker));
 
+			if(!marker || typeof marker == 'undefined')
+				return false;
+
 			var center,
 				zoom;
 

@@ -6,9 +6,11 @@
 				<?php if(have_posts()) : ?>
 
 					<section id="maps" class="map-loop-section archive-list">
-						<div class="twelve columns">
-							<h1><?php _e('Maps', 'infoamazonia'); ?></h1>
-						</div>
+							<div class="twelve columns">
+						<header class="page-header">
+								<h1><?php _e('Maps', 'infoamazonia'); ?></h1>
+						</header>
+							</div>
 						<?php get_template_part('loop', 'maps'); ?>
 					</section>
 

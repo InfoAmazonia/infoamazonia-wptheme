@@ -5,7 +5,7 @@
 		<?php if(have_posts()) : ?>
 
 			<section id="datasets" class="dataset-loop-section archive-list">
-				<div class="page-title row">
+				<div class="page-header">
 					<div class="container">
 						<div class="twelve columns">
 							<h2><a href="<?php echo get_post_type_archive_link('dataset'); ?>"><?php _e('Datasets', 'infoamazonia'); ?></a></h2>
@@ -32,7 +32,7 @@
 					<?php get_template_part('loop', 'dataset'); ?>
 
 					<div class="four columns">
-						<div class="row sources">
+						<div class="row sources sidebar-item">
 							<h3><?php _e('Sources', 'infoamazonia'); ?></h3>
 							<ul>
 								<?php wp_list_categories(array(
@@ -42,7 +42,7 @@
 							</ul> 
 						</div>
 
-						<div class="row sources">
+						<div class="row sources sidebar-item">
 							<h3><?php _e('Licenses', 'infoamazonia'); ?></h3>
 							<ul>
 								<?php wp_list_categories(array(

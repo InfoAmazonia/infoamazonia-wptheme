@@ -1,4 +1,4 @@
-<ul class="list-maps">
+<ul class="list-maps clearfix">
 	<?php while(have_posts()) : the_post(); ?>
 		<li id="post-<?php the_ID(); ?>" <?php post_class('post-item six columns'); ?>>
 			<article class="clearfix">
