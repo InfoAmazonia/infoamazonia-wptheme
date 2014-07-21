@@ -123,10 +123,87 @@ endif;
 	</div>
 </section>
 
-<section id="map-gallery">
-	
+<section id="map-gallery" class="row">
+	<header>
+		<h2><?php _e('Map gallery', 'infoamazonia'); ?></h2>
+		<h3></h3>
+		<a class="share"><?php _e('Embed this map', 'infoamazonia'); ?></a>
+		<nav>
+			<a class="prev-map lsf" href="#" title="Mapa anterior">&#xE080;</a>
+			<a class="next-map lsf" href="#" title="Próximo mapa">&#xE112;</a>
+		</nav>
+	</header>
+	<?php get_template_part('content', 'map-group'); ?>
+	<script type="text/javascript">
+		(function($) {
+
+			var maps = [];
+
+			var baseUrl = '<?php echo jeo_get_share_url(); ?>';
+
+			jeo.groupReady(function(group) {
+				maps = _.keys(group.mapsData);
+
+				$('#map-gallery .next-map').click(function() {
+
+					var current = group.map.conf.id;
+
+					var currentIndex = _.indexOf(maps, current);
+
+					var toGo = maps[currentIndex+1] || maps[0];
+
+					group.update(toGo);
+					group.updateUI();
+
+					return false;
+
+				});
+
+				$('#map-gallery .prev-map').click(function() {
+
+					var current = group.map.conf.id;
+
+					var currentIndex = _.indexOf(maps, current);
+
+					var toGo = maps[currentIndex-1] || maps[maps.length-1];
+
+					group.update(toGo);
+					group.updateUI();
+
+					return false;
+
+				});
+
+			});
+
+			var updateHeader = function(group) {
+				jQuery('#map-gallery header h3').text(group.map.conf.title);
+				jQuery('#map-gallery header .share').attr('href', baseUrl + 'map_id=' + group.map.conf.id);
+			};
+
+			jeo.groupReady(updateHeader);
+			jeo.groupChanged(updateHeader);
+
+		})(jQuery);
+	</script>
 </section>
 
+<?php
+query_posts('post_type=project');
+?>
+<section id="projects" class="row">
+	<div class="container">
+		<div class="twelve columns">
+			<header>
+				<h2><?php _e('Special projects', 'infoamazonia'); ?></h2>
+			</header>
+		</div>
+		<?php get_template_part('loop', 'projects'); ?>
+	</div>
+</section>
+<?php
+wp_reset_query();
+?>
 
 <?php get_template_part('section', 'main-widget'); ?>
 

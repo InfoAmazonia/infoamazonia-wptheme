@@ -180,6 +180,9 @@
 
 		markers.getMarker = function(markerID) {
 
+			if(typeof markerID == 'undefined')
+				return false;
+
 			if(markerID instanceof L.Marker)
 				return markerID;
 
@@ -284,6 +287,10 @@
 		markers.openMarker = function(marker, silent) {
 
 			marker = markers.getMarker(marker);
+
+			if(!marker) {
+				return false;
+			}
 
 			if(!silent) {
 

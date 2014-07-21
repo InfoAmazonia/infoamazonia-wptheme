@@ -49,6 +49,11 @@ include(STYLESHEETPATH . '/inc/slider.php');
  */
 include(STYLESHEETPATH . '/inc/datasets.php');
 
+/*
+ * Projects
+ */
+include(STYLESHEETPATH . '/inc/projects.php');
+
 function infoamazonia_setup() {
 
 	add_theme_support('post-thumbnails');
