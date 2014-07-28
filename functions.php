@@ -54,10 +54,16 @@ include(STYLESHEETPATH . '/inc/datasets.php');
  */
 include(STYLESHEETPATH . '/inc/projects.php');
 
+/*
+ * Blog
+ */
+include(STYLESHEETPATH . '/inc/blog.php');
+
 function infoamazonia_setup() {
 
 	add_theme_support('post-thumbnails');
 	add_image_size('post-thumb', 360, 121, true);
+	add_image_size('project-thumb', 560, 206, true);
 	add_image_size('map-thumb', 200, 200, true);
 
 	// text domain

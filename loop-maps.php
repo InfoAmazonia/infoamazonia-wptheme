@@ -12,7 +12,6 @@
 				</header>
 				<section>
 					<?php the_excerpt(); ?>
-					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="button"><?php _e('View this map', 'infoamazonia'); ?></a>
 				</section>
 			</article>
 		</li>

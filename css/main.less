@@ -2314,12 +2314,30 @@ body {
  * Project archive
  */
 
+#projects.row {
+	.section-header {
+		h2 {
+			font-size: 52px;
+			line-height: 100%;
+			margin: 20px 0 60px;
+		}
+	}
+}
+
 .list-projects {
 	> li {
+		height: 450px;
 		article {
 			margin-bottom: 20px;
 			.wp-post-image {
+				width: 100%;
+				height: auto;
 				margin: 0 0 20px;
+			}
+			.button {
+				padding: 10px 15px;
+				float: right;
+				margin: 0 0 20px 20px;
 			}
 		}
 	}
@@ -2333,12 +2351,19 @@ body {
 	.list-maps {
 		> li {
 			article {
+				background: #fff;
+				padding: 20px;
 				margin-bottom: 20px;
+				height: 230px;
 				.wp-post-image {
 					width: 200px;
 					height: 200px;
 					float: left;
 					margin: 0 20px 20px 0;
+				}
+				section {
+					height: 170px;
+					overflow: hidden;
 				}
 			}
 		}
@@ -2818,6 +2843,85 @@ footer#colophon {
 			}
 			a.button {
 				padding: 10px 15px;
+			}
+		}
+	}
+	.sidebar-item {
+		padding: 20px;
+		background: #fff;
+		h3 {
+			margin-bottom: 20px;
+		}
+		li {
+			width: 50%;
+			float: left;
+			padding: 0 15px 0 0;
+			margin: 0 0 10px 0;
+			.box-sizing(border-box);
+		}
+	}
+}
+
+#blog-posts {
+	.page-header {
+		background: #eee;
+		margin: 0 0 40px;
+	}
+}
+
+.single.single-blog-post {
+	.page-header {
+		h1 {
+			font-size: 40px;
+			line-height: 120%;
+		}
+	}
+}
+
+.blog-loop-section {
+	.page-header {
+		h2 {
+			font-size: 14px;
+			line-height: 16px;
+			margin: 0;
+			text-transform: uppercase;
+			a {
+				color: rgba(0,0,0,0.5);
+			}
+		}
+		h1 {
+			float: none;
+			width: auto;
+		}
+	}
+	.view-all {
+		font-weight: 800;
+		text-transform: uppercase;
+		color: #333;
+	}
+	.list-blog-posts {
+		.post-item {
+			.meta {
+				a {
+					background: #fff;
+					color: #222;
+					padding: 5px 8px;
+					font-size: 14px;
+				}
+			}
+			h2 {
+				font-size: 28px;
+				line-height: 120%;
+				margin: 0 0 20px;
+			}
+			img {
+				width: 100%;
+				height: auto;
+				margin: 0 0 20px;
+			}
+			p {
+				font-size: 16px;
+				line-height: 150%;
 			}
 		}
 	}

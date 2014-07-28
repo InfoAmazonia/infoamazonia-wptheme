@@ -194,7 +194,7 @@ query_posts('post_type=project');
 <section id="projects" class="row">
 	<div class="container">
 		<div class="twelve columns">
-			<header>
+			<header class="section-header">
 				<h2><?php _e('Special projects', 'infoamazonia'); ?></h2>
 			</header>
 		</div>
