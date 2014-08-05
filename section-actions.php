@@ -12,8 +12,8 @@
 		</div>
 		<div class="four columns">
 			<span class="lsf"><a href="<?php echo infoamazonia_home_url('/datasets/'); ?>">save</a></span>
-			<h3><a href="<?php echo infoamazonia_home_url('/data/'); ?>"><?php _e('Get the data', 'infoamazonia'); ?></a></h3>
-			<p><a href="<?php echo infoamazonia_home_url('/data/'); ?>"><?php _e('Download all the researched data used to design our maps and help us remix it into new visualizations.', 'infoamazonia'); ?></a></p>
+			<h3><a href="<?php echo infoamazonia_home_url('/datasets/'); ?>"><?php _e('Get the data', 'infoamazonia'); ?></a></h3>
+			<p><a href="<?php echo infoamazonia_home_url('/datasets/'); ?>"><?php _e('Download all the researched data used to design our maps and help us remix it into new visualizations.', 'infoamazonia'); ?></a></p>
 		</div>
 	</div>
 </aside>
