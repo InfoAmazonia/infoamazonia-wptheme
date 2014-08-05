@@ -226,9 +226,26 @@
 
 		(function() {
 
+			var svg = $('#svg_network');
+
+			svg.find('.network path').css({'stroke-width': 0});
+			svg.find('.circle path').css({'fill-opacity': 0});
+
 			scrollLocate($('#network_block'), _.once(function() {
 
-				
+				svg.find('.network path').css({'stroke-width': .2});
+
+				animatePath(svg.find('.network path'), null, function() {
+			
+					Snap('#svg_network .circle path').animate({
+						'fill-opacity': .1
+					}, 500);
+
+					Snap('#svg_network .network path').animate({
+						'fill-opacity': .5
+					}, 500);
+
+				});
 
 			}));
 
