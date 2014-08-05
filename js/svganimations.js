@@ -244,10 +244,11 @@
 			
 					Snap('#svg_network .ia-icon').animate({
 						'fill-opacity': 1
+						'stroke-width': 0
 					}, 500);
 
 					Snap('#svg_network .network path').animate({
-						'fill-opacity': .5
+						'fill-opacity': 1
 					}, 500);
 
 				});
