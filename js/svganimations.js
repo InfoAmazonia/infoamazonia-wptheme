@@ -243,7 +243,7 @@
 					}, 500);
 			
 					Snap('#svg_network .ia-icon').animate({
-						'fill-opacity': 1
+						'fill-opacity': 1,
 						'stroke-width': 0
 					}, 500);
 
