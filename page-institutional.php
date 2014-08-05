@@ -45,9 +45,9 @@ if($slider_query->have_posts()) :
 			<div class="container">
 				<div class="twelve columns">
 					<div class="participate-content">
-						<h2>Citizen participation</h2>
-						<h3>Take action on amazon water issues!</h3>
-						<a class="button" href="http://agua.infoamazonia.org/">Submit a report</a>
+						<h2><?php _e('Citizen participation', 'infoamazonia'); ?></h2>
+						<h3><?php _e('Take action on Amazon water issues!', 'infoamazonia'); ?></h3>
+						<a class="button" href="http://agua.infoamazonia.org/"><?php _e('Submit a report', 'infoamazonia'); ?></a>
 					</div>
 				</div>
 			</div>
@@ -79,7 +79,7 @@ endif;
 			<div class="eight columns">
 				<div class="block-text">
 					<h2><?php _e('Data and analysis', 'infoamazonia'); ?></h2>
-					<p>12 GB of updated datasets on the most pressuring issues of the Amazon rainforest. All data available for download. Get graphical analysis through maps and charts.</p>
+					<p><?php _e('12 GB of updated datasets on the most pressuring issues of the Amazon rainforest. All data available for download. Get graphical analysis through maps and charts.', 'infoamazonia'); ?></p>
 				</div>
 			</div>
 		</div>
@@ -89,7 +89,7 @@ endif;
 			<div class="five columns">
 				<div class="block-text">
 					<h2><?php _e('Map design', 'infoamazonia'); ?></h2>
-					<p>More than 30 layers of georeferenced data ready to be used on interactive maps. Make your own visualization with our tool and get the embed code to publish customized maps</p>
+					<p><?php _e('More than 30 layers of georeferenced data ready to be used on interactive maps. Make your own visualization with our tool and get the embed code to publish customized maps', 'infoamazonia'); ?></p>
 				</div>
 			</div>
 			<div class="seven columns">
@@ -122,7 +122,7 @@ endif;
 			<div class="eight columns">
 				<div class="block-text">
 					<h2><?php _e('Journalists and<br/>citizen network', 'infoamazonia'); ?></h2>
-					<p>Get news from a network of journalist which expands through 9 countries and read first hand reports of citizens and NGOs sent directly from the cities, forests and rivers of the Amazon</p>
+					<p><?php _e('Get news from a network of journalist which expands through 9 countries and read first hand reports of citizens and NGOs sent directly from the cities, forests and rivers of the Amazon', 'infoamazonia'); ?></p>
 				</div>
 			</div>
 		</div>
