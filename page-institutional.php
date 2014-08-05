@@ -22,7 +22,7 @@ if($slider_query->have_posts()) :
 					<div class="container">
 						<div class="five columns">
 							<header class="post-header">
-								<h2><?php the_title(); ?></h2>
+								<h2><a href="<?php the_field('slider_url'); ?>"><?php the_title(); ?></a></h2>
 							</header>
 							<section class="post-content">
 								<?php the_content(); ?>
