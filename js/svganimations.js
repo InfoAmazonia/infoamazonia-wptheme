@@ -230,6 +230,7 @@
 
 			svg.find('.network path').css({'stroke-width': 0});
 			svg.find('.circle path').css({'fill-opacity': 0});
+			svg.find('.ia-icon').css({'fill-opacity': 0});
 
 			scrollLocate($('#network_block'), _.once(function() {
 
@@ -239,6 +240,10 @@
 			
 					Snap('#svg_network .circle path').animate({
 						'fill-opacity': .1
+					}, 500);
+			
+					Snap('#svg_network .ia-icon').animate({
+						'fill-opacity': 1
 					}, 500);
 
 					Snap('#svg_network .network path').animate({
