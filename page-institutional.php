@@ -79,7 +79,7 @@ endif;
 			<div class="eight columns">
 				<div class="block-text">
 					<h2><?php _e('Data and analysis', 'infoamazonia'); ?></h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget congue nunc. Donec dapibus erat eu eros vulputate mollis eget sit amet ipsum.</p>
+					<p>12 GB of updated datasets on the most pressuring issues of the Amazon rainforest. All data available for download. Get graphical analysis through maps and charts.</p>
 				</div>
 			</div>
 		</div>
@@ -89,7 +89,7 @@ endif;
 			<div class="five columns">
 				<div class="block-text">
 					<h2><?php _e('Map design', 'infoamazonia'); ?></h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget congue nunc. Donec dapibus erat eu eros vulputate mollis eget sit amet ipsum.</p>
+					<p>More than 30 layers of georeferenced data ready to be used on interactive maps. Make your own visualization with our tool and get the embed code to publish customized maps</p>
 				</div>
 			</div>
 			<div class="seven columns">
@@ -116,7 +116,7 @@ endif;
 			<div class="eight columns">
 				<div class="block-text">
 					<h2><?php _e('Journalists and<br/>citizen network', 'infoamazonia'); ?></h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget congue nunc. Donec dapibus erat eu eros vulputate mollis eget sit amet ipsum.</p>
+					<p>Get news from a network of journalist which expands through 9 countries and read first hand reports of citizens and NGOs sent directly from the cities, forests and rivers of the Amazon</p>
 				</div>
 			</div>
 		</div>
