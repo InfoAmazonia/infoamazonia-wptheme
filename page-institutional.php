@@ -128,7 +128,6 @@ endif;
 		</div>
 	</div>
 </section>
-
 <section id="map-gallery" class="row">
 	<header>
 		<h2><?php _e('Map gallery', 'infoamazonia'); ?></h2>
@@ -183,7 +182,8 @@ endif;
 			});
 
 			var updateHeader = function(group) {
-				jQuery('#map-gallery header h3').text(group.map.conf.title);
+				var groupLi = $('#map-gallery .map-nav').find('[data-map="' + group.map.conf.id + '"]');
+				jQuery('#map-gallery header h3').text(groupLi.text());
 				jQuery('#map-gallery header .share').attr('href', baseUrl + 'map_id=' + group.map.conf.id);
 			};
 
