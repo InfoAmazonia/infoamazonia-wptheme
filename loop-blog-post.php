@@ -4,9 +4,12 @@
 			<li id="post-<?php the_ID(); ?>" <?php post_class('post-item row'); ?>>
 				<article class="clearfix">
 					<header class="post-header">
-						<?php the_terms($post->ID, 'blog-category', '<p class="meta">', ', ', '</p>'); ?>
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						<p class="author"><?php _e('by', 'infoamazonia'); ?> <?php the_author(); ?></p>
+						<div class="meta">
+							<p class="author"><?php _e('by', 'infoamazonia'); ?> <?php the_author(); ?></p>
+							<p class="date"><?php echo get_the_date(); ?></p>
+							<?php the_terms($post->ID, 'blog-category', '<p class="categories">', ', ', '</p>'); ?>
+						</div>
 						<?php
 						if(has_post_thumbnail()) {
 							echo '<a href="' . get_permalink() .'" title="' . get_the_title() . '">' . get_the_post_thumbnail($post->ID, 'large') . '</a>';

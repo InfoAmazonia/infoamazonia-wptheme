@@ -2905,11 +2905,22 @@ footer#colophon {
 	.list-blog-posts {
 		.post-item {
 			.meta {
-				a {
-					background: #fff;
-					color: #222;
-					padding: 5px 8px;
-					font-size: 14px;
+				display: table;
+				width: 100%;
+				margin: 0 0 20px;
+				border-bottom: 1px solid #ddd;
+				padding: 0 0 20px;
+				p {
+					width: 1%;
+					display: table-cell;
+					&.categories {
+						a {
+							background: #fff;
+							color: #222;
+							padding: 5px 8px;
+							font-size: 14px;
+						}
+					}
 				}
 			}
 			h2 {
