@@ -34,7 +34,7 @@ class infoamazonia_Blog {
 			'labels' => $labels,
 			'hierarchical' => false,
 			'description' => __('infoamazonia Blog', 'infoamazonia'),
-			'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'comments'),
+			'supports' => array('title', 'editor', 'excerpt', 'author', 'revisions', 'thumbnail', 'comments'),
 			'public' => true,
 			'show_ui' => true,
 			'show_in_menu' => true,
