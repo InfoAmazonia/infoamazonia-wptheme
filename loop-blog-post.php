@@ -16,8 +16,15 @@
 						}
 						?>
 					</header>
+					<aside class="social clearfix">
+						<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+						<div class="twitter-button">
+							<a href="https://twitter.com/share" class="twitter-share-button" data-via="infoamazonia" <?php if(function_exists('qtrans_getLanguage')) : ?>data-lang="<?php echo qtrans_getLanguage(); ?>"<?php endif; ?>>Tweet</a>
+						</div>
+					</aside>
 					<section>
 						<?php the_excerpt(); ?>
+						<p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Continue lendo...</a></p>
 					</section>
 				</article>
 			</li>
