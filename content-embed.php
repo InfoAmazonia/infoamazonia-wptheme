@@ -26,38 +26,47 @@
 </head>
 <body <?php body_class(get_bloginfo('language')); ?>>
 
+
+<?php
+$embed_title = get_bloginfo('name');
+$conf = array();
+$conf['containerID'] = 'map_embed';
+$conf['disableHash'] = true;
+$conf['mainMap'] = true;
+if(isset($_GET['map_id'])) {
+	$conf['postID'] = $_GET['map_id'];
+	$embed_title = get_the_title($_GET['map_id']);
+}
+if(isset($_GET['no_stories'])) {
+	$conf['disableMarkers'] = true;
+}
+if(isset($_GET['layers'])) {
+	$conf['layers'] = explode(',', $_GET['layers']);
+	if(isset($conf['postID']))
+		unset($conf['postID']);
+}
+if(isset($_GET['zoom'])) {
+	$conf['zoom'] = $_GET['zoom'];
+}
+if(isset($_GET['lat']) && isset($_GET['lon'])) {
+	$conf['center'] = array($_GET['lat'], $_GET['lon']);
+	$conf['forceCenter'] = true;
+}
+//$json_conf = json_encode($conf);
+
+if($_GET['p']) {
+	$embed_title = get_the_title($_GET['p']);
+}
+
+$json_conf = jeo_get_map_embed_conf();
+?>
+
 <header id="embed-header">
 	<h1><a href="<?php echo home_url('/'); ?>" target="_blank"><?php bloginfo('name'); ?><span>&nbsp;</span></a></h1>
+	<h2 id="embed-title" style="display:none;"><?php echo $embed_title; ?></h2>
 </header>
 
 <section id="embed-map">
-	<?php
-	$conf = array();
-	$conf['containerID'] = 'map_embed';
-	$conf['disableHash'] = true;
-	$conf['mainMap'] = true;
-	if(isset($_GET['map_id'])) {
-		$conf['postID'] = $_GET['map_id'];
-	}
-	if(isset($_GET['no_stories'])) {
-		$conf['disableMarkers'] = true;
-	}
-	if(isset($_GET['layers'])) {
-		$conf['layers'] = explode(',', $_GET['layers']);
-		if(isset($conf['postID']))
-			unset($conf['postID']);
-	}
-	if(isset($_GET['zoom'])) {
-		$conf['zoom'] = $_GET['zoom'];
-	}
-	if(isset($_GET['lat']) && isset($_GET['lon'])) {
-		$conf['center'] = array($_GET['lat'], $_GET['lon']);
-		$conf['forceCenter'] = true;
-	}
-	//$json_conf = json_encode($conf);
-
-	$json_conf = jeo_get_map_embed_conf();
-	?>
 	<script type="text/javascript">
 		(function($) {
 			jeo(<?php echo $json_conf; ?>, function(map) {
