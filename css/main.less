@@ -2877,6 +2877,24 @@ footer#colophon {
 		h1 {
 			font-size: 40px;
 			line-height: 120%;
+			margin-bottom: 40px;
+		}
+	}
+	.meta {
+		display: table;
+		width: 100%;
+		margin: 0;
+		border-bottom: 1px solid #ddd;
+		padding: 0 0 20px;
+		p {
+			width: 1%;
+			display: table-cell;
+			margin: 0;
+			.lsf {
+				opacity: .5;
+				float: left;
+				margin-right: 10px;
+			}
 		}
 	}
 }
@@ -2913,13 +2931,10 @@ footer#colophon {
 				p {
 					width: 1%;
 					display: table-cell;
-					&.categories {
-						a {
-							background: #fff;
-							color: #222;
-							padding: 5px 8px;
-							font-size: 14px;
-						}
+					.lsf {
+						opacity: .5;
+						float: left;
+						margin-right: 10px;
 					}
 				}
 			}

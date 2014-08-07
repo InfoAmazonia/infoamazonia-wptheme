@@ -6,9 +6,9 @@
 					<header class="post-header">
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						<div class="meta">
-							<p class="author"><?php _e('by', 'infoamazonia'); ?> <?php the_author(); ?></p>
-							<p class="date"><?php echo get_the_date(); ?></p>
-							<?php the_terms($post->ID, 'blog-category', '<p class="categories">', ', ', '</p>'); ?>
+							<p class="author"><span class="lsf">&#xE137;</span> <?php _e('by', 'infoamazonia'); ?> <?php the_author(); ?></p>
+							<p class="date"><span class="lsf">&#xE15e;</span> <?php echo get_the_date(); ?></p>
+							<?php the_terms($post->ID, 'blog-category', '<p class="categories"><span class="lsf">&#xE128;</span>', ', ', '</p>'); ?>
 						</div>
 						<?php
 						if(has_post_thumbnail()) {
