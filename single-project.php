@@ -11,6 +11,7 @@
 						</header>
 						<section class="post-content">
 							<?php the_content(); ?>
+							<a href="<?php the_field('project_url'); ?>" title="<?php the_title(); ?>" rel="external" target="_blank" class="button"><?php _e('View this project', 'infoamazonia'); ?></a>
 						</section>
 				</article>
 			</div>

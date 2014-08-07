@@ -10,6 +10,7 @@ class infoamazonia_Projects {
 	function __construct() {
 
 		add_action('init', array($this, 'register_post_type'));
+		$this->acf_fields();
 
 	}
 
@@ -43,6 +44,64 @@ class infoamazonia_Projects {
 		);
 
 		register_post_type('project', $args);
+
+	}
+
+	function acf_fields() {
+
+		/*
+		 * ACF Fields
+		 */
+		if(function_exists("register_field_group")) {
+
+			$translate_fields = array(
+				'wysiwyg' => 'wysiwyg',
+				'text' => 'text',
+				'textarea' => 'textarea'
+			);
+
+			if(function_exists('qtrans_getLanguage') && 1 == 0) {
+				foreach($translate_fields as &$field) {
+					$field = 'qtranslate_' . $field;
+				}
+			}
+
+			register_field_group(array (
+				'id' => 'acf_project-settings',
+				'title' => 'Project settings',
+				'fields' => array (
+					array (
+						'default_value' => '',
+						'formatting' => 'html',
+						'key' => 'field_project_url',
+						'label' => 'Project url',
+						'name' => 'project_url',
+						'type' => $translate_fields['text'],
+						'instructions' => 'URL to the project',
+						'required' => 1,
+					)
+				),
+				'location' => array (
+					array (
+						array (
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'project',
+							'order_no' => 0,
+							'group_no' => 0,
+						),
+					),
+				),
+				'options' => array (
+					'position' => 'normal',
+					'layout' => 'no_box',
+					'hide_on_screen' => array (
+					),
+				),
+				'menu_order' => 0,
+			));
+
+		}
 
 	}
 

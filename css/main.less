@@ -420,8 +420,10 @@ header#masthead {
 	}
 	.subnav-content {
 		position: absolute;
-		top: 0;
+		top: 1px;
 		right: 0;
+		background: #eee;
+		padding: 0 10px;
 	}
 	nav {
 		margin: 0;
@@ -476,15 +478,16 @@ header#masthead {
 	}
 	nav#feedback {
 		margin-right: 5px;
-		border-right: 1px solid #e0e0e0;		
+		border-right: 1px solid rgba(0,0,0,0.1);
 	}
 	nav#social {
-		border-right: 1px solid rgba(0,0,0,0.2);
+		border-right: 1px solid rgba(0,0,0,0.1);
 		padding-right: 15px;
 		margin-right: 5px;
 		a {
 			padding: 10px 15px;
 			opacity: .6;
+			text-align: center;
 			&:hover {
 				opacity: .8;
 			}
