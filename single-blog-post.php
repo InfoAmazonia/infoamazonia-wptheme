@@ -7,6 +7,7 @@
 			<div class="eight columns">
 				<article id="post-<?php the_ID(); ?>" <?php post_class('main'); ?>>
 						<header class="page-header">
+							<h2><a href="<?php echo get_post_type_archive_link('blog-post'); ?>">Blog</a></h2>
 							<h1><?php the_title(); ?></h1>
 							<div class="meta">
 								<p class="author"><span class="lsf">&#xE137;</span> <?php _e('by', 'infoamazonia'); ?> <?php the_author(); ?></p>
