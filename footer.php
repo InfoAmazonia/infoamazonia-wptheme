@@ -7,6 +7,8 @@
 		<li class="label supported">Supported by</li>
 		<li><a class="icon cdkn" href="http://cdkn.org">Climate &amp; Development Knowledge Network</a></li>
 		<li><a class="icon knight" href="http://www.icfj.org/our-work/knight/fellows">International Center for Journalists</a></li>
+		<li><a class="icon avina" href="http://www.avina.net/">Avina</a></li>
+		<li><a class="icon skoll" href="http://www.skollfoundation.org/">Skoll Foundation</a></li>
 	</ul>
 </footer>
 <?php wp_footer(); ?>
