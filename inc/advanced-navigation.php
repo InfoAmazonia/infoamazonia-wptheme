@@ -196,7 +196,7 @@ class infoamazonia_AdvancedNav {
 						numberOfMonths: 1,
 						maxDate: max,
 						minDate: min
-					});	
+					});
 
 				});
 

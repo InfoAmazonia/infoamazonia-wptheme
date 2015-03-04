@@ -20,10 +20,14 @@ include(STYLESHEETPATH . '/inc/taxonomies-meta.php');
  * Advanced Custom Fields
  */
 
-function infoamazonia_acf_dir() {
-	return get_stylesheet_directory_uri() . '/inc/acf/';
+if(!class_exists('Acf')) {
+
+	function infoamazonia_acf_dir() {
+		return get_stylesheet_directory_uri() . '/inc/acf/';
+	}
+	add_filter('acf/helpers/get_dir', 'infoamazonia_acf_dir');
+
 }
-add_filter('acf/helpers/get_dir', 'infoamazonia_acf_dir');
 
 function infoamazonia_acf_date_time_picker_dir() {
 	return infoamazonia_acf_dir() . '/add-ons/acf-field-date-time-picker/';
@@ -35,8 +39,10 @@ function infoamazonia_acf_repeater_dir() {
 }
 add_filter('acf/add-ons/repeater/get_dir', 'infoamazonia_acf_repeater_dir');
 
-define('ACF_LITE', true);
-require_once(STYLESHEETPATH . '/inc/acf/acf.php');
+if(!class_exists('Acf')) {
+	define('ACF_LITE', true);
+	require_once(STYLESHEETPATH . '/inc/acf/acf.php');
+}
 include_once(STYLESHEETPATH . '/inc/acf/add-ons/acf-qtranslate/acf-qtranslate.php');
 
 /*
@@ -386,7 +392,7 @@ function infoamazonia_search_placeholder() {
 	return $placeholder;
 }
 
-// embed custom stuff 
+// embed custom stuff
 
 function infoamazonia_before_embed() {
 	remove_action('wp_footer', 'infoamazonia_submit');

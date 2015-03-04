@@ -46,8 +46,8 @@ if($slider_query->have_posts()) :
 				<div class="twelve columns">
 					<div class="participate-content">
 						<h2><?php _e('Citizen participation', 'infoamazonia'); ?></h2>
-						<h3><?php _e('Take action on Amazon water issues!', 'infoamazonia'); ?></h3>
-						<a class="button" href="http://agua.infoamazonia.org/"><?php _e('Submit a report', 'infoamazonia'); ?></a>
+						<h3><?php _e('Take action on Amazon issues!', 'infoamazonia'); ?></h3>
+						<a class="button submit-story"><?php _e('Submit a story', 'infoamazonia'); ?></a>
 					</div>
 				</div>
 			</div>
