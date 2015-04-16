@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: infoamazonia\n"
-"POT-Creation-Date: 2014-08-05 12:54-0300\n"
+"POT-Creation-Date: 2015-04-16 17:35-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Miguel Peixe <miguel@cardume.art.br>\n"
 "Language-Team: \n"
@@ -15,8 +15,40 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../section-actions.php:5 ../header.php:57 ../section-submit-call.php:6
-#: ../inc/submit-story.php:14
+#: ../loop-explore.php:29 ../loop.php:18
+msgctxt "reduced date format"
+msgid "m/d/Y"
+msgstr "d/m/Y"
+
+#: ../loop-explore.php:52 ../section-sticky-posts.php:27 ../loop.php:41
+#: ../functions.php:150
+#, fuzzy
+msgid "Read more"
+msgstr "Leer"
+
+#: ../loop-explore.php:53 ../section-sticky-posts.php:28 ../loop.php:42
+#: ../functions.php:137
+#, fuzzy
+msgid "Share"
+msgstr "Compartir"
+
+#: ../taxonomy-license.php:11 ../single-dataset.php:10
+#: ../archive-dataset.php:11 ../inc/datasets.php:22 ../inc/datasets.php:32
+msgid "Datasets"
+msgstr ""
+
+#: ../taxonomy-license.php:36 ../archive-dataset.php:22
+#, fuzzy
+msgid "Sources"
+msgstr "Todas las noticias"
+
+#: ../taxonomy-license.php:46 ../archive-dataset.php:32
+#, fuzzy
+msgid "Licenses"
+msgstr "Todos los editores"
+
+#: ../section-actions.php:5 ../header.php:57 ../page-institutional.php:50
+#: ../section-submit-call.php:6 ../inc/submit-story.php:14
 msgid "Submit a story"
 msgstr "Envíe un reportaje"
 
@@ -49,75 +81,24 @@ msgid ""
 "it into new visualizations."
 msgstr ""
 
-#: ../loop-dataset.php:16
+#: ../header.php:17 ../content-embed.php:16
+#: ../inc/acf/core/views/meta_box_location.php:78
+#: ../inc/acf/core/views/meta_box_location.php:79
+msgid "Page"
+msgstr "Página"
+
+#: ../single-project.php:20 ../loop-projects.php:9
 #, fuzzy
-msgid "View this data"
+msgid "View this project"
 msgstr "Vea este mapa"
-
-#: ../loop-dataset.php:21 ../single-map.php:49 ../index.php:58
-#: ../inc/acf/core/controllers/field_groups.php:425
-#: ../inc/acf/core/controllers/field_groups.php:434
-#: ../inc/acf/core/controllers/field_groups.php:442
-#: ../inc/acf/core/controllers/field_groups.php:450
-#: ../inc/acf/core/controllers/field_groups.php:458
-#: ../inc/acf/core/controllers/addons.php:242
-msgid "Download"
-msgstr ""
-
-#: ../loop-dataset.php:29 ../single-dataset.php:50
-#, fuzzy
-msgid "Download from source"
-msgstr "Editores populares"
-
-#: ../single.php:37
-msgid "Go to the original article"
-msgstr "Ir al artículo original"
-
-#: ../single.php:39
-msgid "Embed this story"
-msgstr "Insertar esta historia"
-
-#: ../single.php:40 ../functions.php:132
-msgid "Print"
-msgstr "Imprimir"
-
-#: ../content-map-group.php:28
-msgid "More..."
-msgstr "Más..."
-
-#: ../content-map-group.php:43
-#, fuzzy
-msgid "View all maps"
-msgstr "Vea este mapa"
-
-#: ../loop-explore.php:29 ../loop.php:18
-msgctxt "reduced date format"
-msgid "m/d/Y"
-msgstr "d/m/Y"
-
-#: ../loop-explore.php:52 ../functions.php:144 ../loop.php:41
-#: ../section-sticky-posts.php:27
-#, fuzzy
-msgid "Read more"
-msgstr "Leer"
-
-#: ../loop-explore.php:53 ../functions.php:131 ../loop.php:42
-#: ../section-sticky-posts.php:28
-#, fuzzy
-msgid "Share"
-msgstr "Compartir"
 
 #: ../page-institutional.php:48
 msgid "Citizen participation"
 msgstr "Participación ciudadana"
 
 #: ../page-institutional.php:49
-msgid "Take action on Amazon water issues!"
-msgstr "Actue para defender el agua de la Amazonía."
-
-#: ../page-institutional.php:50
-msgid "Submit a report"
-msgstr "Envíe un relato"
+msgid "Take action on Amazon issues!"
+msgstr "Actue para defender la Amazonía."
 
 #: ../page-institutional.php:81
 msgid "Data and analysis"
@@ -161,11 +142,11 @@ msgstr ""
 "conozca en primera mano los informes y noticias enviados por ciudadanos y "
 "organizaciones directamente de las ciudades, selvas y ríos de la Amazonía."
 
-#: ../page-institutional.php:134
+#: ../page-institutional.php:133
 msgid "Map gallery"
 msgstr "Galeria de mapas"
 
-#: ../page-institutional.php:136 ../single-map.php:14
+#: ../page-institutional.php:135 ../single-map.php:14
 msgid "Embed this map"
 msgstr "Insertar este mapa"
 
@@ -173,154 +154,6 @@ msgstr "Insertar este mapa"
 #, fuzzy
 msgid "Special projects"
 msgstr "Buscar noticias"
-
-#: ../header.php:17 ../content-embed.php:16
-#: ../inc/acf/core/views/meta_box_location.php:78
-#: ../inc/acf/core/views/meta_box_location.php:79
-msgid "Page"
-msgstr "Página"
-
-#: ../archive-dataset.php:11 ../single-dataset.php:10
-#: ../taxonomy-license.php:11 ../inc/datasets.php:22 ../inc/datasets.php:32
-msgid "Datasets"
-msgstr ""
-
-#: ../archive-dataset.php:22 ../taxonomy-license.php:36
-#, fuzzy
-msgid "Sources"
-msgstr "Todas las noticias"
-
-#: ../archive-dataset.php:32 ../taxonomy-license.php:46
-#, fuzzy
-msgid "Licenses"
-msgstr "Todos los editores"
-
-#: ../functions.php:74
-msgid "Main widgets"
-msgstr "Widgets principales"
-
-#: ../functions.php:76
-msgid "Widgets used on front and inside pages."
-msgstr "Widgets utilizados en la página principal e internas."
-
-#: ../functions.php:128
-msgid "stories"
-msgstr "artículos"
-
-#: ../functions.php:130
-msgid "Copy the embed code"
-msgstr "Copie el código para incrustar"
-
-#: ../functions.php:146
-msgid "Open slideshow"
-msgstr "Abrir slideshow"
-
-#: ../functions.php:147
-msgid "Watch video gallery"
-msgstr "Ver galería de videos"
-
-#: ../functions.php:148
-msgid "Watch video"
-msgstr "Ver video"
-
-#: ../functions.php:149
-msgid "View image gallery"
-msgstr "Ver galería de imágenes"
-
-#: ../functions.php:150
-msgid "View fullscreen image"
-msgstr "Ver la imagen en pantalla completa"
-
-#: ../functions.php:151
-msgid "View infographic"
-msgstr "Ver infografía"
-
-#: ../functions.php:152
-msgid "View infographics"
-msgstr "Ver infografía"
-
-#: ../functions.php:181
-msgid ""
-"Success! Thank you, your story will be reviewed by one of our editors and "
-"soon will be online."
-msgstr ""
-"¡Gracias! Tu artículo será revisado por uno de nuestros editores y luego "
-"online"
-
-#: ../functions.php:182
-msgid "You're being redirect to the home page in 4 seconds."
-msgstr ""
-
-#: ../functions.php:184
-msgid "Oops, please try again in a few minutes."
-msgstr "Por favor, vuelve a intentarlo en unos minutos."
-
-#: ../functions.php:380 ../searchform.php:3
-msgid "Search for stories"
-msgstr "Buscar noticias"
-
-#: ../functions.php:382
-msgid "Search for stories on this map"
-msgstr "Buscar historias en este mapa"
-
-#: ../functions.php:384
-msgid "Search for stories on this publisher"
-msgstr "Buscar historias en este editor"
-
-#: ../single-map.php:37
-msgid "Stories on"
-msgstr "Noticias en"
-
-#: ../single-map.php:47 ../index.php:56 ../inc/category-feeds-widget.php:43
-msgid "RSS Feed"
-msgstr "RSS RSS"
-
-#: ../single-map.php:48 ../index.php:57
-msgid "Get GeoJSON"
-msgstr ""
-
-#: ../single-dataset.php:28
-#, fuzzy
-msgid "Preview data"
-msgstr "Vea todos los mapas"
-
-#: ../single-dataset.php:42
-msgid "Download this data"
-msgstr ""
-
-#: ../single-dataset.php:61
-#, fuzzy
-msgid "License"
-msgstr "Todos los editores"
-
-#: ../single-dataset.php:63
-#, fuzzy
-msgid "More data on this license"
-msgstr "Editor padre"
-
-#: ../single-dataset.php:74
-#, fuzzy
-msgid "Source"
-msgstr "Buscar noticias"
-
-#: ../single-dataset.php:76
-#, fuzzy
-msgid "More data from this source"
-msgstr "Elija entre los editores más utilizados"
-
-#: ../archive-blog-post.php:11 ../inc/blog.php:20 ../inc/blog.php:30
-msgid "Blog"
-msgstr ""
-
-#: ../archive-blog-post.php:22 ../inc/advanced-navigation.php:117
-#: ../inc/acf/core/views/meta_box_options.php:104
-#, fuzzy
-msgid "Categories"
-msgstr "artículos"
-
-#: ../loop-blog-post.php:9
-msgid "by"
-msgstr "por"
 
 #: ../section-subheader.php:6
 #, fuzzy
@@ -378,42 +211,159 @@ msgstr "Y"
 msgid "Archives"
 msgstr "Archivos"
 
-#: ../section-submit-call.php:4 ../inc/submit-story.php:15
-msgid ""
-"Do you have news to share from the Amazon? Contribute to this map by "
-"submitting your story. Help broaden the understanding of the global impact "
-"of this important region in the world."
-msgstr ""
-"¿Tienes alguna noticia para compartir sobre la Amazonia? Contribuya a este "
-"mapa enviando un reportaje. Ayude a ampliar el entendimiento del impacto "
-"global de esta importante región. "
+#: ../single-blog-post.php:13 ../loop-blog-post.php:9
+msgid "by"
+msgstr "por"
 
-#: ../section-publisher-description.php:10
-msgid "Visit"
-msgstr "Visitar"
+#: ../single-dataset.php:28
+#, fuzzy
+msgid "Preview data"
+msgstr "Vea todos los mapas"
+
+#: ../single-dataset.php:42
+msgid "Download this data"
+msgstr ""
+
+#: ../single-dataset.php:50 ../loop-dataset.php:29
+#, fuzzy
+msgid "Download from source"
+msgstr "Editores populares"
+
+#: ../single-dataset.php:61
+#, fuzzy
+msgid "License"
+msgstr "Todos los editores"
+
+#: ../single-dataset.php:63
+#, fuzzy
+msgid "More data on this license"
+msgstr "Editor padre"
+
+#: ../single-dataset.php:74
+#, fuzzy
+msgid "Source"
+msgstr "Buscar noticias"
+
+#: ../single-dataset.php:76
+#, fuzzy
+msgid "More data from this source"
+msgstr "Elija entre los editores más utilizados"
 
 #: ../404.php:7
 #, fuzzy
 msgid "Page not found"
 msgstr "Página no encontrada"
 
-#: ../content-marker-bubble.php:11
-msgctxt "map bubble date format"
-msgid "m/d/Y"
-msgstr "d/m/Y"
+#: ../content-map-group.php:28
+msgid "More..."
+msgstr "Más..."
 
-#: ../loop-projects.php:9
+#: ../content-map-group.php:43
 #, fuzzy
-msgid "View this project"
+msgid "View all maps"
 msgstr "Vea este mapa"
 
-#: ../archive-map.php:11
-msgid "Maps"
-msgstr "Mapas"
+#: ../taxonomy-blog-tag.php:23 ../archive-blog-post.php:22
+#: ../taxonomy-blog-category.php:23 ../inc/advanced-navigation.php:117
+#: ../inc/acf/core/views/meta_box_options.php:104
+#, fuzzy
+msgid "Categories"
+msgstr "artículos"
 
-#: ../searchform.php:4 ../inc/acf/core/fields/relationship.php:647
-msgid "Search"
-msgstr "Buscar"
+#: ../functions.php:80
+msgid "Main widgets"
+msgstr "Widgets principales"
+
+#: ../functions.php:82
+msgid "Widgets used on front and inside pages."
+msgstr "Widgets utilizados en la página principal e internas."
+
+#: ../functions.php:134
+msgid "stories"
+msgstr "artículos"
+
+#: ../functions.php:136
+msgid "Copy the embed code"
+msgstr "Copie el código para incrustar"
+
+#: ../functions.php:138 ../single.php:40
+msgid "Print"
+msgstr "Imprimir"
+
+#: ../functions.php:152
+msgid "Open slideshow"
+msgstr "Abrir slideshow"
+
+#: ../functions.php:153
+msgid "Watch video gallery"
+msgstr "Ver galería de videos"
+
+#: ../functions.php:154
+msgid "Watch video"
+msgstr "Ver video"
+
+#: ../functions.php:155
+msgid "View image gallery"
+msgstr "Ver galería de imágenes"
+
+#: ../functions.php:156
+msgid "View fullscreen image"
+msgstr "Ver la imagen en pantalla completa"
+
+#: ../functions.php:157
+msgid "View infographic"
+msgstr "Ver infografía"
+
+#: ../functions.php:158
+msgid "View infographics"
+msgstr "Ver infografía"
+
+#: ../functions.php:187
+msgid ""
+"Success! Thank you, your story will be reviewed by one of our editors and "
+"soon will be online."
+msgstr ""
+"¡Gracias! Tu artículo será revisado por uno de nuestros editores y luego "
+"online"
+
+#: ../functions.php:188
+msgid "You're being redirect to the home page in 4 seconds."
+msgstr ""
+
+#: ../functions.php:190
+msgid "Oops, please try again in a few minutes."
+msgstr "Por favor, vuelve a intentarlo en unos minutos."
+
+#: ../functions.php:386 ../searchform.php:3
+msgid "Search for stories"
+msgstr "Buscar noticias"
+
+#: ../functions.php:388
+msgid "Search for stories on this map"
+msgstr "Buscar historias en este mapa"
+
+#: ../functions.php:390
+msgid "Search for stories on this publisher"
+msgstr "Buscar historias en este editor"
+
+#: ../loop-dataset.php:16
+#, fuzzy
+msgid "View this data"
+msgstr "Vea este mapa"
+
+#: ../loop-dataset.php:21 ../index.php:58 ../single-map.php:49
+#: ../inc/acf/core/controllers/field_groups.php:425
+#: ../inc/acf/core/controllers/field_groups.php:434
+#: ../inc/acf/core/controllers/field_groups.php:442
+#: ../inc/acf/core/controllers/field_groups.php:450
+#: ../inc/acf/core/controllers/field_groups.php:458
+#: ../inc/acf/core/controllers/addons.php:242
+msgid "Download"
+msgstr ""
+
+#: ../archive-blog-post.php:11 ../inc/blog.php:20 ../inc/blog.php:30
+msgid "Blog"
+msgstr ""
 
 #: ../index.php:35
 msgid "Latest stories"
@@ -436,9 +386,475 @@ msgstr "Noticias"
 msgid "Page %d"
 msgstr "Página"
 
+#: ../index.php:56 ../single-map.php:47 ../inc/category-feeds-widget.php:43
+msgid "RSS Feed"
+msgstr "RSS RSS"
+
+#: ../index.php:57 ../single-map.php:48
+msgid "Get GeoJSON"
+msgstr ""
+
 #: ../index.php:81
 msgid "Nothing found. Viewing all posts"
 msgstr "No se ha encontrado. Viendo todas las noticias"
+
+#: ../single-map.php:37
+msgid "Stories on"
+msgstr "Noticias en"
+
+#: ../archive-map.php:11
+msgid "Maps"
+msgstr "Mapas"
+
+#: ../section-submit-call.php:4 ../inc/submit-story.php:15
+msgid ""
+"Do you have news to share from the Amazon? Contribute to this map by "
+"submitting your story. Help broaden the understanding of the global impact "
+"of this important region in the world."
+msgstr ""
+"¿Tienes alguna noticia para compartir sobre la Amazonia? Contribuya a este "
+"mapa enviando un reportaje. Ayude a ampliar el entendimiento del impacto "
+"global de esta importante región. "
+
+#: ../section-publisher-description.php:10
+msgid "Visit"
+msgstr "Visitar"
+
+#: ../single.php:37
+msgid "Go to the original article"
+msgstr "Ir al artículo original"
+
+#: ../single.php:39
+msgid "Embed this story"
+msgstr "Insertar esta historia"
+
+#: ../content-marker-bubble.php:11
+msgctxt "map bubble date format"
+msgid "m/d/Y"
+msgstr "d/m/Y"
+
+#: ../searchform.php:4 ../inc/acf/core/fields/relationship.php:647
+msgid "Search"
+msgstr "Buscar"
+
+#: ../inc/ajax-calendar.php:15
+msgid "AJAX Powered Calendar"
+msgstr "AJAX Powered Calendario"
+
+#: ../inc/ajax-calendar.php:18 ../inc/ajax-calendar.php:28
+#: ../inc/ajax-calendar.php:46 ../inc/ajax-calendar.php:113
+msgid "AJAX Calendar"
+msgstr "AJAX Calendar"
+
+#: ../inc/ajax-calendar.php:75
+msgid "Stories calendar"
+msgstr "Noticias en"
+
+#: ../inc/ajax-calendar.php:118
+#, fuzzy
+msgid "Category IDs:"
+msgstr "artículos"
+
+#: ../inc/blog.php:21 ../inc/acf/core/views/meta_box_location.php:84
+#: ../inc/acf/core/views/meta_box_location.php:85
+msgid "Post"
+msgstr ""
+
+#: ../inc/blog.php:22
+msgid "Add post"
+msgstr ""
+
+#: ../inc/blog.php:23
+#, fuzzy
+msgid "Add new post"
+msgstr "Añadir nuevo editor"
+
+#: ../inc/blog.php:24
+#, fuzzy
+msgid "Edit post"
+msgstr "Editar editor"
+
+#: ../inc/blog.php:25
+msgid "New post"
+msgstr ""
+
+#: ../inc/blog.php:26
+#, fuzzy
+msgid "View post"
+msgstr "Vea todos los mapas"
+
+#: ../inc/blog.php:27
+#, fuzzy
+msgid "Search post"
+msgstr "Buscar"
+
+#: ../inc/blog.php:28
+#, fuzzy
+msgid "No post found"
+msgstr "Página no encontrada"
+
+#: ../inc/blog.php:29
+msgid "No post found in the trash"
+msgstr ""
+
+#: ../inc/blog.php:36
+msgid "infoamazonia Blog"
+msgstr ""
+
+#: ../inc/blog.php:53
+#, fuzzy
+msgctxt "Blog category general name"
+msgid "Blog categories"
+msgstr "Todas las noticias"
+
+#: ../inc/blog.php:54
+#, fuzzy
+msgctxt "Blog category singular name"
+msgid "Blog category"
+msgstr "Ver galería de imágenes"
+
+#: ../inc/blog.php:55
+#, fuzzy
+msgid "All blog categories"
+msgstr "Todas las noticias"
+
+#: ../inc/blog.php:56
+msgid "Edit blog category"
+msgstr ""
+
+#: ../inc/blog.php:57
+#, fuzzy
+msgid "View blog category"
+msgstr "Ver galería de imágenes"
+
+#: ../inc/blog.php:58
+#, fuzzy
+msgid "Update blog category"
+msgstr "Actualizar editor"
+
+#: ../inc/blog.php:59
+#, fuzzy
+msgid "Add new blog category"
+msgstr "Añadir nuevo editor"
+
+#: ../inc/blog.php:60
+#, fuzzy
+msgid "New blog category name"
+msgstr "Nuevo nombre de editor"
+
+#: ../inc/blog.php:61
+#, fuzzy
+msgid "Parent blog category"
+msgstr "Editor padre"
+
+#: ../inc/blog.php:62
+#, fuzzy
+msgid "Parent blog category:"
+msgstr "Editor padre:"
+
+#: ../inc/blog.php:63
+#, fuzzy
+msgid "Search blog categories"
+msgstr "Buscar noticias"
+
+#: ../inc/blog.php:64
+#, fuzzy
+msgid "Popular blog categories"
+msgstr "Editores populares"
+
+#: ../inc/blog.php:65
+#, fuzzy
+msgid "Separate blog categories with commas"
+msgstr "Separe editores con comas"
+
+#: ../inc/blog.php:66
+#, fuzzy
+msgid "Add or remove blog categories"
+msgstr "Añadir o eliminar editores"
+
+#: ../inc/blog.php:67
+#, fuzzy
+msgid "Choose from most used blog categories"
+msgstr "Elija entre los editores más utilizados"
+
+#: ../inc/blog.php:68
+msgid "No blog categories found"
+msgstr ""
+
+#: ../inc/blog.php:83
+#, fuzzy
+msgctxt "Blog tag general name"
+msgid "Blog tags"
+msgstr "Buscar noticias"
+
+#: ../inc/blog.php:84
+#, fuzzy
+msgctxt "Blog tag singular name"
+msgid "Blog tag"
+msgstr "Vea todos los mapas"
+
+#: ../inc/blog.php:85
+msgid "All blog tags"
+msgstr ""
+
+#: ../inc/blog.php:86
+msgid "Edit blog tag"
+msgstr ""
+
+#: ../inc/blog.php:87
+#, fuzzy
+msgid "View blog tag"
+msgstr "Vea todos los mapas"
+
+#: ../inc/blog.php:88
+msgid "Update blog tag"
+msgstr ""
+
+#: ../inc/blog.php:89
+#, fuzzy
+msgid "Add new blog tag"
+msgstr "Añadir nuevo editor"
+
+#: ../inc/blog.php:90
+#, fuzzy
+msgid "New blog tag name"
+msgstr "Nuevo nombre de editor"
+
+#: ../inc/blog.php:91
+msgid "Parent blog tag"
+msgstr ""
+
+#: ../inc/blog.php:92
+#, fuzzy
+msgid "Parent blog tag:"
+msgstr "Editor padre:"
+
+#: ../inc/blog.php:93
+#, fuzzy
+msgid "Search blog tags"
+msgstr "Buscar noticias"
+
+#: ../inc/blog.php:94
+#, fuzzy
+msgid "Popular blog tags"
+msgstr "Editores populares"
+
+#: ../inc/blog.php:95
+#, fuzzy
+msgid "Separate blog tags with commas"
+msgstr "Separe editores con comas"
+
+#: ../inc/blog.php:96
+#, fuzzy
+msgid "Add or remove blog tags"
+msgstr "Añadir o eliminar editores"
+
+#: ../inc/blog.php:97
+#, fuzzy
+msgid "Choose from most used blog tags"
+msgstr "Elija entre los editores más utilizados"
+
+#: ../inc/blog.php:98
+msgid "No blog tags found"
+msgstr ""
+
+#: ../inc/advanced-navigation.php:106
+msgid "Text search"
+msgstr ""
+
+#: ../inc/advanced-navigation.php:107
+msgid "Type your search here"
+msgstr ""
+
+#: ../inc/advanced-navigation.php:118
+#, fuzzy
+msgid "Select categories"
+msgstr "Seleccione historias"
+
+#: ../inc/advanced-navigation.php:135
+msgid "Date range"
+msgstr ""
+
+#: ../inc/advanced-navigation.php:138
+msgid "From"
+msgstr ""
+
+#: ../inc/advanced-navigation.php:142
+msgid "To"
+msgstr ""
+
+#: ../inc/advanced-navigation.php:149
+msgid "Filter"
+msgstr ""
+
+#: ../inc/advanced-navigation.php:160 ../inc/advanced-navigation.php:171
+#, fuzzy
+msgid "Cancel filters"
+msgstr "Subir nuevos archivos"
+
+#: ../inc/category-feeds-widget.php:5
+msgid "RSS Feeds by selected categories"
+msgstr "Fuentes RSS por categorías seleccionadas"
+
+#: ../inc/category-feeds-widget.php:6
+msgid "Category Feed Links"
+msgstr "Categoría Alimentación Links"
+
+#: ../inc/category-feeds-widget.php:10
+msgid "RSS Feeds"
+msgstr "RSS Feeds"
+
+#: ../inc/category-feeds-widget.php:14
+#: ../inc/acf/core/controllers/field_groups.php:147
+msgid "Title"
+msgstr "Título"
+
+#: ../inc/category-feeds-widget.php:15
+msgid "Categories separated by comma"
+msgstr "Categorías separadas por comas"
+
+#: ../inc/submit-story.php:13 ../inc/geocode-box.php:17
+msgid "Close"
+msgstr "Cerrar"
+
+#: ../inc/submit-story.php:20
+msgid "Submit a url"
+msgstr "Envíe una URL"
+
+#: ../inc/submit-story.php:21
+msgid "Submit full story"
+msgstr "Envíe una historia completa"
+
+#: ../inc/submit-story.php:27 ../inc/submit-story.php:85
+msgid "Your full name"
+msgstr "Nombre completo"
+
+#: ../inc/submit-story.php:31 ../inc/submit-story.php:89
+#, fuzzy
+msgid "E-mail"
+msgstr "Email"
+
+#: ../inc/submit-story.php:35 ../inc/metaboxes/story/story-meta.php:36
+msgid "Reporter"
+msgstr "Reportero"
+
+#: ../inc/submit-story.php:39
+msgid "Story title"
+msgstr "Título de la noticia"
+
+#: ../inc/submit-story.php:43
+msgid "Story text"
+msgstr "Texto de la noticia"
+
+#: ../inc/submit-story.php:47 ../inc/submit-story.php:93
+#: ../inc/metaboxes/story/story-meta.php:40
+msgid "Story url"
+msgstr "Link para la noticia"
+
+#: ../inc/submit-story.php:51 ../inc/metaboxes/story/story-meta.php:44
+msgid "Lead picture"
+msgstr "Imagen principal"
+
+#: ../inc/submit-story.php:56 ../inc/submit-story.php:98
+#, fuzzy
+msgid "Story location"
+msgstr "Datos del artículo"
+
+#: ../inc/submit-story.php:58 ../inc/submit-story.php:100
+#, fuzzy
+msgid "Find location on map"
+msgstr "Encontrar localización en el mapa"
+
+#: ../inc/submit-story.php:63 ../inc/submit-story.php:105
+msgid "Latitude:"
+msgstr "Latitud:"
+
+#: ../inc/submit-story.php:64 ../inc/submit-story.php:106
+msgid "Longitude:"
+msgstr "Longitud:"
+
+#: ../inc/submit-story.php:73 ../inc/metaboxes/story/story-meta.php:48
+msgid "Publishing date"
+msgstr "Fecha de publicação"
+
+#: ../inc/submit-story.php:77 ../inc/metaboxes/story/story-meta.php:52
+msgid "Notes to the infoamazonia editor"
+msgstr "Notas para el editor del infoamazonia"
+
+#: ../inc/submit-story.php:80 ../inc/submit-story.php:114
+msgid "Send story"
+msgstr "Enviar noticia"
+
+#: ../inc/submit-story.php:135
+msgid "Missing information. Please fill all the required fields!"
+msgstr "Completa todos los campos obligatorios"
+
+#: ../inc/submit-story.php:144
+msgid "Could not save submission"
+msgstr "No es posible guardar el envío"
+
+#: ../inc/jeo-post-zoom.php:20
+msgid "Zoom"
+msgstr ""
+
+#: ../inc/taxonomies-meta.php:10
+msgid "Publisher information"
+msgstr "Información del editor"
+
+#: ../inc/taxonomies-meta.php:17
+msgid "Publisher url"
+msgstr "URL del editor"
+
+#: ../inc/geocode-box.php:19
+msgid "Finish geocoding"
+msgstr "Termine la geocodificación"
+
+#: ../inc/projects.php:20 ../inc/projects.php:30
+msgid "Projects"
+msgstr ""
+
+#: ../inc/projects.php:21
+msgid "Project"
+msgstr ""
+
+#: ../inc/projects.php:22
+msgid "Add project"
+msgstr ""
+
+#: ../inc/projects.php:23
+#, fuzzy
+msgid "Add new project"
+msgstr "Añadir nuevo editor"
+
+#: ../inc/projects.php:24
+msgid "Edit project"
+msgstr ""
+
+#: ../inc/projects.php:25
+msgid "New project"
+msgstr ""
+
+#: ../inc/projects.php:26
+msgid "View project"
+msgstr ""
+
+#: ../inc/projects.php:27
+#, fuzzy
+msgid "Search project"
+msgstr "Buscar noticias"
+
+#: ../inc/projects.php:28
+#, fuzzy
+msgid "No project found"
+msgstr "Página no encontrada"
+
+#: ../inc/projects.php:29
+msgid "No project found in the trash"
+msgstr ""
+
+#: ../inc/projects.php:36
+msgid "infoamazonia Projects"
+msgstr ""
 
 #: ../inc/datasets.php:23
 msgid "Dataset"
@@ -645,53 +1061,6 @@ msgstr "Elija entre los editores más utilizados"
 msgid "No sources found"
 msgstr "No hay historias"
 
-#: ../inc/projects.php:19 ../inc/projects.php:29
-msgid "Projects"
-msgstr ""
-
-#: ../inc/projects.php:20
-msgid "Project"
-msgstr ""
-
-#: ../inc/projects.php:21
-msgid "Add project"
-msgstr ""
-
-#: ../inc/projects.php:22
-#, fuzzy
-msgid "Add new project"
-msgstr "Añadir nuevo editor"
-
-#: ../inc/projects.php:23
-msgid "Edit project"
-msgstr ""
-
-#: ../inc/projects.php:24
-msgid "New project"
-msgstr ""
-
-#: ../inc/projects.php:25
-msgid "View project"
-msgstr ""
-
-#: ../inc/projects.php:26
-#, fuzzy
-msgid "Search project"
-msgstr "Buscar noticias"
-
-#: ../inc/projects.php:27
-#, fuzzy
-msgid "No project found"
-msgstr "Página no encontrada"
-
-#: ../inc/projects.php:28
-msgid "No project found in the trash"
-msgstr ""
-
-#: ../inc/projects.php:35
-msgid "infoamazonia Projects"
-msgstr ""
-
 #: ../inc/slider.php:26
 #: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:181
 #: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:206
@@ -803,378 +1172,6 @@ msgstr "Añadir o eliminar editores"
 msgid "Choose from most used publishers"
 msgstr "Elija entre los editores más utilizados"
 
-#: ../inc/geocode-box.php:17 ../inc/submit-story.php:13
-msgid "Close"
-msgstr "Cerrar"
-
-#: ../inc/geocode-box.php:19
-msgid "Finish geocoding"
-msgstr "Termine la geocodificación"
-
-#: ../inc/jeo-post-zoom.php:20
-msgid "Zoom"
-msgstr ""
-
-#: ../inc/taxonomies-meta.php:10
-msgid "Publisher information"
-msgstr "Información del editor"
-
-#: ../inc/taxonomies-meta.php:17
-msgid "Publisher url"
-msgstr "URL del editor"
-
-#: ../inc/submit-story.php:20
-msgid "Submit a url"
-msgstr "Envíe una URL"
-
-#: ../inc/submit-story.php:21
-msgid "Submit full story"
-msgstr "Envíe una historia completa"
-
-#: ../inc/submit-story.php:27 ../inc/submit-story.php:85
-msgid "Your full name"
-msgstr "Nombre completo"
-
-#: ../inc/submit-story.php:31 ../inc/submit-story.php:89
-#, fuzzy
-msgid "E-mail"
-msgstr "Email"
-
-#: ../inc/submit-story.php:35 ../inc/metaboxes/story/story-meta.php:36
-msgid "Reporter"
-msgstr "Reportero"
-
-#: ../inc/submit-story.php:39
-msgid "Story title"
-msgstr "Título de la noticia"
-
-#: ../inc/submit-story.php:43
-msgid "Story text"
-msgstr "Texto de la noticia"
-
-#: ../inc/submit-story.php:47 ../inc/submit-story.php:93
-#: ../inc/metaboxes/story/story-meta.php:40
-msgid "Story url"
-msgstr "Link para la noticia"
-
-#: ../inc/submit-story.php:51 ../inc/metaboxes/story/story-meta.php:44
-msgid "Lead picture"
-msgstr "Imagen principal"
-
-#: ../inc/submit-story.php:56 ../inc/submit-story.php:98
-#, fuzzy
-msgid "Story location"
-msgstr "Datos del artículo"
-
-#: ../inc/submit-story.php:58 ../inc/submit-story.php:100
-#, fuzzy
-msgid "Find location on map"
-msgstr "Encontrar localización en el mapa"
-
-#: ../inc/submit-story.php:63 ../inc/submit-story.php:105
-msgid "Latitude:"
-msgstr "Latitud:"
-
-#: ../inc/submit-story.php:64 ../inc/submit-story.php:106
-msgid "Longitude:"
-msgstr "Longitud:"
-
-#: ../inc/submit-story.php:73 ../inc/metaboxes/story/story-meta.php:48
-msgid "Publishing date"
-msgstr "Fecha de publicação"
-
-#: ../inc/submit-story.php:77 ../inc/metaboxes/story/story-meta.php:52
-msgid "Notes to the infoamazonia editor"
-msgstr "Notas para el editor del infoamazonia"
-
-#: ../inc/submit-story.php:80 ../inc/submit-story.php:114
-msgid "Send story"
-msgstr "Enviar noticia"
-
-#: ../inc/submit-story.php:135
-msgid "Missing information. Please fill all the required fields!"
-msgstr "Completa todos los campos obligatorios"
-
-#: ../inc/submit-story.php:144
-msgid "Could not save submission"
-msgstr "No es posible guardar el envío"
-
-#: ../inc/advanced-navigation.php:106
-msgid "Text search"
-msgstr ""
-
-#: ../inc/advanced-navigation.php:107
-msgid "Type your search here"
-msgstr ""
-
-#: ../inc/advanced-navigation.php:118
-#, fuzzy
-msgid "Select categories"
-msgstr "Seleccione historias"
-
-#: ../inc/advanced-navigation.php:135
-msgid "Date range"
-msgstr ""
-
-#: ../inc/advanced-navigation.php:138
-msgid "From"
-msgstr ""
-
-#: ../inc/advanced-navigation.php:142
-msgid "To"
-msgstr ""
-
-#: ../inc/advanced-navigation.php:149
-msgid "Filter"
-msgstr ""
-
-#: ../inc/advanced-navigation.php:160 ../inc/advanced-navigation.php:171
-#, fuzzy
-msgid "Cancel filters"
-msgstr "Subir nuevos archivos"
-
-#: ../inc/category-feeds-widget.php:5
-msgid "RSS Feeds by selected categories"
-msgstr "Fuentes RSS por categorías seleccionadas"
-
-#: ../inc/category-feeds-widget.php:6
-msgid "Category Feed Links"
-msgstr "Categoría Alimentación Links"
-
-#: ../inc/category-feeds-widget.php:10
-msgid "RSS Feeds"
-msgstr "RSS Feeds"
-
-#: ../inc/category-feeds-widget.php:14
-#: ../inc/acf/core/controllers/field_groups.php:147
-msgid "Title"
-msgstr "Título"
-
-#: ../inc/category-feeds-widget.php:15
-msgid "Categories separated by comma"
-msgstr "Categorías separadas por comas"
-
-#: ../inc/blog.php:21 ../inc/acf/core/views/meta_box_location.php:84
-#: ../inc/acf/core/views/meta_box_location.php:85
-msgid "Post"
-msgstr ""
-
-#: ../inc/blog.php:22
-msgid "Add post"
-msgstr ""
-
-#: ../inc/blog.php:23
-#, fuzzy
-msgid "Add new post"
-msgstr "Añadir nuevo editor"
-
-#: ../inc/blog.php:24
-#, fuzzy
-msgid "Edit post"
-msgstr "Editar editor"
-
-#: ../inc/blog.php:25
-msgid "New post"
-msgstr ""
-
-#: ../inc/blog.php:26
-#, fuzzy
-msgid "View post"
-msgstr "Vea todos los mapas"
-
-#: ../inc/blog.php:27
-#, fuzzy
-msgid "Search post"
-msgstr "Buscar"
-
-#: ../inc/blog.php:28
-#, fuzzy
-msgid "No post found"
-msgstr "Página no encontrada"
-
-#: ../inc/blog.php:29
-msgid "No post found in the trash"
-msgstr ""
-
-#: ../inc/blog.php:36
-msgid "infoamazonia Blog"
-msgstr ""
-
-#: ../inc/blog.php:53
-#, fuzzy
-msgctxt "Blog category general name"
-msgid "Blog categories"
-msgstr "Todas las noticias"
-
-#: ../inc/blog.php:54
-#, fuzzy
-msgctxt "Blog category singular name"
-msgid "Blog category"
-msgstr "Ver galería de imágenes"
-
-#: ../inc/blog.php:55
-#, fuzzy
-msgid "All blog categories"
-msgstr "Todas las noticias"
-
-#: ../inc/blog.php:56
-msgid "Edit blog category"
-msgstr ""
-
-#: ../inc/blog.php:57
-#, fuzzy
-msgid "View blog category"
-msgstr "Ver galería de imágenes"
-
-#: ../inc/blog.php:58
-#, fuzzy
-msgid "Update blog category"
-msgstr "Actualizar editor"
-
-#: ../inc/blog.php:59
-#, fuzzy
-msgid "Add new blog category"
-msgstr "Añadir nuevo editor"
-
-#: ../inc/blog.php:60
-#, fuzzy
-msgid "New blog category name"
-msgstr "Nuevo nombre de editor"
-
-#: ../inc/blog.php:61
-#, fuzzy
-msgid "Parent blog category"
-msgstr "Editor padre"
-
-#: ../inc/blog.php:62
-#, fuzzy
-msgid "Parent blog category:"
-msgstr "Editor padre:"
-
-#: ../inc/blog.php:63
-#, fuzzy
-msgid "Search blog categories"
-msgstr "Buscar noticias"
-
-#: ../inc/blog.php:64
-#, fuzzy
-msgid "Popular blog categories"
-msgstr "Editores populares"
-
-#: ../inc/blog.php:65
-#, fuzzy
-msgid "Separate blog categories with commas"
-msgstr "Separe editores con comas"
-
-#: ../inc/blog.php:66
-#, fuzzy
-msgid "Add or remove blog categories"
-msgstr "Añadir o eliminar editores"
-
-#: ../inc/blog.php:67
-#, fuzzy
-msgid "Choose from most used blog categories"
-msgstr "Elija entre los editores más utilizados"
-
-#: ../inc/blog.php:68
-msgid "No blog categories found"
-msgstr ""
-
-#: ../inc/blog.php:83
-#, fuzzy
-msgctxt "Blog tag general name"
-msgid "Blog tags"
-msgstr "Buscar noticias"
-
-#: ../inc/blog.php:84
-#, fuzzy
-msgctxt "Blog tag singular name"
-msgid "Blog tag"
-msgstr "Vea todos los mapas"
-
-#: ../inc/blog.php:85
-msgid "All blog tags"
-msgstr ""
-
-#: ../inc/blog.php:86
-msgid "Edit blog tag"
-msgstr ""
-
-#: ../inc/blog.php:87
-#, fuzzy
-msgid "View blog tag"
-msgstr "Vea todos los mapas"
-
-#: ../inc/blog.php:88
-msgid "Update blog tag"
-msgstr ""
-
-#: ../inc/blog.php:89
-#, fuzzy
-msgid "Add new blog tag"
-msgstr "Añadir nuevo editor"
-
-#: ../inc/blog.php:90
-#, fuzzy
-msgid "New blog tag name"
-msgstr "Nuevo nombre de editor"
-
-#: ../inc/blog.php:91
-msgid "Parent blog tag"
-msgstr ""
-
-#: ../inc/blog.php:92
-#, fuzzy
-msgid "Parent blog tag:"
-msgstr "Editor padre:"
-
-#: ../inc/blog.php:93
-#, fuzzy
-msgid "Search blog tags"
-msgstr "Buscar noticias"
-
-#: ../inc/blog.php:94
-#, fuzzy
-msgid "Popular blog tags"
-msgstr "Editores populares"
-
-#: ../inc/blog.php:95
-#, fuzzy
-msgid "Separate blog tags with commas"
-msgstr "Separe editores con comas"
-
-#: ../inc/blog.php:96
-#, fuzzy
-msgid "Add or remove blog tags"
-msgstr "Añadir o eliminar editores"
-
-#: ../inc/blog.php:97
-#, fuzzy
-msgid "Choose from most used blog tags"
-msgstr "Elija entre los editores más utilizados"
-
-#: ../inc/blog.php:98
-msgid "No blog tags found"
-msgstr ""
-
-#: ../inc/ajax-calendar.php:15
-msgid "AJAX Powered Calendar"
-msgstr "AJAX Powered Calendario"
-
-#: ../inc/ajax-calendar.php:18 ../inc/ajax-calendar.php:28
-#: ../inc/ajax-calendar.php:46 ../inc/ajax-calendar.php:113
-msgid "AJAX Calendar"
-msgstr "AJAX Calendar"
-
-#: ../inc/ajax-calendar.php:75
-msgid "Stories calendar"
-msgstr "Noticias en"
-
-#: ../inc/ajax-calendar.php:118
-#, fuzzy
-msgid "Category IDs:"
-msgstr "artículos"
-
 #: ../inc/acf/acf.php:342
 msgid "Field&nbsp;Groups"
 msgstr ""
@@ -1282,1325 +1279,10 @@ msgstr ""
 msgid "Post updated"
 msgstr "Última actualización:"
 
-#: ../inc/acf/core/fields/dummy.php:19
-msgid "Dummy"
-msgstr ""
-
-#: ../inc/acf/core/fields/page_link.php:18
-#, fuzzy
-msgid "Page Link"
-msgstr "Página"
-
-#: ../inc/acf/core/fields/page_link.php:19 ../inc/acf/core/fields/user.php:19
-#: ../inc/acf/core/fields/post_object.php:19
-#: ../inc/acf/core/fields/taxonomy.php:19
-#: ../inc/acf/core/fields/relationship.php:19
-msgid "Relational"
-msgstr ""
-
-#: ../inc/acf/core/fields/page_link.php:103
-#: ../inc/acf/core/fields/post_object.php:268
-#: ../inc/acf/core/fields/relationship.php:589
-#: ../inc/acf/core/fields/relationship.php:668
-#: ../inc/acf/core/views/meta_box_location.php:75
-msgid "Post Type"
-msgstr ""
-
-#: ../inc/acf/core/fields/page_link.php:109
-#: ../inc/acf/core/fields/user.php:229
-#: ../inc/acf/core/fields/post_object.php:274
-#: ../inc/acf/core/fields/post_object.php:298
-#: ../inc/acf/core/fields/file.php:186
-#: ../inc/acf/core/fields/relationship.php:595
-#: ../inc/acf/core/fields/relationship.php:619
-#: ../inc/acf/core/fields/image.php:170
-#: ../inc/acf/core/controllers/field_group.php:741
-#: ../inc/acf/core/controllers/field_group.php:762
-#: ../inc/acf/core/controllers/field_group.php:769
-msgid "All"
-msgstr ""
-
-#: ../inc/acf/core/fields/page_link.php:127
-#: ../inc/acf/core/fields/user.php:275 ../inc/acf/core/fields/select.php:214
-#: ../inc/acf/core/fields/post_object.php:317
-#: ../inc/acf/core/fields/taxonomy.php:331
-#, fuzzy
-msgid "Allow Null?"
-msgstr "Siguenos"
-
-#: ../inc/acf/core/fields/page_link.php:137
-#: ../inc/acf/core/fields/page_link.php:158
-#: ../inc/acf/core/fields/user.php:284 ../inc/acf/core/fields/select.php:223
-#: ../inc/acf/core/fields/select.php:242
-#: ../inc/acf/core/fields/wysiwyg.php:228
-#: ../inc/acf/core/fields/post_object.php:327
-#: ../inc/acf/core/fields/post_object.php:348
-#: ../inc/acf/core/fields/taxonomy.php:340
-#: ../inc/acf/core/views/meta_box_fields.php:208
-#: ../inc/acf/core/views/meta_box_fields.php:231
-#: ../inc/acf/core/controllers/field_group.php:441
-#: ../inc/acf/add-ons/acf-location-field/location-v3.php:149
-#: ../inc/acf/add-ons/acf-location-field/location-v3.php:199
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:210
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:230
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:250
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:270
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:162
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:201
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:221
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:187
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:226
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:246
-msgid "Yes"
-msgstr ""
-
-#: ../inc/acf/core/fields/page_link.php:138
-#: ../inc/acf/core/fields/page_link.php:159
-#: ../inc/acf/core/fields/user.php:285 ../inc/acf/core/fields/select.php:224
-#: ../inc/acf/core/fields/select.php:243
-#: ../inc/acf/core/fields/wysiwyg.php:229
-#: ../inc/acf/core/fields/post_object.php:328
-#: ../inc/acf/core/fields/post_object.php:349
-#: ../inc/acf/core/fields/taxonomy.php:341
-#: ../inc/acf/core/views/meta_box_fields.php:209
-#: ../inc/acf/core/views/meta_box_fields.php:232
-#: ../inc/acf/core/controllers/field_group.php:440
-#: ../inc/acf/add-ons/acf-location-field/location-v3.php:150
-#: ../inc/acf/add-ons/acf-location-field/location-v3.php:200
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:211
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:231
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:251
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:271
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:163
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:202
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:222
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:188
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:227
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:247
-msgid "No"
-msgstr ""
-
-#: ../inc/acf/core/fields/page_link.php:148
-#: ../inc/acf/core/fields/select.php:233
-#: ../inc/acf/core/fields/post_object.php:338
-msgid "Select multiple values?"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:19
-msgid "Number"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:116 ../inc/acf/core/fields/radio.php:193
-#: ../inc/acf/core/fields/select.php:197
-#: ../inc/acf/core/fields/wysiwyg.php:171
-#: ../inc/acf/core/fields/color_picker.php:89
-#: ../inc/acf/core/fields/textarea.php:96
-#: ../inc/acf/core/fields/checkbox.php:157
-#: ../inc/acf/core/fields/true_false.php:94
-#: ../inc/acf/core/fields/email.php:106 ../inc/acf/core/fields/text.php:116
-msgid "Default Value"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:117
-#: ../inc/acf/core/fields/wysiwyg.php:172
-#: ../inc/acf/core/fields/textarea.php:97 ../inc/acf/core/fields/email.php:107
-#: ../inc/acf/core/fields/text.php:117
-msgid "Appears when creating a new post"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:133
-#: ../inc/acf/core/fields/password.php:105
-#: ../inc/acf/core/fields/textarea.php:111
-#: ../inc/acf/core/fields/email.php:123 ../inc/acf/core/fields/text.php:131
-msgid "Placeholder Text"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:134
-#: ../inc/acf/core/fields/password.php:106
-#: ../inc/acf/core/fields/textarea.php:112
-#: ../inc/acf/core/fields/email.php:124 ../inc/acf/core/fields/text.php:132
-msgid "Appears within the input"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:148
-#: ../inc/acf/core/fields/password.php:120
-#: ../inc/acf/core/fields/email.php:138 ../inc/acf/core/fields/text.php:146
-msgid "Prepend"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:149
-#: ../inc/acf/core/fields/password.php:121
-#: ../inc/acf/core/fields/email.php:139 ../inc/acf/core/fields/text.php:147
-msgid "Appears before the input"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:163
-#: ../inc/acf/core/fields/password.php:135
-#: ../inc/acf/core/fields/email.php:153 ../inc/acf/core/fields/text.php:161
-msgid "Append"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:164
-#: ../inc/acf/core/fields/password.php:136
-#: ../inc/acf/core/fields/email.php:154 ../inc/acf/core/fields/text.php:162
-msgid "Appears after the input"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:178
-msgid "Minimum Value"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:194
-msgid "Maximum Value"
-msgstr ""
-
-#: ../inc/acf/core/fields/number.php:210
-msgid "Step Size"
-msgstr ""
-
-#: ../inc/acf/core/fields/user.php:18
-#: ../inc/acf/core/views/meta_box_location.php:94
-msgid "User"
-msgstr ""
-
-#: ../inc/acf/core/fields/user.php:224
-msgid "Filter by role"
-msgstr ""
-
-#: ../inc/acf/core/fields/user.php:251 ../inc/acf/core/fields/taxonomy.php:306
-#: ../inc/acf/core/views/meta_box_fields.php:91
-#: ../inc/acf/core/views/meta_box_fields.php:173
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:444
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:521
-#, fuzzy
-msgid "Field Type"
-msgstr "Página"
-
-#: ../inc/acf/core/fields/user.php:260 ../inc/acf/core/fields/taxonomy.php:316
-msgid "Multiple Values"
-msgstr ""
-
-#: ../inc/acf/core/fields/user.php:262 ../inc/acf/core/fields/taxonomy.php:318
-msgid "Multi Select"
-msgstr ""
-
-#: ../inc/acf/core/fields/user.php:264 ../inc/acf/core/fields/taxonomy.php:320
-msgid "Single Value"
-msgstr ""
-
-#: ../inc/acf/core/fields/user.php:266 ../inc/acf/core/fields/select.php:18
-#: ../inc/acf/core/fields/select.php:109
-#: ../inc/acf/core/fields/taxonomy.php:322
-#, fuzzy
-msgid "Select"
-msgstr "Seleccione un mapa"
-
-#: ../inc/acf/core/fields/radio.php:18
-msgid "Radio Button"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:19 ../inc/acf/core/fields/select.php:19
-#: ../inc/acf/core/fields/checkbox.php:20
-#: ../inc/acf/core/fields/true_false.php:20
-msgid "Choice"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:102
-#: ../inc/acf/core/views/meta_box_location.php:91
-msgid "Other"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:144 ../inc/acf/core/fields/select.php:177
-#: ../inc/acf/core/fields/checkbox.php:137
-msgid "Choices"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:145
-msgid "Enter your choices one per line"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:147
-msgid "Red"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:148
-msgid "Blue"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:150 ../inc/acf/core/fields/select.php:180
-#: ../inc/acf/core/fields/checkbox.php:140
-msgid "red : Red"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:151 ../inc/acf/core/fields/select.php:180
-#: ../inc/acf/core/fields/checkbox.php:140
-msgid "blue : Blue"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:172
-msgid "Add 'other' choice to allow for custom values"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:184
-msgid "Save 'other' values to the field's choices"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:209 ../inc/acf/core/fields/tab.php:20
-#: ../inc/acf/core/fields/checkbox.php:174
-#: ../inc/acf/core/fields/message.php:20
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:23
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:428
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:640
-msgid "Layout"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:220
-#: ../inc/acf/core/fields/checkbox.php:185
-msgid "Vertical"
-msgstr ""
-
-#: ../inc/acf/core/fields/radio.php:221
-#: ../inc/acf/core/fields/checkbox.php:186
-msgid "Horizontal"
-msgstr ""
-
-#: ../inc/acf/core/fields/tab.php:19
-msgid "Tab"
-msgstr ""
-
-#: ../inc/acf/core/fields/tab.php:65
-#: ../inc/acf/core/controllers/export.php:300
-msgid "Instructions"
-msgstr ""
-
-#: ../inc/acf/core/fields/tab.php:68
-msgid ""
-"All fields proceeding this \"tab field\" (or until another \"tab field\"  is "
-"defined) will appear grouped on the edit screen."
-msgstr ""
-
-#: ../inc/acf/core/fields/tab.php:69
-msgid "You can use multiple tabs to break up your fields into sections."
-msgstr ""
-
-#: ../inc/acf/core/fields/select.php:178
-#: ../inc/acf/core/fields/checkbox.php:138
-msgid "Enter each choice on a new line."
-msgstr ""
-
-#: ../inc/acf/core/fields/select.php:179
-#: ../inc/acf/core/fields/checkbox.php:139
-msgid "For more control, you may specify both a value and label like this:"
-msgstr ""
-
-#: ../inc/acf/core/fields/select.php:198
-#: ../inc/acf/core/fields/checkbox.php:158
-msgid "Enter each default value on a new line"
-msgstr ""
-
-#: ../inc/acf/core/fields/wysiwyg.php:19
-#: ../inc/acf/add-ons/acf-qtranslate/fields/wysiwyg.php:9
-msgid "Wysiwyg Editor"
-msgstr ""
-
-#: ../inc/acf/core/fields/wysiwyg.php:20 ../inc/acf/core/fields/file.php:20
-#: ../inc/acf/core/fields/image.php:20
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:24
-msgid "Content"
-msgstr ""
-
-#: ../inc/acf/core/fields/wysiwyg.php:186
-msgid "Toolbar"
-msgstr ""
-
-#: ../inc/acf/core/fields/wysiwyg.php:218
-msgid "Show Media Upload Buttons?"
-msgstr ""
-
-#: ../inc/acf/core/fields/_base.php:124
-#: ../inc/acf/core/views/meta_box_location.php:74
-msgid "Basic"
-msgstr ""
-
-#: ../inc/acf/core/fields/password.php:19
-msgid "Password"
-msgstr ""
-
-#: ../inc/acf/core/fields/color_picker.php:19
-msgid "Color Picker"
-msgstr ""
-
-#: ../inc/acf/core/fields/color_picker.php:20
-#: ../inc/acf/core/fields/date_picker/date_picker.php:23
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:25
-msgid "jQuery"
-msgstr ""
-
-#: ../inc/acf/core/fields/textarea.php:19
-#: ../inc/acf/add-ons/acf-qtranslate/fields/textarea.php:9
-msgid "Text Area"
-msgstr ""
-
-#: ../inc/acf/core/fields/textarea.php:126 ../inc/acf/core/fields/text.php:195
-msgid "Character Limit"
-msgstr ""
-
-#: ../inc/acf/core/fields/textarea.php:127 ../inc/acf/core/fields/text.php:196
-msgid "Leave blank for no limit"
-msgstr ""
-
-#: ../inc/acf/core/fields/textarea.php:141 ../inc/acf/core/fields/text.php:176
-msgid "Formatting"
-msgstr ""
-
-#: ../inc/acf/core/fields/textarea.php:142 ../inc/acf/core/fields/text.php:177
-msgid "Effects value on front end"
-msgstr ""
-
-#: ../inc/acf/core/fields/textarea.php:151 ../inc/acf/core/fields/text.php:186
-msgid "No formatting"
-msgstr ""
-
-#: ../inc/acf/core/fields/textarea.php:152
-msgid "Convert new lines into &lt;br /&gt; tags"
-msgstr ""
-
-#: ../inc/acf/core/fields/textarea.php:153 ../inc/acf/core/fields/text.php:187
-msgid "Convert HTML into tags"
-msgstr ""
-
-#: ../inc/acf/core/fields/post_object.php:18
-msgid "Post Object"
-msgstr ""
-
-#: ../inc/acf/core/fields/post_object.php:292
-#: ../inc/acf/core/fields/relationship.php:613
-msgid "Filter from Taxonomy"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:18
-#: ../inc/acf/core/fields/taxonomy.php:276
-msgid "Taxonomy"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:211
-#: ../inc/acf/core/fields/taxonomy.php:220
-msgid "None"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:317
-#: ../inc/acf/core/fields/checkbox.php:19
-msgid "Checkbox"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:321
-msgid "Radio Buttons"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:350
-msgid "Load & Save Terms to Post"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:358
-msgid ""
-"Load value based on the post's terms and update the post's terms on save"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:365 ../inc/acf/core/fields/file.php:153
-#: ../inc/acf/core/fields/image.php:118
-#: ../inc/acf/add-ons/acf-location-field/location-v4.php:129
-msgid "Return Value"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:375
-msgid "Term Object"
-msgstr ""
-
-#: ../inc/acf/core/fields/taxonomy.php:376
-msgid "Term ID"
-msgstr ""
-
-#: ../inc/acf/core/fields/file.php:19
-msgid "File"
-msgstr ""
-
-#: ../inc/acf/core/fields/file.php:26
-#, fuzzy
-msgid "Select File"
-msgstr "Selección de capas"
-
-#: ../inc/acf/core/fields/file.php:27
-#, fuzzy
-msgid "Edit File"
-msgstr "Editar editor"
-
-#: ../inc/acf/core/fields/file.php:28
-#, fuzzy
-msgid "Update File"
-msgstr "Actualizar editor"
-
-#: ../inc/acf/core/fields/file.php:29 ../inc/acf/core/fields/image.php:30
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:20
-msgid "uploaded to this post"
-msgstr ""
-
-#: ../inc/acf/core/fields/file.php:123
-msgid "No File Selected"
-msgstr ""
-
-#: ../inc/acf/core/fields/file.php:123
-#, fuzzy
-msgid "Add File"
-msgstr "Editar editor"
-
-#: ../inc/acf/core/fields/file.php:164
-msgid "File Object"
-msgstr ""
-
-#: ../inc/acf/core/fields/file.php:165
-msgid "File URL"
-msgstr ""
-
-#: ../inc/acf/core/fields/file.php:166
-msgid "File ID"
-msgstr ""
-
-#: ../inc/acf/core/fields/file.php:175 ../inc/acf/core/fields/image.php:158
-msgid "Library"
-msgstr ""
-
-#: ../inc/acf/core/fields/file.php:187 ../inc/acf/core/fields/image.php:171
-#, fuzzy
-msgid "Uploaded to post"
-msgstr "Archivos cargados"
-
-#: ../inc/acf/core/fields/relationship.php:18
-msgid "Relationship"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:29
-msgid "Maximum values reached ( {max} values )"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:425
-#, fuzzy
-msgid "Search..."
-msgstr "Buscar"
-
-#: ../inc/acf/core/fields/relationship.php:436
-msgid "Filter by post type"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:569
-msgid "Return Format"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:570
-#: ../inc/acf/core/fields/image.php:119
-msgid "Specify the returned value on front end"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:580
-msgid "Post Objects"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:581
-msgid "Post IDs"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:638
-#: ../inc/acf/core/controllers/field_groups.php:225
-msgid "Filters"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:648
-msgid "Post Type Select"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:656
-msgid "Elements"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:657
-msgid "Selected elements will be displayed in each result"
-msgstr ""
-
-#: ../inc/acf/core/fields/relationship.php:666
-#: ../inc/acf/core/views/meta_box_options.php:103
-#, fuzzy
-msgid "Featured Image"
-msgstr "Noticia destacada"
-
-#: ../inc/acf/core/fields/relationship.php:667
-#, fuzzy
-msgid "Post Title"
-msgstr "Título"
-
-#: ../inc/acf/core/fields/relationship.php:679
-msgid "Maximum posts"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:19
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:9
-msgid "Image"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:27
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:17
-#, fuzzy
-msgid "Select Image"
-msgstr "Seleccione un mapa"
-
-#: ../inc/acf/core/fields/image.php:28
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:18
-msgid "Edit Image"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:29
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:19
-msgid "Update Image"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:83
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:85
-#: ../inc/tax-meta-class/tax-meta-class.php:582
-#: ../inc/tax-meta-class/tax-meta-class.php:629
-msgid "Remove"
-msgstr "Eliminar"
-
-#: ../inc/acf/core/fields/image.php:84
-#: ../inc/acf/core/views/meta_box_fields.php:122
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:471
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:86
-#, fuzzy
-msgid "Edit"
-msgstr "Editar editor"
-
-#: ../inc/acf/core/fields/image.php:90
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:92
-msgid "No image selected"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:90
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:92
-#, fuzzy
-msgid "Add Image"
-msgstr "Noticia destacada"
-
-#: ../inc/acf/core/fields/image.php:129
-msgid "Image Object"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:130
-msgid "Image URL"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:131
-msgid "Image ID"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:139
-msgid "Preview Size"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:140
-msgid "Shown when entering data"
-msgstr ""
-
-#: ../inc/acf/core/fields/image.php:159
-msgid "Limit the media library choice"
-msgstr ""
-
-#: ../inc/acf/core/fields/true_false.php:19
-msgid "True / False"
-msgstr ""
-
-#: ../inc/acf/core/fields/true_false.php:79
-#: ../inc/acf/core/fields/message.php:19 ../inc/acf/core/fields/message.php:70
-msgid "Message"
-msgstr ""
-
-#: ../inc/acf/core/fields/true_false.php:80
-msgid "eg. Show extra content"
-msgstr ""
-
-#: ../inc/acf/core/fields/email.php:19
-#, fuzzy
-msgid "Email"
-msgstr "Email"
-
-#: ../inc/acf/core/fields/text.php:19
-#: ../inc/acf/add-ons/acf-qtranslate/fields/text.php:9
-msgid "Text"
-msgstr ""
-
-#: ../inc/acf/core/fields/message.php:71
-msgid "Text &amp; HTML entered here will appear inline with the fields"
-msgstr ""
-
-#: ../inc/acf/core/fields/message.php:72
-msgid "Please note that all text will first be passed through the wp function "
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:22
-msgid "Date Picker"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:30
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:385
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:430
-msgid "Done"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:31
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:386
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:431
-msgid "Today"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:34
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:389
-#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:434
-msgid "Show a different month"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:105
-msgid "Save format"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:106
-msgid ""
-"This format will determin the value saved to the database and returned via "
-"the API"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:107
-msgid "\"yymmdd\" is the most versatile save format. Read more about"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:107
-#: ../inc/acf/core/fields/date_picker/date_picker.php:123
-msgid "jQuery date formats"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:121
-msgid "Display format"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:122
-msgid "This format will be seen by the user when entering a value"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:123
-msgid ""
-"\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more "
-"about"
-msgstr ""
-
-#: ../inc/acf/core/fields/date_picker/date_picker.php:137
-msgid "Week Starts On"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:24
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:420
-msgid "New Field"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:58
-#: ../inc/acf/core/actions/export.php:23
-msgid "Error"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:58
-msgid "Field type does not exist"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:63
-msgid "Move to trash. Are you sure?"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:64
-msgid "checked"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:65
-msgid "No toggle fields available"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:66
-msgid "Field group title is required"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:67
-msgid "copy"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:68
-#: ../inc/acf/core/views/meta_box_location.php:62
-#: ../inc/acf/core/views/meta_box_location.php:159
-msgid "or"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:88
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:441
-msgid "Field Order"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:89
-#: ../inc/acf/core/views/meta_box_fields.php:141
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:442
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:490
-msgid "Field Label"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:90
-#: ../inc/acf/core/views/meta_box_fields.php:157
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:443
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:506
-msgid "Field Name"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:92
-msgid "Field Key"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:104
-msgid ""
-"No fields. Click the <strong>+ Add Field</strong> button to create your "
-"first field."
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:119
-#: ../inc/acf/core/views/meta_box_fields.php:122
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:468
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:471
-#, fuzzy
-msgid "Edit this Field"
-msgstr "Editar editor"
-
-#: ../inc/acf/core/views/meta_box_fields.php:123
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:472
-msgid "Read documentation for this field"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:123
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:472
-msgid "Docs"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:124
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:473
-#, fuzzy
-msgid "Duplicate this Field"
-msgstr "Borrar esta imagen"
-
-#: ../inc/acf/core/views/meta_box_fields.php:124
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:473
-msgid "Duplicate"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:125
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:474
-#, fuzzy
-msgid "Delete this Field"
-msgstr "Borrar esta imagen"
-
-#: ../inc/acf/core/views/meta_box_fields.php:125
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:474
-#: ../inc/tax-meta-class/tax-meta-class.php:250
-#: ../inc/tax-meta-class/tax-meta-class.php:882
-msgid "Delete"
-msgstr "Borrar"
-
-#: ../inc/acf/core/views/meta_box_fields.php:142
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:491
-msgid "This is the name which will appear on the EDIT page"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:158
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:507
-msgid "Single word, no spaces. Underscores and dashes allowed"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:187
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:536
-msgid "Field Instructions"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:188
-msgid "Instructions for authors. Shown when submitting data"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:200
-msgid "Required?"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:223
-msgid "Conditional Logic"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:274
-#: ../inc/acf/core/views/meta_box_location.php:117
-msgid "is equal to"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:275
-#: ../inc/acf/core/views/meta_box_location.php:118
-msgid "is not equal to"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:293
-msgid "Show this field when"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:299
-#, fuzzy
-msgid "all"
-msgstr "Pequeño"
-
-#: ../inc/acf/core/views/meta_box_fields.php:300
-#, fuzzy
-msgid "any"
-msgstr "y"
-
-#: ../inc/acf/core/views/meta_box_fields.php:303
-msgid "these rules are met"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:317
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:589
-#, fuzzy
-msgid "Close Field"
-msgstr "Elija un mapa"
-
-#: ../inc/acf/core/views/meta_box_fields.php:330
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:604
-msgid "Drag and drop to reorder"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_fields.php:331
-msgid "+ Add Field"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:48
-msgid "Rules"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:49
-msgid ""
-"Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:60
-msgid "Show this field group if"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:76
-msgid "Logged in User Type"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:80
-#, fuzzy
-msgid "Page Type"
-msgstr "Página"
-
-#: ../inc/acf/core/views/meta_box_location.php:81
-msgid "Page Parent"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:82
-msgid "Page Template"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:86
-#, fuzzy
-msgid "Post Category"
-msgstr "Categoría IDs:"
-
-#: ../inc/acf/core/views/meta_box_location.php:87
-msgid "Post Format"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:88
-msgid "Post Status"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:89
-msgid "Post Taxonomy"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:92
-msgid "Attachment"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:93
-msgid "Term"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_location.php:146
-#, fuzzy
-msgid "and"
-msgstr "y"
-
-#: ../inc/acf/core/views/meta_box_location.php:161
-msgid "Add rule group"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:25
-msgid "Order No."
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:26
-msgid "Field groups are created in order <br />from lowest to highest"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:42
-#, fuzzy
-msgid "Position"
-msgstr "Localización de la noticia"
-
-#: ../inc/acf/core/views/meta_box_options.php:52
-msgid "Normal"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:53
-msgid "Side"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:62
-msgid "Style"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:72
-msgid "No Metabox"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:73
-msgid "Standard Metabox"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:82
-msgid "Hide on screen"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:83
-msgid "<b>Select</b> items to <b>hide</b> them from the edit screen"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:84
-msgid ""
-"If multiple field groups appear on an edit screen, the first field group's "
-"options will be used. (the one with the lowest order number)"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:94
-msgid "Content Editor"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:95
-msgid "Excerpt"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:97
-msgid "Discussion"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:98
-msgid "Comments"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:99
-msgid "Revisions"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:100
-msgid "Slug"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:101
-#, fuzzy
-msgid "Author"
-msgstr "Nombre del Autor"
-
-#: ../inc/acf/core/views/meta_box_options.php:102
-msgid "Format"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:105
-msgid "Tags"
-msgstr ""
-
-#: ../inc/acf/core/views/meta_box_options.php:106
-msgid "Send Trackbacks"
-msgstr ""
-
-#: ../inc/acf/core/actions/export.php:30
-msgid "No ACF groups selected"
-msgstr ""
-
+#: ../inc/acf/core/controllers/field_groups.php:148
 #: ../inc/acf/core/controllers/field_group.php:375
 #: ../inc/acf/core/controllers/field_group.php:437
-#: ../inc/acf/core/controllers/field_groups.php:148
 msgid "Fields"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:376
-#: ../inc/acf/add-ons/acf-location-field/location-v3.php:36
-#, fuzzy
-msgid "Location"
-msgstr "Localización de la noticia"
-
-#: ../inc/acf/core/controllers/field_group.php:377
-#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:30
-#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:31
-msgid "Options"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:439
-msgid "Show Field Key:"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:618
-msgid "Front Page"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:619
-msgid "Posts Page"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:620
-msgid "Top Level Page (parent of 0)"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:621
-msgid "Parent Page (has children)"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:622
-msgid "Child Page (has parent)"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:630
-msgid "Default Template"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:707
-#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:489
-#, fuzzy
-msgid "Publish"
-msgstr "Editor"
-
-#: ../inc/acf/core/controllers/field_group.php:708
-msgid "Pending Review"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:709
-msgid "Draft"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:710
-msgid "Future"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:711
-msgid "Private"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:712
-msgid "Revision"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:713
-msgid "Trash"
-msgstr ""
-
-#: ../inc/acf/core/controllers/field_group.php:726
-msgid "Super Admin"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:50
-#: ../inc/acf/core/controllers/export.php:159
-msgid "Export"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:216
-#, fuzzy
-msgid "Export Field Groups"
-msgstr "Búsqueda editores"
-
-#: ../inc/acf/core/controllers/export.php:221
-#, fuzzy
-msgid "Field Groups"
-msgstr "Búsqueda editores"
-
-#: ../inc/acf/core/controllers/export.php:222
-msgid "Select the field groups to be exported"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:239
-#: ../inc/acf/core/controllers/export.php:252
-msgid "Export to XML"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:242
-#: ../inc/acf/core/controllers/export.php:267
-msgid "Export to PHP"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:253
-msgid ""
-"ACF will create a .xml export file which is compatible with the native WP "
-"import plugin."
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:254
-msgid ""
-"Imported field groups <b>will</b> appear in the list of editable field "
-"groups. This is useful for migrating fields groups between Wp websites."
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:256
-msgid "Select field group(s) from the list and click \"Export XML\""
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:257
-msgid "Save the .xml file when prompted"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:258
-msgid "Navigate to Tools &raquo; Import and select WordPress"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:259
-msgid "Install WP import plugin if prompted"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:260
-msgid "Upload and import your exported .xml file"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:261
-msgid "Select your user and ignore Import Attachments"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:262
-msgid "That's it! Happy WordPressing"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:268
-msgid "ACF will create the PHP code to include in your theme."
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:269
-#: ../inc/acf/core/controllers/export.php:310
-msgid ""
-"Registered field groups <b>will not</b> appear in the list of editable field "
-"groups. This is useful for including fields in themes."
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:270
-#: ../inc/acf/core/controllers/export.php:311
-msgid ""
-"Please note that if you export and register field groups within the same WP, "
-"you will see duplicate fields on your edit screens. To fix this, please move "
-"the original field group to the trash or remove the code from your functions."
-"php file."
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:272
-msgid "Select field group(s) from the list and click \"Create PHP\""
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:273
-#: ../inc/acf/core/controllers/export.php:302
-#, fuzzy
-msgid "Copy the PHP code generated"
-msgstr "Copie el código para incrustar"
-
-#: ../inc/acf/core/controllers/export.php:274
-#: ../inc/acf/core/controllers/export.php:303
-msgid "Paste into your functions.php file"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:275
-#: ../inc/acf/core/controllers/export.php:304
-msgid "To activate any Add-ons, edit and use the code in the first few lines."
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:295
-#, fuzzy
-msgid "Export Field Groups to PHP"
-msgstr "Búsqueda editores"
-
-#: ../inc/acf/core/controllers/export.php:309
-msgid "Notes"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:316
-msgid "Include in theme"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:317
-msgid ""
-"The Advanced Custom Fields plugin can be included within a theme. To do so, "
-"move the ACF plugin inside your theme and add the following code to your "
-"functions.php file:"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:323
-msgid ""
-"To remove all visual interfaces from the ACF plugin, you can use a constant "
-"to enable lite mode. Add the following code to your functions.php file "
-"<b>before</b> the include_once code:"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:331
-msgid "Back to export"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:352
-msgid ""
-"/**\n"
-" *  Install Add-ons\n"
-" *  \n"
-" *  The following code will include all 4 premium Add-Ons in your theme.\n"
-" *  Please do not attempt to include a file which does not exist. This will "
-"produce an error.\n"
-" *  \n"
-" *  The following code assumes you have a folder 'add-ons' inside your "
-"theme.\n"
-" *\n"
-" *  IMPORTANT\n"
-" *  Add-ons may be included in a premium theme/plugin as outlined in the "
-"terms and conditions.\n"
-" *  For more information, please read:\n"
-" *  - http://www.advancedcustomfields.com/terms-conditions/\n"
-" *  - http://www.advancedcustomfields.com/resources/getting-started/"
-"including-lite-mode-in-a-plugin-theme/\n"
-" */"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:368
-#: ../inc/acf/core/controllers/field_groups.php:311
-#: ../inc/acf/core/controllers/addons.php:42
-msgid "Add-ons"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:375
-msgid ""
-"/**\n"
-" *  Register Field Groups\n"
-" *\n"
-" *  The register_field_group function accepts 1 array which holds the "
-"relevant data to register a field group\n"
-" *  You may edit the array as you see fit. However, this may result in "
-"errors if the array is not compatible with ACF\n"
-" */"
-msgstr ""
-
-#: ../inc/acf/core/controllers/export.php:426
-msgid "No field groups were selected"
 msgstr ""
 
 #: ../inc/acf/core/controllers/field_groups.php:216
@@ -2638,6 +1320,11 @@ msgstr ""
 #, fuzzy
 msgid "Actions"
 msgstr "Localización de la noticia"
+
+#: ../inc/acf/core/controllers/field_groups.php:225
+#: ../inc/acf/core/fields/relationship.php:638
+msgid "Filters"
+msgstr ""
 
 #: ../inc/acf/core/controllers/field_groups.php:226
 msgid "'How to' guides"
@@ -2679,6 +1366,12 @@ msgstr ""
 
 #: ../inc/acf/core/controllers/field_groups.php:259
 msgid "Download Add-ons"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_groups.php:311
+#: ../inc/acf/core/controllers/addons.php:42
+#: ../inc/acf/core/controllers/export.php:368
+msgid "Add-ons"
 msgstr ""
 
 #: ../inc/acf/core/controllers/field_groups.php:313
@@ -2954,6 +1647,180 @@ msgstr ""
 msgid "Awesome. Let's get to work"
 msgstr ""
 
+#: ../inc/acf/core/controllers/upgrade.php:86
+msgid "Upgrade"
+msgstr ""
+
+#: ../inc/acf/core/controllers/upgrade.php:139
+#: ../inc/acf/add-ons/acf-options-page/acf-options-page-update.php:137
+msgid "What's new"
+msgstr ""
+
+#: ../inc/acf/core/controllers/upgrade.php:150
+msgid "credits"
+msgstr ""
+
+#: ../inc/acf/core/controllers/upgrade.php:684
+msgid "Modifying field group options 'show on page'"
+msgstr ""
+
+#: ../inc/acf/core/controllers/upgrade.php:738
+msgid "Modifying field option 'taxonomy'"
+msgstr ""
+
+#: ../inc/acf/core/controllers/upgrade.php:835
+msgid "Moving user custom fields from wp_options to wp_usermeta'"
+msgstr ""
+
+#: ../inc/acf/core/controllers/input.php:488
+msgid "Expand Details"
+msgstr ""
+
+#: ../inc/acf/core/controllers/input.php:489
+msgid "Collapse Details"
+msgstr ""
+
+#: ../inc/acf/core/controllers/input.php:492
+msgid "Validation Failed. One or more fields below are required."
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:376
+#: ../inc/acf/add-ons/acf-location-field/location-v3.php:36
+#, fuzzy
+msgid "Location"
+msgstr "Localización de la noticia"
+
+#: ../inc/acf/core/controllers/field_group.php:377
+#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:30
+#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:31
+msgid "Options"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:439
+msgid "Show Field Key:"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:440
+#: ../inc/acf/core/fields/select.php:224 ../inc/acf/core/fields/select.php:243
+#: ../inc/acf/core/fields/user.php:285 ../inc/acf/core/fields/wysiwyg.php:229
+#: ../inc/acf/core/fields/taxonomy.php:341
+#: ../inc/acf/core/fields/post_object.php:328
+#: ../inc/acf/core/fields/post_object.php:349
+#: ../inc/acf/core/fields/page_link.php:138
+#: ../inc/acf/core/fields/page_link.php:159
+#: ../inc/acf/core/views/meta_box_fields.php:209
+#: ../inc/acf/core/views/meta_box_fields.php:232
+#: ../inc/acf/add-ons/acf-location-field/location-v3.php:150
+#: ../inc/acf/add-ons/acf-location-field/location-v3.php:200
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:211
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:231
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:251
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:271
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:163
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:202
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:222
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:188
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:227
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:247
+msgid "No"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:441
+#: ../inc/acf/core/fields/select.php:223 ../inc/acf/core/fields/select.php:242
+#: ../inc/acf/core/fields/user.php:284 ../inc/acf/core/fields/wysiwyg.php:228
+#: ../inc/acf/core/fields/taxonomy.php:340
+#: ../inc/acf/core/fields/post_object.php:327
+#: ../inc/acf/core/fields/post_object.php:348
+#: ../inc/acf/core/fields/page_link.php:137
+#: ../inc/acf/core/fields/page_link.php:158
+#: ../inc/acf/core/views/meta_box_fields.php:208
+#: ../inc/acf/core/views/meta_box_fields.php:231
+#: ../inc/acf/add-ons/acf-location-field/location-v3.php:149
+#: ../inc/acf/add-ons/acf-location-field/location-v3.php:199
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:210
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:230
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:250
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:270
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:162
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:201
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:221
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:187
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:226
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:246
+msgid "Yes"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:618
+msgid "Front Page"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:619
+msgid "Posts Page"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:620
+msgid "Top Level Page (parent of 0)"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:621
+msgid "Parent Page (has children)"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:622
+msgid "Child Page (has parent)"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:630
+msgid "Default Template"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:707
+#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:489
+#, fuzzy
+msgid "Publish"
+msgstr "Editor"
+
+#: ../inc/acf/core/controllers/field_group.php:708
+msgid "Pending Review"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:709
+msgid "Draft"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:710
+msgid "Future"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:711
+msgid "Private"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:712
+msgid "Revision"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:713
+msgid "Trash"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:726
+msgid "Super Admin"
+msgstr ""
+
+#: ../inc/acf/core/controllers/field_group.php:741
+#: ../inc/acf/core/controllers/field_group.php:762
+#: ../inc/acf/core/controllers/field_group.php:769
+#: ../inc/acf/core/fields/file.php:186
+#: ../inc/acf/core/fields/relationship.php:595
+#: ../inc/acf/core/fields/relationship.php:619
+#: ../inc/acf/core/fields/user.php:229 ../inc/acf/core/fields/image.php:170
+#: ../inc/acf/core/fields/post_object.php:274
+#: ../inc/acf/core/fields/post_object.php:298
+#: ../inc/acf/core/fields/page_link.php:109
+msgid "All"
+msgstr ""
+
 #: ../inc/acf/core/controllers/addons.php:131
 msgid "Create infinite rows of repeatable data with this versatile interface!"
 msgstr ""
@@ -3031,121 +1898,1164 @@ msgstr ""
 msgid "Purchase & Install"
 msgstr ""
 
-#: ../inc/acf/core/controllers/input.php:488
-msgid "Expand Details"
+#: ../inc/acf/core/controllers/export.php:50
+#: ../inc/acf/core/controllers/export.php:159
+msgid "Export"
 msgstr ""
 
-#: ../inc/acf/core/controllers/input.php:489
-msgid "Collapse Details"
-msgstr ""
-
-#: ../inc/acf/core/controllers/input.php:492
-msgid "Validation Failed. One or more fields below are required."
-msgstr ""
-
-#: ../inc/acf/core/controllers/upgrade.php:86
-msgid "Upgrade"
-msgstr ""
-
-#: ../inc/acf/core/controllers/upgrade.php:139
-#: ../inc/acf/add-ons/acf-options-page/acf-options-page-update.php:137
-msgid "What's new"
-msgstr ""
-
-#: ../inc/acf/core/controllers/upgrade.php:150
-msgid "credits"
-msgstr ""
-
-#: ../inc/acf/core/controllers/upgrade.php:684
-msgid "Modifying field group options 'show on page'"
-msgstr ""
-
-#: ../inc/acf/core/controllers/upgrade.php:738
-msgid "Modifying field option 'taxonomy'"
-msgstr ""
-
-#: ../inc/acf/core/controllers/upgrade.php:835
-msgid "Moving user custom fields from wp_options to wp_usermeta'"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:333
-msgid "Options Updated"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:478
-msgid "No Custom Field Group found for the options page"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:478
+#: ../inc/acf/core/controllers/export.php:216
 #, fuzzy
-msgid "Create a Custom Field Group"
+msgid "Export Field Groups"
 msgstr "Búsqueda editores"
 
-#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:493
-msgid "Save Options"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:22
-msgid "Repeater"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:160
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:405
-msgid "Add Row"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:421
-msgid "new_field"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:433
-msgid "Repeater Fields"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:452
-msgid ""
-"No fields. Click the \"+ Add Sub Field button\" to create your first field."
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:556
-msgid "Column Width"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:557
-msgid "Leave blank for auto"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:584
-msgid "Save Field"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:589
-msgid "Close Sub Field"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:605
-msgid "+ Add Sub Field"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:612
-msgid "Minimum Rows"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:626
-msgid "Maximum Rows"
-msgstr ""
-
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:650
+#: ../inc/acf/core/controllers/export.php:221
 #, fuzzy
-msgid "Table (default)"
-msgstr "defecto"
+msgid "Field Groups"
+msgstr "Búsqueda editores"
 
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:651
-msgid "Row"
+#: ../inc/acf/core/controllers/export.php:222
+msgid "Select the field groups to be exported"
 msgstr ""
 
-#: ../inc/acf/add-ons/acf-repeater/repeater.php:659
-msgid "Button Label"
+#: ../inc/acf/core/controllers/export.php:239
+#: ../inc/acf/core/controllers/export.php:252
+msgid "Export to XML"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:242
+#: ../inc/acf/core/controllers/export.php:267
+msgid "Export to PHP"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:253
+msgid ""
+"ACF will create a .xml export file which is compatible with the native WP "
+"import plugin."
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:254
+msgid ""
+"Imported field groups <b>will</b> appear in the list of editable field "
+"groups. This is useful for migrating fields groups between Wp websites."
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:256
+msgid "Select field group(s) from the list and click \"Export XML\""
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:257
+msgid "Save the .xml file when prompted"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:258
+msgid "Navigate to Tools &raquo; Import and select WordPress"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:259
+msgid "Install WP import plugin if prompted"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:260
+msgid "Upload and import your exported .xml file"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:261
+msgid "Select your user and ignore Import Attachments"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:262
+msgid "That's it! Happy WordPressing"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:268
+msgid "ACF will create the PHP code to include in your theme."
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:269
+#: ../inc/acf/core/controllers/export.php:310
+msgid ""
+"Registered field groups <b>will not</b> appear in the list of editable field "
+"groups. This is useful for including fields in themes."
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:270
+#: ../inc/acf/core/controllers/export.php:311
+msgid ""
+"Please note that if you export and register field groups within the same WP, "
+"you will see duplicate fields on your edit screens. To fix this, please move "
+"the original field group to the trash or remove the code from your functions."
+"php file."
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:272
+msgid "Select field group(s) from the list and click \"Create PHP\""
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:273
+#: ../inc/acf/core/controllers/export.php:302
+#, fuzzy
+msgid "Copy the PHP code generated"
+msgstr "Copie el código para incrustar"
+
+#: ../inc/acf/core/controllers/export.php:274
+#: ../inc/acf/core/controllers/export.php:303
+msgid "Paste into your functions.php file"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:275
+#: ../inc/acf/core/controllers/export.php:304
+msgid "To activate any Add-ons, edit and use the code in the first few lines."
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:295
+#, fuzzy
+msgid "Export Field Groups to PHP"
+msgstr "Búsqueda editores"
+
+#: ../inc/acf/core/controllers/export.php:300
+#: ../inc/acf/core/fields/tab.php:65
+msgid "Instructions"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:309
+msgid "Notes"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:316
+msgid "Include in theme"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:317
+msgid ""
+"The Advanced Custom Fields plugin can be included within a theme. To do so, "
+"move the ACF plugin inside your theme and add the following code to your "
+"functions.php file:"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:323
+msgid ""
+"To remove all visual interfaces from the ACF plugin, you can use a constant "
+"to enable lite mode. Add the following code to your functions.php file "
+"<b>before</b> the include_once code:"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:331
+msgid "Back to export"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:352
+msgid ""
+"/**\n"
+" *  Install Add-ons\n"
+" *  \n"
+" *  The following code will include all 4 premium Add-Ons in your theme.\n"
+" *  Please do not attempt to include a file which does not exist. This will "
+"produce an error.\n"
+" *  \n"
+" *  The following code assumes you have a folder 'add-ons' inside your "
+"theme.\n"
+" *\n"
+" *  IMPORTANT\n"
+" *  Add-ons may be included in a premium theme/plugin as outlined in the "
+"terms and conditions.\n"
+" *  For more information, please read:\n"
+" *  - http://www.advancedcustomfields.com/terms-conditions/\n"
+" *  - http://www.advancedcustomfields.com/resources/getting-started/"
+"including-lite-mode-in-a-plugin-theme/\n"
+" */"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:375
+msgid ""
+"/**\n"
+" *  Register Field Groups\n"
+" *\n"
+" *  The register_field_group function accepts 1 array which holds the "
+"relevant data to register a field group\n"
+" *  You may edit the array as you see fit. However, this may result in "
+"errors if the array is not compatible with ACF\n"
+" */"
+msgstr ""
+
+#: ../inc/acf/core/controllers/export.php:426
+msgid "No field groups were selected"
+msgstr ""
+
+#: ../inc/acf/core/actions/export.php:23
+#: ../inc/acf/core/views/meta_box_fields.php:58
+msgid "Error"
+msgstr ""
+
+#: ../inc/acf/core/actions/export.php:30
+msgid "No ACF groups selected"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:19
+msgid "File"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:20 ../inc/acf/core/fields/wysiwyg.php:20
+#: ../inc/acf/core/fields/image.php:20
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:24
+msgid "Content"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:26
+#, fuzzy
+msgid "Select File"
+msgstr "Selección de capas"
+
+#: ../inc/acf/core/fields/file.php:27
+#, fuzzy
+msgid "Edit File"
+msgstr "Editar editor"
+
+#: ../inc/acf/core/fields/file.php:28
+#, fuzzy
+msgid "Update File"
+msgstr "Actualizar editor"
+
+#: ../inc/acf/core/fields/file.php:29 ../inc/acf/core/fields/image.php:30
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:20
+msgid "uploaded to this post"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:123
+msgid "No File Selected"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:123
+#, fuzzy
+msgid "Add File"
+msgstr "Editar editor"
+
+#: ../inc/acf/core/fields/file.php:153 ../inc/acf/core/fields/taxonomy.php:365
+#: ../inc/acf/core/fields/image.php:118
+#: ../inc/acf/add-ons/acf-location-field/location-v4.php:129
+msgid "Return Value"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:164
+msgid "File Object"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:165
+msgid "File URL"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:166
+msgid "File ID"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:175 ../inc/acf/core/fields/image.php:158
+msgid "Library"
+msgstr ""
+
+#: ../inc/acf/core/fields/file.php:187 ../inc/acf/core/fields/image.php:171
+#, fuzzy
+msgid "Uploaded to post"
+msgstr "Archivos cargados"
+
+#: ../inc/acf/core/fields/email.php:19
+#, fuzzy
+msgid "Email"
+msgstr "Email"
+
+#: ../inc/acf/core/fields/email.php:106
+#: ../inc/acf/core/fields/color_picker.php:89
+#: ../inc/acf/core/fields/select.php:197
+#: ../inc/acf/core/fields/checkbox.php:157
+#: ../inc/acf/core/fields/radio.php:193 ../inc/acf/core/fields/wysiwyg.php:171
+#: ../inc/acf/core/fields/number.php:116
+#: ../inc/acf/core/fields/textarea.php:96
+#: ../inc/acf/core/fields/true_false.php:94
+#: ../inc/acf/core/fields/text.php:116
+msgid "Default Value"
+msgstr ""
+
+#: ../inc/acf/core/fields/email.php:107 ../inc/acf/core/fields/wysiwyg.php:172
+#: ../inc/acf/core/fields/number.php:117
+#: ../inc/acf/core/fields/textarea.php:97 ../inc/acf/core/fields/text.php:117
+msgid "Appears when creating a new post"
+msgstr ""
+
+#: ../inc/acf/core/fields/email.php:123 ../inc/acf/core/fields/number.php:133
+#: ../inc/acf/core/fields/textarea.php:111
+#: ../inc/acf/core/fields/password.php:105 ../inc/acf/core/fields/text.php:131
+msgid "Placeholder Text"
+msgstr ""
+
+#: ../inc/acf/core/fields/email.php:124 ../inc/acf/core/fields/number.php:134
+#: ../inc/acf/core/fields/textarea.php:112
+#: ../inc/acf/core/fields/password.php:106 ../inc/acf/core/fields/text.php:132
+msgid "Appears within the input"
+msgstr ""
+
+#: ../inc/acf/core/fields/email.php:138 ../inc/acf/core/fields/number.php:148
+#: ../inc/acf/core/fields/password.php:120 ../inc/acf/core/fields/text.php:146
+msgid "Prepend"
+msgstr ""
+
+#: ../inc/acf/core/fields/email.php:139 ../inc/acf/core/fields/number.php:149
+#: ../inc/acf/core/fields/password.php:121 ../inc/acf/core/fields/text.php:147
+msgid "Appears before the input"
+msgstr ""
+
+#: ../inc/acf/core/fields/email.php:153 ../inc/acf/core/fields/number.php:163
+#: ../inc/acf/core/fields/password.php:135 ../inc/acf/core/fields/text.php:161
+msgid "Append"
+msgstr ""
+
+#: ../inc/acf/core/fields/email.php:154 ../inc/acf/core/fields/number.php:164
+#: ../inc/acf/core/fields/password.php:136 ../inc/acf/core/fields/text.php:162
+msgid "Appears after the input"
+msgstr ""
+
+#: ../inc/acf/core/fields/dummy.php:19
+msgid "Dummy"
+msgstr ""
+
+#: ../inc/acf/core/fields/message.php:19 ../inc/acf/core/fields/message.php:70
+#: ../inc/acf/core/fields/true_false.php:79
+msgid "Message"
+msgstr ""
+
+#: ../inc/acf/core/fields/message.php:20
+#: ../inc/acf/core/fields/checkbox.php:174
+#: ../inc/acf/core/fields/radio.php:209 ../inc/acf/core/fields/tab.php:20
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:23
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:428
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:640
+msgid "Layout"
+msgstr ""
+
+#: ../inc/acf/core/fields/message.php:71
+msgid "Text &amp; HTML entered here will appear inline with the fields"
+msgstr ""
+
+#: ../inc/acf/core/fields/message.php:72
+msgid "Please note that all text will first be passed through the wp function "
+msgstr ""
+
+#: ../inc/acf/core/fields/color_picker.php:19
+msgid "Color Picker"
+msgstr ""
+
+#: ../inc/acf/core/fields/color_picker.php:20
+#: ../inc/acf/core/fields/date_picker/date_picker.php:23
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:25
+msgid "jQuery"
+msgstr ""
+
+#: ../inc/acf/core/fields/select.php:18 ../inc/acf/core/fields/select.php:109
+#: ../inc/acf/core/fields/user.php:266 ../inc/acf/core/fields/taxonomy.php:322
+#, fuzzy
+msgid "Select"
+msgstr "Seleccione un mapa"
+
+#: ../inc/acf/core/fields/select.php:19 ../inc/acf/core/fields/checkbox.php:20
+#: ../inc/acf/core/fields/radio.php:19
+#: ../inc/acf/core/fields/true_false.php:20
+msgid "Choice"
+msgstr ""
+
+#: ../inc/acf/core/fields/select.php:177
+#: ../inc/acf/core/fields/checkbox.php:137
+#: ../inc/acf/core/fields/radio.php:144
+msgid "Choices"
+msgstr ""
+
+#: ../inc/acf/core/fields/select.php:178
+#: ../inc/acf/core/fields/checkbox.php:138
+msgid "Enter each choice on a new line."
+msgstr ""
+
+#: ../inc/acf/core/fields/select.php:179
+#: ../inc/acf/core/fields/checkbox.php:139
+msgid "For more control, you may specify both a value and label like this:"
+msgstr ""
+
+#: ../inc/acf/core/fields/select.php:180
+#: ../inc/acf/core/fields/checkbox.php:140
+#: ../inc/acf/core/fields/radio.php:150
+msgid "red : Red"
+msgstr ""
+
+#: ../inc/acf/core/fields/select.php:180
+#: ../inc/acf/core/fields/checkbox.php:140
+#: ../inc/acf/core/fields/radio.php:151
+msgid "blue : Blue"
+msgstr ""
+
+#: ../inc/acf/core/fields/select.php:198
+#: ../inc/acf/core/fields/checkbox.php:158
+msgid "Enter each default value on a new line"
+msgstr ""
+
+#: ../inc/acf/core/fields/select.php:214 ../inc/acf/core/fields/user.php:275
+#: ../inc/acf/core/fields/taxonomy.php:331
+#: ../inc/acf/core/fields/post_object.php:317
+#: ../inc/acf/core/fields/page_link.php:127
+#, fuzzy
+msgid "Allow Null?"
+msgstr "Siguenos"
+
+#: ../inc/acf/core/fields/select.php:233
+#: ../inc/acf/core/fields/post_object.php:338
+#: ../inc/acf/core/fields/page_link.php:148
+msgid "Select multiple values?"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:18
+msgid "Relationship"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:19
+#: ../inc/acf/core/fields/user.php:19 ../inc/acf/core/fields/taxonomy.php:19
+#: ../inc/acf/core/fields/post_object.php:19
+#: ../inc/acf/core/fields/page_link.php:19
+msgid "Relational"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:29
+msgid "Maximum values reached ( {max} values )"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:425
+#, fuzzy
+msgid "Search..."
+msgstr "Buscar"
+
+#: ../inc/acf/core/fields/relationship.php:436
+msgid "Filter by post type"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:569
+msgid "Return Format"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:570
+#: ../inc/acf/core/fields/image.php:119
+msgid "Specify the returned value on front end"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:580
+msgid "Post Objects"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:581
+msgid "Post IDs"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:589
+#: ../inc/acf/core/fields/relationship.php:668
+#: ../inc/acf/core/fields/post_object.php:268
+#: ../inc/acf/core/fields/page_link.php:103
+#: ../inc/acf/core/views/meta_box_location.php:75
+msgid "Post Type"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:613
+#: ../inc/acf/core/fields/post_object.php:292
+msgid "Filter from Taxonomy"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:648
+msgid "Post Type Select"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:656
+msgid "Elements"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:657
+msgid "Selected elements will be displayed in each result"
+msgstr ""
+
+#: ../inc/acf/core/fields/relationship.php:666
+#: ../inc/acf/core/views/meta_box_options.php:103
+#, fuzzy
+msgid "Featured Image"
+msgstr "Noticia destacada"
+
+#: ../inc/acf/core/fields/relationship.php:667
+#, fuzzy
+msgid "Post Title"
+msgstr "Título"
+
+#: ../inc/acf/core/fields/relationship.php:679
+msgid "Maximum posts"
+msgstr ""
+
+#: ../inc/acf/core/fields/checkbox.php:19
+#: ../inc/acf/core/fields/taxonomy.php:317
+msgid "Checkbox"
+msgstr ""
+
+#: ../inc/acf/core/fields/checkbox.php:185
+#: ../inc/acf/core/fields/radio.php:220
+msgid "Vertical"
+msgstr ""
+
+#: ../inc/acf/core/fields/checkbox.php:186
+#: ../inc/acf/core/fields/radio.php:221
+msgid "Horizontal"
+msgstr ""
+
+#: ../inc/acf/core/fields/radio.php:18
+msgid "Radio Button"
+msgstr ""
+
+#: ../inc/acf/core/fields/radio.php:102
+#: ../inc/acf/core/views/meta_box_location.php:91
+msgid "Other"
+msgstr ""
+
+#: ../inc/acf/core/fields/radio.php:145
+msgid "Enter your choices one per line"
+msgstr ""
+
+#: ../inc/acf/core/fields/radio.php:147
+msgid "Red"
+msgstr ""
+
+#: ../inc/acf/core/fields/radio.php:148
+msgid "Blue"
+msgstr ""
+
+#: ../inc/acf/core/fields/radio.php:172
+msgid "Add 'other' choice to allow for custom values"
+msgstr ""
+
+#: ../inc/acf/core/fields/radio.php:184
+msgid "Save 'other' values to the field's choices"
+msgstr ""
+
+#: ../inc/acf/core/fields/user.php:18
+#: ../inc/acf/core/views/meta_box_location.php:94
+msgid "User"
+msgstr ""
+
+#: ../inc/acf/core/fields/user.php:224
+msgid "Filter by role"
+msgstr ""
+
+#: ../inc/acf/core/fields/user.php:251 ../inc/acf/core/fields/taxonomy.php:306
+#: ../inc/acf/core/views/meta_box_fields.php:91
+#: ../inc/acf/core/views/meta_box_fields.php:173
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:444
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:521
+#, fuzzy
+msgid "Field Type"
+msgstr "Página"
+
+#: ../inc/acf/core/fields/user.php:260 ../inc/acf/core/fields/taxonomy.php:316
+msgid "Multiple Values"
+msgstr ""
+
+#: ../inc/acf/core/fields/user.php:262 ../inc/acf/core/fields/taxonomy.php:318
+msgid "Multi Select"
+msgstr ""
+
+#: ../inc/acf/core/fields/user.php:264 ../inc/acf/core/fields/taxonomy.php:320
+msgid "Single Value"
+msgstr ""
+
+#: ../inc/acf/core/fields/wysiwyg.php:19
+#: ../inc/acf/add-ons/acf-qtranslate/fields/wysiwyg.php:9
+msgid "Wysiwyg Editor"
+msgstr ""
+
+#: ../inc/acf/core/fields/wysiwyg.php:186
+msgid "Toolbar"
+msgstr ""
+
+#: ../inc/acf/core/fields/wysiwyg.php:218
+msgid "Show Media Upload Buttons?"
+msgstr ""
+
+#: ../inc/acf/core/fields/number.php:19
+msgid "Number"
+msgstr ""
+
+#: ../inc/acf/core/fields/number.php:178
+msgid "Minimum Value"
+msgstr ""
+
+#: ../inc/acf/core/fields/number.php:194
+msgid "Maximum Value"
+msgstr ""
+
+#: ../inc/acf/core/fields/number.php:210
+msgid "Step Size"
+msgstr ""
+
+#: ../inc/acf/core/fields/textarea.php:19
+#: ../inc/acf/add-ons/acf-qtranslate/fields/textarea.php:9
+msgid "Text Area"
+msgstr ""
+
+#: ../inc/acf/core/fields/textarea.php:126 ../inc/acf/core/fields/text.php:195
+msgid "Character Limit"
+msgstr ""
+
+#: ../inc/acf/core/fields/textarea.php:127 ../inc/acf/core/fields/text.php:196
+msgid "Leave blank for no limit"
+msgstr ""
+
+#: ../inc/acf/core/fields/textarea.php:141 ../inc/acf/core/fields/text.php:176
+msgid "Formatting"
+msgstr ""
+
+#: ../inc/acf/core/fields/textarea.php:142 ../inc/acf/core/fields/text.php:177
+msgid "Effects value on front end"
+msgstr ""
+
+#: ../inc/acf/core/fields/textarea.php:151 ../inc/acf/core/fields/text.php:186
+msgid "No formatting"
+msgstr ""
+
+#: ../inc/acf/core/fields/textarea.php:152
+msgid "Convert new lines into &lt;br /&gt; tags"
+msgstr ""
+
+#: ../inc/acf/core/fields/textarea.php:153 ../inc/acf/core/fields/text.php:187
+msgid "Convert HTML into tags"
+msgstr ""
+
+#: ../inc/acf/core/fields/true_false.php:19
+msgid "True / False"
+msgstr ""
+
+#: ../inc/acf/core/fields/true_false.php:80
+msgid "eg. Show extra content"
+msgstr ""
+
+#: ../inc/acf/core/fields/taxonomy.php:18
+#: ../inc/acf/core/fields/taxonomy.php:276
+msgid "Taxonomy"
+msgstr ""
+
+#: ../inc/acf/core/fields/taxonomy.php:211
+#: ../inc/acf/core/fields/taxonomy.php:220
+msgid "None"
+msgstr ""
+
+#: ../inc/acf/core/fields/taxonomy.php:321
+msgid "Radio Buttons"
+msgstr ""
+
+#: ../inc/acf/core/fields/taxonomy.php:350
+msgid "Load & Save Terms to Post"
+msgstr ""
+
+#: ../inc/acf/core/fields/taxonomy.php:358
+msgid ""
+"Load value based on the post's terms and update the post's terms on save"
+msgstr ""
+
+#: ../inc/acf/core/fields/taxonomy.php:375
+msgid "Term Object"
+msgstr ""
+
+#: ../inc/acf/core/fields/taxonomy.php:376
+msgid "Term ID"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:19
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:9
+msgid "Image"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:27
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:17
+#, fuzzy
+msgid "Select Image"
+msgstr "Seleccione un mapa"
+
+#: ../inc/acf/core/fields/image.php:28
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:18
+msgid "Edit Image"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:29
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:19
+msgid "Update Image"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:83
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:85
+#: ../inc/tax-meta-class/tax-meta-class.php:582
+#: ../inc/tax-meta-class/tax-meta-class.php:629
+msgid "Remove"
+msgstr "Eliminar"
+
+#: ../inc/acf/core/fields/image.php:84
+#: ../inc/acf/core/views/meta_box_fields.php:122
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:471
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:86
+#, fuzzy
+msgid "Edit"
+msgstr "Editar editor"
+
+#: ../inc/acf/core/fields/image.php:90
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:92
+msgid "No image selected"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:90
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:92
+#, fuzzy
+msgid "Add Image"
+msgstr "Noticia destacada"
+
+#: ../inc/acf/core/fields/image.php:129
+msgid "Image Object"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:130
+msgid "Image URL"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:131
+msgid "Image ID"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:139
+msgid "Preview Size"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:140
+msgid "Shown when entering data"
+msgstr ""
+
+#: ../inc/acf/core/fields/image.php:159
+msgid "Limit the media library choice"
+msgstr ""
+
+#: ../inc/acf/core/fields/_base.php:124
+#: ../inc/acf/core/views/meta_box_location.php:74
+msgid "Basic"
+msgstr ""
+
+#: ../inc/acf/core/fields/password.php:19
+msgid "Password"
+msgstr ""
+
+#: ../inc/acf/core/fields/tab.php:19
+msgid "Tab"
+msgstr ""
+
+#: ../inc/acf/core/fields/tab.php:68
+msgid ""
+"All fields proceeding this \"tab field\" (or until another \"tab field\"  is "
+"defined) will appear grouped on the edit screen."
+msgstr ""
+
+#: ../inc/acf/core/fields/tab.php:69
+msgid "You can use multiple tabs to break up your fields into sections."
+msgstr ""
+
+#: ../inc/acf/core/fields/post_object.php:18
+msgid "Post Object"
+msgstr ""
+
+#: ../inc/acf/core/fields/text.php:19
+#: ../inc/acf/add-ons/acf-qtranslate/fields/text.php:9
+msgid "Text"
+msgstr ""
+
+#: ../inc/acf/core/fields/page_link.php:18
+#, fuzzy
+msgid "Page Link"
+msgstr "Página"
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:22
+msgid "Date Picker"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:30
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:385
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:430
+msgid "Done"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:31
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:386
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:431
+msgid "Today"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:34
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:389
+#: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v3.php:434
+msgid "Show a different month"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:105
+msgid "Save format"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:106
+msgid ""
+"This format will determin the value saved to the database and returned via "
+"the API"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:107
+msgid "\"yymmdd\" is the most versatile save format. Read more about"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:107
+#: ../inc/acf/core/fields/date_picker/date_picker.php:123
+msgid "jQuery date formats"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:121
+msgid "Display format"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:122
+msgid "This format will be seen by the user when entering a value"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:123
+msgid ""
+"\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more "
+"about"
+msgstr ""
+
+#: ../inc/acf/core/fields/date_picker/date_picker.php:137
+msgid "Week Starts On"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:25
+msgid "Order No."
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:26
+msgid "Field groups are created in order <br />from lowest to highest"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:42
+#, fuzzy
+msgid "Position"
+msgstr "Localización de la noticia"
+
+#: ../inc/acf/core/views/meta_box_options.php:52
+msgid "Normal"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:53
+msgid "Side"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:62
+msgid "Style"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:72
+msgid "No Metabox"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:73
+msgid "Standard Metabox"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:82
+msgid "Hide on screen"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:83
+msgid "<b>Select</b> items to <b>hide</b> them from the edit screen"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:84
+msgid ""
+"If multiple field groups appear on an edit screen, the first field group's "
+"options will be used. (the one with the lowest order number)"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:94
+msgid "Content Editor"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:95
+msgid "Excerpt"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:97
+msgid "Discussion"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:98
+msgid "Comments"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:99
+msgid "Revisions"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:100
+msgid "Slug"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:101
+#, fuzzy
+msgid "Author"
+msgstr "Nombre del Autor"
+
+#: ../inc/acf/core/views/meta_box_options.php:102
+msgid "Format"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:105
+msgid "Tags"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_options.php:106
+msgid "Send Trackbacks"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:48
+msgid "Rules"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:49
+msgid ""
+"Create a set of rules to determine which edit screens will use these "
+"advanced custom fields"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:60
+msgid "Show this field group if"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:62
+#: ../inc/acf/core/views/meta_box_location.php:159
+#: ../inc/acf/core/views/meta_box_fields.php:68
+msgid "or"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:76
+msgid "Logged in User Type"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:80
+#, fuzzy
+msgid "Page Type"
+msgstr "Página"
+
+#: ../inc/acf/core/views/meta_box_location.php:81
+msgid "Page Parent"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:82
+msgid "Page Template"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:86
+#, fuzzy
+msgid "Post Category"
+msgstr "Categoría IDs:"
+
+#: ../inc/acf/core/views/meta_box_location.php:87
+msgid "Post Format"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:88
+msgid "Post Status"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:89
+msgid "Post Taxonomy"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:92
+msgid "Attachment"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:93
+msgid "Term"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:117
+#: ../inc/acf/core/views/meta_box_fields.php:274
+msgid "is equal to"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:118
+#: ../inc/acf/core/views/meta_box_fields.php:275
+msgid "is not equal to"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_location.php:146
+#, fuzzy
+msgid "and"
+msgstr "y"
+
+#: ../inc/acf/core/views/meta_box_location.php:161
+msgid "Add rule group"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:24
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:420
+msgid "New Field"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:58
+msgid "Field type does not exist"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:63
+msgid "Move to trash. Are you sure?"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:64
+msgid "checked"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:65
+msgid "No toggle fields available"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:66
+msgid "Field group title is required"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:67
+msgid "copy"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:88
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:441
+msgid "Field Order"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:89
+#: ../inc/acf/core/views/meta_box_fields.php:141
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:442
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:490
+msgid "Field Label"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:90
+#: ../inc/acf/core/views/meta_box_fields.php:157
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:443
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:506
+msgid "Field Name"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:92
+msgid "Field Key"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:104
+msgid ""
+"No fields. Click the <strong>+ Add Field</strong> button to create your "
+"first field."
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:119
+#: ../inc/acf/core/views/meta_box_fields.php:122
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:468
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:471
+#, fuzzy
+msgid "Edit this Field"
+msgstr "Editar editor"
+
+#: ../inc/acf/core/views/meta_box_fields.php:123
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:472
+msgid "Read documentation for this field"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:123
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:472
+msgid "Docs"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:124
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:473
+#, fuzzy
+msgid "Duplicate this Field"
+msgstr "Borrar esta imagen"
+
+#: ../inc/acf/core/views/meta_box_fields.php:124
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:473
+msgid "Duplicate"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:125
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:474
+#, fuzzy
+msgid "Delete this Field"
+msgstr "Borrar esta imagen"
+
+#: ../inc/acf/core/views/meta_box_fields.php:125
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:474
+#: ../inc/tax-meta-class/tax-meta-class.php:250
+#: ../inc/tax-meta-class/tax-meta-class.php:882
+msgid "Delete"
+msgstr "Borrar"
+
+#: ../inc/acf/core/views/meta_box_fields.php:142
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:491
+msgid "This is the name which will appear on the EDIT page"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:158
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:507
+msgid "Single word, no spaces. Underscores and dashes allowed"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:187
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:536
+msgid "Field Instructions"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:188
+msgid "Instructions for authors. Shown when submitting data"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:200
+msgid "Required?"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:223
+msgid "Conditional Logic"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:293
+msgid "Show this field when"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:299
+#, fuzzy
+msgid "all"
+msgstr "Pequeño"
+
+#: ../inc/acf/core/views/meta_box_fields.php:300
+#, fuzzy
+msgid "any"
+msgstr "y"
+
+#: ../inc/acf/core/views/meta_box_fields.php:303
+msgid "these rules are met"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:317
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:589
+#, fuzzy
+msgid "Close Field"
+msgstr "Elija un mapa"
+
+#: ../inc/acf/core/views/meta_box_fields.php:330
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:604
+msgid "Drag and drop to reorder"
+msgstr ""
+
+#: ../inc/acf/core/views/meta_box_fields.php:331
+msgid "+ Add Field"
 msgstr ""
 
 #: ../inc/acf/add-ons/acf-location-field/location-v3.php:138
@@ -3263,11 +3173,67 @@ msgstr ""
 msgid "Show places on the map"
 msgstr "Historias desde el mapa"
 
-#: ../inc/acf/add-ons/acf-qtranslate/fields/wysiwyg.php:10
-#: ../inc/acf/add-ons/acf-qtranslate/fields/textarea.php:10
-#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:10
-#: ../inc/acf/add-ons/acf-qtranslate/fields/text.php:10
-msgid "qTranslate"
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:22
+msgid "Repeater"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:160
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:405
+msgid "Add Row"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:421
+msgid "new_field"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:433
+msgid "Repeater Fields"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:452
+msgid ""
+"No fields. Click the \"+ Add Sub Field button\" to create your first field."
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:556
+msgid "Column Width"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:557
+msgid "Leave blank for auto"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:584
+msgid "Save Field"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:589
+msgid "Close Sub Field"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:605
+msgid "+ Add Sub Field"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:612
+msgid "Minimum Rows"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:626
+msgid "Maximum Rows"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:650
+#, fuzzy
+msgid "Table (default)"
+msgstr "defecto"
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:651
+msgid "Row"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-repeater/repeater.php:659
+msgid "Button Label"
 msgstr ""
 
 #: ../inc/acf/add-ons/acf-field-date-time-picker/date_time_picker-v4.php:24
@@ -3417,6 +3383,30 @@ msgstr ""
 msgid "Get field as a timestamp?"
 msgstr ""
 
+#: ../inc/acf/add-ons/acf-qtranslate/fields/wysiwyg.php:10
+#: ../inc/acf/add-ons/acf-qtranslate/fields/textarea.php:10
+#: ../inc/acf/add-ons/acf-qtranslate/fields/image.php:10
+#: ../inc/acf/add-ons/acf-qtranslate/fields/text.php:10
+msgid "qTranslate"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:333
+msgid "Options Updated"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:478
+msgid "No Custom Field Group found for the options page"
+msgstr ""
+
+#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:478
+#, fuzzy
+msgid "Create a Custom Field Group"
+msgstr "Búsqueda editores"
+
+#: ../inc/acf/add-ons/acf-options-page/acf-options-page.php:493
+msgid "Save Options"
+msgstr ""
+
 #: ../inc/metaboxes/story/story-meta.php:9
 msgid "Story data"
 msgstr "Datos del artículo"
@@ -3465,6 +3455,9 @@ msgstr "Añadir más archivos"
 #: ../inc/tax-meta-class/tax-meta-class.php:947
 msgid "Select a color"
 msgstr "Elige un color"
+
+#~ msgid "Submit a report"
+#~ msgstr "Envíe un relato"
 
 #~ msgid "Embed"
 #~ msgstr "Incrustar"
