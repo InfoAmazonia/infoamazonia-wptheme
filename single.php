@@ -5,7 +5,7 @@
 	<article class="single-post">
 		<section id="stage" class="row">
 			<div class="container">
-				<div class="ten columns">
+				<div class="nine columns">
 					<header class="post-header">
 						<?php echo get_the_term_list($post->ID, 'publisher', '', ', ', ''); ?>
 						<h1 class="title"><?php the_title(); ?></h1>
@@ -21,7 +21,7 @@
 
 		<section id="content">
 			<div class="container row">
-				<div class="ten columns">
+				<div class="nine columns">
 					<div class="post-primary-image">
 						<?php if(has_post_thumbnail()) the_post_thumbnail(); ?>
 					</div>
