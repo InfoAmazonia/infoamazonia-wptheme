@@ -58,16 +58,16 @@
 						</div>
 					</div>
 				</div>
-				<?php if(function_exists('yarpp_related')) : ?>
 					<div class="three columns">
-						<div class="side-map row">
+						<?php if(function_exists('yarpp_related')) : ?>
+							<div class="post-related row">
+								<?php yarpp_related();?>
+							</div>
+						<?php endif; ?>
+						<div class="side-map">
 							<?php jeo_map(); ?>
 						</div>
-						<div class="post-related">
-							<?php yarpp_related();?>
-						</div>
 					</div>
-				<?php endif; ?>
 				<script type="text/javascript">
 					var embedUrl = jQuery('.embed-button').attr('href');
 					var printUrl = jQuery('.print-button').attr('href');

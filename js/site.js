@@ -27,6 +27,23 @@
 	});
 
 	/*
+	 * Side map
+	 */
+	$(document).ready(function() {
+		if($('.side-map').length) {
+			var container = $('.side-map');
+			var sizing = function() {
+				var offset = container.offset().left;
+				var winWidth = $(window).width();
+				var width = winWidth - offset -20;
+				container.width(width);
+			};
+			sizing();
+			$(window).resize(sizing);
+		}
+	});
+
+	/*
 	 * Home slider
 	 */
 	$(document).ready(function() {
