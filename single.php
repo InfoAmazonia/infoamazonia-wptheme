@@ -50,16 +50,24 @@
 						</div>
 					</div>
 				</div>
-				<div class="eight columns">
+				<div class="seven columns">
 					<div class="post-content">
 						<div class="post-description">
 							<p class="date"><strong><?php echo get_the_date(); ?></strong></p>
 							<?php the_content(); ?>
-							<?php if(function_exists('yarpp_related')) yarpp_related();?>
 						</div>
 					</div>
 				</div>
-
+				<?php if(function_exists('yarpp_related')) : ?>
+					<div class="three columns">
+						<div class="side-map row">
+							<?php jeo_map(); ?>
+						</div>
+						<div class="post-related">
+							<?php yarpp_related();?>
+						</div>
+					</div>
+				<?php endif; ?>
 				<script type="text/javascript">
 					var embedUrl = jQuery('.embed-button').attr('href');
 					var printUrl = jQuery('.print-button').attr('href');
