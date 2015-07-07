@@ -72,7 +72,7 @@
 						</span>
 					</div>
 					<div class="eight columns">
-						<span class="post-title"><?php the_title(); ?></span>
+						<span class="post-title"><span class="publisher"><?php echo get_the_term_list($post->ID, 'publisher', '', ', ', ': '); ?></span><?php the_title(); ?></span>
 					</div>
 				</div>
 			</div>
