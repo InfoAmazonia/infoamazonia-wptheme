@@ -132,7 +132,7 @@
 			var silent = false;
 
 			// if not home, navigate to post
-			if(!infoamazonia_markers.home) 
+			if(!infoamazonia_markers.home)
 				silent = false;
 
 			if(fragment) {
@@ -533,7 +533,8 @@
 				}
 			}
 
-			map.$.sidebar.addClass('active');
+			if(map.$.sidebar)
+				map.$.sidebar.addClass('active');
 
 			jeo.runCallbacks('markerOpened', [map]);
 
@@ -552,7 +553,7 @@
 				fragment.rm('story');
 
 			$('.list-posts li').removeClass('active');
-			
+
 			map.$.find('.story-points').removeClass('active');
 
 			map.$.sidebar.removeClass('active').find('.story').empty();

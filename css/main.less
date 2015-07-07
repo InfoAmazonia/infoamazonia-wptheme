@@ -384,6 +384,30 @@ header#masthead {
 				}
 			}
 		}
+		.post-actions {
+			margin: 5px 0;
+			display: block;
+			line-height: 25px;
+			a {
+				display: inline-block;
+				margin-right: 5px;
+				color: #999;
+				text-transform: uppercase;
+				font-weight: 600;
+				.lsf {
+					font-weight: normal;
+					margin-right: 3px;
+				}
+			}
+		}
+	}
+	#top-map {
+		width: 100%;
+		height: 0;
+		.transition(all .2s linear);
+		&.active {
+			height: 400px;
+		}
 	}
 }
 
@@ -878,6 +902,11 @@ section#about {
 				margin-right: 5px;
 				font-weight: normal;
 			}
+		}
+	}
+	.post-sidebar {
+		&.offset {
+			margin-top: 400px;
 		}
 	}
 	.side-map {

@@ -59,13 +59,12 @@
 					</div>
 				</div>
 					<div class="three columns">
-						<?php if(function_exists('yarpp_related')) : ?>
-							<div class="post-related row">
-								<?php yarpp_related();?>
-							</div>
-						<?php endif; ?>
-						<div class="side-map">
-							<?php jeo_map(); ?>
+						<div class="post-sidebar">
+							<?php if(function_exists('yarpp_related')) : ?>
+								<div class="post-related row">
+									<?php yarpp_related();?>
+								</div>
+							<?php endif; ?>
 						</div>
 					</div>
 				<script type="text/javascript">

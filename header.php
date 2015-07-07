@@ -71,10 +71,18 @@
 							<a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" class="logo" /></a>
 						</span>
 					</div>
-					<div class="eight columns">
+					<div class="seven columns">
 						<span class="post-title"><span class="publisher"><?php echo get_the_term_list($post->ID, 'publisher', '', ', ', ': '); ?></span><?php the_title(); ?></span>
 					</div>
+					<div class="three columns">
+						<span class="post-actions">
+							<a href="javascript:void(0);" class="toggle-top-map"><span class="lsf">&#xE08b;</span> <?php _e('View map', 'infoamazonia'); ?></a>
+						</span>
+					</div>
 				</div>
+			</div>
+			<div id="top-map">
+				<?php jeo_map(); ?>
 			</div>
 		<?php endif; ?>
 	</header>
