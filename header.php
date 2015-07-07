@@ -33,34 +33,50 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<header id="masthead">
-		<div class="container">
-			<div class="three columns">
-				<?php
-				$lang = '';
-				if(function_exists('qtrans_getLanguage'))
-					$lang = qtrans_getLanguage();
-				?>
-				<h1>
-					<a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><span><?php bloginfo('name'); ?></span> <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" class="logo" /></a>
-				</h1>
-			</div>
-			<?php /*
-			<div class="four columns">
-				<?php get_search_form(); ?>
-			</div>
-			*/ ?>
-			<div class="nine columns">
-				<section id="mastnav" class="clearfix">
-					<nav>
-						<ul>
-							<?php wp_nav_menu(array(
-								'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<!--<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li>--></ul>'
-							)); ?>
-						</ul>
-					</nav>
-				</section>
+		<div class="regular-header">
+			<div class="container">
+				<div class="three columns">
+					<?php
+					$lang = '';
+					if(function_exists('qtrans_getLanguage'))
+						$lang = qtrans_getLanguage();
+					?>
+					<h1>
+						<a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><span><?php bloginfo('name'); ?></span> <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" class="logo" /></a>
+					</h1>
+				</div>
+				<?php /*
+				<div class="four columns">
+					<?php get_search_form(); ?>
+				</div>
+				*/ ?>
+				<div class="nine columns">
+					<section id="mastnav" class="clearfix">
+						<nav>
+							<ul>
+								<?php wp_nav_menu(array(
+									'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<!--<li><a href="#submit" class="submit-story">' . __('Submit a story', 'infoamazonia') . '</a></li>--></ul>'
+								)); ?>
+							</ul>
+						</nav>
+					</section>
+				</div>
 			</div>
 		</div>
+		<?php if(is_singular('post')) : ?>
+			<div class="single-post-header scrolled-header">
+				<div class="container">
+					<div class="two columns">
+						<span class="site-logo">
+							<a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" class="logo" /></a>
+						</span>
+					</div>
+					<div class="eight columns">
+						<span class="post-title"><?php the_title(); ?></span>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
 	</header>
 	<section id="subnav">
 		<div class="container">

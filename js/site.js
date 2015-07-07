@@ -9,10 +9,20 @@
 		$(window).scroll(function() {
 			if($(window).scrollTop() > 20) {
 				$('#masthead').addClass('collapsed');
+				if($('#masthead').find('.scrolled-header').length) {
+					$('#masthead .scrolled-header').show();
+					$('#masthead .regular-header').hide();
+				}
 			} else {
 				$('#masthead').removeClass('collapsed');
+				if($('#masthead').find('.scrolled-header').length) {
+					$('#masthead .scrolled-header').hide();
+					$('#masthead .regular-header').show();
+				}
 			}
 		});
+
+		$(window).scroll();
 
 	});
 

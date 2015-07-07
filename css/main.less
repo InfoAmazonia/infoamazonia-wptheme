@@ -361,6 +361,21 @@ header#masthead {
 			display: none;
 		}
 	}
+	.scrolled-header {
+		display: none;
+		.site-logo {
+			display: block;
+			padding: 5px 0;
+			float: right;
+		}
+		.post-title {
+			font-family: "OpenSansCondensedBold";
+			font-size: 16px;
+			line-height: 25px;
+			margin: 5px 0;
+			display: block;
+		}
+	}
 }
 
 #mastnav {
@@ -826,8 +841,37 @@ section#about {
 }
 
 .single-post {
+	.post-primary-image {
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+	.post-interactivity {
+		a {
+			color: #999;
+			&:hover {
+				color: #333;
+			}
+		}
+		p {
+			margin-bottom: 15px;
+		}
+		.button {
+			background: transparent;
+			border: 0;
+			display: block;
+			padding: 0;
+			font-weight: normal;
+			margin-right: 15px;
+			text-align: left;
+			.lsf {
+				margin-right: 5px;
+				font-weight: normal;
+			}
+		}
+	}
 	.post-content {
-		margin: 20px 0;
 		.thumbnail {
 			img {
 				width: 100%;
@@ -844,8 +888,8 @@ section#about {
 			}
 		}
 		.post-description {
-			font-size: 20px;
-			line-height: 30px;
+			font-size: 18px;
+			line-height: 28px;
 			text-align: left;
 			img,
 			iframe,

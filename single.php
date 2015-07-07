@@ -5,14 +5,35 @@
 	<article class="single-post">
 		<section id="stage" class="row">
 			<div class="container">
-				<div class="twelve columns">
+				<div class="ten columns">
 					<header class="post-header">
 						<?php echo get_the_term_list($post->ID, 'publisher', '', ', ', ''); ?>
 						<h1 class="title"><?php the_title(); ?></h1>
+					</header>
+					<?php if(jeo_has_marker_location()) : ?>
+						<!-- <div id="main-map" class="stage-map">
+							<?php // jeo_map(); ?>
+						</div> -->
+					<?php endif; ?>
+				</div>
+			</div>
+		</section>
+
+		<section id="content">
+			<div class="container row">
+				<div class="ten columns">
+					<div class="post-primary-image">
+						<?php if(has_post_thumbnail()) the_post_thumbnail(); ?>
+					</div>
+				</div>
+			</div>
+			<div class="container row">
+				<div class="two columns">
+					<div class="post-interactivity">
 						<p class="buttons">
 							<a class="button" href="<?php echo get_post_meta($post->ID, 'url', true); ?>" target="_blank">
 								<span class="lsf">&#xE046;</span>
-								<?php _e('Go to the original article', 'infoamazonia'); ?>
+								<?php _e('Original article', 'infoamazonia'); ?>
 							</a>
 							<a class="button embed-button" href="<?php echo jeo_get_share_url(array('p' => $post->ID)); ?>" target="_blank">
 								<span class="lsf">&#xE118;</span>
@@ -27,20 +48,10 @@
 						<div class="twitter-button">
 							<a href="https://twitter.com/share" class="twitter-share-button" data-via="infoamazonia" <?php if(function_exists('qtrans_getLanguage')) : ?>data-lang="<?php echo qtrans_getLanguage(); ?>"<?php endif; ?>>Tweet</a>
 						</div>
-					</header>
-					<?php if(jeo_has_marker_location()) : ?>
-						<!-- <div id="main-map" class="stage-map">
-							<?php // jeo_map(); ?>
-						</div> -->
-					<?php endif; ?>
+					</div>
 				</div>
-			</div>
-		</section>
-
-		<section id="content">
-			<div class="container row">
-				<div class="post-content">
-					<div class="twelve columns">
+				<div class="eight columns">
+					<div class="post-content">
 						<div class="post-description">
 							<p class="date"><strong><?php echo get_the_date(); ?></strong></p>
 							<?php the_content(); ?>
