@@ -603,7 +603,7 @@ function infoamazonia_disable_share_a_map_nav() {
 //add_filter('jeo_disable_share_map_menu', 'infoamazonia_disable_share_a_map_nav');
 
 function infoamazonia_geojson_api_fix($query) {
-	$query['offset'] = 0;
+	unset($query['offset']);
 	return $query;
 }
 add_filter('jeo_geojson_api_query', 'infoamazonia_geojson_api_fix');
