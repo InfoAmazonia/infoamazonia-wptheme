@@ -603,7 +603,10 @@ function infoamazonia_disable_share_a_map_nav() {
 //add_filter('jeo_disable_share_map_menu', 'infoamazonia_disable_share_a_map_nav');
 
 function infoamazonia_geojson_api_fix($query) {
-	unset($query['offset']);
-	return $query;
+	if(isset($query->query['geojson'])) {
+		$query->set('offset', null);
+		$query->set('nopaging', null);
+		$query->set('paged', (get_query_var('paged')) ? get_query_var('paged') : 1);
+	}
 }
-add_filter('jeo_geojson_api_query', 'infoamazonia_geojson_api_fix');
+add_action('pre_get_posts', 'infoamazonia_geojson_api_fix');
