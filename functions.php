@@ -610,3 +610,11 @@ function infoamazonia_geojson_api_fix($query) {
 	}
 }
 add_action('pre_get_posts', 'infoamazonia_geojson_api_fix');
+
+function infoamazonia_geojson_headers() {
+	global $wp_query;
+	if(isset($wp_query->query['geojson'])) {
+		header('X-Total-Count: ' . $wp_query->found_posts);
+	}
+}
+add_action('jeo_markers_before_print', 'infoamazonia_geojson_headers');
