@@ -414,9 +414,9 @@ add_filter('jeo_featured_map_type', 'infoamazonia_embed_type');
 
 function infoamazonia_share_meta() {
 
-	if(is_singular('post')) {
+	if(is_singular('post') && function_exists('jeo_get_mapbox_image')) {
 		$image = jeo_get_mapbox_image(false, 435, 375, jeo_get_marker_latitude(), jeo_get_marker_longitude(), 7);
-	} elseif(is_singular('map')) {
+	} elseif(is_singular('map') && function_exists('jeo_get_mapbox_image')) {
 		$image = jeo_get_mapbox_image(false, 435, 375);
 	} elseif(isset($_GET['_escaped_fragment_'])) {
 

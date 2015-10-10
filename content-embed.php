@@ -107,7 +107,7 @@ if(isset($_GET['print'])) {
 		$legend = jeo_get_map_legend($conf['postID']);
 		if($legend)
 			echo '<div id="print-legend">' . jeo_get_map_legend($conf['postID']) . '</div>';
-		
+
 		$print_settings['map_id_or_layers'] = $conf['postID'];
 	} else {
 		$print_settings['map_id_or_layers'] = $conf['layers'];
@@ -127,7 +127,8 @@ if(isset($_GET['print'])) {
 		$print_settings['zoom'] = 'zoom';
 	}
 
-	$image_url = jeo_get_mapbox_image($print_settings['map_id_or_layers'], 640, 400, $print_settings['lat'], $print_settings['lon'], $print_settings['zoom']);
+	if(function_exists('jeo_get_mapbox_image'))
+		$image_url = jeo_get_mapbox_image($print_settings['map_id_or_layers'], 640, 400, $print_settings['lat'], $print_settings['lon'], $print_settings['zoom']);
 
 	?>
 	<script type="text/javascript">
