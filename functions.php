@@ -219,7 +219,7 @@ function infoamazonia_map_data($data, $map) {
 	$data['layers'] = $layers;
 	return $data;
 }
-add_filter('jeo_map_data', 'infoamazonia_map_data', 10, 2);
+//add_filter('jeo_map_data', 'infoamazonia_map_data', 10, 2);
 
 // slideshow
 include(STYLESHEETPATH . '/inc/slideshow.php');
