@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<?php echo get_template_directory(); ?>
-
 <section id="stage">
 	<div class="container">
 		<div class="twelve columns">
