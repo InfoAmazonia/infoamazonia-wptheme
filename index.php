@@ -1,5 +1,11 @@
 <?php get_header(); ?>
-
+<?php
+	global $wp;
+	if ($wp->request == 'projects') {
+?>
+<?php 
+	} else {
+?>
 <section id="stage">
 	<div class="container">
 		<div class="twelve columns">
@@ -12,6 +18,10 @@
 		</div>
 	<?php endif; ?>
 </section>
+
+<?php 
+	};
+?>
 
 <section id="content">
 
@@ -28,6 +38,15 @@
 	<?php if(have_posts()) : ?>
 
 		<section id="last-stories" class="loop-section">
+			<?php if ($wp->request == 'projects') { ?>
+				
+				<div class="twelve columns">
+					<header class="page-header">
+						<h1><?php _e('Projects', 'infoamazonia'); ?></h1>
+					</header>
+				</div>
+				
+			<?php } else { ?>
 			<div class="section-title">
 				<div class="container">
 					<div class="twelve columns">
@@ -60,12 +79,16 @@
 					</div>
 				</div>
 			</div>
+			<?php } ?>
 			<div class="container">
 				<?php
 				if(get_query_var('infoamazonia_advanced_nav'))
 					get_template_part('loop', 'explore');
-				else
-					get_template_part('loop');
+				elseif($wp->request == 'projects') {
+						get_template_part('loop', 'projects');
+					} else {
+						get_template_part('loop');
+					}
 				?>
 			</div>
 		</section>
@@ -75,6 +98,7 @@
 		<?php query_posts(); if(have_posts()) : ?>
 
 			<section id="last-stories" class="loop-section">
+				<?php echo "<h1>loop</h1>"; ?>
 				<div class="section-title">
 					<div class="container">
 						<div class="twelve columns">
