@@ -1,8 +1,9 @@
 <?php get_header(); ?>
 
 <?php 
-	global $wp;
-	if ($wp->request == 'projects') {
+	$post = get_post();
+	
+	if ($post->ID == 14416 || $post->ID == 10685) {
 		get_template_part('content', 'projects');
 	} else {
 ?>
@@ -68,7 +69,6 @@
 				</div>
 			</div>
 			<div class="container">
-				<h1>hola</h1>
 				<?php
 				if(get_query_var('infoamazonia_advanced_nav'))
 					get_template_part('loop', 'explore');
