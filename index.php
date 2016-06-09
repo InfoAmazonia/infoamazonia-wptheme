@@ -1,11 +1,35 @@
 <?php get_header(); ?>
-<?php
+
+<?php 
 	global $wp;
 	if ($wp->request == 'projects') {
 ?>
-<?php 
+
+<?php get_header(); ?>
+
+<section id="content">
+	<div id="map-archive" class="gray-page archive-page">
+		<div class="container">
+				<?php if(have_posts()) : ?>
+
+					<section id="maps" class="map-loop-section archive-list">
+						<div class="twelve columns">
+							<header class="page-header">
+								<h1><?php _e('Projects', 'infoamazonia'); ?></h1>
+							</header>
+						</div>
+						<?php get_template_part('loop', 'projects'); ?>
+					</section>
+
+				<?php endif; ?>
+		</div>
+	</div>
+</section>
+
+<?php
 	} else {
 ?>
+
 <section id="stage">
 	<div class="container">
 		<div class="twelve columns">
@@ -18,10 +42,6 @@
 		</div>
 	<?php endif; ?>
 </section>
-
-<?php 
-	};
-?>
 
 <section id="content">
 
@@ -38,15 +58,6 @@
 	<?php if(have_posts()) : ?>
 
 		<section id="last-stories" class="loop-section">
-			<?php if ($wp->request == 'projects') { ?>
-				
-				<div class="twelve columns">
-					<header class="page-header">
-						<h1><?php _e('Projects', 'infoamazonia'); ?></h1>
-					</header>
-				</div>
-				
-			<?php } else { ?>
 			<div class="section-title">
 				<div class="container">
 					<div class="twelve columns">
@@ -79,16 +90,13 @@
 					</div>
 				</div>
 			</div>
-			<?php } ?>
 			<div class="container">
+				<h1>hola</h1>
 				<?php
 				if(get_query_var('infoamazonia_advanced_nav'))
 					get_template_part('loop', 'explore');
-				elseif($wp->request == 'projects') {
-						get_template_part('loop', 'projects');
-					} else {
-						get_template_part('loop');
-					}
+				else
+					get_template_part('loop');
 				?>
 			</div>
 		</section>
@@ -98,7 +106,6 @@
 		<?php query_posts(); if(have_posts()) : ?>
 
 			<section id="last-stories" class="loop-section">
-				<?php echo "<h1>loop</h1>"; ?>
 				<div class="section-title">
 					<div class="container">
 						<div class="twelve columns">
@@ -120,8 +127,6 @@
 
 	<?php endif; ?>
 
-	<?php // get_template_part('section', 'submit-call'); ?>
-
 	<?php
 	/*
 	 * Side content (get data, share map, contribute)
@@ -132,6 +137,14 @@
 
 </section>
 
+<?php			
+	}
+?>
+
 <?php get_template_part('section', 'main-widget'); ?>
 
 <?php get_footer(); ?>
+
+
+
+
