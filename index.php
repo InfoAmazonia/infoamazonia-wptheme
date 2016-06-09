@@ -1,9 +1,10 @@
 <?php get_header(); ?>
 
-<?php 
-	$post = get_post();
+<?php
+
+	$page_slug = trim( $_SERVER["REQUEST_URI"] , '/' );
 	
-	if ($post->ID == 14416 || $post->ID == 10685) {
+	if ($page_slug == 'projects') {
 		get_template_part('content', 'projects');
 	} else {
 ?>
