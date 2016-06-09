@@ -1,10 +1,8 @@
 <?php get_header(); ?>
 
 <?php
-
-	$page_slug = trim( $_SERVER["REQUEST_URI"] , '/' );
-	
-	if ($page_slug == 'projects') {
+	global $projects;
+	if ($projects) {
 		get_template_part('content', 'projects');
 	} else {
 ?>
