@@ -1,0 +1,1110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: infoamazonia-wptheme 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-17 16:42-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: 404.php:7
+msgid "Page not found"
+msgstr ""
+
+#: archive-blog-post.php:11 inc/blog.php:20 inc/blog.php:30
+msgid "Blog"
+msgstr ""
+
+#: archive-blog-post.php:22 inc/advanced-navigation.php:117
+#: taxonomy-blog-category.php:23 taxonomy-blog-tag.php:23
+msgid "Categories"
+msgstr ""
+
+#: archive-dataset.php:11 inc/datasets.php:22 inc/datasets.php:32
+#: single-dataset.php:10 taxonomy-license.php:11
+msgid "Datasets"
+msgstr ""
+
+#: archive-dataset.php:22 taxonomy-license.php:36
+msgid "Sources"
+msgstr ""
+
+#: archive-dataset.php:32 taxonomy-license.php:46
+msgid "Licenses"
+msgstr ""
+
+#: archive-map.php:11
+msgid "Maps"
+msgstr ""
+
+#: content-embed.php:16 header.php:17
+msgid "Page"
+msgstr ""
+
+#: content-map-group.php:28
+msgid "More..."
+msgstr ""
+
+#: content-map-group.php:43
+msgid "View all maps"
+msgstr ""
+
+#: content-marker-bubble.php:11
+msgctxt "map bubble date format"
+msgid "m/d/Y"
+msgstr ""
+
+#: content-projects.php:9 inc/projects.php:20 inc/projects.php:30
+msgid "Projects"
+msgstr ""
+
+#: functions.php:80
+msgid "Main widgets"
+msgstr ""
+
+#: functions.php:82
+msgid "Widgets used on front and inside pages."
+msgstr ""
+
+#: functions.php:134
+msgid "stories"
+msgstr ""
+
+#: functions.php:136
+msgid "Copy the embed code"
+msgstr ""
+
+#: functions.php:137 loop-explore.php:53 loop.php:42
+#: section-sticky-posts.php:28
+msgid "Share"
+msgstr ""
+
+#: functions.php:138 single.php:44
+msgid "Print"
+msgstr ""
+
+#: functions.php:150 loop-explore.php:52 loop.php:41
+#: section-sticky-posts.php:27
+msgid "Read more"
+msgstr ""
+
+#: functions.php:152
+msgid "Open slideshow"
+msgstr ""
+
+#: functions.php:153
+msgid "Watch video gallery"
+msgstr ""
+
+#: functions.php:154
+msgid "Watch video"
+msgstr ""
+
+#: functions.php:155
+msgid "View image gallery"
+msgstr ""
+
+#: functions.php:156
+msgid "View fullscreen image"
+msgstr ""
+
+#: functions.php:157
+msgid "View infographic"
+msgstr ""
+
+#: functions.php:158
+msgid "View infographics"
+msgstr ""
+
+#: functions.php:187
+msgid ""
+"Success! Thank you, your story will be reviewed by one of our editors and "
+"soon will be online."
+msgstr ""
+
+#: functions.php:188
+msgid "You're being redirect to the home page in 4 seconds."
+msgstr ""
+
+#: functions.php:190
+msgid "Oops, please try again in a few minutes."
+msgstr ""
+
+#: functions.php:386 searchform.php:3
+msgid "Search for stories"
+msgstr ""
+
+#: functions.php:388
+msgid "Search for stories on this map"
+msgstr ""
+
+#: functions.php:390
+msgid "Search for stories on this publisher"
+msgstr ""
+
+#: header.php:58 inc/submit-story.php:14 page-institutional.php:50
+#: section-actions.php:5 section-submit-call.php:6
+msgid "Submit a story"
+msgstr ""
+
+#: header.php:79
+msgid "View map"
+msgstr ""
+
+#: inc/advanced-navigation.php:106
+msgid "Text search"
+msgstr ""
+
+#: inc/advanced-navigation.php:107
+msgid "Type your search here"
+msgstr ""
+
+#: inc/advanced-navigation.php:118
+msgid "Select categories"
+msgstr ""
+
+#: inc/advanced-navigation.php:135
+msgid "Date range"
+msgstr ""
+
+#: inc/advanced-navigation.php:138
+msgid "From"
+msgstr ""
+
+#: inc/advanced-navigation.php:142
+msgid "To"
+msgstr ""
+
+#: inc/advanced-navigation.php:149
+msgid "Filter"
+msgstr ""
+
+#: inc/advanced-navigation.php:160 inc/advanced-navigation.php:171
+msgid "Cancel filters"
+msgstr ""
+
+#: inc/advanced-navigation.php:168 section-subheader.php:47
+msgid "More filters"
+msgstr ""
+
+#: inc/ajax-calendar.php:15
+msgid "AJAX Powered Calendar"
+msgstr ""
+
+#: inc/ajax-calendar.php:18 inc/ajax-calendar.php:28 inc/ajax-calendar.php:46
+#: inc/ajax-calendar.php:113
+msgid "AJAX Calendar"
+msgstr ""
+
+#: inc/ajax-calendar.php:75
+msgid "Stories calendar"
+msgstr ""
+
+#: inc/ajax-calendar.php:118
+msgid "Category IDs:"
+msgstr ""
+
+#: inc/blog.php:21
+msgid "Post"
+msgstr ""
+
+#: inc/blog.php:22
+msgid "Add post"
+msgstr ""
+
+#: inc/blog.php:23
+msgid "Add new post"
+msgstr ""
+
+#: inc/blog.php:24
+msgid "Edit post"
+msgstr ""
+
+#: inc/blog.php:25
+msgid "New post"
+msgstr ""
+
+#: inc/blog.php:26
+msgid "View post"
+msgstr ""
+
+#: inc/blog.php:27
+msgid "Search post"
+msgstr ""
+
+#: inc/blog.php:28
+msgid "No post found"
+msgstr ""
+
+#: inc/blog.php:29
+msgid "No post found in the trash"
+msgstr ""
+
+#: inc/blog.php:36
+msgid "infoamazonia Blog"
+msgstr ""
+
+#: inc/blog.php:53
+msgctxt "Blog category general name"
+msgid "Blog categories"
+msgstr ""
+
+#: inc/blog.php:54
+msgctxt "Blog category singular name"
+msgid "Blog category"
+msgstr ""
+
+#: inc/blog.php:55
+msgid "All blog categories"
+msgstr ""
+
+#: inc/blog.php:56
+msgid "Edit blog category"
+msgstr ""
+
+#: inc/blog.php:57
+msgid "View blog category"
+msgstr ""
+
+#: inc/blog.php:58
+msgid "Update blog category"
+msgstr ""
+
+#: inc/blog.php:59
+msgid "Add new blog category"
+msgstr ""
+
+#: inc/blog.php:60
+msgid "New blog category name"
+msgstr ""
+
+#: inc/blog.php:61
+msgid "Parent blog category"
+msgstr ""
+
+#: inc/blog.php:62
+msgid "Parent blog category:"
+msgstr ""
+
+#: inc/blog.php:63
+msgid "Search blog categories"
+msgstr ""
+
+#: inc/blog.php:64
+msgid "Popular blog categories"
+msgstr ""
+
+#: inc/blog.php:65
+msgid "Separate blog categories with commas"
+msgstr ""
+
+#: inc/blog.php:66
+msgid "Add or remove blog categories"
+msgstr ""
+
+#: inc/blog.php:67
+msgid "Choose from most used blog categories"
+msgstr ""
+
+#: inc/blog.php:68
+msgid "No blog categories found"
+msgstr ""
+
+#: inc/blog.php:83
+msgctxt "Blog tag general name"
+msgid "Blog tags"
+msgstr ""
+
+#: inc/blog.php:84
+msgctxt "Blog tag singular name"
+msgid "Blog tag"
+msgstr ""
+
+#: inc/blog.php:85
+msgid "All blog tags"
+msgstr ""
+
+#: inc/blog.php:86
+msgid "Edit blog tag"
+msgstr ""
+
+#: inc/blog.php:87
+msgid "View blog tag"
+msgstr ""
+
+#: inc/blog.php:88
+msgid "Update blog tag"
+msgstr ""
+
+#: inc/blog.php:89
+msgid "Add new blog tag"
+msgstr ""
+
+#: inc/blog.php:90
+msgid "New blog tag name"
+msgstr ""
+
+#: inc/blog.php:91
+msgid "Parent blog tag"
+msgstr ""
+
+#: inc/blog.php:92
+msgid "Parent blog tag:"
+msgstr ""
+
+#: inc/blog.php:93
+msgid "Search blog tags"
+msgstr ""
+
+#: inc/blog.php:94
+msgid "Popular blog tags"
+msgstr ""
+
+#: inc/blog.php:95
+msgid "Separate blog tags with commas"
+msgstr ""
+
+#: inc/blog.php:96
+msgid "Add or remove blog tags"
+msgstr ""
+
+#: inc/blog.php:97
+msgid "Choose from most used blog tags"
+msgstr ""
+
+#: inc/blog.php:98
+msgid "No blog tags found"
+msgstr ""
+
+#: inc/category-feeds-widget.php:5
+msgid "RSS Feeds by selected categories"
+msgstr ""
+
+#: inc/category-feeds-widget.php:6
+msgid "Category Feed Links"
+msgstr ""
+
+#: inc/category-feeds-widget.php:10
+msgid "RSS Feeds"
+msgstr ""
+
+#: inc/category-feeds-widget.php:14
+msgid "Title"
+msgstr ""
+
+#: inc/category-feeds-widget.php:15
+msgid "Categories separated by comma"
+msgstr ""
+
+#: inc/category-feeds-widget.php:43 index.php:63 single-map.php:47
+msgid "RSS Feed"
+msgstr ""
+
+#: inc/datasets.php:23
+msgid "Dataset"
+msgstr ""
+
+#: inc/datasets.php:24
+msgid "Add dataset"
+msgstr ""
+
+#: inc/datasets.php:25
+msgid "Add new dataset"
+msgstr ""
+
+#: inc/datasets.php:26
+msgid "Edit dataset"
+msgstr ""
+
+#: inc/datasets.php:27
+msgid "New dataset"
+msgstr ""
+
+#: inc/datasets.php:28
+msgid "View dataset"
+msgstr ""
+
+#: inc/datasets.php:29
+msgid "Search dataset"
+msgstr ""
+
+#: inc/datasets.php:30
+msgid "No dataset found"
+msgstr ""
+
+#: inc/datasets.php:31
+msgid "No dataset found in the trash"
+msgstr ""
+
+#: inc/datasets.php:38
+msgid "infoamazonia Datasets"
+msgstr ""
+
+#: inc/datasets.php:55
+msgctxt "License general name"
+msgid "Licenses"
+msgstr ""
+
+#: inc/datasets.php:56
+msgctxt "License singular name"
+msgid "License"
+msgstr ""
+
+#: inc/datasets.php:57
+msgid "All licenses"
+msgstr ""
+
+#: inc/datasets.php:58
+msgid "Edit license"
+msgstr ""
+
+#: inc/datasets.php:59
+msgid "View license"
+msgstr ""
+
+#: inc/datasets.php:60
+msgid "Update license"
+msgstr ""
+
+#: inc/datasets.php:61
+msgid "Add new license"
+msgstr ""
+
+#: inc/datasets.php:62
+msgid "New license name"
+msgstr ""
+
+#: inc/datasets.php:63
+msgid "Parent license"
+msgstr ""
+
+#: inc/datasets.php:64
+msgid "Parent license:"
+msgstr ""
+
+#: inc/datasets.php:65
+msgid "Search licenses"
+msgstr ""
+
+#: inc/datasets.php:66
+msgid "Popular licenses"
+msgstr ""
+
+#: inc/datasets.php:67
+msgid "Separate licenses with commas"
+msgstr ""
+
+#: inc/datasets.php:68
+msgid "Add or remove licenses"
+msgstr ""
+
+#: inc/datasets.php:69
+msgid "Choose from most used licenses"
+msgstr ""
+
+#: inc/datasets.php:70
+msgid "No licenses found"
+msgstr ""
+
+#: inc/datasets.php:85
+msgctxt "Source general name"
+msgid "Sources"
+msgstr ""
+
+#: inc/datasets.php:86
+msgctxt "Source singular name"
+msgid "Source"
+msgstr ""
+
+#: inc/datasets.php:87
+msgid "All sources"
+msgstr ""
+
+#: inc/datasets.php:88
+msgid "Edit source"
+msgstr ""
+
+#: inc/datasets.php:89
+msgid "View source"
+msgstr ""
+
+#: inc/datasets.php:90
+msgid "Update source"
+msgstr ""
+
+#: inc/datasets.php:91
+msgid "Add new source"
+msgstr ""
+
+#: inc/datasets.php:92
+msgid "New source name"
+msgstr ""
+
+#: inc/datasets.php:93
+msgid "Parent source"
+msgstr ""
+
+#: inc/datasets.php:94
+msgid "Parent source:"
+msgstr ""
+
+#: inc/datasets.php:95
+msgid "Search sources"
+msgstr ""
+
+#: inc/datasets.php:96
+msgid "Popular sources"
+msgstr ""
+
+#: inc/datasets.php:97
+msgid "Separate sources with commas"
+msgstr ""
+
+#: inc/datasets.php:98
+msgid "Add or remove sources"
+msgstr ""
+
+#: inc/datasets.php:99
+msgid "Choose from most used sources"
+msgstr ""
+
+#: inc/datasets.php:100
+msgid "No sources found"
+msgstr ""
+
+#: inc/geocode-box.php:17 inc/submit-story.php:13
+msgid "Close"
+msgstr ""
+
+#: inc/geocode-box.php:19
+msgid "Finish geocoding"
+msgstr ""
+
+#: inc/jeo-post-zoom.php:20
+msgid "Zoom"
+msgstr ""
+
+#: inc/metaboxes/featured/featured.php:9
+msgid "Featured post"
+msgstr ""
+
+#: inc/metaboxes/featured/featured.php:21
+msgid "This post is featured"
+msgstr ""
+
+#: inc/metaboxes/story/story-meta.php:9
+msgid "Story data"
+msgstr ""
+
+#: inc/metaboxes/story/story-meta.php:28
+msgid "Author name"
+msgstr ""
+
+#: inc/metaboxes/story/story-meta.php:32
+msgid "Author email"
+msgstr ""
+
+#: inc/metaboxes/story/story-meta.php:36 inc/submit-story.php:35
+msgid "Reporter"
+msgstr ""
+
+#: inc/metaboxes/story/story-meta.php:40 inc/submit-story.php:47
+#: inc/submit-story.php:93
+msgid "Story url"
+msgstr ""
+
+#: inc/metaboxes/story/story-meta.php:44 inc/submit-story.php:51
+msgid "Lead picture"
+msgstr ""
+
+#: inc/metaboxes/story/story-meta.php:48 inc/submit-story.php:73
+msgid "Publishing date"
+msgstr ""
+
+#: inc/metaboxes/story/story-meta.php:52 inc/submit-story.php:77
+msgid "Notes to the infoamazonia editor"
+msgstr ""
+
+#: inc/projects.php:21
+msgid "Project"
+msgstr ""
+
+#: inc/projects.php:22
+msgid "Add project"
+msgstr ""
+
+#: inc/projects.php:23
+msgid "Add new project"
+msgstr ""
+
+#: inc/projects.php:24
+msgid "Edit project"
+msgstr ""
+
+#: inc/projects.php:25
+msgid "New project"
+msgstr ""
+
+#: inc/projects.php:26
+msgid "View project"
+msgstr ""
+
+#: inc/projects.php:27
+msgid "Search project"
+msgstr ""
+
+#: inc/projects.php:28
+msgid "No project found"
+msgstr ""
+
+#: inc/projects.php:29
+msgid "No project found in the trash"
+msgstr ""
+
+#: inc/projects.php:36
+msgid "infoamazonia Projects"
+msgstr ""
+
+#: inc/slider.php:26
+msgid "Slider"
+msgstr ""
+
+#: inc/slider.php:27
+msgid "Slider item"
+msgstr ""
+
+#: inc/slider.php:28
+msgid "Add slider item"
+msgstr ""
+
+#: inc/slider.php:29
+msgid "Add new slider item"
+msgstr ""
+
+#: inc/slider.php:30
+msgid "Edit slider item"
+msgstr ""
+
+#: inc/slider.php:31
+msgid "New slider item"
+msgstr ""
+
+#: inc/slider.php:32
+msgid "View slider item"
+msgstr ""
+
+#: inc/slider.php:33
+msgid "Search slider items"
+msgstr ""
+
+#: inc/slider.php:34
+msgid "No slider item found"
+msgstr ""
+
+#: inc/slider.php:35
+msgid "No slider item found in the trash"
+msgstr ""
+
+#: inc/slider.php:36
+msgid "Featured slider"
+msgstr ""
+
+#: inc/slider.php:42
+msgid "Arte Fora do Museu slider"
+msgstr ""
+
+#: inc/submit-story.php:15 section-submit-call.php:4
+msgid ""
+"Do you have news to share from the Amazon? Contribute to this map by "
+"submitting your story. Help broaden the understanding of the global impact "
+"of this important region in the world."
+msgstr ""
+
+#: inc/submit-story.php:20
+msgid "Submit a url"
+msgstr ""
+
+#: inc/submit-story.php:21
+msgid "Submit full story"
+msgstr ""
+
+#: inc/submit-story.php:27 inc/submit-story.php:85
+msgid "Your full name"
+msgstr ""
+
+#: inc/submit-story.php:31 inc/submit-story.php:89
+msgid "E-mail"
+msgstr ""
+
+#: inc/submit-story.php:39
+msgid "Story title"
+msgstr ""
+
+#: inc/submit-story.php:43
+msgid "Story text"
+msgstr ""
+
+#: inc/submit-story.php:56 inc/submit-story.php:98
+msgid "Story location"
+msgstr ""
+
+#: inc/submit-story.php:58 inc/submit-story.php:100
+msgid "Find location on map"
+msgstr ""
+
+#: inc/submit-story.php:63 inc/submit-story.php:105
+msgid "Latitude:"
+msgstr ""
+
+#: inc/submit-story.php:64 inc/submit-story.php:106
+msgid "Longitude:"
+msgstr ""
+
+#: inc/submit-story.php:80 inc/submit-story.php:114
+msgid "Send story"
+msgstr ""
+
+#: inc/submit-story.php:135
+msgid "Missing information. Please fill all the required fields!"
+msgstr ""
+
+#: inc/submit-story.php:144
+msgid "Could not save submission"
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:250
+msgid "Delete this image"
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:250
+#: inc/tax-meta-class/tax-meta-class.php:882
+msgid "Delete"
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:357
+msgid "Cannot delete file. Something's wrong."
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:582
+#: inc/tax-meta-class/tax-meta-class.php:629
+msgid "Remove"
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:595
+msgid "Add"
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:878
+msgid "Uploaded files"
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:889
+msgid "Upload new files"
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:895
+msgid "Add more files"
+msgstr ""
+
+#: inc/tax-meta-class/tax-meta-class.php:947
+msgid "Select a color"
+msgstr ""
+
+#: inc/taxonomies-meta.php:10
+msgid "Publisher information"
+msgstr ""
+
+#: inc/taxonomies-meta.php:17
+msgid "Publisher url"
+msgstr ""
+
+#: inc/taxonomies.php:9 inc/taxonomies.php:23
+msgid "Publishers"
+msgstr ""
+
+#: inc/taxonomies.php:10
+msgid "Publisher"
+msgstr ""
+
+#: inc/taxonomies.php:11
+msgid "Search publishers"
+msgstr ""
+
+#: inc/taxonomies.php:12
+msgid "Popular publishers"
+msgstr ""
+
+#: inc/taxonomies.php:13
+msgid "All publishers"
+msgstr ""
+
+#: inc/taxonomies.php:14
+msgid "Parent publisher"
+msgstr ""
+
+#: inc/taxonomies.php:15
+msgid "Parent publisher:"
+msgstr ""
+
+#: inc/taxonomies.php:16
+msgid "Edit publisher"
+msgstr ""
+
+#: inc/taxonomies.php:17
+msgid "Update publisher"
+msgstr ""
+
+#: inc/taxonomies.php:18
+msgid "Add new publisher"
+msgstr ""
+
+#: inc/taxonomies.php:19
+msgid "New publisher name"
+msgstr ""
+
+#: inc/taxonomies.php:20
+msgid "Separate publishers with commas"
+msgstr ""
+
+#: inc/taxonomies.php:21
+msgid "Add or remove publishers"
+msgstr ""
+
+#: inc/taxonomies.php:22
+msgid "Choose from most used publishers"
+msgstr ""
+
+#: index.php:42
+msgid "Latest stories"
+msgstr ""
+
+#: index.php:44
+msgid "Stories by "
+msgstr ""
+
+#: index.php:46
+msgid "Stories on "
+msgstr ""
+
+#: index.php:48
+msgid "Stories"
+msgstr ""
+
+#: index.php:51
+#, php-format
+msgid "Page %d"
+msgstr ""
+
+#: index.php:64 single-map.php:48
+msgid "Get GeoJSON"
+msgstr ""
+
+#: index.php:65 loop-dataset.php:21 single-map.php:49
+msgid "Download"
+msgstr ""
+
+#: index.php:88
+msgid "Nothing found. Viewing all posts"
+msgstr ""
+
+#: loop-blog-post.php:9 single-blog-post.php:13
+msgid "by"
+msgstr ""
+
+#: loop-dataset.php:16
+msgid "View this data"
+msgstr ""
+
+#: loop-dataset.php:29 single-dataset.php:50
+msgid "Download from source"
+msgstr ""
+
+#: loop-explore.php:29 loop.php:18
+msgctxt "reduced date format"
+msgid "m/d/Y"
+msgstr ""
+
+#: loop-projects.php:9 single-project.php:20
+msgid "View this project"
+msgstr ""
+
+#: page-institutional.php:48
+msgid "Citizen participation"
+msgstr ""
+
+#: page-institutional.php:49
+msgid "Take action on Amazon issues!"
+msgstr ""
+
+#: page-institutional.php:81
+msgid "Data and analysis"
+msgstr ""
+
+#: page-institutional.php:82
+msgid ""
+"12 GB of updated datasets on the most pressuring issues of the Amazon "
+"rainforest. All data available for download. Get graphical analysis through "
+"maps and charts."
+msgstr ""
+
+#: page-institutional.php:91
+msgid "Map design"
+msgstr ""
+
+#: page-institutional.php:92
+msgid ""
+"More than 30 layers of georeferenced data ready to be used on interactive "
+"maps. Make your own visualization with our tool and get the embed code to "
+"publish customized maps"
+msgstr ""
+
+#: page-institutional.php:124
+msgid "Journalists and<br/>citizen network"
+msgstr ""
+
+#: page-institutional.php:125
+msgid ""
+"Get news from a network of journalist which expands through 9 countries and "
+"read first hand reports of citizens and NGOs sent directly from the cities, "
+"forests and rivers of the Amazon"
+msgstr ""
+
+#: page-institutional.php:133
+msgid "Map gallery"
+msgstr ""
+
+#: page-institutional.php:135 single-map.php:14
+msgid "Embed this map"
+msgstr ""
+
+#: page-institutional.php:204
+msgid "Special projects"
+msgstr ""
+
+#: searchform.php:4
+msgid "Search"
+msgstr ""
+
+#: section-actions.php:6
+msgid ""
+"Do you have news to share from the Amazon? Contribute to this map by "
+"submitting your story."
+msgstr ""
+
+#: section-actions.php:10
+msgid "Customize and share"
+msgstr ""
+
+#: section-actions.php:11
+msgid ""
+"Create a custom map visualization with different news and spread the word."
+msgstr ""
+
+#: section-actions.php:15
+msgid "Get the data"
+msgstr ""
+
+#: section-actions.php:16
+msgid ""
+"Download all the researched data used to design our maps and help us remix "
+"it into new visualizations."
+msgstr ""
+
+#: section-publisher-description.php:10
+msgid "Visit"
+msgstr ""
+
+#: section-subheader.php:6
+msgid "Advanced filters"
+msgstr ""
+
+#: section-subheader.php:14
+msgid "Choose a publisher"
+msgstr ""
+
+#: section-subheader.php:28
+msgid "All stories"
+msgstr ""
+
+#: section-subheader.php:60
+msgid "Nothing found for: "
+msgstr ""
+
+#: section-subheader.php:62
+msgid "Search results for: "
+msgstr ""
+
+#: section-subheader.php:75
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: section-subheader.php:77
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: section-subheader.php:77
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: section-subheader.php:79
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: section-subheader.php:79
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: section-subheader.php:81
+msgid "Archives"
+msgstr ""
+
+#: single-dataset.php:28
+msgid "Preview data"
+msgstr ""
+
+#: single-dataset.php:42
+msgid "Download this data"
+msgstr ""
+
+#: single-dataset.php:61
+msgid "License"
+msgstr ""
+
+#: single-dataset.php:63
+msgid "More data on this license"
+msgstr ""
+
+#: single-dataset.php:74
+msgid "Source"
+msgstr ""
+
+#: single-dataset.php:76
+msgid "More data from this source"
+msgstr ""
+
+#: single-map.php:37
+msgid "Stories on"
+msgstr ""
+
+#: single.php:36
+msgid "Original article"
+msgstr ""
+
+#: single.php:40
+msgid "Embed this story"
+msgstr ""
