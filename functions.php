@@ -507,7 +507,7 @@ add_filter('jeo_markers_geojson_keys', 'infoamazonia_geojson_keys');
 
 function infoamazonia_flush_rewrite() {
 	global $pagenow;
-	if(is_admin() && $_REQUEST['activated'] && $pagenow == 'themes.php') {
+	if(is_admin() && isset($_REQUEST['activated']) && $_REQUEST['activated'] && $pagenow == 'themes.php') {
 		global $wp_rewrite;
 		$wp_rewrite->init();
 		$wp_rewrite->flush_rules();
