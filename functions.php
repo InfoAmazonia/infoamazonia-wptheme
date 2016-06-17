@@ -219,7 +219,7 @@ function infoamazonia_map_data($data, $map) {
 	$data['layers'] = $layers;
 	return $data;
 }
-add_filter('jeo_map_data', 'infoamazonia_map_data', 10, 2);
+//add_filter('jeo_map_data', 'infoamazonia_map_data', 10, 2);
 
 // slideshow
 include(STYLESHEETPATH . '/inc/slideshow.php');
@@ -618,3 +618,13 @@ function infoamazonia_geojson_headers() {
 	}
 }
 add_action('jeo_markers_before_print', 'infoamazonia_geojson_headers');
+
+function infoamazonia_get_current_page() {
+	global $page_slug;
+	global $projects;
+	$page_slug = trim( $_SERVER["REQUEST_URI"] , '/' );
+	if (preg_match("/projects/i", $page_slug )) {
+		$projects = true;
+	}
+}
+add_action('jeo_init', 'infoamazonia_get_current_page');

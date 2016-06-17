@@ -1,5 +1,12 @@
 <?php get_header(); ?>
 
+<?php
+	global $projects;
+	if ($projects) {
+		get_template_part('content', 'projects');
+	} else {
+?>
+
 <section id="stage">
 	<div class="container">
 		<div class="twelve columns">
@@ -96,8 +103,6 @@
 
 	<?php endif; ?>
 
-	<?php // get_template_part('section', 'submit-call'); ?>
-
 	<?php
 	/*
 	 * Side content (get data, share map, contribute)
@@ -108,6 +113,14 @@
 
 </section>
 
+<?php			
+	}
+?>
+
 <?php get_template_part('section', 'main-widget'); ?>
 
 <?php get_footer(); ?>
+
+
+
+
