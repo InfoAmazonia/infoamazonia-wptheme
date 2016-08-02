@@ -38,8 +38,8 @@
 				<div class="three columns">
 					<?php
 					$lang = '';
-					if(function_exists('qtrans_getLanguage'))
-						$lang = qtrans_getLanguage();
+					if(function_exists('qtranxf_getLanguage'))
+						$lang = qtranxf_getLanguage();
 					?>
 					<h1>
 						<a href="<?php echo home_url('/' . $lang); ?>" title="<?php echo bloginfo('name'); ?>"><span><?php bloginfo('name'); ?></span> <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" class="logo" /></a>
@@ -91,18 +91,18 @@
 			<div class="twelve columns">
 				<div class="subnav-container">
 					<div class="subnav-content">
-						<?php if(function_exists('qtrans_getLanguage')) : ?>
+						<?php if(function_exists('qtranxf_getLanguage')) : ?>
 							<nav id="langnav">
 								<ul>
 									<?php
 									global $q_config;
 									if(is_404()) $url = get_option('home'); else $url = '';
-									$current = qtrans_getLanguage();
-									foreach($q_config['enabled_languages'] as $language) {
+									$current = qtranxf_getLanguage();
+									foreach($q_config['enabled_lagnenapuages'] as $language) {
 										$attrs = '';
 										if($language == $current)
 											$attrs = 'class="active"';
-										echo '<li><a href="' . qtrans_convertURL($url, $language) . '" ' . $attrs . '>' . $language . '</a></li>';
+										echo '<li><a href="' . qtranxf_convertURL($url, $language) . '" ' . $attrs . '>' . $language . '</a></li>';
 									}
 									?>
 								</ul>
