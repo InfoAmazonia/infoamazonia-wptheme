@@ -27,23 +27,20 @@ if(!class_exists('Acf')) {
 	}
 	add_filter('acf/helpers/get_dir', 'infoamazonia_acf_dir');
 
-}
+	function infoamazonia_acf_date_time_picker_dir() {
+		return infoamazonia_acf_dir() . '/add-ons/acf-field-date-time-picker/';
+	}
+	add_filter('acf/add-ons/date-time-picker/get_dir', 'infoamazonia_acf_date_time_picker_dir');
+	
+	function infoamazonia_acf_repeater_dir() {
+		return infoamazonia_acf_dir() . '/add-ons/acf-repeater/';
+	}
+	add_filter('acf/add-ons/repeater/get_dir', 'infoamazonia_acf_repeater_dir');
 
-function infoamazonia_acf_date_time_picker_dir() {
-	return infoamazonia_acf_dir() . '/add-ons/acf-field-date-time-picker/';
-}
-add_filter('acf/add-ons/date-time-picker/get_dir', 'infoamazonia_acf_date_time_picker_dir');
-
-function infoamazonia_acf_repeater_dir() {
-	return infoamazonia_acf_dir() . '/add-ons/acf-repeater/';
-}
-add_filter('acf/add-ons/repeater/get_dir', 'infoamazonia_acf_repeater_dir');
-
-if(!class_exists('Acf')) {
 	define('ACF_LITE', true);
 	require_once(STYLESHEETPATH . '/inc/acf/acf.php');
+	include_once(STYLESHEETPATH . '/inc/acf/add-ons/acf-qtranslate/acf-qtranslate.php');
 }
-include_once(STYLESHEETPATH . '/inc/acf/add-ons/acf-qtranslate/acf-qtranslate.php');
 
 /*
  * Slider
