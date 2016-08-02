@@ -98,7 +98,7 @@
 									global $q_config;
 									if(is_404()) $url = get_option('home'); else $url = '';
 									$current = qtranxf_getLanguage();
-									foreach($q_config['enabled_lagnenapuages'] as $language) {
+									foreach($q_config['enabled_languages'] as $language) {
 										$attrs = '';
 										if($language == $current)
 											$attrs = 'class="active"';
