@@ -117,8 +117,8 @@ function infoamazonia_scripts() {
 	wp_register_script('twttr', 'http://platform.twitter.com/widgets.js');
 
 	$lang = '';
-	if(function_exists('qtrans_getLanguage')) {
-		$lang = qtrans_getLanguage();
+	if(function_exists('qtranxf_getLanguage')) {
+		$lang = qtranxf_getLanguage();
 	}
 
 	// custom marker system
@@ -238,9 +238,9 @@ function infoamazonia_story_fragment_title($title, $sep) {
 	return $title;
 }
 
-// add qtrans filter to get_permalink
-if(function_exists('qtrans_convertURL'))
-	add_filter('post_type_link', 'qtrans_convertURL');
+// add qtrans x filter to get_permalink
+if(function_exists('qtranxf_convertURL'))
+	add_filter('post_type_link', 'qtranxf_convertURL');
 
 function infoamazonia_gfw_markers_data($data, $query) {
 	if(isset($_GET['gfw'])) {
@@ -290,8 +290,8 @@ function infoamazonia_marker_data($data, $post) {
 
 	$permalink = $data['url'];
 
-	if(function_exists('qtrans_getLanguage'))
-		$permalink = add_query_arg(array('lang' => qtrans_getLanguage()), $permalink);
+	if(function_exists('qtranxf_getLanguage'))
+		$permalink = add_query_arg(array('lang' => qtranxf_getLanguage()), $permalink);
 
 	$data['permalink'] = $permalink;
 	$data['url'] = $permalink;
@@ -350,8 +350,8 @@ function infoamazonia_all_markers_if_none($posts, $query) {
 //add_filter('jeo_the_markers', 'infoamazonia_all_markers_if_none', 10, 2);
 
 // multilanguage publishers
-add_action('publisher_add_form', 'qtrans_modifyTermFormFor');
-add_action('publisher_edit_form', 'qtrans_modifyTermFormFor');
+add_action('publisher_add_form', 'qtranxf_modifyTermFormFor');
+add_action('publisher_edit_form', 'qtranxf_modifyTermFormFor');
 
 // limit markers per page
 function infoamazonia_markers_limit() {
@@ -483,15 +483,15 @@ add_action('wp_head', 'infoamazonia_share_meta');
  */
 
 function infoamazonia_geojson_key($key) {
-	if(function_exists('qtrans_getLanguage'))
-		$key = '_ia_geojson_' . qtrans_getLanguage();
+	if(function_exists('qtranxf_getLanguage'))
+		$key = '_ia_geojson_' . qtranxf_getLanguage();
 
 	return $key;
 }
 add_filter('jeo_markers_geojson_key', 'infoamazonia_geojson_key');
 
 function infoamazonia_geojson_keys($keys) {
-	if(function_exists('qtrans_getLanguage')) {
+	if(function_exists('qtranxf_getLanguage')) {
 		global $q_config;
 		$keys = array();
 		foreach($q_config['enabled_languages'] as $lang) {
@@ -513,8 +513,8 @@ function infoamazonia_flush_rewrite() {
 add_action('jeo_init', 'infoamazonia_flush_rewrite');
 
 function infoamazonia_convert_url($url) {
-	if(function_exists('qtrans_convertURL'))
-		$url = qtrans_convertURL($url);
+	if(function_exists('qtranxf_convertURL'))
+		$url = qtranxf_convertURL($url);
 
 	$pos = strpos($url, '?');
 	if($pos === false)
@@ -569,8 +569,8 @@ function infoamazonia_date_query_clauses($clauses, $query) {
 }
 
 function infoamazonia_home_url($path = '') {
-	if(function_exists('qtrans_convertURL'))
-		return qtrans_convertURL(home_url($path));
+	if(function_exists('qtranxf_convertURL'))
+		return qtranxf_convertURL(home_url($path));
 	else
 		return home_url($path);
 }
@@ -578,7 +578,7 @@ function infoamazonia_home_url($path = '') {
 // convert local URLs in custom menu items
 function qtrans_menuitem( $menu_item ) {
 	if ($menu_item->type == 'custom' && stripos($menu_item->url, get_site_url()) !== false){
-		$menu_item->url = qtrans_convertURL($menu_item->url);
+		$menu_item->url = qtranxf_convertURL($menu_item->url);
 	}
 	return $menu_item;
 }
