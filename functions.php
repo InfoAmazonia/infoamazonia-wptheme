@@ -31,7 +31,7 @@ if(!class_exists('Acf')) {
 		return infoamazonia_acf_dir() . '/add-ons/acf-field-date-time-picker/';
 	}
 	add_filter('acf/add-ons/date-time-picker/get_dir', 'infoamazonia_acf_date_time_picker_dir');
-	
+
 	function infoamazonia_acf_repeater_dir() {
 		return infoamazonia_acf_dir() . '/add-ons/acf-repeater/';
 	}
@@ -593,6 +593,13 @@ function infoamazonia_home_query($query) {
 	}
 }
 add_action('pre_get_posts', 'infoamazonia_home_query');
+
+function infoamazonia_home_map_gallery($conf) {
+	if(is_front_page())
+		$conf['disableMarkers'] = true;
+	return $conf;
+}
+add_filter('jeo_mapgroup_conf', 'infoamazonia_home_map_gallery');
 
 function infoamazonia_disable_share_a_map_nav() {
 	return true;
