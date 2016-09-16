@@ -1,5 +1,5 @@
 <?php $conf = jeo_map_conf(); ?>
-<?php if(!is_single()) : ?>
+<?php if(!is_single() && !is_taxonomy('country')) : ?>
 	<div class="map-sidebar">
 		<div class="viewing-post">
 		</div>

@@ -50,17 +50,8 @@
 		<div class="more-filters">
 			<div class="more-filters-content">
 				<?php infoamazonia_adv_nav_filters(); ?>
-			</div>			
+			</div>
 		</div>
-	<?php elseif(is_search()) : ?>
-
-		<?php
-		global $wp_query;
-		if(empty($wp_query->posts))
-			echo '<h1 class="title">' . __('Nothing found for: ', 'infoamazonia') . '"' . $_REQUEST['s'] . '"</h1>';
-		else
-			echo '<h1 class="title">' . __('Search results for: ', 'infoamazonia') . '"' . $_REQUEST['s'] . '"</h1>';
-		?>
 
 	<?php elseif(is_category()) : ?>
 
@@ -78,7 +69,7 @@
 		elseif (is_year()) :
 			printf('<h1 class="title">' . __('Yearly Archives: %s', 'infoamazonia'), get_the_date(_x('Y', 'yearly archives date format', 'infoamazonia')) . '</h1>');
 		else :
-			echo '<h1 class="title">' . __('Archives', 'twentytwelve') . '</h1>';
+			echo '<h1 class="title">' . __('Archives', 'infoamazonia') . '</h1>';
 		endif;
 	endif; ?>
 </div>

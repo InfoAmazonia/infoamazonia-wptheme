@@ -16,6 +16,38 @@ include(STYLESHEETPATH . '/inc/taxonomies.php');
 // taxonomy meta
 include(STYLESHEETPATH . '/inc/taxonomies-meta.php');
 
+// countries special
+include(STYLESHEETPATH . '/inc/countries-special.php');
+
+/*
+ * Required plugins
+ */
+require_once(STYLESHEETPATH . '/inc/class-tgm-plugin-activation.php');
+function infoamazonia_register_required_plugins() {
+  $plugins = array();
+  if(defined('ACF_PRO_KEY')) {
+    $plugins[] = array(
+      'name' => 'Advanced Custom Fields PRO',
+      'slug' => 'advanced-custom-fields-pro',
+      'required' => true,
+      'force_activation' => true,
+      'source' => 'https://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=' . ACF_PRO_KEY
+    );
+  }
+  $options = array(
+    'default_path'  => '',
+    'menu'      => 'infoamazonia-install-plugins',
+    'has_notices'  => true,
+    'dismissable'  => true,
+    'dismiss_msg'  => '',
+    'is_automatic'  => false,
+    'message'    => ''
+  );
+  tgmpa($plugins, $options);
+}
+add_action('tgmpa_register', 'infoamazonia_register_required_plugins');
+
+
 /*
  * Advanced Custom Fields
  */
@@ -31,13 +63,13 @@ if(!class_exists('Acf')) {
 		return infoamazonia_acf_dir() . '/add-ons/acf-field-date-time-picker/';
 	}
 	add_filter('acf/add-ons/date-time-picker/get_dir', 'infoamazonia_acf_date_time_picker_dir');
-	
+
 	function infoamazonia_acf_repeater_dir() {
 		return infoamazonia_acf_dir() . '/add-ons/acf-repeater/';
 	}
 	add_filter('acf/add-ons/repeater/get_dir', 'infoamazonia_acf_repeater_dir');
 
-	define('ACF_LITE', true);
+	// define('ACF_LITE', true);
 	require_once(STYLESHEETPATH . '/inc/acf/acf.php');
 	include_once(STYLESHEETPATH . '/inc/acf/add-ons/acf-qtranslate/acf-qtranslate.php');
 }
@@ -123,40 +155,42 @@ function infoamazonia_scripts() {
 
 	// custom marker system
 	global $jeo_markers;
-	wp_deregister_script('jeo.markers');
-	wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.17', true);
-	wp_localize_script('jeo.markers', 'infoamazonia_markers', array(
-		'ajaxurl' => admin_url('admin-ajax.php'),
-		'query' => $jeo_markers->query(),
-		'stories_label' => __('stories', 'infoamazonia'),
-		'home' => (is_home() && !is_paged() && !$_REQUEST['infoamazonia_filter_']),
-		'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
-		'share_label' => __('Share', 'infoamazonia'),
-		'print_label' => __('Print', 'infoamazonia'),
-		'embed_base_url' => home_url('/' . $lang . '/embed/'),
-		'share_base_url' => home_url('/' . $lang . '/share/'),
-		'marker_active' => array(
-			'iconUrl' => get_stylesheet_directory_uri() . '/img/marker_active.png',
-			'iconSize' => array(26, 30),
-			'iconAnchor' => array(13, 30),
-			'popupAnchor' => array(0, -40),
-			'markerId' => 'none'
-		),
-		'language' => $lang,
-		'site_url' => home_url('/'),
-		'read_more_label' => __('Read more', 'infoamazonia'),
-		'lightbox_label' => array(
-			'slideshow' => __('Open slideshow', 'infoamazonia'),
-			'videos' => __('Watch video gallery', 'infoamazonia'),
-			'video' => __('Watch video', 'infoamazonia'),
-			'images' => __('View image gallery', 'infoamazonia'),
-			'image' => __('View fullscreen image', 'infoamazonia'),
-			'infographic' => __('View infographic', 'infoamazonia'),
-			'infographics' => __('View infographics', 'infoamazonia')
-		),
-		'enable_clustering' => jeo_use_clustering() ? true : false,
-		'default_icon' => jeo_formatted_default_marker()
-	));
+	if(!is_taxonomy('country')) {
+		wp_deregister_script('jeo.markers');
+		wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.17', true);
+		wp_localize_script('jeo.markers', 'infoamazonia_markers', array(
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'query' => $jeo_markers->query(),
+			'stories_label' => __('stories', 'infoamazonia'),
+			'home' => (is_home() && !is_paged() && !$_REQUEST['infoamazonia_filter_']),
+			'copy_embed_label' => __('Copy the embed code', 'infoamazonia'),
+			'share_label' => __('Share', 'infoamazonia'),
+			'print_label' => __('Print', 'infoamazonia'),
+			'embed_base_url' => home_url('/' . $lang . '/embed/'),
+			'share_base_url' => home_url('/' . $lang . '/share/'),
+			'marker_active' => array(
+				'iconUrl' => get_stylesheet_directory_uri() . '/img/marker_active.png',
+				'iconSize' => array(26, 30),
+				'iconAnchor' => array(13, 30),
+				'popupAnchor' => array(0, -40),
+				'markerId' => 'none'
+			),
+			'language' => $lang,
+			'site_url' => home_url('/'),
+			'read_more_label' => __('Read more', 'infoamazonia'),
+			'lightbox_label' => array(
+				'slideshow' => __('Open slideshow', 'infoamazonia'),
+				'videos' => __('Watch video gallery', 'infoamazonia'),
+				'video' => __('Watch video', 'infoamazonia'),
+				'images' => __('View image gallery', 'infoamazonia'),
+				'image' => __('View fullscreen image', 'infoamazonia'),
+				'infographic' => __('View infographic', 'infoamazonia'),
+				'infographics' => __('View infographics', 'infoamazonia')
+			),
+			'enable_clustering' => jeo_use_clustering() ? true : false,
+			'default_icon' => jeo_formatted_default_marker()
+		));
+	}
 
 	if(is_home())
 		wp_enqueue_script('infoamazonia-sticky', get_stylesheet_directory_uri() . '/js/sticky-posts.js', array('jeo.markers', 'jquery'), '0.1.2');
