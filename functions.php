@@ -601,6 +601,12 @@ function infoamazonia_home_map_gallery($conf) {
 }
 add_filter('jeo_mapgroup_conf', 'infoamazonia_home_map_gallery');
 
+// Force empty map legend
+function ia_map_legend() {
+	return '';
+}
+add_filter('jeo_map_legend', 'ia_map_legend');
+
 function infoamazonia_disable_share_a_map_nav() {
 	return true;
 }
