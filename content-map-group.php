@@ -37,8 +37,8 @@ if(is_array($mapgroup['maps'])) {
 						endforeach; ?>
 						<?php
 						$link = get_post_type_archive_link('map');
-						if(function_exists('qtrans_convertURL'))
-							$link = qtrans_convertURL(get_post_type_archive_link('map'));
+						if(function_exists('qtranxf_convertURL'))
+							$link = qtranxf_convertURL(get_post_type_archive_link('map'));
 						?>
 						<li><a href="<?php echo $link; ?>"><?php _e('View all maps', 'infoamazonia'); ?></a></li>
 					</ul>

@@ -8,7 +8,7 @@
 					<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana" data-action="recommend"></div>
 				</li>
 				<li class="twitter">
-					<a href="https://twitter.com/share" class="twitter-share-button" data-via="infoamazonia" data-lang="<?php if(function_exists('qtrans_getLanguage')) echo qtrans_getLanguage(); ?>">Tweet</a>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-via="infoamazonia" data-lang="<?php if(function_exists('qtranxf_getLanguage')) echo qtranxf_getLanguage(); ?>">Tweet</a>
 				</li>
 				<li class="share">
 					<a class="button share-button" href="<?php echo jeo_get_share_url(array('map_id' => $post->ID)); ?>"><?php _e('Embed this map', 'infoamazonia'); ?></a>

@@ -628,6 +628,19 @@ function infoamazonia_home_query($query) {
 }
 add_action('pre_get_posts', 'infoamazonia_home_query');
 
+function infoamazonia_home_map_gallery($conf) {
+	if(is_front_page())
+		$conf['disableMarkers'] = true;
+	return $conf;
+}
+add_filter('jeo_mapgroup_conf', 'infoamazonia_home_map_gallery');
+
+// Force empty map legend
+function ia_map_legend() {
+	return '';
+}
+add_filter('jeo_map_legend', 'ia_map_legend');
+
 function infoamazonia_disable_share_a_map_nav() {
 	return true;
 }

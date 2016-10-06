@@ -22,7 +22,7 @@ class InfoAmazonia_Slider {
 
 	function register_post_type() {
 
-		$labels = array( 
+		$labels = array(
 			'name' => __('Slider', 'infoamazonia'),
 			'singular_name' => __('Slider item', 'infoamazonia'),
 			'add_new' => __('Add slider item', 'infoamazonia'),
@@ -36,7 +36,7 @@ class InfoAmazonia_Slider {
 			'menu_name' => __('Featured slider', 'infoamazonia')
 		);
 
-		$args = array( 
+		$args = array(
 			'labels' => $labels,
 			'hierarchical' => false,
 			'description' => __('Arte Fora do Museu slider', 'infoamazonia'),
@@ -65,7 +65,7 @@ class InfoAmazonia_Slider {
 				'textarea' => 'textarea'
 			);
 
-			if(function_exists('qtrans_getLanguage') && 1 == 0) {
+			if(function_exists('qtranxf_getLanguage') && 1 == 0) {
 				foreach($translate_fields as &$field) {
 					$field = 'qtranslate_' . $field;
 				}

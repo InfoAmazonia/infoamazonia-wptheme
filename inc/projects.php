@@ -16,7 +16,7 @@ class infoamazonia_Projects {
 
 	function register_post_type() {
 
-		$labels = array( 
+		$labels = array(
 			'name' => __('Projects', 'infoamazonia'),
 			'singular_name' => __('Project', 'infoamazonia'),
 			'add_new' => __('Add project', 'infoamazonia'),
@@ -30,7 +30,7 @@ class infoamazonia_Projects {
 			'menu_name' => __('Projects', 'infoamazonia')
 		);
 
-		$args = array( 
+		$args = array(
 			'labels' => $labels,
 			'hierarchical' => false,
 			'description' => __('infoamazonia Projects', 'infoamazonia'),
@@ -60,7 +60,7 @@ class infoamazonia_Projects {
 				'textarea' => 'textarea'
 			);
 
-			if(function_exists('qtrans_getLanguage') && 1 == 0) {
+			if(function_exists('qtranxf_getLanguage') && 1 == 0) {
 				foreach($translate_fields as &$field) {
 					$field = 'qtranslate_' . $field;
 				}
