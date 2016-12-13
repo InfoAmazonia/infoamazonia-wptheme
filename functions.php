@@ -155,7 +155,7 @@ function infoamazonia_scripts() {
 
 	// custom marker system
 	global $jeo_markers;
-	if(!is_taxonomy('country')) {
+	if(!is_tax('country')) {
 		wp_deregister_script('jeo.markers');
 		wp_register_script('jeo.markers', get_stylesheet_directory_uri() . '/js/infoamazonia.markers.js', array('jeo', 'underscore', 'shadowbox', 'twttr'), '0.3.17', true);
 		wp_localize_script('jeo.markers', 'infoamazonia_markers', array(
