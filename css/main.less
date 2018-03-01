@@ -2647,20 +2647,21 @@ footer#colophon {
 	ul {
 		position: relative;
 		margin: 0 auto;
-		width: 775px;
+		width: 280px;
+		@media only screen and (min-width: 550px) {
+		    width: 510px
+		  }
 		li {
 			a.icon {
 				height: 50px;
 				margin-left: 0;
 				margin-right: 15px;
 				&.knight {
-					background-position: -228px -179px;
-					width: 50px;
-					height: 75px;
-					position: relative;
-					top: -18px;
+					background-position: -421px -186px;
+				  width: 79px;
+				  position: relative;
 				}
-				&.devseed {
+/*				&.devseed {
 					background-position: -270px 0;
 					width: 85px;
 					margin: 0;
@@ -2703,36 +2704,21 @@ footer#colophon {
 					height: 56px;
 					position: relative;
 					top: -5px;
-				}
+				} */
 				&.ejn {
-					background: url(../img/ejn.png);
-					background-position: center;
-					background-size: contain;
-					background-repeat: no-repeat;
-					width: 105px;
-					height: 56px;
+					background-position: -308px -181px;
+				  width: 105px;
 					position: relative;
-					top: -5px;
 				}
 				&.act {
-					background: url(../img/amazon_conservation_team.png);
-					background-position: center;
-					background-size: contain;
-					background-repeat: no-repeat;
-					width: 60px;
-					height: 56px;
-					position: relative;
-					top: -5px;
+					background-position: -220px -181px;
+				  width: 60px;
+				  position: relative;
 				}
 				&.dejusticia {
-					background: url(../img/dejusticia.png);
-					background-position: center;
-					background-size: contain;
-					background-repeat: no-repeat;
-					width: 222px;
-					height: 56px;
-					position: relative;
-					top: -5px;
+					background-position: -223px -55px;
+				  width: 139px;
+				  position: relative;
 				}
 			}
 			&.label {
